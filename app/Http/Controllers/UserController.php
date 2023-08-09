@@ -9,6 +9,7 @@ use App\Imports\UsersImport;
 use App\Models\Audit;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,12 @@ use TCG\Voyager\Models\Role;
 
 class UserController extends Controller
 {
+    public function getAuthenticatedUser()
+    {
+        if (Auth::check()) return Auth::user();
+        else return null;
+    }
+
     public function getUsers(Request $request): \Illuminate\Http\JsonResponse
     {
         $day = date('Y-m-d', strtotime($request->dateFilter));
@@ -117,7 +124,6 @@ class UserController extends Controller
                     'msg' => 'Los datos se cargaron correctamente.',
                     'icon' => 'success',
                 ]);
-
             } catch (\Exception $exception) {
                 // REGISTRO DE LOGS
                 Log::error($exception->getMessage());

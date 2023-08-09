@@ -40,7 +40,7 @@
 
         <li class="c-sidebar-nav-item">
             <router-link :to="{ name: 'home' }" class="c-sidebar-nav-link" title="Página de inicio">
-                <i class="fas fa-home c-sidebar-nav-icon"></i>
+                <i class="fas fa-home c-sidebar-nav-icon" style="color: #ffffff;"></i>
                 Inicio
             </router-link>
         </li>
@@ -48,7 +48,7 @@
         @if (array_key_exists('browse_admin', $permissions))
             <li class="c-sidebar-nav-item">
                 <a href="{{ url('/admin') }}" target="_blank" title="Administradores" class="c-sidebar-nav-link">
-                    <i class="fas fa-users-cog c-sidebar-nav-icon"></i>
+                    <i class="fas fa-users-cog c-sidebar-nav-icon" style="color: #ffffff;"></i>
                     Administradores
                 </a>
             </li>
@@ -57,7 +57,7 @@
         @if (array_key_exists('logs', $permissions))
             <li class="c-sidebar-nav-item">
                 <a href="/logs/" title="Logs" class="c-sidebar-nav-link" target="_blank">
-                    <i class="fas fa-bug c-sidebar-nav-icon"></i>
+                    <i class="fas fa-bug c-sidebar-nav-icon" style="color: #ffffff;"></i>
                     Logs
                 </a>
             </li>
@@ -66,7 +66,7 @@
         @if (array_key_exists('browse_audits', $permissions))
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'audits' }" class="c-sidebar-nav-link" title="Auditorias">
-                    <i class="fas fa-eye c-sidebar-nav-icon"></i>
+                    <i class="fas fa-eye c-sidebar-nav-icon" style="color: #ffffff;"></i>
                     Auditorias
                 </router-link>
             </li>
@@ -75,8 +75,17 @@
         @if (array_key_exists('browse_users', $permissions))
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'users' }" class="c-sidebar-nav-link" title="Usuarios">
-                    <i class="fas fa-people-group c-sidebar-nav-icon"></i>
+                    <i class="fas fa-people-group c-sidebar-nav-icon" style="color: #ffffff;"></i>
                     Usuarios
+                </router-link>
+            </li>
+        @endif
+
+        @if (array_key_exists('browse_tree_plantations', $permissions))
+            <li class="c-sidebar-nav-item">
+                <router-link :to="{ name: 'tree-plantations-index' }" class="c-sidebar-nav-link" title="Plantación de árboles">
+                    <i class="fa-solid fa-tree c-sidebar-nav-icon" style="color: #ffffff;"></i>
+                    Arboles
                 </router-link>
             </li>
         @endif

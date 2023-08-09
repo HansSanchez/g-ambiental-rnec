@@ -35,6 +35,29 @@ import VueToastr from "vue-toastr";
 
 Vue.use(VueToastr);
 
+// Vue Leaflet (maps)
+import {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LCircle,
+    LCircleMarker,
+    LIcon,
+    LPopup,
+    LTooltip,
+    LGeoJson
+} from "vue2-leaflet";
+import 'leaflet/dist/leaflet.css';
+Vue.component('l-map', LMap);
+Vue.component('l-tile-layer', LTileLayer);
+Vue.component('l-marker', LMarker);
+Vue.component('l-circle', LCircle);
+Vue.component('l-circle-marker', LCircleMarker);
+Vue.component('l-popup', LPopup);
+Vue.component('l-tooltip', LTooltip);
+Vue.component('l-icon', LIcon);
+Vue.component('l-geo-json', LGeoJson);
+
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueMask from 'v-mask'
 

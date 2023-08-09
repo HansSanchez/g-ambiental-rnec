@@ -21,4 +21,9 @@ class Delegation extends Model
         $query->where('id', $search_term)
             ->orWhere('name', 'LIKE', '%' . $search_term . '%');
     }
+
+    public function TreePlantations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(TreePlantation::class);
+    }
 }

@@ -37,6 +37,7 @@
         "@mdi/font": "^7.0.96",
         "chart.js": "^2.7.1",
         "laravel-echo": "^1.11.3",
+        "leaflet": "^1.9.4",
         "mdi-icons": "^1.0.1",
         "moment": "^2.29.1",
         "moment-timezone": "^0.5.34",
@@ -53,7 +54,9 @@
         "vue-spinner": "^1.0.4",
         "vue-sweetalert2": "^5.0.2",
         "vue-toastr": "^2.1.2",
+        "vue2-dropzone": "^3.6.0",
         "vue2-editor": "^2.10.3",
+        "vue2-leaflet": "^2.7.1",
         "vuejs-datepicker": "^1.6.2",
         "vuetify": "^2.6.10"
     }

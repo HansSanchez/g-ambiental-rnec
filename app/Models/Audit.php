@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
 
 class Audit extends Model
 {
@@ -31,11 +32,14 @@ class Audit extends Model
                 ->orWhere('description', 'like', '%' . $search_term . '%')
                 ->orWhereHas('user', function ($query) use ($search_term) {
                     if ($search_term != null)
-                        $query->where('name', 'like', '%' . $search_term . '%');
+                        $query->where('first_name', 'like', '%' . $search_term . '%')
+                        ->orWhere('second_name', 'like', '%' . $search_term . '%')
+                        ->orWhere('first_last_name', 'like', '%' . $search_term . '%')
+                        ->orWhere('second_last_name', 'like', '%' . $search_term . '%');
                 });
     }
 
-    public function user()
+    public function User()
     {
         return $this->belongsTo(User::class)
             ->with([
@@ -47,10 +51,16 @@ class Audit extends Model
 
     public function getCreatedLabelAttribute()
     {
-        if ($this->created_at != null) {
-            return $this->created_at->format('Y-m-d H:i');
+        try {
+            if ($this->created_at != null) {
+                if (gettype($this->created_at) == "string") {
+                    return date('Y-m-d', strtotime($this->created_at));
+                };
+                return $this->created_at->format('Y-m-d H:i');
+            }
+        } catch (\Exception $exception) {
+            Log::error("(AuditModel - getCreatedLabelAttribute) ERROR => " . $exception->getMessage());
         }
-
         return null;
     }
 }

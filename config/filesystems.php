@@ -56,6 +56,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'evidences_tree_plantations' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/tree_plantations/evidences/images'),
+            'url' => env('APP_URL') . '/storage/tree_plantations/evidences/images',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

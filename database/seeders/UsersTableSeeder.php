@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
                 'second_name'       => 'YADIEL',
                 'first_last_name'   => 'SÁNCHEZ',
                 'second_last_name'  => 'MORA',
-                'email'             => 'admin@admin.com',
+                'email'             => 'hanssanchez427@gmail.com',
                 'phone_number'      => '3126248950',
                 'position'          => 'ADMINISTRADOR',
                 'password'          => bcrypt('@990305Hans#.'),

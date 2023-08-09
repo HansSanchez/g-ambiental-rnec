@@ -5,6 +5,9 @@ import Users from './views_vue/admin/User'
 import Audits from './views_vue/admin/Audit'
 import NotFount from './components/NotFountComponent'
 
+import TreePlantation from './views_vue/modules/TreePlantations/index.vue'
+import TreePlantationDetail from './views_vue/modules/TreePlantations/detail.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -19,6 +22,10 @@ export default new Router({
         {path: '/v/admin/users', name: 'users', component: Users},
         {path: '/v/admin/audits', name: 'audits', component: Audits},
         // END
+
+        // PLANTACIÓN DE ARBOLES
+        {path: '/v/tree-plantations/index', name: 'tree-plantations-index', component: TreePlantation},
+        {path: '/v/tree-plantations/detail/:id', name: 'tree-plantations-detail', component: TreePlantationDetail},
 
 
         // ERROR 404

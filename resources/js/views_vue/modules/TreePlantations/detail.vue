@@ -1,0 +1,198 @@
+<template>
+    <div v-if="permissions.browse_tree_plantations === 'browse_tree_plantations' ||
+        permissions.read_tree_plantations === 'read_tree_plantations'" class="card text-uppercase">
+        <div class="card-header text-uppercase">
+            <div class="row">
+                <div class="col-md-6">
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb m-0 p-0" style="border: none !important;">
+                            <li class="breadcrumb-item active">
+                                <router-link
+                                    :to="{ name: 'tree-plantations-detail', params: { id: TreePlantationDetailList.id } }"
+                                    @click="show = !show">
+                                    <b>
+                                        Detalle de la plantación de árboles en
+                                        {{ TreePlantationDetailList.address }}
+                                    </b>
+                                </router-link>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" style="background: #d7d7d7 !important;">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h5><b>COORDENADAS <span class="text-danger">*</span></b></h5>
+                            <l-map style="height: 30vh" :zoom="zoom" :center="center">
+                                <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+                                <!-- MARCADORES EXISTENTES EN EL ARRAY MAPMARKERS -->
+                                <l-marker :lat-lng="[parseFloat(lat), parseFloat(lng)]" :icon="getIcon()">
+                                </l-marker>
+                            </l-map>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group mb-0">
+                                        <h5><b>LATITUD</b></h5>
+                                        <input v-model="TreePlantationDetailList.lat" type="text" name="lat" id="lat"
+                                            class="form-control" placeholder="Coordenada de latitud" required readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="form-group mb-0">
+                                        <h5><b>LONGITUD</b></h5>
+                                        <input v-model="TreePlantationDetailList.lng" type="text" name="lng" id="lng"
+                                            class="form-control" placeholder="Coordenada de longitud" required readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <v-btn color="#e55353" :to="{ name: 'tree-plantations-index' }" small class="btn btn-danger text-white"
+                data-dismiss="modal">
+                <b>VOLVER</b>
+            </v-btn>
+        </div>
+    </div>
+    <div v-else>
+        <forbidden-component></forbidden-component>
+    </div>
+</template>
+
+<script>
+import { latLng } from "leaflet";
+
+export default {
+    name: "TreePlantationDetail",
+    data() {
+        return {
+            id: this.$route.params.id,
+            TreePlantationDetailList: {},
+            permissions: [],
+
+            // START VARIABLES PARA EL MAPA
+            zoom: 12,
+            lat: 0,
+            lng: 0,
+            center: latLng(4.570868, -74.297333),
+            url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            attribution:
+                '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            mapOptions: {
+                zoomSnap: 1,
+            },
+            // END VARIABLES PARA EL MAPA
+        }
+    },
+    props: {
+    },
+    methods: {
+        TreePlantationDetail() {
+            let api = "/g-environmental-rnec/tree-plantation/show/" + this.id;
+            axios.get(api)
+                .then(({ data }) => {
+                    this.TreePlantationDetailList = data.treePlantation;
+                    this.lat = parseFloat(data.treePlantation.lat);
+                    this.lng = parseFloat(data.treePlantation.lng);
+                    this.center = latLng(parseFloat(data.treePlantation.lat), parseFloat(data.treePlantation.lng));
+                })
+                .catch(error => (error.response ? this.responseErrors(error) : ""));
+        },
+        /*
+            **NOTE - EXPLICACIÓN:
+            ESTA FUNCIÓN TIENE COMO OBJETIVO CREAR UN ICONO EN SVG EL CUAL ES PERSONALIZABLE PARA EL MAPA
+        */
+        getIcon() {
+            return L.divIcon({
+                className: "my-custom-pin",
+                html: `<svg class="rotate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 34.892337" height="40" width="40">
+                    <g transform="translate(-814.59595,-274.38623)">
+                        <g transform="matrix(1.1855854,0,0,1.1855854,-151.17715,-57.3976)">
+                        <path d="m 817.11249,282.97118 c -1.25816,1.34277 -2.04623,3.29881 -2.01563,5.13867 0.0639,3.84476 1.79693,5.3002 4.56836,10.59179 0.99832,2.32851 2.04027,4.79237 3.03125,8.87305 0.13772,0.60193 0.27203,1.16104 0.33416,1.20948 0.0621,0.0485 0.19644,-0.51262 0.33416,-1.11455 0.99098,-4.08068 2.03293,-6.54258 3.03125,-8.87109 2.77143,-5.29159 4.50444,-6.74704 4.56836,-10.5918 0.0306,-1.83986 -0.75942,-3.79785 -2.01758,-5.14062 -1.43724,-1.53389 -3.60504,-2.66908 -5.91619,-2.71655 -2.31115,-0.0475 -4.4809,1.08773 -5.91814,2.62162 z" style="fill:#008F39
+                        ;stroke:#000"/>
+                        <circle r="3.0355" cy="288.25278" cx="823.03064" id="path3049" style="display:inline;fill:#FFF;stroke:#000000"/>
+                        </g>
+                    </g>
+                </svg>`,
+            });
+        },
+        alertLoading(time, msg, type) {
+            this.$toastr.Add({
+                timeout: time,
+                type: type,
+                msg: msg,
+            });
+        },
+        responseErrors(error) {
+            if (error.response.status === 422) {
+                // CAPTURA DE ERRORES DESDE EL BACKEND
+                let msg = ''
+
+                // RECORRE TODOS LOS ERRORES Y LOS ADJUNTA EN UNA VARIABLE
+                Object.values(error.response.data.errors)
+                    .map((errors, index) =>
+                        msg += `<li style="margin-bottom: 10px !important;"><b>${index + 1}.</b> ${errors[0]}</li>`)
+
+                // ALERTA QUE MUESTRA AL USUARIO FINAL LOS ERRORES
+                this.$swal({
+                    icon: 'error', // ICONO
+                    title: '¡Hola! te invitamos a que revises tús campos', // TÍTULO DE LA NOTIFICACIÓN
+                    html: `<ul class="text-danger text-left">${msg}</ul>`, // CONTENIDO DE LA NOTIFICACIÓN
+                    showConfirmButton: true, // BOTON DE CONFIRMACIÓN PARA CERRAR LA VENTANA
+                    timer: 15000, // 15 SEG PARA QUE EL USUARIO LEA
+                    timerProgressBar: true, // PERMITE LA VISUALIZACIÓN DE UNA BARRA QUE VA INDICNDO CUANDO TIEMPO FALTA PARA QUE LA VENTANA DSE CIERRE
+                })
+            }
+
+            if (error.response.status === 500) {
+                this.$swal({
+                    icon: 'warning', // ICONO
+                    title: 'Oops!', // TÍTULO DE LA NOTIFICACIÓN
+                    html: '<p>Ocurrio un error con el servidor...</p>' +
+                        '<p class="text-justify"><b class="text-warning">ADVERTENCIA:</b> ' + error.response.data.msg + '</p>', // CONTENIDO DE LA NOTIFICACIÓN
+                    showConfirmButton: true, // BOTON DE CONFIRMACIÓN PARA CERRAR LA VENTANA
+                    timer: 15000, // 15 SEG PARA QUE EL USUARIO LEA
+                    timerProgressBar: true, // PERMITE LA VISUALIZACIÓN DE UNA BARRA QUE VA INDICNDO CUANDO TIEMPO FALTA PARA QUE LA VENTANA DSE CIERRE
+                });
+            }
+        },
+        number_format(amount, decimals) {
+            amount += ""; // por si pasan un numero en vez de un string
+            amount = parseFloat(amount.replace(/[^0-9\.]/g, "")); // elimino cualquier cosa que no sea numero o punto
+            decimals = decimals || 0; // por si la variable no fue fue pasada
+            // si no es un numero o es igual a cero retorno el mismo cero
+            if (isNaN(amount) || amount === 0)
+                return parseFloat(0).toFixed(decimals);
+            // si es mayor o menor que cero retorno el valor formateado como numero
+            amount = "" + amount.toFixed(decimals);
+            var amount_parts = amount.split("."),
+                regexp = /(\d+)(\d{3})/;
+            while (regexp.test(amount_parts[0]))
+                while (regexp.test(amount_parts[0]))
+                    amount_parts[0] = amount_parts[0].replace(
+                        regexp,
+                        "$1" + "," + "$2"
+                    );
+            return amount_parts.join(".");
+        },
+        setPermissions() {
+            axios.post("/g-environmental-rnec/home/permissions")
+                .then(response => this.permissions = response.data)
+                .catch(errors => console.log(errors));
+        },
+    },
+    created() {
+        this.TreePlantationDetail();
+        this.setPermissions();
+    }
+}
+</script>

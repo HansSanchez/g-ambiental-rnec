@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::group(['prefix' => 'users'], function () {
+            Route::post('/getAuthenticatedUser', [\App\Http\Controllers\UserController::class, 'getAuthenticatedUser']);
             Route::get('/getUsers', [\App\Http\Controllers\UserController::class, 'getUsers']);
             Route::get('/getRoles', [\App\Http\Controllers\UserController::class, 'getRoles']);
             Route::post('/store', [\App\Http\Controllers\UserController::class, 'store']);
@@ -69,7 +70,26 @@ Route::group(['middleware' => ['auth']], function () {
             Route::put('/updatePassword', [\App\Http\Controllers\UserController::class, 'updatePassword'])->name('updatePassword');
             Route::get('/searchUser', [\App\Http\Controllers\UserController::class, 'searchUser'])->name('searchUser');
             Route::get('/usersSelectPassword', [\App\Http\Controllers\UserController::class, 'usersSelectPassword'])->name('usersSelectPassword');
+        });
 
+        Route::group(['prefix' => 'tree-plantation'], function () {
+            Route::get('/getTreePlantation', [\App\Http\Controllers\TreePlantationController::class, 'getTreePlantation']);
+            Route::post('/store', [\App\Http\Controllers\TreePlantationController::class, 'store']);
+            Route::get('/show/{treePlantation}', [\App\Http\Controllers\TreePlantationController::class, 'show']);
+            Route::post('/{treePlantation}/update', [\App\Http\Controllers\TreePlantationController::class, 'update']);
+            Route::delete('/{treePlantation}/destroy', [\App\Http\Controllers\TreePlantationController::class, 'destroy']);
+            Route::post('/generateReport', [\App\Http\Controllers\TreePlantationController::class, 'generateReport']); // PENDIENTE DESARROLLAR
+
+            // RUTAS PARA ACCIONES EN LAS EVIDENCIAS
+            Route::group(['prefix' => 'evidences'], function () {
+                Route::get('/evidenceTreePlantation/{treePlantation}', [\App\Http\Controllers\EvidenceTreePlantationController::class, 'evidenceTreePlantation']);
+                Route::post('/storeImage', [\App\Http\Controllers\EvidenceTreePlantationController::class, 'storeImage']);
+                Route::delete('/{evidenceTreePlantation}/destroyImage', [\App\Http\Controllers\EvidenceTreePlantationController::class, 'destroyImage']);
+            });
+        });
+
+        Route::get('/csrf-token', function () {
+            return csrf_token();
         });
     });
 });

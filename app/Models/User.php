@@ -11,6 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Log;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -86,14 +87,19 @@ class User extends \TCG\Voyager\Models\User
             ->orWhere('email', 'LIKE', '%' . $search_term . '%');
     }
 
-    public function delegation(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function Audits(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Audit::class);
+    }
+
+    public function Delegation(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Delegation::class);
     }
 
-    public function audits(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function TreePlantations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Audit::class);
+        return $this->hasMany(TreePlantation::class);
     }
 
     public function getActiveLabelAttribute()
@@ -116,10 +122,16 @@ class User extends \TCG\Voyager\Models\User
 
     public function getCreatedLabelAttribute()
     {
-        if ($this->created_at != null) {
-            return $this->created_at->format('Y-m-d H:i');
+        try {
+            if ($this->created_at != null) {
+                if (gettype($this->created_at) == "string") {
+                    return date('Y-m-d', strtotime($this->created_at));
+                };
+                return $this->created_at->format('Y-m-d H:i');
+            }
+        } catch (\Exception $exception) {
+            Log::error("(UserModel - getCreatedLabelAttribute) ERROR => " . $exception->getMessage());
         }
-
         return null;
     }
 
