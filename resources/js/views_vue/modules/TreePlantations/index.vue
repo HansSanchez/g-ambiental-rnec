@@ -627,6 +627,7 @@ export default {
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceTreePlantation.id)), 1);
+                            this.changeType();
                         }).catch(this.response);
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });

@@ -24,7 +24,6 @@
         <div class="card-body" style="background: #d7d7d7 !important;">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <h5><b>COORDENADAS <span class="text-danger">*</span></b></h5>
@@ -51,8 +50,68 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 full-center">
+                            <div class="bg-green-custom w-100">
+                                <div class="card__front__main">
+                                    <p class="card__name__main mb-0">
+                                        Árboles
+                                        <br>
+                                        Plantados
+                                        <br>
+                                        Delegación: {{ TreePlantationDetailList.delegation.name }}
+                                    </p>
+                                    <p class="card__num__main mb-0">
+                                        <i class="fa-solid fa-tree" style="color: #ffffff;"></i>
+                                        {{ TreePlantationDetailList.number_of_trees_planted }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div v-if="TreePlantationDetailList.evidence_tree_plantations.length > 0"
+                                class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item"
+                                            v-for="(itemImage, indexImage) in TreePlantationDetailList.evidence_tree_plantations"
+                                            :key="indexImage" :class="{ active: indexImage === 0 }">
+                                            <img class="d-block w-100"
+                                                style="height: 236px import; max-height: 236px !important;"
+                                                :src="'/storage/tree_plantations/evidences/images/' + itemImage.file">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                        data-slide="prev">
+                                        <span v-if="TreePlantationDetailList.evidence_tree_plantations.length > 1"
+                                            class="carousel-control-prev-icon" aria-hidden="true">
+                                            <i style="padding-top: 12px !important;"
+                                                class="fas fa-angle-double-left fa-2x text-white"></i>
+                                        </span>
+                                        <span class="sr-only">Anterior</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                        data-slide="next">
+                                        <span v-if="TreePlantationDetailList.evidence_tree_plantations.length > 1"
+                                            class="carousel-control-next-icon" aria-hidden="true">
+                                            <i style="padding-top: 12px !important;"
+                                                class="fas fa-angle-double-right fa-2x text-white"></i>
+                                        </span>
+                                        <span class="sr-only">Siguiente</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div v-if="TreePlantationDetailList.evidence_tree_plantations.length == 0"
+                                class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h5 class="mb-0">Sin imágenes relacionadas</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
+                            <h5 class="mb-0"><b>OBSERVACIONES (ESPECIES PLANTADAS)</b></h5>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" v-html="TreePlantationDetailList.observations">
+                        </div>
+                        <hr class="hr-separator">
                     </div>
-
                 </div>
             </div>
         </div>
@@ -196,3 +255,84 @@ export default {
     }
 }
 </script>
+
+
+
+<style scoped>
+:root {
+    --color1: #5271C2;
+}
+
+.card .card__num__main {
+    text-shadow: longshadow(darken(var(--color1), 15%), var(--color1), 100, 0.8);
+}
+
+.card__front__main {
+    transform: rotateY(0);
+    z-index: 2;
+    overflow: hidden;
+}
+
+.card__name__main {
+    font-size: 32px;
+    line-height: 0.9;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.card__name__main span {
+    font-size: 14px;
+}
+
+.card__num__main {
+    font-size: 100px;
+    margin: 0;
+    font-weight: 700;
+    margin-top: -20px;
+
+    @media (max-width: 700px) {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .card__front__main {
+        height: 230px;
+    }
+}
+
+/* Demo */
+main {
+    text-align: center;
+}
+
+main h1,
+main p {
+    margin: 0 0 12px 0;
+}
+
+main h1 {
+    margin-top: 12px;
+    font-weight: 300;
+}
+
+.fa-twitter {
+    color: white;
+    font-size: 30px;
+}
+
+.bg-green-custom {
+    color: white !important;
+    background: #88B788 !important;
+}
+
+.mg-12 {
+    margin: 12px;
+}
+
+.hr-separator {
+    height: 2px;
+    background: #88B788 !important;
+}
+</style>

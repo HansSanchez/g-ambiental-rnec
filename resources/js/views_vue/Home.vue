@@ -9,8 +9,8 @@
                     </h1>
                     <p class="mb-0"><b>GESTIÓN Y CONTROL DE LA COORDINACIÓN AMBIENTAL EN LA RNEC</b></p>
                 </div>
-                <div class="col-lg-6 col-md-10 col-sm-12 col-xs-12">
-                    <img :src="'/assets/img/Web/welcome6.png'" alt="welcome">
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <img :src="'/assets/img/Web/welcome7.png'" alt="welcome">
                 </div>
                 <!----------------- END WELCOME ----------------->
             </div>

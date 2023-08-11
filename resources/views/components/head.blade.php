@@ -51,14 +51,14 @@
         }
 
         .carousel-control-next-icon {
-            background: #F36C2D !important;
+            background: #88B788 !important;
             width: 50px;
             height: 50px;
             border-radius: 50%;
         }
 
         .carousel-control-prev-icon {
-            background: #F36C2D !important;
+            background: #88B788 !important;
             width: 50px;
             height: 50px;
             border-radius: 50%;

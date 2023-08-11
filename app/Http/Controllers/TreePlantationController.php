@@ -76,8 +76,9 @@ class TreePlantationController extends Controller
                 $treePlantation->save();
 
                 // REGISTRO DE LAS RELACIONES
-                $treePlantation->delegation;
-                $treePlantation->user;
+                $treePlantation->Delegation;
+                $treePlantation->EvidenceTreePlantations;
+                $treePlantation->User;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -123,7 +124,6 @@ class TreePlantationController extends Controller
 
             // RESPUESTA PARA EL USUARIO
             return response()->json(['treePlantation' => $treePlantation]);
-
         } catch (\Exception $exception) {
             Log::error("(TreePlantationController - show) ERROR => " . $exception->getMessage());
             return response()->json(['message' => $exception->getMessage(), 'icon' => 'error']);
@@ -165,8 +165,9 @@ class TreePlantationController extends Controller
                 ]);
 
                 // REGISTRO DE LAS RELACIONES
-                $treePlantation->delegation;
-                $treePlantation->user;
+                $treePlantation->Delegation;
+                $treePlantation->EvidenceTreePlantations;
+                $treePlantation->User;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -212,6 +213,11 @@ class TreePlantationController extends Controller
 
                 // ELIMINACIÓN DEL REGISTRO
                 $treePlantation->delete();
+
+                // REGISTRO DE LAS RELACIONES
+                $treePlantation->Delegation;
+                $treePlantation->EvidenceTreePlantations;
+                $treePlantation->User;
 
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
