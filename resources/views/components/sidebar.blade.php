@@ -83,9 +83,20 @@
 
         @if (array_key_exists('browse_tree_plantations', $permissions))
             <li class="c-sidebar-nav-item">
-                <router-link :to="{ name: 'tree-plantations-index' }" class="c-sidebar-nav-link" title="Plantación de árboles">
+                <router-link :to="{ name: 'tree-plantations-index' }" class="c-sidebar-nav-link"
+                    title="Plantación de árboles">
                     <i class="fa-solid fa-tree c-sidebar-nav-icon" style="color: #ffffff;"></i>
                     Arboles
+                </router-link>
+            </li>
+        @endif
+
+        @if (array_key_exists('browse_tree_plantations', $permissions))
+            <li class="c-sidebar-nav-item">
+                <router-link :to="{ name: 'tree-plantations-index' }" class="c-sidebar-nav-link"
+                    title="Acuerdos de corresponsabilidad">
+                    <i class="fa-solid fa-book c-sidebar-nav-icon" style="color: #ffffff;"></i>
+                    Acuerdos
                 </router-link>
             </li>
         @endif
