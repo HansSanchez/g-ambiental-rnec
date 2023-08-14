@@ -55,6 +55,11 @@
                                 <span class="input-group-text border-search bg-info" title="Buscar" @click="$emit('Enter')">
                                     <i class="fa-solid fa-search text-white"></i>
                                 </span>
+                                <span class="input-group-text border-search bg-success" title="Generación de reportes"
+                                    data-toggle="modal" data-backdrop="static" data-target="#GenerateReportModal"
+                                    @click="report = true;">
+                                    <i class="fa-solid fa-file-excel text-white"></i>
+                                </span>
                                 <span class="input-group-text border-custom bg-dark" title="Refrescar" @click="clean">
                                     <i class="fa-solid fa-rotate text-white"></i>
                                 </span>
@@ -63,9 +68,9 @@
                     </div>
                     <!-- ENCABEZADO (BOTONES Y FILTROS) -->
 
-                    <!-- MODEALES -->
+                    <!-- START MODEALES -->
 
-                    <!-- STAR CREACIÓN Y ACTUALIZACIÓN -->
+                    <!-- START CREACIÓN Y ACTUALIZACIÓN -->
                     <div v-show="permissions.add_tree_plantations === 'add_tree_plantations' ||
                         permissions.edit_tree_plantations === 'edit_tree_plantations'" class="modal fade-scale"
                         id="UpdateOrCreateTreePlantationModal" tabindex="-1" role="dialog"
@@ -199,7 +204,7 @@
                     </div>
                     <!-- END CREACIÓN Y ACTUALIZACIÓN -->
 
-                    <!-- STAR EVIDENCIAS -->
+                    <!-- START EVIDENCIAS -->
                     <div v-show="permissions.add_tree_plantations === 'add_tree_plantations' ||
                         permissions.edit_tree_plantations === 'edit_tree_plantations'" class="modal fade-scale"
                         id="EvidencesTreePlantationModal" tabindex="-1" role="dialog"
@@ -286,7 +291,121 @@
                     </div>
                     <!-- END EVIDENCIAS -->
 
-                    <!-- MODEALES -->
+                    <!-- START GENERATE REPORTS -->
+                    <div v-show="permissions.generate_report === 'generate_report'" class="modal fade"
+                        id="GenerateReportModal" tabindex="-1" role="dialog" aria-labelledby="GenerateReportModalTitle"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background: #88b76e">
+                                    <h5 class="modal-title text-uppercase text-white">
+                                        <b>{{
+                                            report ? "Reporte de plantación de árboles" : "SIN TÍTULO"
+                                        }}</b>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">
+                                            <v-icon style="color: #fff">mdi-close</v-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="background: #e7e7e7">
+                                    <!-- REPORTES -->
+                                    <div v-if="report" class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
+                                            <h5 class="mb-0"><b>Fechas de plantaciones</b></h5>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                                            <div class="form-group mb-0">
+                                                <small class="text-danger"><b>(Desde)</b></small>
+                                                <datepicker :language="es" v-model="FormReport.fromDay"
+                                                    :disabledDates="fromDay" :inputClass="inputClass"
+                                                    @change="validateFormReport" :format="customFormatter"
+                                                    :placeholder="fromPlaceholder">
+                                                </datepicker>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                                            <div class="form-group mb-0">
+                                                <small class="text-danger"><b>(Hasta)</b></small>
+                                                <datepicker :language="es" v-model="FormReport.untilDay"
+                                                    :disabledDates="untilDay" :inputClass="inputClass"
+                                                    @change="validateFormReport" :format="customFormatter"
+                                                    :placeholder="untilPlaceholder">
+                                                </datepicker>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group mb-0">
+                                                <small class="text-danger"><b>(Delegaciones)</b></small>
+                                                <v-select :options="delegations" v-model="FormReport.delegation"
+                                                    placeholder="DELEGACIONES...">
+                                                </v-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
+                                            <h5>RECOMENDACIONES:</h5>
+                                            <ul>
+                                                <li>
+                                                    Tenga en cuenta que si quiere generar un reporte debe especificar el
+                                                    campo
+                                                    <b class="text-danger">(DESDE)</b>
+                                                    y el campo
+                                                    <b class="text-danger">(HASTA)</b>
+                                                    de lo contrario no se permitirá, exceptuando los botones
+                                                    <b class="text-info">(MENSUAL)</b> y <b class="text-info">(ANUAL)</b>.
+                                                </li>
+                                                <li>
+                                                    <br>
+                                                    Por otro lado, se deja aclaración que los botones hacen referencia al
+                                                    mes y al año actual.
+                                                    <br>
+                                                    <br>
+                                                    <b>Ejemplo:</b>
+                                                    <br>
+                                                    <b>
+                                                        <span class="text-info">(ANUAL)</span> :
+                                                        {{ getCurrentYear() }}
+                                                    </b>
+                                                    <br>
+                                                    <b>
+                                                        <span class="text-info">(MENSUAL)</span> :
+                                                        {{ getCurrentDateWithSpanishMonth() }}
+                                                    </b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- END -->
+                                </div>
+                                <div class="modal-footer">
+                                    <v-btn v-if="report" color="#6c757d" title="Limpiar" small @click="cleanFormReport()"
+                                        class="btn btn-sm btn-grey text-white text-uppercase">
+                                        <b>LIMPIAR</b>
+                                    </v-btn>
+                                    <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('mount')"
+                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
+                                        <b>MENSUAL</b>
+                                    </v-btn>
+                                    <v-btn v-if="report" color="#39f" title="Anual" small @click="generateReport('year')"
+                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
+                                        <b>ANUAL</b>
+                                    </v-btn>
+                                    <v-btn type="button" v-if="report" @click="generateReport('FormReport')" color="#2eb85c"
+                                        small class="btn btn-success text-uppercase text-white" data-dismiss="modal"
+                                        :disabled="validateFormReport()">
+                                        <b>GENERAR</b>
+                                    </v-btn>
+                                    <v-btn color="#e55353" small class="btn btn-danger text-white" data-dismiss="modal">
+                                        <b>CANCELAR</b>
+                                    </v-btn>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END GENERATE REPORTS -->
+
+                    <!-- END MODEALES -->
 
                     <!-- TABLA DE INFORMACIÓN -->
                     <div v-if="permissions.browse_tree_plantations === 'browse_tree_plantations' ||
@@ -344,7 +463,7 @@
                                             <router-link
                                                 v-if="permissions.browse_tree_plantations === 'browse_tree_plantations'"
                                                 :to="{ name: 'tree-plantations-detail', params: { id: item.id } }"
-                                                class="text-info">
+                                                class="text-info" title="Detalle">
                                                 <i class="fas fa-eye fa-2x"></i>
                                             </router-link>
                                             <!-- END -->
@@ -355,7 +474,7 @@
                                                 <span v-if="permissions.add_tree_plantations === 'add_tree_plantations' ||
                                                     permissions.edit_tree_plantations === 'edit_tree_plantations'"
                                                     @click="evidenceTreePlantation(item);" data-toggle="modal"
-                                                    title="Editar" data-target="#EvidencesTreePlantationModal"
+                                                    title="Evidencias" data-target="#EvidencesTreePlantationModal"
                                                     data-backdrop="static" class="cursor-pointer pl-2">
                                                     <i v-if="item.evidence_tree_plantations.length > 0"
                                                         class="fa-solid fa-camera fa-2x text-success"></i>
@@ -382,7 +501,7 @@
                                                 v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span
                                                     v-if="permissions.delete_tree_plantations === 'delete_tree_plantations'"
-                                                    @click="destroy(item); update = false" title="Eliminar registro"
+                                                    @click="destroy(item); update = false" title="Eliminar"
                                                     class="text-danger cursor-pointer pl-2">
                                                     <i class="fas fa-trash fa-2x"></i>
                                                 </span>
@@ -422,13 +541,16 @@ import InfiniteLoading from "vue-infinite-loading"; // COMPONENTE PARA HACER UN 
 import { VueEditor } from "vue2-editor";
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+import Datepicker from "vuejs-datepicker";
+import { es } from "vuejs-datepicker/dist/locale";
+import moment from "moment-timezone";
 
 export default {
     components: {
         InfiniteLoading,
         VueEditor,
-        vueDropzone: vue2Dropzone
-
+        vueDropzone: vue2Dropzone,
+        Datepicker,
     },
     name: "TreePlantation",
     data() {
@@ -461,7 +583,7 @@ export default {
             // STAR VARIABLES PARA EL DROPZONE.JS
             csrfToken: null,
             dropzoneOptions: {
-                url: '/g-environmental-rnec/tree-plantation/evidences/storeImage', // RUTA PARA ENVIAR AL CONTROLADOR
+                url: '/g-environmental-rnec/tree-plantations/evidences/storeImage', // RUTA PARA ENVIAR AL CONTROLADOR
                 thumbnailWidth: 200,
                 addRemoveLinks: true,
                 acceptedFiles: "image/*", // RESTRINGE A IMÁGENES
@@ -512,6 +634,39 @@ export default {
             marker: null,
             // END VARIABLES PARA EL MAPA
 
+            // START VARIABLES PARA GENERACIÓN DE REPORTES
+            report: false,
+            es: es,
+            inputClass: "w-100 bg-white text-black form-control",
+            fromDay: {
+                from: new Date(Date.now()),
+            },
+            fromPlaceholder: "Desde x fecha",
+            untilDay: {
+                from: new Date(Date.now()),
+            },
+            untilPlaceholder: "Hasta x fecha",
+            FormReport: {
+                // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
+                fromDay: null,
+                untilDay: null,
+                delegation: null
+            },
+            day: {
+                day: new Date(Date.now()),
+            },
+            week: {
+                week: true,
+            },
+            mount: {
+                mount: true,
+            },
+            year: {
+                year: true,
+            },
+            file: false,
+            fileName: null,
+            // END VARIABLES PARA GENERACIÓN DE REPORTES
 
         }
     },
@@ -522,7 +677,7 @@ export default {
             this.$data["FormTreePlantation"] = this.$options.data.call(this)["FormTreePlantation"];
         },
         infiniteHandler($state) {
-            let api = "/g-environmental-rnec/tree-plantation/getTreePlantation";
+            let api = "/g-environmental-rnec/tree-plantations/getTreePlantation";
             axios.get(api, { params: { page: this.page, search: this.searchInput } })
                 .then(({ data }) => {
                     if (data.treePlantation.data.length > 0) {
@@ -544,7 +699,7 @@ export default {
             this.changeType();
         },
         queryFilter($state) {
-            let api = "/g-environmental-rnec/tree-plantation/getTreePlantation";
+            let api = "/g-environmental-rnec/tree-plantations/getTreePlantation";
             axios.get(api, {
                 params: {
                     search: this.searchInput,
@@ -563,7 +718,7 @@ export default {
             }).catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         createOrUpdate() {
-            let url = this.update ? '/g-environmental-rnec/tree-plantation/' + this.id + '/update' : '/g-environmental-rnec/tree-plantation/store';
+            let url = this.update ? '/g-environmental-rnec/tree-plantations/' + this.id + '/update' : '/g-environmental-rnec/tree-plantations/store';
             axios.post(url, this.FormTreePlantation)
                 .then(response => {
                     this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
@@ -584,7 +739,7 @@ export default {
                 cancelButtonText: 'Cancelar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    axios.delete('/g-environmental-rnec/tree-plantation/' + item.id + '/destroy')
+                    axios.delete('/g-environmental-rnec/tree-plantations/' + item.id + '/destroy')
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.list.splice(this.list.findIndex(element => (element.id === response.data.treePlantation.id)), 1);
@@ -594,7 +749,7 @@ export default {
         },
         evidenceTreePlantation(item) {
             this.tree_plantation_id = item.id;
-            let api = "/g-environmental-rnec/tree-plantation/evidences/evidenceTreePlantation/" + item.id;
+            let api = "/g-environmental-rnec/tree-plantations/evidences/evidenceTreePlantation/" + item.id;
             axios.get(api)
                 .then(({ data }) => this.evidences.push(...data.evidenceTreePlantation))
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
@@ -623,7 +778,7 @@ export default {
                 cancelButtonText: 'Cancelar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    axios.delete("/g-environmental-rnec/tree-plantation/evidences/" + itemImage.id + "/destroyImage")
+                    axios.delete("/g-environmental-rnec/tree-plantations/evidences/" + itemImage.id + "/destroyImage")
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceTreePlantation.id)), 1);
@@ -801,6 +956,90 @@ export default {
             let disabled = Object.values(this.FormTreePlantation).every(value => value !== null && value !== undefined && value !== "");
             return !disabled;
         },
+        validateFormReport() {
+            if (!this.FormTreeReport) {
+                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                return !disabled;
+            }
+        },
+        cleanFormReport() {
+            this.FormReport.fromDay = null;
+            this.FormReport.untilDay = null;
+            this.setAuthenticatedUser();
+        },
+        customFormatter(date) {
+            return moment(date).format("DD/MMMM/YYYY");
+        },
+        generateReport(type) {
+            window.toastr.info("Generando reporte, por favor espere...", {
+                timeOut: 5000,
+            });
+            let Form = null;
+            switch (type) {
+                case "FormReport":
+                    Form = this.FormReport;
+                    break;
+                case "day":
+                    Form = this.day;
+                    break;
+                case "week":
+                    Form = this.week;
+                    break;
+                case "mount":
+                    Form = this.mount;
+                    break;
+                case "year":
+                    Form = this.year;
+                    break;
+            }
+            const url = "/g-environmental-rnec/tree-plantations/generateReport";
+            if (Form !== null) {
+                let delegation = this.FormReport.delegation
+                axios.post(url, { ...Form, delegation })
+                    .then(this.responseReport)
+                    .catch((error) => window.toastr.warning(error, { timeOut: 2000 }));
+            }
+            else this.alertLoading(5000, "No se aplicó ningún filtro", "error")
+        },
+        responseReport(response) {
+            let fileName = "/storage/reports/tree_plantations/" + response.data.fileName;
+            let file = response.data.file;
+            if (file) {
+                this.$swal({
+                    icon: response.data.icon,
+                    title: response.data.msg,
+                    html:
+                        '<a href="' +
+                        fileName +
+                        '" class="btn btn-success" download>' +
+                        '<i class="fas fa-file-excel"></i> Descargar reporte</a>',
+                    showConfirmButton: false,
+                });
+            } else {
+                this.$swal({
+                    icon: response.data.icon,
+                    title: response.data.msg,
+                    showConfirmButton: true,
+                });
+            }
+        },
+        getSpanishMonthName(month) {
+            const spanishMonthNames = [
+                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+            ];
+            return spanishMonthNames[month];
+        },
+        getCurrentDateWithSpanishMonth() {
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            const monthName = this.getSpanishMonthName(currentMonth);
+            return monthName;
+        },
+        getCurrentYear() {
+            const currentDate = new Date();
+            return currentDate.getFullYear();
+        },
         setCsrfToken() {
             axios.get("/g-environmental-rnec/csrf-token")
                 .then(response => this.dropzoneOptions.headers['X-CSRF-TOKEN'] = response.data)
@@ -808,7 +1047,10 @@ export default {
         },
         setAuthenticatedUser() {
             axios.post("/g-environmental-rnec/users/getAuthenticatedUser")
-                .then(response => this.user = response.data)
+                .then(response => {
+                    this.user = response.data
+                    this.FormReport.delegation = { code: response.data.delegation.id, label: response.data.delegation.name }
+                })
                 .catch(errors => console.log(errors));
         },
         setPermissions() {

@@ -72,7 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/usersSelectPassword', [\App\Http\Controllers\UserController::class, 'usersSelectPassword'])->name('usersSelectPassword');
         });
 
-        Route::group(['prefix' => 'tree-plantation'], function () {
+        Route::group(['prefix' => 'tree-plantations'], function () {
             Route::get('/getTreePlantation', [\App\Http\Controllers\TreePlantationController::class, 'getTreePlantation']);
             Route::post('/store', [\App\Http\Controllers\TreePlantationController::class, 'store']);
             Route::get('/show/{treePlantation}', [\App\Http\Controllers\TreePlantationController::class, 'show']);

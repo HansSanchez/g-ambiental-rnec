@@ -38,7 +38,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -53,6 +53,13 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public/reports/audits'),
             'url' => env('APP_URL') . '/storage/reports/audits',
+            'visibility' => 'public',
+        ],
+
+        'tree_plantations' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/reports/tree_plantations'),
+            'url' => env('APP_URL') . '/storage/reports/tree_plantations',
             'visibility' => 'public',
         ],
 

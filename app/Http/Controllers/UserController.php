@@ -20,8 +20,17 @@ class UserController extends Controller
 {
     public function getAuthenticatedUser()
     {
-        if (Auth::check()) return Auth::user();
-        else return null;
+        if (Auth::check()) {
+            $id = Auth::user()->id;
+            $user = User::with([
+                'delegation' => function ($query) {
+                    $query->select('delegations.id', 'delegations.name');
+                }
+            ])
+            ->where('id', $id)
+            ->first();
+            return $user;
+        } else return null;
     }
 
     public function getUsers(Request $request): \Illuminate\Http\JsonResponse

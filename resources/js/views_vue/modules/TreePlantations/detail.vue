@@ -3,7 +3,7 @@
         permissions.read_tree_plantations === 'read_tree_plantations'" class="card text-uppercase">
         <div class="card-header text-uppercase">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important;">
                             <li class="breadcrumb-item active">
@@ -15,6 +15,18 @@
                                         {{ TreePlantationDetailList.address }}
                                     </b>
                                 </router-link>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-4">
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb m-0 p-0" style="border: none !important; float: right !important;">
+                            <li class="breadcrumb-item active">
+                                <b>
+                                    Hecha el:
+                                    {{ TreePlantationDetailList.DateLabel }}
+                                </b>
                             </li>
                         </ol>
                     </nav>
@@ -110,7 +122,17 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" v-html="TreePlantationDetailList.observations">
                         </div>
-                        <hr class="hr-separator">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <hr class="mt-0 mb-0">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                            <h5><b>REGISTRADO POR</b></h5>
+                            {{ TreePlantationDetailList.user.FullName }}
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                            <h5><b>REGISTRADO EL</b></h5>
+                            {{ TreePlantationDetailList.user.CreatedLabel }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -156,7 +178,7 @@ export default {
     },
     methods: {
         TreePlantationDetail() {
-            let api = "/g-environmental-rnec/tree-plantation/show/" + this.id;
+            let api = "/g-environmental-rnec/tree-plantations/show/" + this.id;
             axios.get(api)
                 .then(({ data }) => {
                     this.TreePlantationDetailList = data.treePlantation;
