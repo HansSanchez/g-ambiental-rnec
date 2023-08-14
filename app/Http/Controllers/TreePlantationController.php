@@ -16,11 +16,17 @@ use Illuminate\Support\Str;
 
 class TreePlantationController extends Controller
 {
+
+    // FUNCIÓN DE OBTENCIÓN DE DATOS
     public function getTreePlantation(Request $request)
     {
+        // ADECUACIÓN DE TEXTO A FECHA DEL PARAMETRO QUE LLEGA
         $day = date('Y-m-d', strtotime($request->dateFilter));
+        // CONSULTA DE LOS PERMISOS
         $permissions = new HomeController;
+        // CONSULTA DE LA PLANTACIÓN DE ÁRBOLES
         $treePlantation =
+            // RELACIONES
             TreePlantation::with([
                 'Delegation' => function ($query) {
                     $query->select('delegations.id', 'delegations.name');
@@ -33,6 +39,7 @@ class TreePlantationController extends Controller
                     );
                 },
             ])
+            // FILTRO DE CONSULTA SEGÚN PARAMETROS DE BÚSQUEDA
             ->where(function ($query) use ($request, $day, $permissions) {
                 // FILTRO PARA BÚSQUEDA DE TEXTO EN OBSERVACIONES
                 if ($request->search) $query->search($request->search);
@@ -52,11 +59,16 @@ class TreePlantationController extends Controller
                     $query->where('tree_plantations.delegation_id', Auth::user()->delegation_id);
                 }
             })
+            // ORDENAMIENTO POR ID
             ->orderBy('tree_plantations.id')
+            // PÁGINADO DE RESPUESTA
             ->simplePaginate(10);
+
+        // RESPUESTA PARA EL USUARIO
         return response()->json(['treePlantation' => $treePlantation]);
     }
-    // FUNCIÓN DE CREACIÓN
+
+    // FUNCIÓN PARA CREACIÓN
     public function store(TreePlantationStoreRequest $request)
     {
         // CONTROL DE ERRORES
@@ -114,6 +126,8 @@ class TreePlantationController extends Controller
             return response()->json(['msg' => $exception->getMessage(), 'icon' => 'error'], 500);
         }
     }
+
+    // FUNCIÓN PARA VISUALIZACIÓN DE DETALLE
     public function show(TreePlantation $treePlantation)
     {
         // CONTROL DE ERRORES
@@ -131,6 +145,8 @@ class TreePlantationController extends Controller
             return response()->json(['message' => $exception->getMessage(), 'icon' => 'error']);
         }
     }
+
+    // FUNCIÓN PARA ACTUALIZACIÓN
     public function update(Request $request, TreePlantation $treePlantation)
     {
         // CONTROL DE ERRORES
@@ -192,6 +208,8 @@ class TreePlantationController extends Controller
             return response()->json(['message' => $exception->getMessage(), 'icon' => 'error']);
         }
     }
+
+    // FUNCIÓN PARA ELIMINACIÓN (ELIMINADCÓN LÓGICA)
     public function destroy(TreePlantation $treePlantation)
     {
         // CONTROL DE ERRORES
@@ -232,6 +250,8 @@ class TreePlantationController extends Controller
             return response()->json(['message' => $exception->getMessage(), 'icon' => 'error']);
         }
     }
+
+    // FUNCIÓN PARA GENERACIÓN DE REPORTES
     public function generateReport(Request $request)
     {
         // CONTROL DE ERRORES

@@ -1,5 +1,8 @@
 <template>
-    <div v-if="permissions.browse_tree_plantations === 'browse_tree_plantations' ||
+    <div v-if="permissions.length === 0">
+        <loader-component></loader-component>
+    </div>
+    <div v-else-if="permissions.browse_tree_plantations === 'browse_tree_plantations' ||
         permissions.read_tree_plantations === 'read_tree_plantations'" class="card text-uppercase">
         <div class="card-header text-uppercase">
             <div class="row">
@@ -34,6 +37,73 @@
             </div>
         </div>
         <div class="card-body" style="background: #d7d7d7 !important;">
+
+            <!-- START EVIDENCIAS -->
+            <div class="modal fade-scale" id="EvidencesTreePlantationModal" tabindex="-1" role="dialog"
+                aria-labelledby="EvidencesTreePlantationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: #88b76e;">
+                            <h5 class="modal-title text-uppercase text-white">
+                                <b>EVIDENCIAS DE LA PLANTACIÓN EN {{ TreePlantationDetailList.address }}</b>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">
+                                    <v-icon style="color: #fff;">mdi-close</v-icon>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="modal-body bv-modal">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div v-if="TreePlantationDetailList.evidence_tree_plantations.length > 0"
+                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item"
+                                                    v-for="(itemImage, indexImage) in TreePlantationDetailList.evidence_tree_plantations"
+                                                    :key="indexImage" :class="{ active: indexImage === 0 }">
+                                                    <img class="d-block w-100"
+                                                        :src="'/storage/tree_plantations/evidences/images/' + itemImage.file">
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                                data-slide="prev">
+                                                <span v-if="TreePlantationDetailList.evidence_tree_plantations.length > 1"
+                                                    class="carousel-control-prev-icon" aria-hidden="true">
+                                                    <i style="padding-top: 12px !important;"
+                                                        class="fas fa-angle-double-left fa-2x text-white"></i>
+                                                </span>
+                                                <span class="sr-only">Anterior</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                                data-slide="next">
+                                                <span v-if="TreePlantationDetailList.evidence_tree_plantations.length > 1"
+                                                    class="carousel-control-next-icon" aria-hidden="true">
+                                                    <i style="padding-top: 12px !important;"
+                                                        class="fas fa-angle-double-right fa-2x text-white"></i>
+                                                </span>
+                                                <span class="sr-only">Siguiente</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div v-if="TreePlantationDetailList.evidence_tree_plantations.length == 0"
+                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <h5 class="mb-0">Sin imágenes relacionadas</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <v-btn color="#e55353" small class="btn btn-danger text-white" data-dismiss="modal">
+                                <b>CANCELAR</b>
+                            </v-btn>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END EVIDENCIAS -->
+
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="row">
@@ -87,8 +157,9 @@
                                         <div class="carousel-item"
                                             v-for="(itemImage, indexImage) in TreePlantationDetailList.evidence_tree_plantations"
                                             :key="indexImage" :class="{ active: indexImage === 0 }">
-                                            <img class="d-block w-100"
-                                                style="height: 236px import; max-height: 236px !important;"
+                                            <img class="d-block w-100" data-toggle="modal"
+                                                data-target="#EvidencesTreePlantationModal"
+                                                style="height: 236px import; max-height: 236px !important; cursor: pointer;"
                                                 :src="'/storage/tree_plantations/evidences/images/' + itemImage.file">
                                         </div>
                                     </div>
@@ -126,11 +197,11 @@
                             <hr class="mt-0 mb-0">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
-                            <h5><b>REGISTRADO POR</b></h5>
+                            <h5><b>REPORTANTE</b></h5>
                             {{ TreePlantationDetailList.user.FullName }}
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
-                            <h5><b>REGISTRADO EL</b></h5>
+                            <h5><b>REPORTADO</b></h5>
                             {{ TreePlantationDetailList.user.CreatedLabel }}
                         </div>
                     </div>

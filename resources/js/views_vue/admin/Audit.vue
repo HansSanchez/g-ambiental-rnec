@@ -1,5 +1,8 @@
 <template>
-    <div v-if="permissions.browse_audits === 'browse_audits' ||
+    <div v-if="permissions.length === 0">
+        <loader-component></loader-component>
+    </div>
+    <div v-else-if="permissions.browse_audits === 'browse_audits' ||
         permissions.read_audits === 'read_audits' ||
         permissions.generate_report === 'generate_report'
         " class="card text-uppercase">

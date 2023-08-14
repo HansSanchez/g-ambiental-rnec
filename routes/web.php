@@ -46,19 +46,23 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'g-environmental-rnec'], function () {
 
+        // GRUPO DE RUTAS PARA MÓDULO DE "PERMISOS"
         Route::group(['prefix' => 'home'], function () {
             Route::post('/permissions', [\App\Http\Controllers\HomeController::class, 'permissions']);
         });
 
+        // GRUPO DE RUTAS PARA MÓDULO DE "AUDITORIAS"
         Route::group(['prefix' => 'audits'], function () {
             Route::get('/getAudits', [\App\Http\Controllers\AuditController::class, 'getAudits']);
             Route::post('/generateReport', [\App\Http\Controllers\AuditController::class, 'generateReport']);
         });
 
+        // GRUPO DE RUTAS PARA MÓDULO DE "DELEGACIONES"
         Route::group(['prefix' => 'delegations'], function () {
             Route::get('/getDelegations', [\App\Http\Controllers\DelegationController::class, 'getDelegations']);
         });
 
+        // GRUPO DE RUTAS PARA MÓDULO DE "USUARIOS"
         Route::group(['prefix' => 'users'], function () {
             Route::post('/getAuthenticatedUser', [\App\Http\Controllers\UserController::class, 'getAuthenticatedUser']);
             Route::get('/getUsers', [\App\Http\Controllers\UserController::class, 'getUsers']);
@@ -72,15 +76,16 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/usersSelectPassword', [\App\Http\Controllers\UserController::class, 'usersSelectPassword'])->name('usersSelectPassword');
         });
 
+        // GRUPO DE RUTAS PARA MÓDULO DE "PLANTACION DE ÁRBOLES"
         Route::group(['prefix' => 'tree-plantations'], function () {
             Route::get('/getTreePlantation', [\App\Http\Controllers\TreePlantationController::class, 'getTreePlantation']);
             Route::post('/store', [\App\Http\Controllers\TreePlantationController::class, 'store']);
             Route::get('/show/{treePlantation}', [\App\Http\Controllers\TreePlantationController::class, 'show']);
             Route::post('/{treePlantation}/update', [\App\Http\Controllers\TreePlantationController::class, 'update']);
             Route::delete('/{treePlantation}/destroy', [\App\Http\Controllers\TreePlantationController::class, 'destroy']);
-            Route::post('/generateReport', [\App\Http\Controllers\TreePlantationController::class, 'generateReport']); // PENDIENTE DESARROLLAR
+            Route::post('/generateReport', [\App\Http\Controllers\TreePlantationController::class, 'generateReport']);
 
-            // RUTAS PARA ACCIONES EN LAS EVIDENCIAS
+            // RUTAS PARA GESTIÓN DE EVIDENCIAS
             Route::group(['prefix' => 'evidences'], function () {
                 Route::get('/evidenceTreePlantation/{treePlantation}', [\App\Http\Controllers\EvidenceTreePlantationController::class, 'evidenceTreePlantation']);
                 Route::post('/storeImage', [\App\Http\Controllers\EvidenceTreePlantationController::class, 'storeImage']);
@@ -88,18 +93,22 @@ Route::group(['middleware' => ['auth']], function () {
             });
         });
 
+        // RUTA PARA OBTENCIÓN DE TOKEN
         Route::get('/csrf-token', function () {
             return csrf_token();
         });
     });
+
+    // RUTA PARA GESTIÓN DE "LOGS"
+    Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
+
+    // OTROS
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return redirect()->to('/v/home');
+    })->name('dashboard');
+
+    Route::get('/v/{any?}/{any1?}/{any2?}/{any3?}/{any4?}', function ($any = null, $any1 = null, $any2 = null, $any3 = null, $any4 = null) {
+        return view('layouts.coreui');
+    })->where('vue', '.*')->name('rutas.vue');
 });
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return redirect()->to('/v/home');
-})->name('dashboard');
-
-Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-
-Route::get('/v/{any?}/{any1?}/{any2?}/{any3?}/{any4?}', function ($any = null, $any1 = null, $any2 = null, $any3 = null, $any4 = null) {
-    return view('layouts.coreui');
-})->where('vue', '.*')->name('rutas.vue');

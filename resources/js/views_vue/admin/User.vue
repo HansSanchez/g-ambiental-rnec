@@ -1,5 +1,8 @@
 <template>
-    <div v-if="permissions.browse_users === 'browse_users' ||
+    <div v-if="permissions.length === 0">
+        <loader-component></loader-component>
+    </div>
+    <div v-else-if="permissions.browse_users === 'browse_users' ||
         permissions.read_users === 'read_users' ||
         permissions.edit_users === 'edit_users' ||
         permissions.add_users === 'add_users' ||
@@ -310,7 +313,8 @@
                                                             <strong>El archivo debe ser .xlsx</strong>
                                                             <br>
                                                             <br>
-                                                            <a type="button" class="btn btn-sm w-100 text-white btn-info btn-blue"
+                                                            <a type="button"
+                                                                class="btn btn-sm w-100 text-white btn-info btn-blue"
                                                                 download
                                                                 href="/documents/PLANTILLA-PARA-CARGA-MASIVA-DE-USUARIOS.xlsx">
                                                                 <b>P</b><b class="text-uppercase">lantilla de cargue</b>

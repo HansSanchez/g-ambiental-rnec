@@ -36,11 +36,14 @@
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>GUARDADO</b>
+                <b>REPORTADO</b>
             </th>
         </tr>
     </thead>
     <tbody>
+        @php
+            $totalTreesPlanted = 0;
+        @endphp
         @foreach ($report as $key => $item)
             <tr>
                 <td
@@ -50,6 +53,9 @@
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
                     {{ $item->tp_number_of_trees_planted ?: '-o-' }}
+                    @php
+                        $totalTreesPlanted += $item->tp_number_of_trees_planted ?? 0;
+                    @endphp
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
@@ -82,5 +88,17 @@
             </tr>
         @endforeach
     </tbody>
+    <tfoot>
+        <tr>
+            <td
+                style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
+                <b>TOTAL</b>
+            </td>
+            <td
+                style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
+                <b>{{ number_format($totalTreesPlanted) }}</b>
+            </td>
+        </tr>
+    </tfoot>
 </table>
 {{-- @dd(1) --}}

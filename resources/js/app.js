@@ -84,6 +84,8 @@ Vue.use(require('vue-moment'), {
 // Register Vue Components
 Vue.component('content-component', require('./components/ContentComponent.vue').default);
 Vue.component('forbidden-component', require('./components/ForbiddenComponent').default);
+Vue.component('loader-component', require('./components/LoaderComponent').default);
+Vue.component('not-fount-component', require('./components/NotFountComponent').default);
 
 extend('required', {
     ...required,

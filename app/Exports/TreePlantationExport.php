@@ -35,6 +35,7 @@ class TreePlantationExport implements FromView, ShouldAutoSize, WithColumnWidths
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $event->sheet->getDelegate()->getRowDimension('8')->setRowHeight(100);
+                $event->sheet->setAutoFilter('A1:I1'); // RANGO PARA COLOCAR AUTOMATICAMENTE FILTROS
             },
         ];
     }

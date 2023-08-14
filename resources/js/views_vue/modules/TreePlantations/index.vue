@@ -1,5 +1,8 @@
 <template>
-    <div v-if="permissions.browse_tree_plantations === 'browse_tree_plantations' ||
+    <div v-if="permissions.length === 0">
+        <loader-component></loader-component>
+    </div>
+    <div v-else-if="permissions.browse_tree_plantations === 'browse_tree_plantations' ||
         permissions.read_tree_plantations === 'read_tree_plantations' ||
         permissions.edit_tree_plantations === 'edit_tree_plantations' ||
         permissions.add_tree_plantations === 'add_tree_plantations' ||
@@ -68,7 +71,7 @@
                     </div>
                     <!-- ENCABEZADO (BOTONES Y FILTROS) -->
 
-                    <!-- START MODEALES -->
+                    <!-- NOTE START MODEALES -->
 
                     <!-- START CREACIÓN Y ACTUALIZACIÓN -->
                     <div v-show="permissions.add_tree_plantations === 'add_tree_plantations' ||
@@ -317,7 +320,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                                             <div class="form-group mb-0">
-                                                <small class="text-danger"><b>(Desde)</b></small>
+                                                <small class="text-danger"><b>(Desde) *</b></small>
                                                 <datepicker :language="es" v-model="FormReport.fromDay"
                                                     :disabledDates="fromDay" :inputClass="inputClass"
                                                     @change="validateFormReport" :format="customFormatter"
@@ -327,7 +330,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                                             <div class="form-group mb-0">
-                                                <small class="text-danger"><b>(Hasta)</b></small>
+                                                <small class="text-danger"><b>(Hasta) *</b></small>
                                                 <datepicker :language="es" v-model="FormReport.untilDay"
                                                     :disabledDates="untilDay" :inputClass="inputClass"
                                                     @change="validateFormReport" :format="customFormatter"
@@ -337,7 +340,7 @@
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group mb-0">
-                                                <small class="text-danger"><b>(Delegaciones)</b></small>
+                                                <small><b>(Delegaciones)</b></small>
                                                 <v-select :options="delegations" v-model="FormReport.delegation"
                                                     placeholder="DELEGACIONES...">
                                                 </v-select>
@@ -384,11 +387,13 @@
                                         <b>LIMPIAR</b>
                                     </v-btn>
                                     <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('mount')"
-                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
+                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
+                                        :disabled="!validateFormReport()">
                                         <b>MENSUAL</b>
                                     </v-btn>
                                     <v-btn v-if="report" color="#39f" title="Anual" small @click="generateReport('year')"
-                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
+                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
+                                        :disabled="!validateFormReport()">
                                         <b>ANUAL</b>
                                     </v-btn>
                                     <v-btn type="button" v-if="report" @click="generateReport('FormReport')" color="#2eb85c"
@@ -405,7 +410,7 @@
                     </div>
                     <!-- END GENERATE REPORTS -->
 
-                    <!-- END MODEALES -->
+                    <!-- NOTE END MODEALES -->
 
                     <!-- TABLA DE INFORMACIÓN -->
                     <div v-if="permissions.browse_tree_plantations === 'browse_tree_plantations' ||
@@ -544,6 +549,8 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 import Datepicker from "vuejs-datepicker";
 import { es } from "vuejs-datepicker/dist/locale";
 import moment from "moment-timezone";
+import LoaderComponent from '../../../components/LoaderComponent.vue';
+import NotFountComponent from '../../../components/NotFountComponent.vue';
 
 export default {
     components: {
@@ -551,6 +558,7 @@ export default {
         VueEditor,
         vueDropzone: vue2Dropzone,
         Datepicker,
+        LoaderComponent,
     },
     name: "TreePlantation",
     data() {
@@ -1120,15 +1128,6 @@ textarea,
     max-width: 100%;
     max-height: 500px;
 }
-
-/*.dropzone-custom-content {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    transform: translate(0, -0);
-    text-align: center;
-    margin: 25px;
-}*/
 
 .dropzone-custom-title {
     margin-top: 0;
