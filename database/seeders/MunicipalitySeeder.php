@@ -13296,20 +13296,9 @@ class MunicipalitySeeder extends Seeder
                 'updated_at' => now(),
             ]);
 
-            Municipality::create([
-                'id' => 1107,
-                'state_code' => '0',
-                'state_name' => 'BOGOTÁ',
-                'city_code' => '0',
-                'city_name' => 'TODOS LOS MUNICIPIOS',
-                'active' => true,
-                'delegation_id' => Delegation::where('name', 'BOGOTÁ')->value('id'),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
 
             Municipality::create([
-                'id' => 1108,
+                'id' => 1107,
                 'state_code' => '0',
                 'state_name' => 'BOLÍVAR',
                 'city_code' => '0',
@@ -13321,7 +13310,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1109,
+                'id' => 1108,
                 'state_code' => '0',
                 'state_name' => 'BOYACÁ',
                 'city_code' => '0',
@@ -13333,7 +13322,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1110,
+                'id' => 1109,
                 'state_code' => '0',
                 'state_name' => 'CALDAS',
                 'city_code' => '0',
@@ -13345,7 +13334,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1111,
+                'id' => 1110,
                 'state_code' => '0',
                 'state_name' => 'CAQUETÁ',
                 'city_code' => '0',
@@ -13357,7 +13346,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1112,
+                'id' => 1111,
                 'state_code' => '0',
                 'state_name' => 'CASANARE',
                 'city_code' => '0',
@@ -13369,7 +13358,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1113,
+                'id' => 1112,
                 'state_code' => '0',
                 'state_name' => 'CAUCA',
                 'city_code' => '0',
@@ -13381,7 +13370,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1114,
+                'id' => 1113,
                 'state_code' => '0',
                 'state_name' => 'CESAR',
                 'city_code' => '0',
@@ -13393,7 +13382,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1115,
+                'id' => 1114,
                 'state_code' => '0',
                 'state_name' => 'CHOCÓ',
                 'city_code' => '0',
@@ -13405,7 +13394,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1116,
+                'id' => 1115,
                 'state_code' => '0',
                 'state_name' => 'CÓRDOBA',
                 'city_code' => '0',
@@ -13417,7 +13406,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1117,
+                'id' => 1116,
                 'state_code' => '0',
                 'state_name' => 'CUNDINAMARCA',
                 'city_code' => '0',
@@ -13429,7 +13418,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1118,
+                'id' => 1117,
                 'state_code' => '0',
                 'state_name' => 'GUAINÍA',
                 'city_code' => '0',
@@ -13441,7 +13430,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1119,
+                'id' => 1118,
                 'state_code' => '0',
                 'state_name' => 'GUAVIARE',
                 'city_code' => '0',
@@ -13453,7 +13442,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1120,
+                'id' => 1119,
                 'state_code' => '0',
                 'state_name' => 'HUILA',
                 'city_code' => '0',
@@ -13465,7 +13454,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1121,
+                'id' => 1120,
                 'state_code' => '0',
                 'state_name' => 'LA GUAJIRA',
                 'city_code' => '0',
@@ -13477,7 +13466,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1122,
+                'id' => 1121,
                 'state_code' => '0',
                 'state_name' => 'MAGDALENA',
                 'city_code' => '0',
@@ -13489,7 +13478,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1123,
+                'id' => 1122,
                 'state_code' => '0',
                 'state_name' => 'META',
                 'city_code' => '0',
@@ -13501,7 +13490,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1124,
+                'id' => 1123,
                 'state_code' => '0',
                 'state_name' => 'NARIÑO',
                 'city_code' => '0',
@@ -13513,7 +13502,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1125,
+                'id' => 1124,
                 'state_code' => '0',
                 'state_name' => 'NORTE DE SANTANDER',
                 'city_code' => '0',
@@ -13525,7 +13514,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1126,
+                'id' => 1125,
                 'state_code' => '0',
                 'state_name' => 'PUTUMAYO',
                 'city_code' => '0',
@@ -13537,7 +13526,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1127,
+                'id' => 1126,
                 'state_code' => '0',
                 'state_name' => 'QUINDÍO',
                 'city_code' => '0',
@@ -13549,7 +13538,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1128,
+                'id' => 1127,
                 'state_code' => '0',
                 'state_name' => 'RISARALDA',
                 'city_code' => '0',
@@ -13561,7 +13550,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1129,
+                'id' => 1128,
                 'state_code' => '0',
                 'state_name' => 'SAN ANDRÉS Y PROVIDENCIA',
                 'city_code' => '0',
@@ -13573,7 +13562,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1130,
+                'id' => 1129,
                 'state_code' => '0',
                 'state_name' => 'SANTANDER',
                 'city_code' => '0',
@@ -13585,7 +13574,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1131,
+                'id' => 1130,
                 'state_code' => '0',
                 'state_name' => 'SUCRE',
                 'city_code' => '0',
@@ -13597,7 +13586,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1132,
+                'id' => 1131,
                 'state_code' => '0',
                 'state_name' => 'TOLIMA',
                 'city_code' => '0',
@@ -13609,7 +13598,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1133,
+                'id' => 1132,
                 'state_code' => '0',
                 'state_name' => 'VALLE DEL CAUCA',
                 'city_code' => '0',
@@ -13621,7 +13610,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1134,
+                'id' => 1133,
                 'state_code' => '0',
                 'state_name' => 'VAUPÉS',
                 'city_code' => '0',
@@ -13633,7 +13622,7 @@ class MunicipalitySeeder extends Seeder
             ]);
 
             Municipality::create([
-                'id' => 1135,
+                'id' => 1134,
                 'state_code' => '0',
                 'state_name' => 'VICHADA',
                 'city_code' => '0',

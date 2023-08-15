@@ -84,11 +84,12 @@ class TreePlantationController extends Controller
                 $delegation_id = auth()->user()->delegation_id;
 
                 // GUARDADO DEL REGISTRO HECHO
+                // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
                 $treePlantation = new TreePlantation($request->all());
-                $treePlantation->address = mb_strtoupper($request->address);
-                $treePlantation->delegation_id = $delegation_id;
-                $treePlantation->user_id = $user_id;
-                $treePlantation->save();
+                $treePlantation->address = mb_strtoupper($request->address); // TRATAMIENTO A LA DIRECCIÓN
+                $treePlantation->delegation_id = $delegation_id; // DELEGACIÓN
+                $treePlantation->user_id = $user_id; // USUARIO QUE REPORTA
+                $treePlantation->save(); // ALMACENAMIENTO DE LA INFORMACIÓN
 
                 // REGISTRO DE LAS RELACIONES
                 $treePlantation->Delegation;

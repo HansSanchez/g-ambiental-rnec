@@ -37,9 +37,6 @@ class EvidenceTreePlantationController extends Controller
             // EN CASO DE QUE ENVIEN BIEN LAS IMÁGENES
             else {
 
-                // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
-                $user_id = auth()->user()->id;
-
                 // GUARDADO DE LA IMAGEN (ASÍ LLEGUEN VARÍAS CADA IMAGEN ES UNA PETICIÓN)
                 $evidenceTreePlantation = new EvidenceTreePlantation($request->all());
 
@@ -52,14 +49,6 @@ class EvidenceTreePlantationController extends Controller
 
                 // GUARDADO EN LA BASE DE DATOS
                 $evidenceTreePlantation->save();
-
-                // REGISTRO DE LA ACCIÓN REALIZADA
-                Audit::create([
-                    'action' => 'CREACIÓN DE NUEVO REGISTRO - PLANTACIÓN DE ÁRBOLES ID #' . $evidenceTreePlantation->id,
-                    'description' => $evidenceTreePlantation,
-                    'module' => 'PLANTACIÓN DE ÁRBOLES',
-                    'user_id' => Auth::check() ? auth()->user()->id : $user_id,
-                ]);
 
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([

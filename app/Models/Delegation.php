@@ -26,4 +26,9 @@ class Delegation extends Model
     {
         return $this->hasMany(TreePlantation::class);
     }
+
+    public function CoResponsibilityAgreements(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CoResponsibilityAgreement::class);
+    }
 }

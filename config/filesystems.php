@@ -70,6 +70,20 @@ return [
             'visibility' => 'public',
         ],
 
+        'co_responsibility_agreements' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/reports/co_responsibility_agreements'),
+            'url' => env('APP_URL') . '/storage/reports/co_responsibility_agreements',
+            'visibility' => 'public',
+        ],
+
+        'evidences_co_responsibility_agreements' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/co_responsibility_agreements/evidences/documents'),
+            'url' => env('APP_URL') . '/storage/co_responsibility_agreements/evidences/documents',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

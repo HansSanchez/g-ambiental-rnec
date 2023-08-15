@@ -62,9 +62,15 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/getDelegations', [\App\Http\Controllers\DelegationController::class, 'getDelegations']);
         });
 
+        // GRUPO DE RUTAS PARA MÓDULO DE "MUNICIPIOS"
+        Route::group(['prefix' => 'municipalities'], function () {
+            Route::get('/getMunicipalities', [\App\Http\Controllers\MunicipalityController::class, 'getMunicipalities']);
+        });
+
         // GRUPO DE RUTAS PARA MÓDULO DE "USUARIOS"
         Route::group(['prefix' => 'users'], function () {
             Route::post('/getAuthenticatedUser', [\App\Http\Controllers\UserController::class, 'getAuthenticatedUser']);
+            Route::post('/getUsersInput', [\App\Http\Controllers\UserController::class, 'getUsersInput']);
             Route::get('/getUsers', [\App\Http\Controllers\UserController::class, 'getUsers']);
             Route::get('/getRoles', [\App\Http\Controllers\UserController::class, 'getRoles']);
             Route::post('/store', [\App\Http\Controllers\UserController::class, 'store']);
@@ -90,6 +96,23 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('/evidenceTreePlantation/{treePlantation}', [\App\Http\Controllers\EvidenceTreePlantationController::class, 'evidenceTreePlantation']);
                 Route::post('/storeImage', [\App\Http\Controllers\EvidenceTreePlantationController::class, 'storeImage']);
                 Route::delete('/{evidenceTreePlantation}/destroyImage', [\App\Http\Controllers\EvidenceTreePlantationController::class, 'destroyImage']);
+            });
+        });
+
+        // GRUPO DE RUTAS PARA MÓDULO DE "ACUERDOS DE CORRESPONSABILIDAD"
+        Route::group(['prefix' => 'co-responsibility-agreements'], function () {
+            Route::get('/getCoResponsibilityAgreements', [\App\Http\Controllers\CoResponsibilityAgreementsController::class, 'getCoResponsibilityAgreements']);
+            Route::post('/store', [\App\Http\Controllers\CoResponsibilityAgreementsController::class, 'store']);
+            Route::get('/show/{coResponsibilityAgreement}', [\App\Http\Controllers\CoResponsibilityAgreementsController::class, 'show']);
+            Route::post('/{coResponsibilityAgreement}/update', [\App\Http\Controllers\CoResponsibilityAgreementsController::class, 'update']);
+            Route::delete('/{coResponsibilityAgreement}/destroy', [\App\Http\Controllers\CoResponsibilityAgreementsController::class, 'destroy']);
+            Route::post('/generateReport', [\App\Http\Controllers\CoResponsibilityAgreementsController::class, 'generateReport']);
+
+            // RUTAS PARA GESTIÓN DE EVIDENCIAS
+            Route::group(['prefix' => 'evidences'], function () {
+                Route::get('/evidenceCoResponsibilityAgreement/{coResponsibilityAgreement}', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'evidenceCoResponsibilityAgreement']);
+                Route::post('/storeDocument', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'storeDocument']);
+                Route::delete('/{id}/destroyDocument', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'destroyDocument']);
             });
         });
 

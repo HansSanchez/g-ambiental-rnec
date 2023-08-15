@@ -22,15 +22,25 @@ class UserController extends Controller
     {
         if (Auth::check()) {
             $id = Auth::user()->id;
-            $user = User::with([
-                'delegation' => function ($query) {
-                    $query->select('delegations.id', 'delegations.name');
-                }
-            ])
-            ->where('id', $id)
-            ->first();
+            $user =
+                User::with([
+                    'delegation' => function ($query) {
+                        $query->select('delegations.id', 'delegations.name');
+                    }
+                ])
+                ->where('id', $id)
+                ->first();
             return $user;
         } else return null;
+    }
+
+    public function getUsersInput()
+    {
+        return
+            User::selectRaw('id AS code, CONCAT(users.first_name, " ", users.second_name, " ", users.first_last_name, " ", users.second_last_name) AS label')
+            ->where('delegation_id', Auth::user()->delegation_id)
+            ->orderBy('id', 'ASC')
+            ->simplePaginate(50);
     }
 
     public function getUsers(Request $request): \Illuminate\Http\JsonResponse

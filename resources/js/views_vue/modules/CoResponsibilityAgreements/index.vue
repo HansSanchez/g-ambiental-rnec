@@ -6,14 +6,15 @@
         permissions.read_co_responsibility_agreements === 'read_co_responsibility_agreements' ||
         permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
         permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-        permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'" class="card text-uppercase">
+        permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
+        class="card text-uppercase">
         <div class="card-header text-uppercase">
             <div class="row">
                 <div class="col-md-6">
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important;">
                             <li class="breadcrumb-item active">
-                                <router-link :to="{ name: 'tree-plantations-index' }">
+                                <router-link :to="{ name: 'co-responsibility-agreements-index' }">
                                     <b>Acuerdos de Corresponsabilidad</b>
                                 </router-link>
                             </li>
@@ -30,8 +31,9 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-5"
                             v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements'">
-                            <button @click="update = false; resetFormCoResponsibilityAgreements(); openModal();" type="button"
-                                data-toggle="modal" data-target="#UpdateOrCreateTreePlantationModal" data-backdrop="static"
+                            <button @click="update = false; resetFormCoResponsibilityAgreements(); openModal();"
+                                type="button" data-toggle="modal"
+                                data-target="#UpdateOrCreateCoResponsibilityAgreementsModal" data-backdrop="static"
                                 data-dismiss="modal" class="btn btn-success text-uppercase tip-customer btn-new w-100"
                                 title="Nueva registro">
                                 <v-icon color="#FFFFFF">mdi-plus-circle</v-icon>
@@ -75,9 +77,9 @@
 
                     <!-- START CREACIÓN Y ACTUALIZACIÓN -->
                     <div v-show="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'" class="modal fade-scale"
-                        id="UpdateOrCreateTreePlantationModal" tabindex="-1" role="dialog"
-                        aria-labelledby="UpdateOrCreateTreePlantationModalLabel" aria-hidden="true">
+                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
+                        class="modal fade-scale" id="UpdateOrCreateCoResponsibilityAgreementsModal" tabindex="-1"
+                        role="dialog" aria-labelledby="UpdateOrCreateCoResponsibilityAgreementsLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header" style="background: #88b76e;">
@@ -93,18 +95,90 @@
                                 </div>
                                 <div class="modal-body bv-modal">
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                                             <ValidationProvider name="number_of_trees_planted" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
-                                                        <h5><b>PLANTADOS <span class="text-danger">*</span></b></h5>
-                                                        <input v-model="FormCoResponsibilityAgreements.number_of_trees_planted"
-                                                            type="number" name="number_of_trees_planted"
-                                                            id="number_of_trees_planted" class="form-control"
-                                                            placeholder="Número de árboles" min="0" required>
+                                                        <h5><b>MUNICIPIO(S) <span class="text-danger">*</span></b></h5>
+                                                        <v-select :options="municipalities" @search="setMunicipalities"
+                                                            v-model="FormCoResponsibilityAgreements.municipalities"
+                                                            placeholder="MUNICIPIOS..." multiple>
+                                                        </v-select>
                                                     </div>
-                                                    <small><b><em>Digite el número de árboles que fueron
-                                                                plantados</em></b></small>
+                                                    <small>
+                                                        <b>
+                                                            <em>
+                                                                Escoja el o los municipios a los cuales el acuerdo de
+                                                                corresponsabilidad le aplica
+                                                            </em>
+                                                        </b>
+                                                    </small>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
+                                                </div>
+                                            </ValidationProvider>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                            <h5 style="margin-bottom: 15px !important;">
+                                                <b>ESTADO</b>
+                                            </h5>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" v-model="FormCoResponsibilityAgreements.state"
+                                                    class="custom-control-input" id="customSwitch1">
+                                                <label class="custom-control-label" for="customSwitch1">
+                                                    <b>VIGENTE</b>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <ValidationProvider name="users" rules="required">
+                                                <div slot-scope="{ errors }">
+                                                    <div class="form-group mb-0">
+                                                        <h5><b>GESTOR(ES) AMBIENTAL(ES) <span
+                                                                    class="text-danger">*</span></b></h5>
+                                                        <v-select :options="users" @search="getUsersInput"
+                                                            v-model="FormCoResponsibilityAgreements.users"
+                                                            placeholder="GESTORES..." multiple>
+                                                        </v-select>
+                                                    </div>
+                                                    <small>
+                                                        <b>
+                                                            <em>
+                                                                Escoja el o los gestor(es) ambiental(es) involucrado(s)
+                                                            </em>
+                                                        </b>
+                                                    </small>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
+                                                </div>
+                                            </ValidationProvider>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <ValidationProvider name="environmental_operator" rules="required">
+                                                <div slot-scope="{ errors }">
+                                                    <div class="form-group mb-0">
+                                                        <h5><b>OPERADOR AMBIENTAL <span class="text-danger">*</span></b>
+                                                        </h5>
+                                                        <input
+                                                            v-model="FormCoResponsibilityAgreements.environmental_operator"
+                                                            type="text" name="environmental_operator"
+                                                            id="environmental_operator" class="form-control"
+                                                            placeholder="Nombre de la (Asociación de recicladores / Empresa / Gestor autorizado)"
+                                                            required>
+                                                    </div>
+                                                    <small>
+                                                        <b>
+                                                            <em>
+                                                                Digite el nombre del operador ambiental
+                                                            </em>
+                                                        </b>
+                                                    </small>
                                                     <small>
                                                         <p class="text-danger mb-0">
                                                             <b>{{ errors[0] }}</b>
@@ -118,9 +192,9 @@
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
                                                         <h5><b>FECHA <span class="text-danger">*</span></b></h5>
-                                                        <input v-model="FormCoResponsibilityAgreements.date" type="date" name="date"
-                                                            id="date" class="form-control" placeholder="Fecha de plantación"
-                                                            required>
+                                                        <input v-model="FormCoResponsibilityAgreements.date" type="date"
+                                                            name="date" id="date" class="form-control"
+                                                            placeholder="Fecha de plantación" required>
                                                     </div>
                                                     <small><b><em>Digite la fecha de plantación</em></b></small>
                                                     <small>
@@ -132,57 +206,7 @@
                                             </ValidationProvider>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="address" rules="required">
-                                                <div slot-scope="{ errors }">
-                                                    <div class="form-group mb-0">
-                                                        <h5><b>UBICACIÓN <span class="text-danger">*</span></b></h5>
-                                                        <input v-model="FormCoResponsibilityAgreements.address" type="text"
-                                                            name="address" id="address" class="form-control"
-                                                            placeholder="Nombre de la ubicación de la plantación" required>
-                                                    </div>
-                                                    <small><b><em>Digite el nombre de la ubicación de
-                                                                plantación</em></b></small>
-                                                    <small>
-                                                        <p class="text-danger mb-0">
-                                                            <b>{{ errors[0] }}</b>
-                                                        </p>
-                                                    </small>
-                                                </div>
-                                            </ValidationProvider>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h5><b>COORDENADAS <span class="text-danger">*</span></b></h5>
-                                            <l-map v-if="modalMapVisible" style="height: 30vh" :zoom="zoom" :center="center"
-                                                @click="addMarker($event)">
-                                                <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-                                                <!-- Marcadores existentes en el array mapMarkers -->
-                                                <l-marker v-for="(marker, index) in markers" :key="index"
-                                                    :lat-lng="[marker.position.lat, marker.position.lng]"
-                                                    :icon="getIcon(marker)" :draggable="marker.draggable"
-                                                    :visible="marker.visible" @dragend="onMarkerDragEnd(index, $event)">
-                                                </l-marker>
-                                            </l-map>
-                                            <div class="row" style="margin-top: 10px;">
-                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="form-group mb-0">
-                                                        <h5><b>LATITUD</b></h5>
-                                                        <input v-model="FormCoResponsibilityAgreements.lat" type="text" name="lat"
-                                                            id="lat" class="form-control"
-                                                            placeholder="Coordenada de latitud" required readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="form-group mb-0">
-                                                        <h5><b>LONGITUD</b></h5>
-                                                        <input v-model="FormCoResponsibilityAgreements.lng" type="text" name="lng"
-                                                            id="lng" class="form-control"
-                                                            placeholder="Coordenada de longitud" required readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h5><b>OBSERVACIONES (ESPECIES PLANTADAS)<span class="text-danger">*</span></b>
+                                            <h5><b>OBSERVACIONES Y CAMBIOS <span class="text-danger">*</span></b>
                                             </h5>
                                             <vue-editor style="background: #fff !important; margin-top: 10px;"
                                                 v-model="FormCoResponsibilityAgreements.observations"></vue-editor>
@@ -194,8 +218,9 @@
                                         data-dismiss="modal">
                                         <b>CANCELAR</b>
                                     </v-btn>
-                                    <v-btn type="button" v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
+                                    <v-btn type="button"
+                                        v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
+                                            permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
                                         @click="createOrUpdate(); closeModal();" color="#2eb85c" small
                                         :disabled="validateFormCoResponsibilityAgreements()"
                                         class="btn btn-success text-uppercase text-white" data-dismiss="modal">
@@ -209,9 +234,9 @@
 
                     <!-- START EVIDENCIAS -->
                     <div v-show="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'" class="modal fade-scale"
-                        id="EvidencesTreePlantationModal" tabindex="-1" role="dialog"
-                        aria-labelledby="EvidencesTreePlantationModalLabel" aria-hidden="true">
+                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
+                        class="modal fade-scale" id="EvidencesCoResponsibilityAgreementsModal" tabindex="-1" role="dialog"
+                        aria-labelledby="EvidencesCoResponsibilityAgreementsModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header" style="background: #88b76e;">
@@ -256,21 +281,22 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr v-for="(itemImage, indexImage) in evidences" :key="indexImage">
-                                                            <td class="text-center">
-                                                                <a :href="'/storage/tree_plantations/evidences/images/' + itemImage.file"
+                                                        <tr v-for="(itemDocument, indexDocument) in evidences"
+                                                            :key="indexDocument">
+                                                            <td class="text-lowercase text-center">
+                                                                <a :href="'/storage/co_responsibility_agreements/evidences/documents/' + itemDocument.file"
                                                                     download>
-                                                                    <p>
-                                                                        <img :src="'/storage/tree_plantations/evidences/images/' + itemImage.file"
-                                                                            width="200px" height="200px">
-                                                                    </p>
+                                                                    <b class="text-black">{{ itemDocument.file }}</b>
+                                                                    <span class="badge badge-success text-white text-uppercase full-16 ml-3">
+                                                                        <b>DESCARGABLE</b>
+                                                                    </span>
                                                                 </a>
                                                             </td>
                                                             <td v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
                                                                 permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
                                                                 class="text-center justify-content-center">
                                                                 <div class="btn-group" role="group">
-                                                                    <span @click="destroyImage(itemImage)"
+                                                                    <span @click="destroyDocument(itemDocument)"
                                                                         class="text-danger cursor-pointer">
                                                                         <i class="fas fa-trash-alt fa-2x"></i>
                                                                     </span>
@@ -316,7 +342,7 @@
                                     <!-- REPORTES -->
                                     <div v-if="report" class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
-                                            <h5 class="mb-0"><b>Fechas de plantaciones</b></h5>
+                                            <h5 class="mb-0"><b>Fechas de firmado</b></h5>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                                             <div class="form-group mb-0">
@@ -423,20 +449,23 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
+                                    <th class="tt-espumados">ESTADO</th>
                                     <th class="tt-espumados">DELEGACIÓN</th>
                                     <th class="tt-espumados">MUNICIPIO</th>
                                     <th class="tt-espumados">OPERADOR</th>
                                     <th class="tt-espumados">FECHA</th>
                                     <th class="tt-espumados">OBSERVACIONES</th>
-                                    <th class="tt-espumados" v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
-                                        permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'">
+                                    <th class="tt-espumados"
+                                        v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
+                                            permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
+                                            permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'">
                                         OPCIONES
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(item, index) in list" :key="index">
+                                <tr v-for="(item, index) in  list " :key="index">
+                                    <td class="text- text-center" v-html="item.StateLabel"></td>
                                     <td class="text-uppercase text-center">
                                         <span class="badge badge-info text-white w-100 full-16">
                                             <b>
@@ -449,25 +478,30 @@
                                         </span>
                                     </td>
                                     <td class="text- text-center">
-                                        {{ item.number_of_trees_planted }}
+                                        <span v-if="item.municipalities">
+                                            <ul v-for="(itemMunicipality, indexMunicipality) in item.municipalities"
+                                                :key="indexMunicipality">
+                                                <li>{{ itemMunicipality.city_name }}</li>
+                                            </ul>
+                                        </span>
                                     </td>
-                                    <td class="text-lowercase text-center">
-                                        {{ item.DateLabel }}
+                                    <td class="text-uppercase text-center">
+                                        {{ item.environmental_operator }}
                                     </td>
                                     <td class="text-center">
-                                        {{ item.address }}
+                                        {{ item.DateLabel }}
                                     </td>
                                     <td class="text-justify" v-html="item.observations"
                                         style="max-width: 400px !important;"></td>
                                     <td v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
-                                        permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
-                                        class="text-center justify-content-center">
+                                        permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'
+                                        " class="text-center justify-content-center">
                                         <div class="btn-group" role="group">
 
-                                            <!-- EVIDENCIAS DEL REGISTRO -->
+                                            <!-- DETALLE DEL REGISTRO -->
                                             <router-link
                                                 v-if="permissions.browse_co_responsibility_agreements === 'browse_co_responsibility_agreements'"
-                                                :to="{ name: 'tree-plantations-detail', params: { id: item.id } }"
+                                                :to="{ name: 'co-responsibility-agreements-detail', params: { id: item.id } }"
                                                 class="text-info" title="Detalle">
                                                 <i class="fas fa-eye fa-2x"></i>
                                             </router-link>
@@ -477,13 +511,14 @@
                                             <span
                                                 v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                                                    permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
-                                                    @click="evidenceTreePlantation(item);" data-toggle="modal"
-                                                    title="Evidencias" data-target="#EvidencesTreePlantationModal"
+                                                    permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'
+                                                    " @click="evidenceCoResponsibilityAgreements(item);"
+                                                    data-toggle="modal" title="Evidencias"
+                                                    data-target="#EvidencesCoResponsibilityAgreementsModal"
                                                     data-backdrop="static" class="cursor-pointer pl-2">
-                                                    <i v-if="item.evidence_co_responsibility_agreements.length > 0"
-                                                        class="fa-solid fa-camera fa-2x text-success"></i>
-                                                    <i v-else class="fa-solid fa-camera fa-2x"></i>
+                                                    <i v-if="item.evidence_co_responsibility_agreement.length > 0"
+                                                        class="fa-solid fa-file fa-2x text-success"></i>
+                                                    <i v-else class="fa-solid fa-file fa-2x"></i>
                                                 </span>
                                             </span>
                                             <!-- END -->
@@ -491,11 +526,12 @@
                                             <!-- EDITAR DEL REGISTRO -->
                                             <span
                                                 v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
-                                                <span v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
+                                                <span
+                                                    v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
                                                     @click="update = true; writeData(item); openModal();"
                                                     data-toggle="modal" title="Editar"
-                                                    data-target="#UpdateOrCreateTreePlantationModal" data-backdrop="static"
-                                                    class="text-warning cursor-pointer pl-2">
+                                                    data-target="#UpdateOrCreateCoResponsibilityAgreementsModal"
+                                                    data-backdrop="static" class="text-warning cursor-pointer pl-2">
                                                     <i class="fas fa-edit fa-2x"></i>
                                                 </span>
                                             </span>
@@ -564,10 +600,11 @@ export default {
         return {
             id: null,
             FormCoResponsibilityAgreements: {
-                delegation_id: null,
-                municipality_id: null,
+                municipalities: [],
+                users: [],
                 environmental_operator: null,
                 date: null,
+                state: false,
                 observations: null,
             },
             update: true,
@@ -579,24 +616,26 @@ export default {
             setTimeoutSearch: '',
             errors: null,
             delegations: [],
+            municipalities: [],
+            users: [],
             delegations_model: [],
             dateFilter: null,
             update: false,
             user: null,
             evidences: [],
-            tree_plantation_id: null,
+            co_responsibility_agreement_id: null,
 
             // STAR VARIABLES PARA EL DROPZONE.JS
             csrfToken: null,
             dropzoneOptions: {
-                url: '/g-environmental-rnec/tree-plantations/evidences/storeImage', // RUTA PARA ENVIAR AL CONTROLADOR
+                url: '/g-environmental-rnec/co-responsibility-agreements/evidences/storeDocument', // RUTA PARA ENVIAR AL CONTROLADOR
                 thumbnailWidth: 200,
                 addRemoveLinks: true,
-                acceptedFiles: "image/*", // RESTRINGE A IMÁGENES
+                acceptedFiles: ".pdf", // RESTRINGE A DOCUMENTOS PDF
                 headers: { 'X-CSRF-TOKEN': this.csrfToken }, // ENVIO DE TOKEN PARA LA PETICIÓM
                 // EVENTO 'SENDING' PARA ENVIAR PARÁMETROS ADICIONALES
                 sending: function (file, xhr, formData) {
-                    formData.append("tree_plantation_id", this.tree_plantation_id); // AGREGAR EL VALOR DINÁMICO
+                    formData.append("co_responsibility_agreement_id", this.co_responsibility_agreement_id); // AGREGAR EL VALOR DINÁMICO
                 }.bind(this) // ASEGURARSE DE QUE 'THIS' SE REFIERA AL COMPONENTE VUE
             },
             fileAdded: false,
@@ -620,25 +659,6 @@ export default {
             dLeave: false,
             dDuplicate: false,
             // END VARIABLES PARA EL DROPZONE.JS
-
-            // START VARIABLES PARA EL MAPA
-            zoom: 12,
-            center: latLng(4.570868, -74.297333),
-            url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            attribution:
-                '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            withPopup: latLng(4.570868, -74.297333),
-            markers: [],
-            currentZoom: 11.5,
-            currentCenter: latLng(4.570868, -74.297333),
-            mapOptions: {
-                zoomSnap: 1,
-            },
-            markerLatLng: [4.570868, -74.297333],
-            modalMapVisible: false,
-            // VARIABLE PARA MANTENER LA REFERENCIA AL MARCADOR ACTUAL
-            marker: null,
-            // END VARIABLES PARA EL MAPA
 
             // START VARIABLES PARA GENERACIÓN DE REPORTES
             report: false,
@@ -683,12 +703,12 @@ export default {
             this.$data["FormCoResponsibilityAgreements"] = this.$options.data.call(this)["FormCoResponsibilityAgreements"];
         },
         infiniteHandler($state) {
-            let api = "/g-environmental-rnec/tree-plantations/getTreePlantation";
+            let api = "/g-environmental-rnec/co-responsibility-agreements/getCoResponsibilityAgreements";
             axios.get(api, { params: { page: this.page, search: this.searchInput } })
                 .then(({ data }) => {
-                    if (data.treePlantation.data.length > 0) {
+                    if (data.coResponsibilityAgreements.data.length > 0) {
                         this.page += 1;
-                        this.list.push(...data.treePlantation.data);
+                        this.list.push(...data.coResponsibilityAgreements.data);
                         $state.loaded();
                     } else $state.complete();
                 }).catch(error => (error.response ? this.responseErrors(error) : ""));
@@ -705,7 +725,7 @@ export default {
             this.changeType();
         },
         queryFilter($state) {
-            let api = "/g-environmental-rnec/tree-plantations/getTreePlantation";
+            let api = "/g-environmental-rnec/co-responsibility-agreements/getCoResponsibilityAgreements";
             axios.get(api, {
                 params: {
                     search: this.searchInput,
@@ -717,19 +737,19 @@ export default {
                 for (let i = this.list.length; i > 0; i--) this.list.pop();
 
                 // PINTO NUEVAMENTE LOS DATOS SEGÚN LOS FILTROS
-                if (data.treePlantation.data.length > 0) {
-                    this.list.push(...data.treePlantation.data);
+                if (data.coResponsibilityAgreements.data.length > 0) {
+                    this.list.push(...data.coResponsibilityAgreements.data);
                     $state.loaded();
                 } else $state.complete();
             }).catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         createOrUpdate() {
-            let url = this.update ? '/g-environmental-rnec/tree-plantations/' + this.id + '/update' : '/g-environmental-rnec/tree-plantations/store';
+            let url = this.update ? '/g-environmental-rnec/co-responsibility-agreements/' + this.id + '/update' : '/g-environmental-rnec/co-responsibility-agreements/store';
             axios.post(url, this.FormCoResponsibilityAgreements)
                 .then(response => {
                     this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                    if (!response.data.new) this.list.splice(this.list.findIndex(element => (element.id === response.data.treePlantation.id)), 1);
-                    this.list.unshift(response.data.treePlantation); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
+                    if (!response.data.new) this.list.splice(this.list.findIndex(element => (element.id === response.data.coResponsibilityAgreement.id)), 1);
+                    this.list.unshift(response.data.coResponsibilityAgreement); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
                     this.resetFormCoResponsibilityAgreements();
                 }) // ES UN MÉTODO PERSONALIZADO PARA MOSTRAR UNA ALERTA CON UN SWEETALERT
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
@@ -745,35 +765,35 @@ export default {
                 cancelButtonText: 'Cancelar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    axios.delete('/g-environmental-rnec/tree-plantations/' + item.id + '/destroy')
+                    axios.delete('/g-environmental-rnec/co-responsibility-agreements/' + item.id + '/destroy')
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                            this.list.splice(this.list.findIndex(element => (element.id === response.data.treePlantation.id)), 1);
+                            this.list.splice(this.list.findIndex(element => (element.id === response.data.coResponsibilityAgreement.id)), 1);
                         }).catch(error => (error.response) ? this.responseErrors(error) : '');
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });
         },
-        evidenceTreePlantation(item) {
-            this.tree_plantation_id = item.id;
-            let api = "/g-environmental-rnec/tree-plantations/evidences/evidenceTreePlantation/" + item.id;
+        evidenceCoResponsibilityAgreements(item) {
+            this.co_responsibility_agreement_id = item.id;
+            let api = "/g-environmental-rnec/co-responsibility-agreements/evidences/evidenceCoResponsibilityAgreement/" + item.id;
             axios.get(api)
-                .then(({ data }) => this.evidences.push(...data.evidenceTreePlantation))
+                .then(({ data }) => this.evidences.push(...data.evidenceCoResponsibilityAgreements))
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
         },
-        storeImage() {
+        storeDocument() {
             this.$refs.myDropzone.processQueue();
         },
         handleSuccess(file, response) {
             this.alertLoading(response.timeout, response.msg, response.type)
-            if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceTreePlantation.id)), 1);
-            this.evidences.unshift(response.evidenceTreePlantation); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
+            if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceCoResponsibilityAgreement.id)), 1);
+            this.evidences.unshift(response.evidenceCoResponsibilityAgreement); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
         },
         clearDropzone() {
             this.evidences = [];
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
         },
-        destroyImage(itemImage) {
+        destroyDocument(itemDocument) {
             this.$swal({
                 title: '¿Realmente desea eliminar esta imagen?',
                 icon: 'warning',
@@ -784,10 +804,10 @@ export default {
                 cancelButtonText: 'Cancelar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    axios.delete("/g-environmental-rnec/tree-plantations/evidences/" + itemImage.id + "/destroyImage")
+                    axios.delete("/g-environmental-rnec/co-responsibility-agreements/evidences/" + itemDocument.id + "/destroyDocument")
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                            this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceTreePlantation.id)), 1);
+                            this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceCoResponsibilityAgreement.id)), 1);
                             this.changeType();
                         }).catch(this.response);
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
@@ -809,16 +829,29 @@ export default {
             // CONSTRUCCIÓN DE LA FECHA CON EL FORMATO
             let formattedDate = year + "-" + month + "-" + day;
 
-            /** NOTE - CÓMO COLOCAR UN MARCADOR EN EDICION*/
-            this.addMarkerUpdate(data);
-
             // ESCRITURA DE VALORES A VARIABLES PARA EDICIÓN
             this.id = data.id
-            this.FormCoResponsibilityAgreements.number_of_trees_planted = data.number_of_trees_planted
+            // MUNICIPIOS
+            let municipalities_list = []
+            data.municipalities.map((item) => {
+                municipalities_list.push({
+                    code: item.id,
+                    label: item.city_name,
+                })
+            });
+            this.FormCoResponsibilityAgreements.state = data.state === 'VIGENTE' ? true : false;
+            this.FormCoResponsibilityAgreements.municipalities = municipalities_list;
+            // GESTORES AMBIENTALES
+            let users_list = []
+            data.users.map((item) => {
+                users_list.push({
+                    code: item.id,
+                    label: item.FullName,
+                })
+            });
+            this.FormCoResponsibilityAgreements.users = users_list;
+            this.FormCoResponsibilityAgreements.environmental_operator = data.environmental_operator
             this.FormCoResponsibilityAgreements.date = formattedDate
-            this.FormCoResponsibilityAgreements.address = data.address
-            this.FormCoResponsibilityAgreements.lat = parseFloat(data.lat)
-            this.FormCoResponsibilityAgreements.lng = parseFloat(data.lng)
             this.FormCoResponsibilityAgreements.observations = data.observations
         },
         alertLoading(time, msg, type) {
@@ -899,65 +932,6 @@ export default {
         centerUpdate(center) {
             this.currentCenter = center;
         },
-        // AGREGA ESTA FUNCIÓN PARA MANEJAR EL EVENTO DE CLIC EN EL MAPA
-        addMarker(event) {
-            const { lat, lng } = event.latlng; // Obtiene las coordenadas del clic
-            this.FormCoResponsibilityAgreements.lat = lat;
-            this.FormCoResponsibilityAgreements.lng = lng;
-            this.markers = [
-                {
-                    position: {
-                        lng: lng,
-                        lat: lat,
-                    },
-                    visible: true,
-                    draggable: true,
-                }
-            ]
-
-        },
-        // AGREGA ESTA FUNCIÓN PARA MANEJAR EL EVENTO DE CLIC EN EL MAPA
-        addMarkerUpdate(data) {
-            if (this.update) {
-                this.markers = [
-                    {
-                        position: {
-                            lng: parseFloat(data.lng),
-                            lat: parseFloat(data.lat),
-                        },
-                        visible: true,
-                        draggable: true,
-                    }
-                ]
-                this.center = latLng(parseFloat(data.lat), parseFloat(data.lng));
-            }
-
-        },
-        /*
-            **NOTE - EXPLICACIÓN:
-            ESTA FUNCIÓN TIENE COMO OBJETIVO CREAR UN ICONO EN SVG EL CUAL ES PERSONALIZABLE PARA EL MAPA
-        */
-        getIcon() {
-            return L.divIcon({
-                className: "my-custom-pin",
-                html: `<svg class="rotate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 34.892337" height="40" width="40">
-                    <g transform="translate(-814.59595,-274.38623)">
-                        <g transform="matrix(1.1855854,0,0,1.1855854,-151.17715,-57.3976)">
-                        <path d="m 817.11249,282.97118 c -1.25816,1.34277 -2.04623,3.29881 -2.01563,5.13867 0.0639,3.84476 1.79693,5.3002 4.56836,10.59179 0.99832,2.32851 2.04027,4.79237 3.03125,8.87305 0.13772,0.60193 0.27203,1.16104 0.33416,1.20948 0.0621,0.0485 0.19644,-0.51262 0.33416,-1.11455 0.99098,-4.08068 2.03293,-6.54258 3.03125,-8.87109 2.77143,-5.29159 4.50444,-6.74704 4.56836,-10.5918 0.0306,-1.83986 -0.75942,-3.79785 -2.01758,-5.14062 -1.43724,-1.53389 -3.60504,-2.66908 -5.91619,-2.71655 -2.31115,-0.0475 -4.4809,1.08773 -5.91814,2.62162 z" style="fill:#008F39
-                        ;stroke:#000"/>
-                        <circle r="3.0355" cy="288.25278" cx="823.03064" id="path3049" style="display:inline;fill:#FFF;stroke:#000000"/>
-                        </g>
-                    </g>
-                </svg>`,
-            });
-        },
-        onMarkerDragEnd(index, event) {
-            const { lat, lng } = event.target.getLatLng();
-            console.log('Marcador', index, 'movido a:', lat, lng);
-            this.FormCoResponsibilityAgreements.lat = lat;
-            this.FormCoResponsibilityAgreements.lng = lng;
-            this.markers[index].position = { lat, lng };
-        },
         validateFormCoResponsibilityAgreements() {
             let disabled = Object.values(this.FormCoResponsibilityAgreements).every(value => value !== null && value !== undefined && value !== "");
             return !disabled;
@@ -998,7 +972,7 @@ export default {
                     Form = this.year;
                     break;
             }
-            const url = "/g-environmental-rnec/tree-plantations/generateReport";
+            const url = "/g-environmental-rnec/co-responsibility-agreements/generateReport";
             if (Form !== null) {
                 let delegation = this.FormReport.delegation
                 axios.post(url, { ...Form, delegation })
@@ -1008,7 +982,7 @@ export default {
             else this.alertLoading(5000, "No se aplicó ningún filtro", "error")
         },
         responseReport(response) {
-            let fileName = "/storage/reports/tree_plantations/" + response.data.fileName;
+            let fileName = "/storage/reports/co_responsibility_agreements/" + response.data.fileName;
             let file = response.data.file;
             if (file) {
                 this.$swal({
@@ -1059,21 +1033,33 @@ export default {
                 })
                 .catch(errors => console.log(errors));
         },
+        getUsersInput() {
+            axios.post("/g-environmental-rnec/users/getUsersInput")
+                .then(response => this.users = response.data.data)
+                .catch(errors => console.log(errors));
+        },
         setPermissions() {
             axios.post("/g-environmental-rnec/home/permissions")
                 .then(response => this.permissions = response.data)
                 .catch(errors => console.log(errors));
         },
-        setDelegations(search) { // Función para traer las sociedades en un v-select
+        setDelegations(search) {
             axios.get('/g-environmental-rnec/delegations/getDelegations', { params: { search: search } })
                 .then(res => this.delegations = res.data.data)
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
+        },
+        setMunicipalities(search) {
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search } })
+                .then(res => this.municipalities = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
     },
     created() {
         this.setAuthenticatedUser();
-        this.setPermissions();
         this.setDelegations();
+        this.setMunicipalities();
+        this.setPermissions();
+        this.getUsersInput();
         this.setCsrfToken();
     }
 }

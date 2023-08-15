@@ -464,7 +464,7 @@
                                         class="text-center justify-content-center">
                                         <div class="btn-group" role="group">
 
-                                            <!-- EVIDENCIAS DEL REGISTRO -->
+                                            <!-- DETALLE DEL REGISTRO -->
                                             <router-link
                                                 v-if="permissions.browse_tree_plantations === 'browse_tree_plantations'"
                                                 :to="{ name: 'tree-plantations-detail', params: { id: item.id } }"

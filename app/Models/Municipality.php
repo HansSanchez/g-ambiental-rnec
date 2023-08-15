@@ -22,7 +22,7 @@ class Municipality extends Model
         'updated_at',
     ];
 
-        /**
+    /**
      * The accessors to append to the model's array form.
      *
      * @var array
@@ -31,15 +31,21 @@ class Municipality extends Model
         'FullCityName',
     ];
 
-    public function scopeSearch($query, $searchTerm) {
+    public function scopeSearch($query, $searchTerm)
+    {
         return $query
             ->where('city_name', 'like', "%" . $searchTerm . "%")
             ->orWhere(DB::raw("CONCAT_WS(' ',city_code,state_code,state_name)"), 'like', "%" . $searchTerm . "%");
     }
 
-    public function getFullCityNameAttribute(){
-        return ucwords(mb_strtolower($this->city_name .' - '.$this->state_name, "UTF-8"));
+    public function CoResponsibilityAgreements()
+    {
+        return $this->belongsToMany(CoResponsibilityAgreement::class, 'municipality_co_responsibility_agreements')
+            ->withTimestamps();;
     }
 
-
+    public function getFullCityNameAttribute()
+    {
+        return ucwords(mb_strtolower($this->city_name . ' - ' . $this->state_name, "UTF-8"));
+    }
 }
