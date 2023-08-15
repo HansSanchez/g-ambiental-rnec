@@ -8,6 +8,9 @@ import NotFount from './components/NotFountComponent'
 import TreePlantation from './views_vue/modules/TreePlantations/index.vue'
 import TreePlantationDetail from './views_vue/modules/TreePlantations/detail.vue'
 
+import CoResponsibilityAgreements from './views_vue/modules/CoResponsibilityAgreements/index.vue'
+import CoResponsibilityAgreementsDetail from './views_vue/modules/CoResponsibilityAgreements/detail.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +30,9 @@ export default new Router({
         {path: '/v/tree-plantations/index', name: 'tree-plantations-index', component: TreePlantation},
         {path: '/v/tree-plantations/detail/:id', name: 'tree-plantations-detail', component: TreePlantationDetail},
 
+        // ACUERDOS
+        {path: '/v/co-responsibility-agreements/index', name: 'co-responsibility-agreements-index', component: CoResponsibilityAgreements},
+        {path: '/v/co-responsibility-agreements/detail/:id', name: 'co-responsibility-agreements-detail', component: CoResponsibilityAgreementsDetail},
 
         // ERROR 404
         {path: '/error-404', name: 'error-404', component: NotFount},

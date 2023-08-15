@@ -91,9 +91,9 @@
             </li>
         @endif
 
-        @if (array_key_exists('browse_tree_plantations', $permissions))
+        @if (array_key_exists('browse_co_responsibility_agreements', $permissions))
             <li class="c-sidebar-nav-item">
-                <router-link :to="{ name: 'tree-plantations-index' }" class="c-sidebar-nav-link"
+                <router-link :to="{ name: 'co-responsibility-agreements-index' }" class="c-sidebar-nav-link"
                     title="Acuerdos de corresponsabilidad">
                     <i class="fa-solid fa-book c-sidebar-nav-icon" style="color: #ffffff;"></i>
                     Acuerdos
