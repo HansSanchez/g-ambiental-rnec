@@ -73,7 +73,7 @@
                             class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
                             <b>SEMANAL</b>
                         </v-btn>
-                        <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('mount')"
+                        <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('month')"
                             class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
                             <b>MENSUAL</b>
                         </v-btn>
@@ -232,8 +232,8 @@ export default {
             week: {
                 week: true,
             },
-            mount: {
-                mount: true,
+            month: {
+                month: true,
             },
             year: {
                 year: true,
@@ -328,8 +328,8 @@ export default {
                 case "week":
                     Form = this.week;
                     break;
-                case "mount":
-                    Form = this.mount;
+                case "month":
+                    Form = this.month;
                     break;
                 case "year":
                     Form = this.year;

@@ -419,7 +419,7 @@
                                         class="btn btn-sm btn-grey text-white text-uppercase">
                                         <b>LIMPIAR</b>
                                     </v-btn>
-                                    <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('mount')"
+                                    <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('month')"
                                         class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
                                         :disabled="!validateFormReport()">
                                         <b>MENSUAL</b>
@@ -585,7 +585,6 @@
 
 <script>
 // Importanción de paquete para diseño de mapas
-import { latLng } from "leaflet";
 import InfiniteLoading from "vue-infinite-loading"; // COMPONENTE PARA HACER UN SCROLL INFITITO EL CUAL SOLO ME HACE UNA CONSULTA INICIAL DE 10 REGISTROS ESTO SE COMPLEMENTA CON EL CONTROLADOR Y UN SIMPLEPAGINATE
 import { VueEditor } from "vue2-editor";
 import vue2Dropzone from 'vue2-dropzone'
@@ -658,7 +657,7 @@ export default {
             uploadProgress: false,
             progress: false,
             myProgress: 0,
-            isMounted: false,
+            ismonthed: false,
             dDrop: false,
             dStarted: false,
             dEnded: false,
@@ -692,8 +691,8 @@ export default {
             week: {
                 week: true,
             },
-            mount: {
-                mount: true,
+            month: {
+                month: true,
             },
             year: {
                 year: true,
@@ -903,24 +902,24 @@ export default {
                 });
             }
         },
-        number_format(amount, decimals) {
-            amount += ""; // POR SI PASAN UN NUMERO EN VEZ DE UN STRING
-            amount = parseFloat(amount.replace(/[^0-9\.]/g, "")); // ELIMINO CUALQUIER COSA QUE NO SEA NUMERO O PUNTO
+        number_format(amonth, decimals) {
+            amonth += ""; // POR SI PASAN UN NUMERO EN VEZ DE UN STRING
+            amonth = parseFloat(amonth.replace(/[^0-9\.]/g, "")); // ELIMINO CUALQUIER COSA QUE NO SEA NUMERO O PUNTO
             decimals = decimals || 0; // POR SI LA VARIABLE NO FUE FUE PASADA
             // SI NO ES UN NUMERO O ES IGUAL A CERO RETORNO EL MISMO CERO
-            if (isNaN(amount) || amount === 0)
+            if (isNaN(amonth) || amonth === 0)
                 return parseFloat(0).toFixed(decimals);
             // SI ES MAYOR O MENOR QUE CERO RETORNO EL VALOR FORMATEADO COMO NUMERO
-            amount = "" + amount.toFixed(decimals);
-            var amount_parts = amount.split("."),
+            amonth = "" + amonth.toFixed(decimals);
+            var amonth_parts = amonth.split("."),
                 regexp = /(\d+)(\d{3})/;
-            while (regexp.test(amount_parts[0]))
-                while (regexp.test(amount_parts[0]))
-                    amount_parts[0] = amount_parts[0].replace(
+            while (regexp.test(amonth_parts[0]))
+                while (regexp.test(amonth_parts[0]))
+                    amonth_parts[0] = amonth_parts[0].replace(
                         regexp,
                         "$1" + "," + "$2"
                     );
-            return amount_parts.join(".");
+            return amonth_parts.join(".");
         },
         // AGREGA ESTA FUNCIÓN PARA ABRIR EL MODAL Y ESTABLECER MODALVISIBLE EN VERDADERO
         openModal() {
@@ -974,8 +973,8 @@ export default {
                 case "week":
                     Form = this.week;
                     break;
-                case "mount":
-                    Form = this.mount;
+                case "month":
+                    Form = this.month;
                     break;
                 case "year":
                     Form = this.year;

@@ -119,7 +119,7 @@
 import { latLng } from "leaflet";
 
 export default {
-    name: "coResponsibilityAgreementDetail",
+    name: "CoResponsibilityAgreementsDetail",
     data() {
         return {
             id: this.$route.params.id,
@@ -176,24 +176,24 @@ export default {
                 });
             }
         },
-        number_format(amount, decimals) {
-            amount += ""; // por si pasan un numero en vez de un string
-            amount = parseFloat(amount.replace(/[^0-9\.]/g, "")); // elimino cualquier cosa que no sea numero o punto
+        number_format(amonth, decimals) {
+            amonth += ""; // por si pasan un numero en vez de un string
+            amonth = parseFloat(amonth.replace(/[^0-9\.]/g, "")); // elimino cualquier cosa que no sea numero o punto
             decimals = decimals || 0; // por si la variable no fue fue pasada
             // si no es un numero o es igual a cero retorno el mismo cero
-            if (isNaN(amount) || amount === 0)
+            if (isNaN(amonth) || amonth === 0)
                 return parseFloat(0).toFixed(decimals);
             // si es mayor o menor que cero retorno el valor formateado como numero
-            amount = "" + amount.toFixed(decimals);
-            var amount_parts = amount.split("."),
+            amonth = "" + amonth.toFixed(decimals);
+            var amonth_parts = amonth.split("."),
                 regexp = /(\d+)(\d{3})/;
-            while (regexp.test(amount_parts[0]))
-                while (regexp.test(amount_parts[0]))
-                    amount_parts[0] = amount_parts[0].replace(
+            while (regexp.test(amonth_parts[0]))
+                while (regexp.test(amonth_parts[0]))
+                    amonth_parts[0] = amonth_parts[0].replace(
                         regexp,
                         "$1" + "," + "$2"
                     );
-            return amount_parts.join(".");
+            return amonth_parts.join(".");
         },
         setPermissions() {
             axios.post("/g-environmental-rnec/home/permissions")

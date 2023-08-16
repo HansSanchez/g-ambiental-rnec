@@ -270,8 +270,8 @@ class TreePlantationController extends Controller
                 $day = null;
                 $weekStartDate = null;
                 $weekEndDate = null;
-                $mountStartDate = null;
-                $mountEndDate = null;
+                $monthStartDate = null;
+                $monthEndDate = null;
                 $yearStartDate = null;
                 $yearEndDate = null;
                 $date = Carbon::now();
@@ -285,9 +285,9 @@ class TreePlantationController extends Controller
                     $weekStartDate = $date->startOfWeek()->format('Y-m-d H:i');
                     $weekEndDate = $date->endOfWeek()->format('Y-m-d H:i');
                 }
-                if ($request->has('mount')) {
-                    $mountStartDate = $date->startOfMonth()->format('Y-m-d H:i');
-                    $mountEndDate = $date->endOfMonth()->format('Y-m-d H:i');
+                if ($request->has('month')) {
+                    $monthStartDate = $date->startOfMonth()->format('Y-m-d H:i');
+                    $monthEndDate = $date->endOfMonth()->format('Y-m-d H:i');
                 }
                 if ($request->has('year')) {
                     $yearStartDate = $date->startOfYear()->format('Y-m-d H:i');
@@ -325,10 +325,10 @@ class TreePlantationController extends Controller
                     // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
                     ->join('users', 'users.id', '=', 'tree_plantations.user_id')
                     // FILTRO DE CONSULTA SEGÚN PARAMETROS DE FECHA
-                    ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $mountStartDate, $mountEndDate, $yearStartDate, $yearEndDate) {
+                    ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $monthStartDate, $monthEndDate, $yearStartDate, $yearEndDate) {
                         if ($day != null) $query->whereBetween('tree_plantations.date', [$day . " 00:00:00", $day . " 23:59:59"]);
                         if ($weekStartDate != null || $weekEndDate != null) $query->whereBetween('tree_plantations.date', [$weekStartDate, $weekEndDate]);
-                        if ($mountStartDate != null || $mountEndDate != null) $query->whereBetween('tree_plantations.date', [$mountStartDate, $mountEndDate]);
+                        if ($monthStartDate != null || $monthEndDate != null) $query->whereBetween('tree_plantations.date', [$monthStartDate, $monthEndDate]);
                         if ($yearStartDate != null || $yearEndDate != null) $query->whereBetween('tree_plantations.date', [$yearStartDate, $yearEndDate]);
                         if ($fromDay != null && $untilDay == null) $query->whereBetween('tree_plantations.date', [$fromDay . " 00:00:00", now()->format('Y-m-d') . " 23:59:59"]);
                         if ($fromDay == null && $untilDay != null) $query->whereBetween('tree_plantations.date', ["2000-01-01 00:00:00", $untilDay . " 23:59:59"]);

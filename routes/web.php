@@ -116,6 +116,23 @@ Route::group(['middleware' => ['auth']], function () {
             });
         });
 
+        // GRUPO DE RUTAS PARA MÓDULO DE "CONSUMO ELÉCTRICO"
+        Route::group(['prefix' => 'electrical-consumptions'], function () {
+            Route::get('/getElectricalConsumptions', [\App\Http\Controllers\ElectricalConsumptionController::class, 'getElectricalConsumptions']);
+            Route::post('/store', [\App\Http\Controllers\ElectricalConsumptionController::class, 'store']);
+            Route::get('/show/{electricalConsumption}', [\App\Http\Controllers\ElectricalConsumptionController::class, 'show']);
+            Route::post('/{electricalConsumption}/update', [\App\Http\Controllers\ElectricalConsumptionController::class, 'update']);
+            Route::delete('/{electricalConsumption}/destroy', [\App\Http\Controllers\ElectricalConsumptionController::class, 'destroy']);
+            Route::post('/generateReport', [\App\Http\Controllers\ElectricalConsumptionController::class, 'generateReport']);
+
+            // RUTAS PARA GESTIÓN DE EVIDENCIAS
+            Route::group(['prefix' => 'evidences'], function () {
+                Route::get('/evidenceCoResponsibilityAgreement/{electricalConsumption}', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'evidenceCoResponsibilityAgreement']);
+                Route::post('/storeDocument', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'storeDocument']);
+                Route::delete('/{id}/destroyDocument', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'destroyDocument']);
+            });
+        });
+
         // RUTA PARA OBTENCIÓN DE TOKEN
         Route::get('/csrf-token', function () {
             return csrf_token();

@@ -101,6 +101,37 @@
             </li>
         @endif
 
+        @if (array_key_exists('browse_co_responsibility_agreements', $permissions))
+            <li class="c-sidebar-nav-item">
+                <router-link :to="{ name: 'electrical-consumptions-index' }" class="c-sidebar-nav-link"
+                    title="Consumos Eléctricos">
+                    <i class="fa-solid fa-bolt c-sidebar-nav-icon" style="color: #ffffff;"></i>
+                    C. Eléctricos (EN DESARROLLO)
+                </router-link>
+            </li>
+        @endif
+
+
+        @if (array_key_exists('browse_co_responsibility_agreements', $permissions))
+            <li class="c-sidebar-nav-item">
+                <router-link :to="{ name: 'water-consumptions-index' }" class="c-sidebar-nav-link"
+                    title="Consumos Hídricos">
+                    <i class="fa-solid fa-faucet-drip c-sidebar-nav-icon" style="color: #ffffff;"></i>
+                    C. Hídricos (PENDIENTES)
+                </router-link>
+            </li>
+        @endif
+
+        @if (array_key_exists('browse_co_responsibility_agreements', $permissions))
+        <li class="c-sidebar-nav-item">
+            <router-link :to="{ name: 'water-consumptions-index' }" class="c-sidebar-nav-link"
+                title="Manejo de los residuos">
+                <i class="fa-solid fa-recycle c-sidebar-nav-icon" style="color: #ffffff;"></i>
+                G. Residuos (PENDIENTES)
+            </router-link>
+        </li>
+    @endif
+
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
         data-class="c-sidebar-minimized"></button>

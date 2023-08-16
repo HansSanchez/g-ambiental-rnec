@@ -51,7 +51,7 @@
 </template>
 <script> 
 	export default { 
-	    mounted () { 
+	    monthed () { 
 	        console.log ('Componente de ejemplo montado.') 
 	    } 
 	} 
