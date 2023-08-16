@@ -62,6 +62,12 @@
                         {{ CoResponsibilityAgreementDetailList.environmental_operator }}
                     </div>
                 </div>
+                <div v-if="CoResponsibilityAgreementDetailList.evidence_co_responsibility_agreement.length > 0"
+                    class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
+                    <h5 class="mb-0">
+                        <b>DOCUMENTOS ADJUNTOS</b>
+                    </h5>
+                </div>
                 <div v-for="(item, index) in CoResponsibilityAgreementDetailList.evidence_co_responsibility_agreement"
                     :key="index" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <embed :src="'/storage/co_responsibility_agreements/evidences/documents/' + item.file"

@@ -11,9 +11,11 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+
 class CoResponsibilityAgreementExport implements FromView, ShouldAutoSize, WithColumnWidths, WithStyles, WithEvents
 {
     protected $report;
+
 
     public function __construct($report)
     {
@@ -23,9 +25,9 @@ class CoResponsibilityAgreementExport implements FromView, ShouldAutoSize, WithC
     public function styles(Worksheet $sheet)
     {
         // SIRVE PARA CENTRAR EN TODO EL ESPACIO DE LA CELDA
-        $sheet->getStyle('A:I')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $sheet->getStyle('A:H')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
         // SIRVE PARA AUTOAJUSTAR EL TEXTO CUANDO EL TEXTO ES MUY GARNDE EN LA CELDA
-        $sheet->getStyle('G')->getAlignment()->setWrapText(true);
+        $sheet->getStyle('F')->getAlignment()->setWrapText(true);
     }
 
     public function registerEvents(): array
@@ -33,14 +35,14 @@ class CoResponsibilityAgreementExport implements FromView, ShouldAutoSize, WithC
         return [
             AfterSheet::class => function (AfterSheet $event) {
                 $event->sheet->getDelegate()->getRowDimension('8')->setRowHeight(100);
-                $event->sheet->setAutoFilter('A1:I1'); // RANGO PARA COLOCAR AUTOMATICAMENTE FILTROS
+                $event->sheet->setAutoFilter('A1:H1'); // RANGO PARA COLOCAR AUTOMATICAMENTE FILTROS
             },
         ];
     }
 
     public function columnWidths(): array
     {
-        return ['G' => 100];
+        return ['F' => 100];
     }
 
     public function view(): View

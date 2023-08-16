@@ -353,16 +353,16 @@ class CoResponsibilityAgreementsController extends Controller
                     ->select(
                         'delegations.id AS d_id',
                         'delegations.name AS d_name',
-                        'co_responsibility_agreements.id AS tp_id',
-                        'co_responsibility_agreements.delegation_id AS tp_delegation_id',
-                        'co_responsibility_agreements.number_of_trees_planted AS tp_number_of_trees_planted',
-                        'co_responsibility_agreements.date AS tp_date',
-                        'co_responsibility_agreements.address AS tp_address',
-                        'co_responsibility_agreements.lat AS tp_lat',
-                        'co_responsibility_agreements.lng AS tp_lng',
-                        'co_responsibility_agreements.observations AS tp_observations',
-                        'co_responsibility_agreements.created_at AS tp_created_at',
-                        'co_responsibility_agreements.user_id AS tp_user_id',
+                        'co_responsibility_agreements.id AS cra_id',
+                        'co_responsibility_agreements.delegation_id AS cra_delegation_id',
+                        'co_responsibility_agreements.environmental_operator AS cra_environmental_operator',
+                        'co_responsibility_agreements.date AS cra_date',
+                        'co_responsibility_agreements.state AS cra_state',
+                        'co_responsibility_agreements.observations AS cra_observations',
+                        'co_responsibility_agreements.created_at AS cra_created_at',
+                        'co_responsibility_agreements.user_id AS cra_user_id',
+                        'municipalities.id AS m_id',
+                        'municipalities.city_name AS m_city_name',
                         'users.id AS u_id',
                         'users.personal_id AS u_personal_id',
                         'users.first_name AS u_first_name',
@@ -377,6 +377,9 @@ class CoResponsibilityAgreementsController extends Controller
                     ->join('delegations', 'delegations.id', '=', 'co_responsibility_agreements.delegation_id')
                     // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
                     ->join('users', 'users.id', '=', 'co_responsibility_agreements.user_id')
+                    // RELACIÓN CON EL(LOS) MUNICIPIO(S)
+                    ->join('municipality_co_responsibility_agreements', 'municipality_co_responsibility_agreements.co_responsibility_agreement_id', '=', 'co_responsibility_agreements.id')
+                    ->join('municipalities', 'municipalities.id', '=', 'municipality_co_responsibility_agreements.municipality_id')
                     // FILTRO DE CONSULTA SEGÚN PARAMETROS DE FECHA
                     ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $mountStartDate, $mountEndDate, $yearStartDate, $yearEndDate) {
                         if ($day != null) $query->whereBetween('co_responsibility_agreements.date', [$day . " 00:00:00", $day . " 23:59:59"]);
@@ -402,16 +405,51 @@ class CoResponsibilityAgreementsController extends Controller
                 // ESTA FUNCIÓN EN NECESARIA YA QUE LAS OBSERVACIONES SE GUARDAN CON HTML ES NECESARIO LIMPIARLAS PARA TENER SOLO EL TEXTO
                 $cleanedReport = $report->map(function ($item) {
                     // LIMPIAR TEXTO HTML A TEXTO PLANO
-                    $item->tp_observations = Str::of(strip_tags($item->tp_observations))->trim()->__toString();
+                    $item->cra_observations = Str::of(strip_tags($item->cra_observations))->trim()->__toString();
                     // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->tp_date = Carbon::createFromFormat('Y-m-d H:i:s', $item->tp_date)->format('d-m-Y');
+                    $item->cra_date = Carbon::createFromFormat('Y-m-d H:i:s', $item->cra_date)->format('d-m-Y');
                     // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->tp_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $item->tp_created_at)->format('d-m-Y h:i:s');
+                    $item->cra_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $item->cra_created_at)->format('d-m-Y h:i:s');
                     // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
                     $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
                     // RETORNO DE LOS CAMBIOS
                     return $item;
                 });
+
+
+                // TRANSFORMAR LA INFORMACIÓN DE USUARIOS DENTRO DE CADA ELEMENTO DEL REPORTE
+                foreach ($cleanedReport as $key => $item) {
+                    // CONSULTA DE ID'S DE LOS USUARIOS EN LA TABLA INTERMEDIA
+                    $IdUsers = DB::table('user_co_responsibility_agreements')
+                        ->select('user_id AS ucra_user_id')
+                        ->where('co_responsibility_agreement_id', $item->cra_id)
+                        ->get();
+
+                    $users = []; // CREAR UN ARRAY PARA ALMACENAR LA INFORMACIÓN DE LOS USUARIOS
+
+                    // CICLO PARA CONSULTAR LOS DATOS DE LOS USUARIOS RELACIONADOS COMO GESTOR(ES) AMBIENTAL(ES)
+                    foreach ($IdUsers as $key => $value) {
+                        $user = DB::table('users')
+                            ->select('users.id AS u_id', 'users.first_name AS u_first_name', 'users.second_name AS u_second_name', 'users.first_last_name AS u_first_last_name', 'users.second_last_name AS u_second_last_name')
+                            ->where('id', $value->ucra_user_id)
+                            ->first();
+                        if ($user) $users[] = $user; // AGREGAR EL USUARIO AL ARRAY
+                    }
+
+                    // CONVERTIR EL ARRAY EN UNA COLECCIÓN ANTES DE USAR MAP()
+                    $usersCollection = collect($users);
+
+                    // APLICAR MAP() EN LA COLECCIÓN
+                    $newUsers = $usersCollection->map(function ($item) {
+                        // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
+                        $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
+                        // RETORNO DE LOS CAMBIOS
+                        return $item;
+                    });
+
+                    // AGREGAR LA INFORMACIÓN TRANSFORMADA AL ELEMENTO DEL REPORTE
+                    $item->users = $newUsers;
+                }
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -424,7 +462,7 @@ class CoResponsibilityAgreementsController extends Controller
                 if (count($cleanedReport) == 0) return response()->json(['file' => false, 'msg' => 'Para este rango de fechas no existen registros, verifique por favor.', 'fileName' => null, 'icon' => 'warning']);
                 // SI HAY REGISTROS
                 else {
-                    $fileName = 'REPORTE-DE-PLANTACIÓN-DE-ÁRBOLES-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
+                    $fileName = 'REPORTE-DE-ACUERDOS-DE-CORRESPONSABILIDAD-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
                     Excel::store(new CoResponsibilityAgreementExport($cleanedReport), $fileName, 'co_responsibility_agreements');
                     sleep(5);
                     return response()->json(['file' => true, 'msg' => 'Reporte generado con éxito', 'fileName' => $fileName, 'icon' => 'success']);

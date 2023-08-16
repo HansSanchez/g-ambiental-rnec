@@ -15,6 +15,7 @@ class CreateEvidenceCoResponsibilityAgreementsTable extends Migration
     {
         Schema::create('evidence_co_responsibility_agreements', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); // NOMBRE DEL ARCHIVO QUE SE ESTÁ ALMACENANDO
             $table->string('file'); // NOMBRE DEL ARCHIVO QUE SE ESTÁ ALMACENANDO
             $table->unsignedBigInteger('co_responsibility_agreement_id'); // REGISTRO DEL ACUERDO
             $table->foreign('co_responsibility_agreement_id', 'fk_co_resp_agreement_id')

@@ -273,6 +273,7 @@
                                                     <thead class="bg-orange headerStatic">
                                                         <tr class="text-center">
                                                             <th class="tt-espumados">EVIDENCIA</th>
+                                                            <th class="tt-espumados">REGISTRADO</th>
                                                             <th class="tt-espumados"
                                                                 v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
                                                                     permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'">
@@ -283,14 +284,18 @@
                                                     <tbody>
                                                         <tr v-for="(itemDocument, indexDocument) in evidences"
                                                             :key="indexDocument">
-                                                            <td class="text-lowercase text-center">
+                                                            <td class="text-lowercase text-left">
                                                                 <a :href="'/storage/co_responsibility_agreements/evidences/documents/' + itemDocument.file"
                                                                     download>
-                                                                    <b class="text-black">{{ itemDocument.file }}</b>
-                                                                    <span class="badge badge-success text-white text-uppercase full-16 ml-3">
+                                                                    <b class="text-black">{{ itemDocument.name }}</b>
+                                                                    <span
+                                                                        class="badge badge-success text-white text-uppercase full-16 ml-3">
                                                                         <b>DESCARGABLE</b>
                                                                     </span>
                                                                 </a>
+                                                            </td>
+                                                            <td class="text-lowercase text-center">
+                                                                {{ itemDocument.CreatedLabel }}
                                                             </td>
                                                             <td v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
                                                                 permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
@@ -451,7 +456,7 @@
                                 <tr class="text-center">
                                     <th class="tt-espumados">ESTADO</th>
                                     <th class="tt-espumados">DELEGACIÓN</th>
-                                    <th class="tt-espumados">MUNICIPIO</th>
+                                    <th class="tt-espumados">MUNICIPIO(S)</th>
                                     <th class="tt-espumados">OPERADOR</th>
                                     <th class="tt-espumados">FECHA</th>
                                     <th class="tt-espumados">OBSERVACIONES</th>
@@ -477,11 +482,12 @@
                                             </b>
                                         </span>
                                     </td>
-                                    <td class="text- text-center">
+                                    <td class="text- text-left">
                                         <span v-if="item.municipalities">
-                                            <ul v-for="(itemMunicipality, indexMunicipality) in item.municipalities"
+                                            <ul class="list-custom"
+                                                v-for="(itemMunicipality, indexMunicipality) in item.municipalities"
                                                 :key="indexMunicipality">
-                                                <li>{{ itemMunicipality.city_name }}</li>
+                                                <li class="list-custom">{{ itemMunicipality.city_name }}</li>
                                             </ul>
                                         </span>
                                     </td>
@@ -788,6 +794,7 @@ export default {
             if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceCoResponsibilityAgreement.id)), 1);
             this.evidences.unshift(response.evidenceCoResponsibilityAgreement); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
+            this.changeType();
         },
         clearDropzone() {
             this.evidences = [];
@@ -1120,5 +1127,26 @@ textarea,
 
 .subtitle {
     color: #314b5f;
+}
+
+ul.list-custom {
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.list-custom li.list-custom {
+    position: relative;
+}
+
+ul.list-custom li.list-custom:before {
+    content: "\2022";
+    position: absolute;
+    color: black;
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 10px 10px 10px 0;
+    margin-bottom: 10px;
 }
 </style>

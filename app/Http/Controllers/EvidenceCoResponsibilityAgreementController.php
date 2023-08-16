@@ -42,6 +42,7 @@ class EvidenceCoResponsibilityAgreementController extends Controller
                 // VALIDACIÓN PARA EL GUARDADO EN LA CARPETA DEL PROYECTO
                 if ($request->hasfile('file')) {
                     $file = Storage::disk('evidences_co_responsibility_agreements')->put('', $request->file('file'));
+                    $evidenceCoResponsibilityAgreement->name = $request->file('file')->getClientOriginalName();
                     $evidenceCoResponsibilityAgreement->file = $file;
                     $evidenceCoResponsibilityAgreement->co_responsibility_agreement_id = $request->co_responsibility_agreement_id;
                 }

@@ -4,31 +4,27 @@
         <tr>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>SEDE / DELEGACIÓN</b>
+                <b>DELEGACIÓN</b>
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>NÚMERO DE ÁRBOLES PLANTADOS</b>
+                <b>MUNICIPIO</b>
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>FECHA</b>
+                <b>GESTOR(ES) AMBIENTAL(ES)</b>
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>UBICACIÓN</b>
+                <b>OPERADOR AMBIENTAL (ASOCIACIÓN DE RECICLADORES / EMPRESA / GESTOR AUTORIZADO)</b>
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>LATITUD</b>
+                <b>FECHA DE LA FIRMA DEL ACUERDO</b>
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>LONGITUD</b>
-            </th>
-            <th
-                style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>OBSERVACIONES (ESPECIES PLANTADAS)</b>
+                <b>OBSERVACIONES Y CAMBIOS</b>
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
@@ -41,9 +37,6 @@
         </tr>
     </thead>
     <tbody>
-        @php
-            $totalTreesPlanted = 0;
-        @endphp
         @foreach ($report as $key => $item)
             <tr>
                 <td
@@ -52,30 +45,29 @@
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                    {{ $item->tp_number_of_trees_planted ?: '-o-' }}
-                    @php
-                        $totalTreesPlanted += $item->tp_number_of_trees_planted ?? 0;
-                    @endphp
+                    {{ $item->m_city_name ?: '-o-' }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-left; text-align: -webkit-left; text-align: left">
+                    <ul>
+                        @foreach ($item->users as $key => $user)
+                            <li>
+                                {{ $user->u_full_name ?: '-o-' }}
+                            </li>
+                        @endforeach
+                    </ul>
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                    {{ $item->tp_date ?: '-o-' }}
+                    {{ $item->cra_environmental_operator ?: '-o-' }}
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                    {{ $item->tp_address ?: '-o-' }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                    {{ $item->tp_lat ?: '-o-' }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                    {{ $item->tp_lng ?: '-o-' }}
+                    {{ $item->cra_date ?: '-o-' }}
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-justify; text-align: -webkit-justify; text-align: justify;">
-                    {{ $item->tp_observations ?: '-o-' }}
+                    {{ $item->cra_observations ?: '-o-' }}
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
@@ -83,22 +75,10 @@
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                    {{ $item->tp_created_at ?: '-o-' }}
+                    {{ $item->cra_created_at ?: '-o-' }}
                 </td>
             </tr>
         @endforeach
     </tbody>
-    <tfoot>
-        <tr>
-            <td
-                style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>TOTAL</b>
-            </td>
-            <td
-                style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>{{ number_format($totalTreesPlanted) }}</b>
-            </td>
-        </tr>
-    </tfoot>
 </table>
 {{-- @dd(1) --}}

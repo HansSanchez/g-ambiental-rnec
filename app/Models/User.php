@@ -76,7 +76,6 @@ class User extends \TCG\Voyager\Models\User
         'CreatedLabel'
     ];
 
-
     public function scopeSearch($query, $search_term)
     {
         $query->where('id', $search_term)
