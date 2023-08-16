@@ -60,7 +60,9 @@
                                 <span class="input-group-text border-search bg-info" title="Buscar" @click="$emit('Enter')">
                                     <i class="fa-solid fa-search text-white"></i>
                                 </span>
-                                <span class="input-group-text border-search bg-success" title="Generación de reportes"
+                                <span
+                                    v-if="permissions.generate_report_co_responsibility_agreements === 'generate_report_co_responsibility_agreements'"
+                                    class="input-group-text border-search bg-success" title="Generación de reportes"
                                     data-toggle="modal" data-backdrop="static" data-target="#GenerateReportModal"
                                     @click="report = true;">
                                     <i class="fa-solid fa-file-excel text-white"></i>
@@ -326,9 +328,9 @@
                     <!-- END EVIDENCIAS -->
 
                     <!-- START GENERATE REPORTS -->
-                    <div v-show="permissions.generate_report === 'generate_report'" class="modal fade"
-                        id="GenerateReportModal" tabindex="-1" role="dialog" aria-labelledby="GenerateReportModalTitle"
-                        aria-hidden="true">
+                    <div v-show="permissions.generate_report_co_responsibility_agreements === 'generate_report_co_responsibility_agreements'"
+                        class="modal fade" id="GenerateReportModal" tabindex="-1" role="dialog"
+                        aria-labelledby="GenerateReportModalTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header" style="background: #88b76e">

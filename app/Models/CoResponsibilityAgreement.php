@@ -37,7 +37,8 @@ class CoResponsibilityAgreement extends Model
         $query->where('id', $search_term)
             ->orWhere('environmental_operator', 'LIKE', '%' . $search_term . '%')
             ->orWhere('date', 'LIKE', '%' . $search_term . '%')
-            ->orWhere('state', 'LIKE', '%' . $search_term . '%');
+            ->orWhere('state', 'LIKE', '%' . $search_term . '%')
+            ->orWhere('observations', 'LIKE', '%' . $search_term . '%');
     }
 
     public function Delegation(): \Illuminate\Database\Eloquent\Relations\BelongsTo

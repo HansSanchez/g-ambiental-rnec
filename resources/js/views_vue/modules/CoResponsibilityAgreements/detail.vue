@@ -6,7 +6,7 @@
         permissions.read_tree_plantations === 'read_tree_plantations'" class="card text-uppercase">
         <div class="card-header text-uppercase">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important;">
                             <li class="breadcrumb-item active">
@@ -23,6 +23,13 @@
                     </nav>
                 </div>
                 <div class="col-md-4">
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb m-0 p-0" style="border: none !important;">
+                            <li class="breadcrumb-item active w-100" v-html="CoResponsibilityAgreementDetailList.StateLabel"></li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-2">
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important; float: right !important;">
                             <li class="breadcrumb-item active">
