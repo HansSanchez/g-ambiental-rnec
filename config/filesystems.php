@@ -84,6 +84,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'electrical_consumptions' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/reports/electrical_consumptions'),
+            'url' => env('APP_URL') . '/storage/reports/electrical_consumptions',
+            'visibility' => 'public',
+        ],
+
         'evidences_electrical_consumptions' => [
             'driver' => 'local',
             'root' => storage_path('app/public/electrical_consumptions/evidences/files'),

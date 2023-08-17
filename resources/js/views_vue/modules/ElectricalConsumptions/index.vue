@@ -324,16 +324,7 @@
                                             </vue-dropzone>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="alert alert-info" role="alert">
-                                                <h5>
-                                                    <b>
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                        RECOMENDACIÓN
-                                                    </b>
-                                                </h5>
-                                                <p class="mb-0">Tenga en cuenta que, para una mejor visualización, las
-                                                    evidencias fotográficas se deben cargar de forma horizontal.</p>
-                                            </div>
+                                            <recommendations-component></recommendations-component>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>ARCHIVOS ADJUNTOS</b></h5>
@@ -438,37 +429,45 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                                             <div class="form-group mb-0">
-                                                <small class="text-danger"><b>(Desde) *</b></small>
-                                                <datepicker :language="es" v-model="FormReport.fromDay"
-                                                    :disabledDates="fromDay" :inputClass="inputClass"
-                                                    @change="validateFormReport" :format="customFormatter"
-                                                    :placeholder="fromPlaceholder">
-                                                </datepicker>
+                                                <small><b class="text-danger">(Años) *</b></small>
+                                                <select class="form-control" name="year" id="year"
+                                                    v-model="FormReport.year">
+                                                    <option value="" selected disabled>AÑOS...</option>
+                                                    <option v-for="(item, index) in  years" :key="index">
+                                                        {{ item }}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                                             <div class="form-group mb-0">
-                                                <small class="text-danger"><b>(Hasta) *</b></small>
-                                                <datepicker :language="es" v-model="FormReport.untilDay"
-                                                    :disabledDates="untilDay" :inputClass="inputClass"
-                                                    @change="validateFormReport" :format="customFormatter"
-                                                    :placeholder="untilPlaceholder">
-                                                </datepicker>
+                                                <small><b>(Meses)</b></small>
+                                                <select class="form-control" name="month" id="month"
+                                                    v-model="FormReport.month">
+                                                    <option value="" selected disabled>MESES...</option>
+                                                    <option v-for="(item, index) in  months" :key="index">
+                                                        {{ item }}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div v-if="permissions.filter_delegations_electrical_consumptions === 'filter_delegations_electrical_consumptions'"
+                                            class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group mb-0">
                                                 <small><b>(Delegaciones)</b></small>
                                                 <v-select :options="delegations" v-model="FormReport.delegation"
+                                                    @input="municipalities = []; setMunicipalities();"
                                                     placeholder="DELEGACIONES...">
                                                 </v-select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div v-if="permissions.filter_municipalities_electrical_consumptions === 'filter_municipalities_electrical_consumptions'"
+                                            class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group mb-0">
                                                 <small><b>(Municipios)</b></small>
                                                 <v-select :options="municipalities" v-model="FormReport.municipality"
-                                                    placeholder="MUNICIPIOS...">
+                                                    placeholder="MUNICIPIOS..."
+                                                    :disabled="FormReport.delegation === null ? true : false">
                                                 </v-select>
                                             </div>
                                         </div>
@@ -478,9 +477,7 @@
                                                 <li>
                                                     Tenga en cuenta que si quiere generar un reporte debe especificar el
                                                     campo
-                                                    <b class="text-danger">(DESDE)</b>
-                                                    y el campo
-                                                    <b class="text-danger">(HASTA)</b>
+                                                    <b class="text-danger">(AÑOS)</b>
                                                     de lo contrario no se permitirá, exceptuando los botones
                                                     <b class="text-info">(MENSUAL)</b> y <b class="text-info">(ANUAL)</b>.
                                                 </li>
@@ -786,8 +783,8 @@ export default {
             untilPlaceholder: "Hasta x fecha",
             FormReport: {
                 // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
-                fromDay: null,
-                untilDay: null,
+                year: '',
+                month: '',
                 delegation: null,
                 municipality: null
             },
@@ -1021,13 +1018,13 @@ export default {
         },
         validateFormReport() {
             if (!this.FormTreeReport) {
-                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || key === 'municipality' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || key === 'month' || key === 'municipality' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
         },
         cleanFormReport() {
-            this.FormReport.fromDay = null;
-            this.FormReport.untilDay = null;
+            this.FormReport.year = '';
+            this.FormReport.month = '';
             this.setAuthenticatedUser();
         },
         customFormatter(date) {
@@ -1058,14 +1055,15 @@ export default {
             const url = "/g-environmental-rnec/electrical-consumptions/generateReport";
             if (Form !== null) {
                 let delegation = this.FormReport.delegation
-                axios.post(url, { ...Form, delegation })
+                let municipality = this.FormReport.municipality
+                axios.post(url, { ...Form, delegation, municipality })
                     .then(this.responseReport)
                     .catch((error) => window.toastr.warning(error, { timeOut: 2000 }));
             }
             else this.alertLoading(5000, "No se aplicó ningún filtro", "error")
         },
         responseReport(response) {
-            let fileName = "/storage/reports/co_responsibility_agreements/" + response.data.fileName;
+            let fileName = "/storage/reports/electrical_consumptions/" + response.data.fileName;
             let file = response.data.file;
             if (file) {
                 this.$swal({
@@ -1140,7 +1138,7 @@ export default {
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
         setMunicipalities(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search } })
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormReport.delegation } })
                 .then(res => this.municipalities = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },

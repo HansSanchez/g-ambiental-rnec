@@ -1393,3 +1393,24 @@ tbody.full-20 {
     text-align: center;
     align-items: center;
 }
+
+ul.list-general {
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.list-general li.list-general {
+    position: relative;
+}
+
+ul.list-general li.list-general:before {
+    content: "\2022";
+    position: absolute;
+    color: black;
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 10px 10px 10px 0;
+    margin-bottom: 10px;
+}

@@ -243,16 +243,7 @@
                                             </vue-dropzone>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="alert alert-info" role="alert">
-                                                <h5>
-                                                    <b>
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                        RECOMENDACIÓN
-                                                    </b>
-                                                </h5>
-                                                <p class="mb-0">Tenga en cuenta que, para una mejor visualización, las
-                                                    evidencias fotográficas se deben cargar de forma horizontal.</p>
-                                            </div>
+                                            <recommendations-component></recommendations-component>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>ARCHIVOS ADJUNTOS</b></h5>

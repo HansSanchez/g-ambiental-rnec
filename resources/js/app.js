@@ -86,6 +86,7 @@ Vue.component('content-component', require('./components/ContentComponent.vue').
 Vue.component('forbidden-component', require('./components/ForbiddenComponent').default);
 Vue.component('loader-component', require('./components/LoaderComponent').default);
 Vue.component('not-fount-component', require('./components/NotFountComponent').default);
+Vue.component('recommendations-component', require('./components/RecommendationsComponent').default);
 
 extend('required', {
     ...required,

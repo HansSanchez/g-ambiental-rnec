@@ -12,7 +12,12 @@ class MunicipalityController extends Controller
     {
         return Municipality::select('id AS code', 'city_name AS label')
             ->search($request->search)
-            ->where('delegation_id', Auth::user()->delegation_id)
+            ->where(function ($query) use ($request) {
+                if ($request->delegation) {
+                    $delegation = json_decode($request->delegation);
+                    $query->where('municipalities.delegation_id', $delegation->code);
+                } else $query->where('delegation_id', Auth::user()->delegation_id);
+            })
             ->orderBy('id', 'ASC')
             ->simplePaginate(100);
     }

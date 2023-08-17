@@ -275,6 +275,7 @@ class ElectricalConsumptionController extends Controller
     // FUNCIÓN PARA GENERACIÓN DE REPORTES
     public function generateReport(Request $request)
     {
+        // dd($request->all());
         // CONTROL DE ERRORES
         try {
 
@@ -284,35 +285,7 @@ class ElectricalConsumptionController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // DEFINICIÓN DE VARIABLES
-                $fromDay = null;
-                $untilDay = null;
-                $day = null;
-                $weekStartDate = null;
-                $weekEndDate = null;
-                $monthStartDate = null;
-                $monthEndDate = null;
-                $yearStartDate = null;
-                $yearEndDate = null;
-                $date = Carbon::now();
                 $permissions = new HomeController;
-
-                // CONDICIONALES POR SI LLEGAN NULOS LOS CAMPOS, NO VIENEN O SI HAY QUE TENERLOS EN CUENTA
-                if ($request->fromDay != null) $fromDay = date('Y-m-d', strtotime($request->fromDay));
-                if ($request->untilDay != null) $untilDay = date('Y-m-d', strtotime($request->untilDay));
-                if ($request->has('day')) $day = date('Y-m-d', strtotime($request->day));
-                if ($request->has('week')) {
-                    $weekStartDate = $date->startOfWeek()->format('Y-m-d H:i');
-                    $weekEndDate = $date->endOfWeek()->format('Y-m-d H:i');
-                }
-                if ($request->has('month')) {
-                    $monthStartDate = $date->startOfMonth()->format('Y-m-d H:i');
-                    $monthEndDate = $date->endOfMonth()->format('Y-m-d H:i');
-                }
-                if ($request->has('year')) {
-                    $yearStartDate = $date->startOfYear()->format('Y-m-d H:i');
-                    $yearEndDate = $date->endOfYear()->format('Y-m-d H:i');
-                }
 
                 // CONSULTA POR RANGO DE FECHAS, DÍA, SEMANA, MES O AÑO
                 $report = DB::table('electrical_consumptions')
@@ -320,14 +293,17 @@ class ElectricalConsumptionController extends Controller
                     ->select(
                         'delegations.id AS d_id',
                         'delegations.name AS d_name',
-                        'electrical_consumptions.id AS cra_id',
-                        'electrical_consumptions.delegation_id AS cra_delegation_id',
-                        'electrical_consumptions.environmental_operator AS cra_environmental_operator',
-                        'electrical_consumptions.date AS cra_date',
-                        'electrical_consumptions.state AS cra_state',
-                        'electrical_consumptions.observations AS cra_observations',
-                        'electrical_consumptions.created_at AS cra_created_at',
-                        'electrical_consumptions.user_id AS cra_user_id',
+                        'electrical_consumptions.id AS ec_id',
+                        'electrical_consumptions.environmental_manager AS ec_environmental_manager',
+                        'electrical_consumptions.delegation_id AS ec_delegation_id',
+                        'electrical_consumptions.municipality_id AS ec_municipality_id',
+                        'electrical_consumptions.year AS ec_year',
+                        'electrical_consumptions.month AS ec_month',
+                        'electrical_consumptions.kw_monthly AS ec_kw_monthly',
+                        'electrical_consumptions.total_staff AS ec_total_staff',
+                        'electrical_consumptions.observations AS ec_observations',
+                        'electrical_consumptions.user_id AS ec_user_id',
+                        'electrical_consumptions.created_at AS ec_created_at',
                         'municipalities.id AS m_id',
                         'municipalities.city_name AS m_city_name',
                         'users.id AS u_id',
@@ -340,22 +316,17 @@ class ElectricalConsumptionController extends Controller
                         'users.email AS u_email',
                         'users.delegation_id AS u_delegation_id',
                     )
-                    // RELACIÓN CON LA DELEGACIÓN EN DONDE SE HIZO EL REGISTRO
+                    // RELACIÓN CON LA DELEGACIÓN
                     ->join('delegations', 'delegations.id', '=', 'electrical_consumptions.delegation_id')
+                    // RELACIÓN CON EL MUNICIPIO
+                    ->join('municipalities', 'municipalities.id', '=', 'electrical_consumptions.municipality_id')
                     // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
                     ->join('users', 'users.id', '=', 'electrical_consumptions.user_id')
-                    // RELACIÓN CON EL(LOS) MUNICIPIO(S)
-                    ->join('municipality_electrical_consumptions', 'municipality_electrical_consumptions.co_responsibility_agreement_id', '=', 'electrical_consumptions.id')
-                    ->join('municipalities', 'municipalities.id', '=', 'municipality_electrical_consumptions.municipality_id')
-                    // FILTRO DE CONSULTA SEGÚN PARAMETROS DE FECHA
-                    ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $monthStartDate, $monthEndDate, $yearStartDate, $yearEndDate) {
-                        if ($day != null) $query->whereBetween('electrical_consumptions.date', [$day . " 00:00:00", $day . " 23:59:59"]);
-                        if ($weekStartDate != null || $weekEndDate != null) $query->whereBetween('electrical_consumptions.date', [$weekStartDate, $weekEndDate]);
-                        if ($monthStartDate != null || $monthEndDate != null) $query->whereBetween('electrical_consumptions.date', [$monthStartDate, $monthEndDate]);
-                        if ($yearStartDate != null || $yearEndDate != null) $query->whereBetween('electrical_consumptions.date', [$yearStartDate, $yearEndDate]);
-                        if ($fromDay != null && $untilDay == null) $query->whereBetween('electrical_consumptions.date', [$fromDay . " 00:00:00", now()->format('Y-m-d') . " 23:59:59"]);
-                        if ($fromDay == null && $untilDay != null) $query->whereBetween('electrical_consumptions.date', ["2000-01-01 00:00:00", $untilDay . " 23:59:59"]);
-                        if ($fromDay != null && $untilDay != null) $query->whereBetween('electrical_consumptions.date', [$fromDay . " 00:00:00", $untilDay . " 23:59:59"]);
+                    ->where(function ($query) use ($request) {
+                        if ($request->year) $query->where('year', $request->year);
+                    })
+                    ->where(function ($query) use ($request) {
+                        if ($request->month) $query->where('month', $request->month);
                     })
                     // FILTRO DE CONSULTA POR PARAMETRO DE DELEGACIÓN
                     ->where(function ($query) use ($request, $permissions) {
@@ -366,57 +337,30 @@ class ElectricalConsumptionController extends Controller
                             // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
                             else $query->get();
                     })
+                    // FILTRO DE CONSULTA POR PARAMETRO DE MUNICIPIO
+                    ->where(function ($query) use ($request, $permissions) {
+                        // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
+                        if (array_key_exists('filter_municipalities_electrical_consumptions', $permissions->permissions()))
+                            // PUEDE ENVIARLA POR PARAMETRO
+                            if ($request->municipality) $query->where('electrical_consumptions.municipality_id', $request->municipality['code']);
+                            // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
+                            else $query->get();
+                    })
                     // OBTENCIÓN DE LOS REGISTROS
                     ->get();
+
 
                 // ESTA FUNCIÓN EN NECESARIA YA QUE LAS OBSERVACIONES SE GUARDAN CON HTML ES NECESARIO LIMPIARLAS PARA TENER SOLO EL TEXTO
                 $cleanedReport = $report->map(function ($item) {
                     // LIMPIAR TEXTO HTML A TEXTO PLANO
-                    $item->cra_observations = Str::of(strip_tags($item->cra_observations))->trim()->__toString();
+                    $item->ec_observations = Str::of(strip_tags($item->ec_observations))->trim()->__toString();
                     // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->cra_date = Carbon::createFromFormat('Y-m-d H:i:s', $item->cra_date)->format('d-m-Y');
-                    // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->cra_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $item->cra_created_at)->format('d-m-Y h:i:s');
+                    $item->ec_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $item->ec_created_at)->format('d-m-Y h:i:s');
                     // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
                     $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
                     // RETORNO DE LOS CAMBIOS
                     return $item;
                 });
-
-
-                // TRANSFORMAR LA INFORMACIÓN DE USUARIOS DENTRO DE CADA ELEMENTO DEL REPORTE
-                foreach ($cleanedReport as $key => $item) {
-                    // CONSULTA DE ID'S DE LOS USUARIOS EN LA TABLA INTERMEDIA
-                    $IdUsers = DB::table('user_electrical_consumptions')
-                        ->select('user_id AS ucra_user_id')
-                        ->where('co_responsibility_agreement_id', $item->cra_id)
-                        ->get();
-
-                    $users = []; // CREAR UN ARRAY PARA ALMACENAR LA INFORMACIÓN DE LOS USUARIOS
-
-                    // CICLO PARA CONSULTAR LOS DATOS DE LOS USUARIOS RELACIONADOS COMO GESTOR(ES) AMBIENTAL(ES)
-                    foreach ($IdUsers as $key => $value) {
-                        $user = DB::table('users')
-                            ->select('users.id AS u_id', 'users.first_name AS u_first_name', 'users.second_name AS u_second_name', 'users.first_last_name AS u_first_last_name', 'users.second_last_name AS u_second_last_name')
-                            ->where('id', $value->ucra_user_id)
-                            ->first();
-                        if ($user) $users[] = $user; // AGREGAR EL USUARIO AL ARRAY
-                    }
-
-                    // CONVERTIR EL ARRAY EN UNA COLECCIÓN ANTES DE USAR MAP()
-                    $usersCollection = collect($users);
-
-                    // APLICAR MAP() EN LA COLECCIÓN
-                    $newUsers = $usersCollection->map(function ($item) {
-                        // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
-                        $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
-                        // RETORNO DE LOS CAMBIOS
-                        return $item;
-                    });
-
-                    // AGREGAR LA INFORMACIÓN TRANSFORMADA AL ELEMENTO DEL REPORTE
-                    $item->users = $newUsers;
-                }
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
