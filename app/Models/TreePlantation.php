@@ -28,6 +28,7 @@ class TreePlantation extends Model
      * @var array
      */
     protected $appends = [
+        'CreatedLabel',
         'DateLabel'
     ];
 

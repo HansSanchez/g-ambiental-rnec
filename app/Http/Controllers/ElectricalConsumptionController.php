@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ElectricalConsumptionExport;
 use App\Models\Audit;
 use App\Models\ElectricalConsumption;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
 
 class ElectricalConsumptionController extends Controller
 {
@@ -424,7 +429,7 @@ class ElectricalConsumptionController extends Controller
                 if (count($cleanedReport) == 0) return response()->json(['file' => false, 'msg' => 'Para este rango de fechas no existen registros, verifique por favor.', 'fileName' => null, 'icon' => 'warning']);
                 // SI HAY REGISTROS
                 else {
-                    $fileName = 'REPORTE-DE-ACUERDOS-DE-CORRESPONSABILIDAD-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
+                    $fileName = 'REPORTE-DE-CONSUMOS-ELECTRICOS-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
                     Excel::store(new ElectricalConsumptionExport($cleanedReport), $fileName, 'electrical_consumptions');
                     sleep(5);
                     return response()->json(['file' => true, 'msg' => 'Reporte generado con éxito', 'fileName' => $fileName, 'icon' => 'success']);

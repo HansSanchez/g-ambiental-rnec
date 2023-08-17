@@ -127,9 +127,9 @@ Route::group(['middleware' => ['auth']], function () {
 
             // RUTAS PARA GESTIÓN DE EVIDENCIAS
             Route::group(['prefix' => 'evidences'], function () {
-                Route::get('/evidenceCoResponsibilityAgreement/{electricalConsumption}', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'evidenceCoResponsibilityAgreement']);
-                Route::post('/storeDocument', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'storeDocument']);
-                Route::delete('/{id}/destroyDocument', [\App\Http\Controllers\EvidenceCoResponsibilityAgreementController::class, 'destroyDocument']);
+                Route::get('/evidenceElectricalConsumption/{electricalConsumption}', [\App\Http\Controllers\EvidenceElectricalConsumptionController::class, 'evidenceElectricalConsumption']);
+                Route::post('/storeEvidence', [\App\Http\Controllers\EvidenceElectricalConsumptionController::class, 'storeEvidence']);
+                Route::delete('/{id}/destroyEvidence', [\App\Http\Controllers\EvidenceElectricalConsumptionController::class, 'destroyEvidence']);
             });
         });
 

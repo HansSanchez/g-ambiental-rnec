@@ -290,10 +290,6 @@
                                                                 <a :href="'/storage/co_responsibility_agreements/evidences/documents/' + itemDocument.file"
                                                                     download>
                                                                     <b class="text-black">{{ itemDocument.name }}</b>
-                                                                    <span
-                                                                        class="badge badge-success text-white text-uppercase full-16 ml-3">
-                                                                        <b>DESCARGABLE</b>
-                                                                    </span>
                                                                 </a>
                                                             </td>
                                                             <td class="text-lowercase text-center">
@@ -303,7 +299,15 @@
                                                                 permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
                                                                 class="text-center justify-content-center">
                                                                 <div class="btn-group" role="group">
+                                                                    <span class="text-success cursor-pointer"
+                                                                        title="Descargar adjunto">
+                                                                        <a :href="'/storage/co_responsibility_agreements/evidences/documents/' + itemDocument.file"
+                                                                            :download="itemDocument.name">
+                                                                            <i class="fa-solid fa-download fa-2x pr-2"></i>
+                                                                        </a>
+                                                                    </span>
                                                                     <span @click="destroyDocument(itemDocument)"
+                                                                        title="Eliminar adjunto"
                                                                         class="text-danger cursor-pointer">
                                                                         <i class="fas fa-trash-alt fa-2x"></i>
                                                                     </span>

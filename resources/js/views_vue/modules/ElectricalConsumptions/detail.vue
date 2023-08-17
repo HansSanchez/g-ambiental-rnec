@@ -2,41 +2,22 @@
     <div v-if="permissions.length === 0">
         <loader-component></loader-component>
     </div>
-    <div v-else-if="permissions.browse_tree_plantations === 'browse_tree_plantations' ||
-        permissions.read_tree_plantations === 'read_tree_plantations'" class="card text-uppercase">
+    <div v-else-if="permissions.browse_electrical_consumptions === 'browse_electrical_consumptions' ||
+        permissions.read_electrical_consumptions === 'read_electrical_consumptions'" class="card text-uppercase">
         <div class="card-header text-uppercase">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important;">
                             <li class="breadcrumb-item active">
                                 <router-link
-                                    :to="{ name: 'tree-plantations-detail', params: { id: CoResponsibilityAgreementDetailList.id } }"
+                                    :to="{ name: 'electrical-consumptions-detail', params: { id: ElectricalConsumptionsDetailList.id } }"
                                     @click="show = !show">
                                     <b>
-                                        Detalle del acuerdo de corresponsabilidad para
-                                        {{ CoResponsibilityAgreementDetailList.delegation.name }}
+                                        Detalle del consumo eléctrico para
+                                        {{ ElectricalConsumptionsDetailList.delegation.name }}
                                     </b>
                                 </router-link>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-md-4">
-                    <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb m-0 p-0" style="border: none !important;">
-                            <li class="breadcrumb-item active w-100" v-html="CoResponsibilityAgreementDetailList.StateLabel"></li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-md-2">
-                    <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb m-0 p-0" style="border: none !important; float: right !important;">
-                            <li class="breadcrumb-item active">
-                                <b>
-                                    Hecha el:
-                                    {{ CoResponsibilityAgreementDetailList.DateLabel }}
-                                </b>
                             </li>
                         </ol>
                     </nav>
@@ -45,67 +26,119 @@
         </div>
         <div class="card-body" style="background: #d7d7d7 !important;">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <h5><b>MUNICIPIOS A LOS CUALES LES APLICA</b></h5>
-                    <div>
-                        <ul class="list-custom"
-                            v-for="(item, index) in  CoResponsibilityAgreementDetailList.municipalities " :key="index">
-                            <li class="list-custom">{{ item.FullCityName }}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <h5><b>GESTOR(ES) AMBIENTAL(ES)</b></h5>
-                    <div>
-                        <ul class="list-custom" v-for="(item, index) in  CoResponsibilityAgreementDetailList.users "
-                            :key="index">
-                            <li class="list-custom">{{ item.FullName }}</li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-group mb-0">
-                        <h5><b>OPERADOR AMBIENTAL (ASOCIACIÓN DE RECICLADORES / EMPRESA / GESTOR AUTORIZADO)</b></h5>
-                        {{ CoResponsibilityAgreementDetailList.environmental_operator }}
+                    <div class="table-responsive">
+                        <table id="sub_area-table"
+                            class="table table-sm table-bordered table-striped table-condensed bg-white">
+                            <thead class="bg-orange headerStatic">
+                                <tr class="text-center">
+                                    <th>MUNICIPIO RELACIONADO</th>
+                                    <th>GESTOR(A) AMBIENTAL</th>
+                                    <th>AÑO</th>
+                                    <th>MES</th>
+                                    <th>KILOWATTS</th>
+                                    <th>TOTAL DE PERSONAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-uppercase text-center">
+                                        {{ ElectricalConsumptionsDetailList.municipality.FullCityName }}
+                                    </td>
+                                    <td class="text-uppercase text-center">
+                                        {{ ElectricalConsumptionsDetailList.environmental_manager }}
+                                    </td>
+                                    <td class="text-uppercase text-center">
+                                        {{ ElectricalConsumptionsDetailList.year }}
+                                    </td>
+                                    <td class="text-uppercase text-center">
+                                        {{ ElectricalConsumptionsDetailList.month }}
+                                    </td>
+                                    <td class="text-uppercase text-center">
+                                        {{ number_format(ElectricalConsumptionsDetailList.kw_monthly) }}
+                                    </td>
+                                    <td class="text-uppercase text-center">
+                                        {{ number_format(ElectricalConsumptionsDetailList.total_staff) }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="bg-orange headerStatic text-center">
+                                    <td colspan="6"><b>OBSERVACIONES</b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" v-html="ElectricalConsumptionsDetailList.observations"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
-                <div v-if="CoResponsibilityAgreementDetailList.evidence_co_responsibility_agreement.length > 0"
+                <div v-if="ElectricalConsumptionsDetailList.evidence_electrical_consumption.length > 0"
                     class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                     <h5 class="mb-0">
                         <b>DOCUMENTOS ADJUNTOS</b>
                     </h5>
                 </div>
-                <div v-for="(item, index) in CoResponsibilityAgreementDetailList.evidence_co_responsibility_agreement"
-                    :key="index" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <embed :src="'/storage/co_responsibility_agreements/evidences/documents/' + item.file"
-                        type="application/pdf" width="100%" height="600px" />
+                <template v-for="(item, index) in ElectricalConsumptionsDetailList.evidence_electrical_consumption">
+                    <div :key="index" v-if="item.extension === 'pdf'" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <embed :src="'/storage/electrical_consumptions/evidences/files/' + item.file" type="application/pdf"
+                            width="100%" height="600px" />
+                    </div>
+                </template>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div v-if="hasImagesToShow" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item" v-for="(itemImage, indexImage) in imagesToShow" :key="indexImage"
+                                    :class="{ active: indexImage === 0 }">
+                                    <img class="d-block w-100" data-toggle="modal"
+                                        data-target="#EvidencesTreePlantationModal"
+                                        style="height: 500px; max-height: 500px; cursor: pointer;"
+                                        :src="'/storage/electrical_consumptions/evidences/files/' + itemImage.file">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                data-slide="prev">
+                                <span v-if="imagesToShow.length > 1" class="carousel-control-prev-icon" aria-hidden="true">
+                                    <i style="padding-top: 12px !important;"
+                                        class="fas fa-angle-double-left fa-2x text-white"></i>
+                                </span>
+                                <span class="sr-only">Anterior</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                data-slide="next">
+                                <span v-if="imagesToShow.length > 1" class="carousel-control-next-icon" aria-hidden="true">
+                                    <i style="padding-top: 12px !important;"
+                                        class="fas fa-angle-double-right fa-2x text-white"></i>
+                                </span>
+                                <span class="sr-only">Siguiente</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div v-else class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h5 class="mb-0">Sin imágenes relacionadas</h5>
+                    </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
-                            <h5 class="mb-0"><b>OBSERVACIONES Y CAMBIOS</b></h5>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                            v-html="CoResponsibilityAgreementDetailList.observations">
-                        </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <hr class="mt-0 mb-0">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                             <h5><b>REPORTANTE</b></h5>
-                            {{ CoResponsibilityAgreementDetailList.user.FullName }}
+                            {{ ElectricalConsumptionsDetailList.user.FullName }}
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                             <h5><b>REPORTADO</b></h5>
-                            {{ CoResponsibilityAgreementDetailList.user.CreatedLabel }}
+                            {{ ElectricalConsumptionsDetailList.user.CreatedLabel }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <v-btn color="#e55353" :to="{ name: 'co-responsibility-agreements-index' }" small
-                class="btn btn-danger text-white" data-dismiss="modal">
+            <v-btn color="#e55353" :to="{ name: 'electrical-consumptions-index' }" small class="btn btn-danger text-white"
+                data-dismiss="modal">
                 <b>VOLVER</b>
             </v-btn>
         </div>
@@ -122,17 +155,27 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            CoResponsibilityAgreementDetailList: {},
+            ElectricalConsumptionsDetailList: {},
             permissions: [],
         }
     },
     props: {
     },
+    computed: {
+        hasImagesToShow() {
+            return this.imagesToShow.length > 0;
+        },
+        imagesToShow() {
+            return this.ElectricalConsumptionsDetailList.evidence_electrical_consumption.filter(
+                item => item.extension !== 'pdf'
+            );
+        },
+    },
     methods: {
-        coResponsibilityAgreementDetail() {
-            let api = "/g-environmental-rnec/co-responsibility-agreements/show/" + this.id;
+        electricalConsumptionDetail() {
+            let api = "/g-environmental-rnec/electrical-consumptions/show/" + this.id;
             axios.get(api)
-                .then(({ data }) => this.CoResponsibilityAgreementDetailList = data.coResponsibilityAgreement)
+                .then(({ data }) => this.ElectricalConsumptionsDetailList = data.electricalConsumption)
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         alertLoading(time, msg, type) {
@@ -201,7 +244,7 @@ export default {
         },
     },
     created() {
-        this.coResponsibilityAgreementDetail();
+        this.electricalConsumptionDetail();
         this.setPermissions();
     }
 }

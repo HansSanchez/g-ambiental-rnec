@@ -243,6 +243,18 @@
                                             </vue-dropzone>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alert alert-info" role="alert">
+                                                <h5>
+                                                    <b>
+                                                        <i class="fa-solid fa-circle-info"></i>
+                                                        RECOMENDACIÓN
+                                                    </b>
+                                                </h5>
+                                                <p class="mb-0">Tenga en cuenta que, para una mejor visualización, las
+                                                    evidencias fotográficas se deben cargar de forma horizontal.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>ARCHIVOS ADJUNTOS</b></h5>
                                             <div class="table-responsive">
                                                 <table id="sub_area-table"
@@ -250,6 +262,7 @@
                                                     <thead class="bg-orange headerStatic">
                                                         <tr class="text-center">
                                                             <th class="tt-espumados">EVIDENCIA</th>
+                                                            <th class="tt-espumados">REGISTRADO</th>
                                                             <th class="tt-espumados"
                                                                 v-if="permissions.edit_tree_plantations === 'edit_tree_plantations' ||
                                                                     permissions.delete_tree_plantations === 'delete_tree_plantations'">
@@ -259,7 +272,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr v-for="(itemImage, indexImage) in evidences" :key="indexImage">
-                                                            <td class="text-center">
+                                                            <td class="text-left">
                                                                 <a :href="'/storage/tree_plantations/evidences/images/' + itemImage.file"
                                                                     download>
                                                                     <p>
@@ -268,11 +281,22 @@
                                                                     </p>
                                                                 </a>
                                                             </td>
+                                                            <td class="text-lowercase text-center">
+                                                                {{ itemImage.CreatedLabel }}
+                                                            </td>
                                                             <td v-if="permissions.edit_tree_plantations === 'edit_tree_plantations' ||
                                                                 permissions.delete_tree_plantations === 'delete_tree_plantations'"
                                                                 class="text-center justify-content-center">
                                                                 <div class="btn-group" role="group">
+                                                                    <span class="text-success cursor-pointer"
+                                                                        title="Descargar adjunto">
+                                                                        <a :href="'/storage/tree_plantations/evidences/images/' + itemImage.file"
+                                                                            :download="itemImage.name">
+                                                                            <i class="fa-solid fa-download fa-2x pr-2"></i>
+                                                                        </a>
+                                                                    </span>
                                                                     <span @click="destroyImage(itemImage)"
+                                                                        title="Eliminar adjunto"
                                                                         class="text-danger cursor-pointer">
                                                                         <i class="fas fa-trash-alt fa-2x"></i>
                                                                     </span>

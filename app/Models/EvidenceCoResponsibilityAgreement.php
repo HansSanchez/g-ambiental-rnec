@@ -41,7 +41,7 @@ class EvidenceCoResponsibilityAgreement extends Model
                 return $this->created_at->format('Y-m-d H:i');
             }
         } catch (\Exception $exception) {
-            Log::error("(EvidenceCoResponsibilityAgreement - getCreatedLabelAttribute) ERROR => " . $exception->getMessage());
+            Log::error("(EvidenceCoResponsibilityAgreementModel - getCreatedLabelAttribute) ERROR => " . $exception->getMessage());
         }
         return null;
     }

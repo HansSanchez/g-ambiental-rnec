@@ -324,15 +324,27 @@
                                             </vue-dropzone>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alert alert-info" role="alert">
+                                                <h5>
+                                                    <b>
+                                                        <i class="fa-solid fa-circle-info"></i>
+                                                        RECOMENDACIÓN
+                                                    </b>
+                                                </h5>
+                                                <p class="mb-0">Tenga en cuenta que, para una mejor visualización, las
+                                                    evidencias fotográficas se deben cargar de forma horizontal.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>ARCHIVOS ADJUNTOS</b></h5>
                                             <div class="table-responsive">
                                                 <table id="sub_area-table"
                                                     class="table table-sm table-bordered table-striped table-condensed bg-white">
                                                     <thead class="bg-orange headerStatic">
                                                         <tr class="text-center">
-                                                            <th class="tt-espumados">EVIDENCIA</th>
-                                                            <th class="tt-espumados">REGISTRADO</th>
-                                                            <th class="tt-espumados"
+                                                            <th>EVIDENCIA</th>
+                                                            <th>REGISTRADO</th>
+                                                            <th
                                                                 v-if="permissions.edit_electrical_consumptions === 'edit_electrical_consumptions' ||
                                                                     permissions.delete_electrical_consumptions === 'delete_electrical_consumptions'">
                                                                 OPCIÓN
@@ -340,26 +352,43 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr v-for="(itemDocument, indexDocument) in evidences"
-                                                            :key="indexDocument">
-                                                            <td class="text-lowercase text-left">
-                                                                <a :href="'/storage/co_responsibility_agreements/evidences/documents/' + itemDocument.file"
+                                                        <tr v-for="(itemEvidence, indexEvidence) in evidences"
+                                                            :key="indexEvidence">
+                                                            <td class="text-left">
+                                                                <a v-if="itemEvidence.extension === 'jpg' || itemEvidence.extension === 'png'
+                                                                    || itemEvidence.extension === 'jpeg' || itemEvidence.extension === 'gif'
+                                                                    || itemEvidence.extension === 'bmp' || itemEvidence.extension === 'tiff'
+                                                                    || itemEvidence.extension === 'tif' || itemEvidence.extension === 'webp'
+                                                                    || itemEvidence.extension === 'svg' || itemEvidence.extension === 'raw'"
+                                                                    :href="'/storage/tree_plantations/evidences/files/' + itemEvidence.file"
                                                                     download>
-                                                                    <b class="text-black">{{ itemDocument.name }}</b>
-                                                                    <span
-                                                                        class="badge badge-success text-white text-uppercase full-16 ml-3">
-                                                                        <b>DESCARGABLE</b>
-                                                                    </span>
+                                                                    <p>
+                                                                        <img :src="'/storage/electrical_consumptions/evidences/files/' + itemEvidence.file"
+                                                                            width="200px" height="200px">
+                                                                    </p>
+                                                                </a>
+                                                                <a v-else
+                                                                    :href="'/storage/electrical_consumptions/evidences/files/' + itemEvidence.file"
+                                                                    download>
+                                                                    <b class="text-black">{{ itemEvidence.name }}</b>
                                                                 </a>
                                                             </td>
                                                             <td class="text-lowercase text-center">
-                                                                {{ itemDocument.CreatedLabel }}
+                                                                {{ itemEvidence.CreatedLabel }}
                                                             </td>
                                                             <td v-if="permissions.edit_electrical_consumptions === 'edit_electrical_consumptions' ||
                                                                 permissions.delete_electrical_consumptions === 'delete_electrical_consumptions'"
                                                                 class="text-center justify-content-center">
                                                                 <div class="btn-group" role="group">
-                                                                    <span @click="destroyDocument(itemDocument)"
+                                                                    <span class="text-success cursor-pointer"
+                                                                        title="Descargar adjunto">
+                                                                        <a :href="'/storage/electrical_consumptions/evidences/files/' + itemEvidence.file"
+                                                                            :download="itemEvidence.name">
+                                                                            <i class="fa-solid fa-download fa-2x pr-2"></i>
+                                                                        </a>
+                                                                    </span>
+                                                                    <span @click="destroyEvidence(itemEvidence)"
+                                                                        title="Eliminar adjunto"
                                                                         class="text-danger cursor-pointer">
                                                                         <i class="fas fa-trash-alt fa-2x"></i>
                                                                     </span>
@@ -392,7 +421,7 @@
                                 <div class="modal-header" style="background: #88b76e">
                                     <h5 class="modal-title text-uppercase text-white">
                                         <b>{{
-                                            report ? "Reporte de Acuerdos de Corresponsabilidad" : "SIN TÍTULO"
+                                            report ? "Reporte de consumos eléctricos" : "SIN TÍTULO"
                                         }}</b>
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -405,7 +434,7 @@
                                     <!-- REPORTES -->
                                     <div v-if="report" class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
-                                            <h5 class="mb-0"><b>Fechas de firmado</b></h5>
+                                            <h5 class="mb-0"><b>Fechas de consumo</b></h5>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                                             <div class="form-group mb-0">
@@ -427,11 +456,19 @@
                                                 </datepicker>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group mb-0">
                                                 <small><b>(Delegaciones)</b></small>
                                                 <v-select :options="delegations" v-model="FormReport.delegation"
                                                     placeholder="DELEGACIONES...">
+                                                </v-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group mb-0">
+                                                <small><b>(Municipios)</b></small>
+                                                <v-select :options="municipalities" v-model="FormReport.municipality"
+                                                    placeholder="MUNICIPIOS...">
                                                 </v-select>
                                             </div>
                                         </div>
@@ -512,15 +549,15 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th class="tt-espumados">DELEGACIÓN</th>
-                                    <th class="tt-espumados">MUNICIPIO</th>
-                                    <th class="tt-espumados">GESTOR</th>
-                                    <th class="tt-espumados">AÑO</th>
-                                    <th class="tt-espumados">MES</th>
-                                    <th class="tt-espumados">KW</th>
-                                    <th class="tt-espumados">PERSONAL</th>
-                                    <th class="tt-espumados">OBSERVACIONES</th>
-                                    <th class="tt-espumados"
+                                    <th>DELEGACIÓN</th>
+                                    <th>MUNICIPIO</th>
+                                    <th>GESTOR</th>
+                                    <th>AÑO</th>
+                                    <th>MES</th>
+                                    <th>KILOWATTS</th>
+                                    <th>PERSONAL</th>
+                                    <th>OBSERVACIONES</th>
+                                    <th
                                         v-if="permissions.add_electrical_consumptions === 'add_electrical_consumptions' ||
                                             permissions.edit_electrical_consumptions === 'edit_electrical_consumptions' ||
                                             permissions.delete_electrical_consumptions === 'delete_electrical_consumptions'">
@@ -703,10 +740,10 @@ export default {
             // STAR VARIABLES PARA EL DROPZONE.JS
             csrfToken: null,
             dropzoneOptions: {
-                url: '/g-environmental-rnec/electrical-consumptions/evidences/storeDocument', // RUTA PARA ENVIAR AL CONTROLADOR
+                url: '/g-environmental-rnec/electrical-consumptions/evidences/storeEvidence', // RUTA PARA ENVIAR AL CONTROLADOR
                 thumbnailWidth: 200,
                 addRemoveLinks: true,
-                acceptedFiles: ".pdf", // RESTRINGE A DOCUMENTOS PDF
+                acceptedFiles: "image/*,.pdf", // RESTRINGE A DOCUMENTOS PDF
                 headers: { 'X-CSRF-TOKEN': this.csrfToken }, // ENVIO DE TOKEN PARA LA PETICIÓM
                 // EVENTO 'SENDING' PARA ENVIAR PARÁMETROS ADICIONALES
                 sending: function (file, xhr, formData) {
@@ -751,7 +788,8 @@ export default {
                 // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
                 fromDay: null,
                 untilDay: null,
-                delegation: null
+                delegation: null,
+                municipality: null
             },
             day: {
                 day: new Date(Date.now()),
@@ -857,7 +895,7 @@ export default {
                 .then(({ data }) => this.evidences.push(...data.evidenceElectricalConsumptions))
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
         },
-        storeDocument() {
+        storeEvidence() {
             this.$refs.myDropzone.processQueue();
         },
         handleSuccess(file, response) {
@@ -871,18 +909,18 @@ export default {
             this.evidences = [];
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
         },
-        destroyDocument(itemDocument) {
+        destroyEvidence(itemEvidence) {
             this.$swal({
-                title: '¿Realmente desea eliminar esta imagen?',
+                title: '¿Realmente desea eliminar esta adjunto?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, deseo eliminarla!',
+                confirmButtonText: 'Si, deseo eliminarlo!',
                 cancelButtonText: 'Cancelar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    axios.delete("/g-environmental-rnec/electrical-consumptions/evidences/" + itemDocument.id + "/destroyDocument")
+                    axios.delete("/g-environmental-rnec/electrical-consumptions/evidences/" + itemEvidence.id + "/destroyEvidence")
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceElectricalConsumption.id)), 1);
@@ -983,7 +1021,7 @@ export default {
         },
         validateFormReport() {
             if (!this.FormTreeReport) {
-                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || key === 'municipality' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
         },

@@ -43,6 +43,7 @@ class EvidenceTreePlantationController extends Controller
                 // VALIDACIÓN PARA EL GUARDADO EN LA CARPETA DEL PROYECTO
                 if ($request->hasfile('file')) {
                     $file = Storage::disk('evidences_tree_plantations')->put('', $request->file('file'));
+                    $evidenceTreePlantation->name = $request->file('file')->getClientOriginalName();
                     $evidenceTreePlantation->file = $file;
                     $evidenceTreePlantation->tree_plantation_id = $request->tree_plantation_id;
                 }

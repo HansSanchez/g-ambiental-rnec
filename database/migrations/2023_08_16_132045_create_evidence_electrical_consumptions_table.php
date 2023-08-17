@@ -17,6 +17,7 @@ class CreateEvidenceElectricalConsumptionsTable extends Migration
             $table->id();
             $table->string('name'); // NOMBRE ORIGINAL DEL ARCHIVO QUE SE ESTÁ ALMACENANDO
             $table->string('file'); // ARCHIVO QUE SE ESTÁ ALMACENANDO
+            $table->string('extension'); // EXTENSIÓN DEL ARCHIVO QUE SE ESTÁ ALMACENANDO
             $table->unsignedBigInteger('electrical_consumption_id'); // REGISTRO DEL CONSUMO ELÉCTRICO
             $table->foreign('electrical_consumption_id', 'fk_elec_consumption_id')
                 ->references('id')
