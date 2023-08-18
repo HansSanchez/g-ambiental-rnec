@@ -14,6 +14,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 use Maatwebsite\Excel\Concerns\WithTitle;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 
 class ElectricalConsumptionExport implements FromView, ShouldAutoSize, WithColumnWidths, WithStyles, WithEvents, WithDrawings, WithTitle
@@ -45,6 +46,7 @@ class ElectricalConsumptionExport implements FromView, ShouldAutoSize, WithColum
         $sheet->getStyle('A8:J8')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER); // CENTRADO DE ENCABEZADOS
 
         // SIRVE PARA AUTOAJUSTAR EL TEXTO CUANDO EL TEXTO ES MUY GARNDE EN LA CELDA
+        $sheet->getStyle('A')->getAlignment()->setWrapText(true);
         $sheet->getStyle('B')->getAlignment()->setWrapText(true);
         $sheet->getStyle('E')->getAlignment()->setWrapText(true);
         $sheet->getStyle('F')->getAlignment()->setWrapText(true);
@@ -95,9 +97,33 @@ class ElectricalConsumptionExport implements FromView, ShouldAutoSize, WithColum
                 $event->sheet->mergeCells('E6:F6');
                 $event->sheet->mergeCells('J7:J8');
 
+                // // MERGE DE LAS FILAS DE "Nombre Gestor"
+                // $report = $this->report;
+                // $count = count($report);
+                // for ($i = 9; $i < (9 + $count); $i += $count) $event->sheet->mergeCells('A' . $i . ':A' . ($i + ($count - 1)));
+
+                // // MERGE DE LAS FILAS DE "Delegación o sede"
+                // $report = $this->report;
+                // $count = count($report);
+                // for ($i = 9; $i < (9 + $count); $i += $count) $event->sheet->mergeCells('B' . $i . ':B' . ($i + ($count - 1)));
+
+                // // MERGE DE LAS FILAS DE "Año"
+                // $report = $this->report;
+                // $count = count($report);
+                // for ($i = 9; $i < (9 + $count); $i += $count) $event->sheet->mergeCells('C' . $i . ':C' . ($i + ($count - 1)));
+
+                // // MERGE DE LAS FILAS DE "(KW) Anual"
+                // $report = $this->report;
+                // $count = count($report);
+                // for ($i = 9; $i < (9 + $count); $i += $count) $event->sheet->mergeCells('F' . $i . ':F' . ($i + ($count - 1)));
+
+
                 // ELIMINAR LA FILA(S) NÚMERO 6
                 $worksheet = $event->sheet->getDelegate();  // OBTIENE EL OBJETO PHPSPREADSHEET WORKSHEET
                 $worksheet->removeRow(6); // ELIMINA LA FILA NÚMERO 6
+
+                // APLICA EL FORMATO NUMÉRICO CON 2 DECIMALES A LAS CELDAS EN EL RANGO
+                $event->sheet->getStyle('H8:H1000')->getNumberFormat()->setFormatCode('0.00');
             },
         ];
     }

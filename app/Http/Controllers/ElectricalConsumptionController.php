@@ -306,6 +306,7 @@ class ElectricalConsumptionController extends Controller
                         'electrical_consumptions.created_at AS ec_created_at',
                         'municipalities.id AS m_id',
                         'municipalities.city_name AS m_city_name',
+                        'municipalities.state_name AS m_state_name',
                         'users.id AS u_id',
                         'users.personal_id AS u_personal_id',
                         'users.first_name AS u_first_name',
@@ -358,6 +359,8 @@ class ElectricalConsumptionController extends Controller
                     $item->ec_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $item->ec_created_at)->format('d-m-Y h:i:s');
                     // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
                     $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
+                    // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
+                    $item->m_full_name = mb_strtoupper($item->m_city_name . ' - ' . $item->m_state_name, "UTF-8");
                     // RETORNO DE LOS CAMBIOS
                     return $item;
                 });

@@ -28,7 +28,7 @@
 
                     <!-- ENCABEZADO (BOTONES Y FILTROS) -->
                     <div class="row">
-                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-5"
+                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-2"
                             v-if="permissions.add_electrical_consumptions === 'add_electrical_consumptions'">
                             <button
                                 @click="update = false; resetFormElectricalConsumptions(); openModal(); getCurrentYear(); getCurrentDateWithSpanishMonth();"
@@ -452,7 +452,7 @@
                                             </div>
                                         </div>
                                         <div v-if="permissions.filter_delegations_electrical_consumptions === 'filter_delegations_electrical_consumptions'"
-                                            class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
                                             <div class="form-group mb-0">
                                                 <small><b>(Delegaciones)</b></small>
                                                 <v-select :options="delegations" v-model="FormReport.delegation"

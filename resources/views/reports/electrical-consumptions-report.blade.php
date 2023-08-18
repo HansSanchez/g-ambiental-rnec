@@ -1,3 +1,4 @@
+{{-- @dd($report) --}}
 <table class="table">
     <thead>
         <tr>
@@ -149,49 +150,49 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                1
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                2
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                3
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                4
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                5
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                6
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                7
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                8
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                9
-            </td>
-            <td
-                style="border: 1px solid #000000; text-align: -moz-left; text-align: -webkit-left; text-align: left; vertical-align: middle;">
-                El punto de usar Lorem Ipsum es que tiene una distribución más o
-                menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido
-                aquí".
-            </td>
-        </tr>
+        @foreach ($report as $key => $item)
+            <tr>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    {{ $item->ec_environmental_manager }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    {{ $item->m_full_name }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    {{ $item->ec_year }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    {{ $item->ec_month }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    {{ number_format($item->ec_kw_monthly) }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    PENDIENTE
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    {{ number_format($item->ec_total_staff) }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    {{ $item->ec_total_staff != 0 ? number_format($item->ec_kw_monthly / $item->ec_total_staff, 2) : number_format(0, 2) }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
+                    PENDIENTE
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-left; text-align: -webkit-left; text-align: left; vertical-align: middle;">
+                    {{ $item->ec_observations }}
+                </td>
+            </tr>
+        @endforeach
     </tbody>
 </table>
