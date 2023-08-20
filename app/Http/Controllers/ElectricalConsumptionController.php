@@ -173,8 +173,8 @@ class ElectricalConsumptionController extends Controller
             // VALIDACIÓN DE SESEIÓN ACTIVA
             if (Auth::check()) {
 
-                // OBTENCIÓN DEL ID QUE HIZO EL REGISTRO
-                $user_id = $electricalConsumption->user_id;
+                // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
+                $user_id = auth()->user()->id;
 
                 // OBTENCIÓN DE LA DELEGACIÓN DEL USUARIO QUE HIZO EL REGISTRO
                 $delegation_id = $electricalConsumption->delegation_id;
@@ -289,7 +289,7 @@ class ElectricalConsumptionController extends Controller
 
                 // CONSULTA POR RANGO DE FECHAS, DÍA, SEMANA, MES O AÑO
                 $report = DB::table('electrical_consumptions')
-                    // COLUMNAS DE INTERÉS PARA EL REPORTE
+                    // COLUMNAS DE INTERÉS PARA EL REPORTE (SEGÚN FORMATO OFICIAL)
                     ->select(
                         'delegations.id AS d_id',
                         'delegations.name AS d_name',
@@ -302,29 +302,38 @@ class ElectricalConsumptionController extends Controller
                         'electrical_consumptions.kw_monthly AS ec_kw_monthly',
                         'electrical_consumptions.total_staff AS ec_total_staff',
                         'electrical_consumptions.observations AS ec_observations',
-                        'electrical_consumptions.user_id AS ec_user_id',
                         'electrical_consumptions.created_at AS ec_created_at',
                         'municipalities.id AS m_id',
                         'municipalities.city_name AS m_city_name',
                         'municipalities.state_name AS m_state_name',
-                        'users.id AS u_id',
-                        'users.personal_id AS u_personal_id',
-                        'users.first_name AS u_first_name',
-                        'users.second_name AS u_second_name',
-                        'users.first_last_name AS u_first_last_name',
-                        'users.second_last_name AS u_second_last_name',
-                        'users.position AS u_position',
-                        'users.email AS u_email',
-                        'users.delegation_id AS u_delegation_id',
                     )
                     // RELACIÓN CON LA DELEGACIÓN
                     ->join('delegations', 'delegations.id', '=', 'electrical_consumptions.delegation_id')
                     // RELACIÓN CON EL MUNICIPIO
                     ->join('municipalities', 'municipalities.id', '=', 'electrical_consumptions.municipality_id')
-                    // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
-                    ->join('users', 'users.id', '=', 'electrical_consumptions.user_id')
                     ->where(function ($query) use ($request) {
-                        if ($request->year) $query->where('year', $request->year);
+                        if ($request->year) {
+                            if (intval($request->year) > 2022) {
+                                $query->where('year', $request->year)
+                                    ->orWhere(function ($query) use ($request) {
+                                        $previousYear = intval($request->year) - 1;
+                                        $query->where('year', strval($previousYear))
+                                            ->where('month', 'DICIEMBRE');
+                                    })
+                                    ->orWhere(function ($query) use ($request) {
+                                        $nextYear = intval($request->year) + 1;
+                                        $query->where('year', strval($nextYear))
+                                            ->whereIn('month', ['ENERO', 'FEBRERO']);
+                                    });
+                            } else {
+                                $query->where('year', $request->year)
+                                    ->orWhere(function ($query) use ($request) {
+                                        $nextYear = intval($request->year) + 1;
+                                        $query->where('year', strval($nextYear))
+                                            ->whereIn('month', ['ENERO', 'FEBRERO']);
+                                    });
+                            }
+                        }
                     })
                     ->where(function ($query) use ($request) {
                         if ($request->month) $query->where('month', $request->month);
@@ -348,23 +357,32 @@ class ElectricalConsumptionController extends Controller
                             else $query->get();
                     })
                     // OBTENCIÓN DE LOS REGISTROS
-                    ->get();
-
+                    ->get()
+                    ->groupBy('m_city_name'); // Agrupar por nombre de ciudad
 
                 // ESTA FUNCIÓN EN NECESARIA YA QUE LAS OBSERVACIONES SE GUARDAN CON HTML ES NECESARIO LIMPIARLAS PARA TENER SOLO EL TEXTO
-                $cleanedReport = $report->map(function ($item) {
-                    // LIMPIAR TEXTO HTML A TEXTO PLANO
-                    $item->ec_observations = Str::of(strip_tags($item->ec_observations))->trim()->__toString();
-                    // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->ec_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $item->ec_created_at)->format('d-m-Y h:i:s');
-                    // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
-                    $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
-                    // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
-                    $item->m_full_name = mb_strtoupper($item->m_city_name . ' - ' . $item->m_state_name, "UTF-8");
-                    // RETORNO DE LOS CAMBIOS
-                    return $item;
-                });
+                $cleanedReport = [];
+                foreach ($report as $cityName => $cityData) {
+                    foreach ($cityData as $index => $record) {
+                        if (is_object($record)) {
+                            // CREAR UN NUEVO OBJETO PARA EL REGISTRO
+                            $cleanedRecord = (object)[];
 
+                            // COPIAR LAS PROPIEDADES DEL REGISTRO ORIGINAL
+                            foreach ($record as $key => $value) $cleanedRecord->{$key} = $value;
+
+                            // LIMPIEZA Y TRANSFORMACIÓN PARA CADA REGISTRO
+                            $cleanedRecord->ec_observations = Str::of(strip_tags($record->ec_observations))->trim()->__toString();
+                            $cleanedRecord->ec_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $record->ec_created_at)->format('d-m-Y h:i:s');
+                            $cleanedRecord->m_full_name = mb_strtoupper($record->m_city_name . ' - ' . $record->m_state_name, "UTF-8");
+
+                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA CIUDAD
+                            $cleanedReport[$cityName][$index] = $cleanedRecord;
+                        }
+                    }
+                }
+
+                // dd($cleanedReport);
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
                     'action' => 'GENERACIÓN DE REPORTE MASIVO DE CONSUMOS ELÉCTRICOS',
@@ -377,7 +395,7 @@ class ElectricalConsumptionController extends Controller
                 // SI HAY REGISTROS
                 else {
                     $fileName = 'REPORTE-DE-CONSUMOS-ELECTRICOS-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
-                    Excel::store(new ElectricalConsumptionExport($cleanedReport), $fileName, 'electrical_consumptions');
+                    Excel::store(new ElectricalConsumptionExport($cleanedReport, intval($request->year), $request->delegation['label']), $fileName, 'electrical_consumptions');
                     sleep(5);
                     return response()->json(['file' => true, 'msg' => 'Reporte generado con éxito', 'fileName' => $fileName, 'icon' => 'success']);
                 }

@@ -150,49 +150,77 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($report as $key => $item)
-            <tr>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    {{ $item->ec_environmental_manager }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    {{ $item->m_full_name }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    {{ $item->ec_year }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    {{ $item->ec_month }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    {{ number_format($item->ec_kw_monthly) }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    PENDIENTE
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    {{ number_format($item->ec_total_staff) }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    {{ $item->ec_total_staff != 0 ? number_format($item->ec_kw_monthly / $item->ec_total_staff, 2) : number_format(0, 2) }}
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle;">
-                    PENDIENTE
-                </td>
-                <td
-                    style="border: 1px solid #000000; text-align: -moz-left; text-align: -webkit-left; text-align: left; vertical-align: middle;">
-                    {{ $item->ec_observations }}
-                </td>
-            </tr>
+        @foreach ($report as $key_1 => $item)
+            @php
+                $totalEcKwMonthly = 0;
+                $iterationCount = 0;
+            @endphp
+            @foreach ($item as $key_2 => $value)
+                @php
+                    $totalEcKwMonthly += $value->ec_kw_monthly;
+                    $iterationCount++;
+
+                    if ($iterationCount % 12 == 0) {
+                        $totalRow = true;
+                    } else {
+                        $totalRow = false;
+                    }
+                @endphp
+                <tr>
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        {{ $value->ec_environmental_manager }}
+                    </td>
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        {{ $value->m_full_name }}
+                    </td>
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        {{ $value->ec_year }}
+                    </td>
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        {{ $value->ec_month }}
+                    </td>
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        {{ $value->ec_kw_monthly }}
+                    </td>
+                    <!-- Si es la última fila del grupo -->
+                    @if (!$totalRow)
+                        <td
+                            style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                            &nbsp;
+                        </td>
+                    @else
+                        <td
+                            style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                            {{ $totalEcKwMonthly }}
+                            @php
+                                $totalRow = false;
+                            @endphp
+                        </td>
+                    @endif
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        {{ $value->ec_total_staff }}
+                    </td>
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        {{ $value->ec_total_staff != 0 ? $value->ec_kw_monthly / $value->ec_total_staff : 0 }}
+                    </td>
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        &nbsp;
+                    </td>
+                    <td
+                        style="border: 1px solid #000000; text-align: -moz-left; text-align: -webkit-left; text-align: left; vertical-align: middle;">
+                        {{ $value->ec_observations }}
+                    </td>
+                </tr>
+            @endforeach
         @endforeach
     </tbody>
 </table>
+{{-- @dd(1) --}}
