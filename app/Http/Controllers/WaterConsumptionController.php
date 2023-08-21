@@ -400,7 +400,7 @@ class WaterConsumptionController extends Controller
                 if (count($cleanedReport) == 0) return response()->json(['file' => false, 'msg' => 'Para este rango de fechas no existen registros, verifique por favor.', 'fileName' => null, 'icon' => 'warning']);
                 // SI HAY REGISTROS
                 else {
-                    $fileName = 'REPORTE-DE-CONSUMOS-ELECTRICOS-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
+                    $fileName = 'REPORTE-DE-CONSUMOS-HÍDRICOS-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
                     Excel::store(new WaterConsumptionExport($cleanedReport, intval($request->year), $request->delegation['label']), $fileName, 'water_consumptions');
                     sleep(5);
                     return response()->json(['file' => true, 'msg' => 'Reporte generado con éxito', 'fileName' => $fileName, 'icon' => 'success']);
