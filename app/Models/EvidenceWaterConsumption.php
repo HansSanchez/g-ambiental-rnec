@@ -27,9 +27,9 @@ class EvidenceWaterConsumption extends Model
         'CreatedLabel'
     ];
 
-    public function CoResponsibilityAgreement()
+    public function WaterConsumption()
     {
-        return $this->belongsTo(CoResponsibilityAgreement::class);
+        return $this->belongsTo(WaterConsumption::class);
     }
 
     public function getCreatedLabelAttribute()

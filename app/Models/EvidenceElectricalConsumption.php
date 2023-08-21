@@ -27,9 +27,9 @@ class EvidenceElectricalConsumption extends Model
         'CreatedLabel'
     ];
 
-    public function CoResponsibilityAgreement()
+    public function ElectricalConsumption()
     {
-        return $this->belongsTo(CoResponsibilityAgreement::class);
+        return $this->belongsTo(ElectricalConsumption::class);
     }
 
     public function getCreatedLabelAttribute()

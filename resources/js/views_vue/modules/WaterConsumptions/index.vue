@@ -2,20 +2,19 @@
     <div v-if="permissions.length === 0">
         <loader-component></loader-component>
     </div>
-    <div v-else-if="permissions.browse_co_responsibility_agreements === 'browse_co_responsibility_agreements' ||
-        permissions.read_co_responsibility_agreements === 'read_co_responsibility_agreements' ||
-        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
-        permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-        permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
-        class="card text-uppercase">
+    <div v-else-if="permissions.browse_water_consumptions === 'browse_water_consumptions' ||
+        permissions.read_water_consumptions === 'read_water_consumptions' ||
+        permissions.edit_water_consumptions === 'edit_water_consumptions' ||
+        permissions.add_water_consumptions === 'add_water_consumptions' ||
+        permissions.delete_water_consumptions === 'delete_water_consumptions'" class="card text-uppercase">
         <div class="card-header text-uppercase">
             <div class="row">
                 <div class="col-md-6">
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important;">
                             <li class="breadcrumb-item active">
-                                <router-link :to="{ name: 'co-responsibility-agreements-index' }">
-                                    <b>Acuerdos de Corresponsabilidad</b>
+                                <router-link :to="{ name: 'water-consumptions-index' }">
+                                    <b>CONSUMOS HÍDRICOS</b>
                                 </router-link>
                             </li>
                         </ol>
@@ -29,31 +28,57 @@
 
                     <!-- ENCABEZADO (BOTONES Y FILTROS) -->
                     <div class="row">
-                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-5"
-                            v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements'">
-                            <button @click="update = false; resetFormCoResponsibilityAgreements(); openModal();"
-                                type="button" data-toggle="modal"
-                                data-target="#UpdateOrCreateCoResponsibilityAgreementsModal" data-backdrop="static"
-                                data-dismiss="modal" class="btn btn-success text-uppercase tip-customer btn-new w-100"
-                                title="Nueva registro">
+                        <!-- <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-2"
+                            v-if="permissions.add_water_consumptions === 'add_water_consumptions'">
+                            <button
+                                @click="update = false; resetFormWaterConsumptions(); openModal(); getCurrentYear(); getCurrentDateWithSpanishMonth();"
+                                type="button" data-toggle="modal" data-target="#UpdateOrCreateWaterConsumptionsModal"
+                                data-backdrop="static" data-dismiss="modal"
+                                class="btn btn-success text-uppercase tip-customer btn-new w-100" title="Nueva registro">
                                 <v-icon color="#FFFFFF">mdi-plus-circle</v-icon>
                             </button>
-                            <!-- End button trigger modal -->
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0">
-                            <div v-if="permissions.filter_delegations_co_responsibility_agreements === 'filter_delegations_co_responsibility_agreements'"
+                        </div> -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-0">
+                            <div v-if="permissions.filter_delegations_water_consumptions === 'filter_delegations_water_consumptions'"
                                 class="form-group mb-0">
-                                <v-select :options="delegations" @search="setDelegations" @input="queryFilter()"
+                                <v-select :options="delegations" @search="setDelegations"
+                                    @input="queryFilter(); municipalities = []; setMunicipalitiesFilter();"
                                     v-model="delegations_model" placeholder="DELEGACIONES...">
                                 </v-select>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
-                            <div class="form-group mb-0">
-                                <input type="date" class="form-control" v-model="dateFilter" @change="queryFilter()">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-0">
+                            <div v-if="permissions.filter_delegations_water_consumptions === 'filter_delegations_water_consumptions'"
+                                class="form-group mb-0">
+                                <v-select :options="municipalities" v-model="municipalities_model"
+                                    @search="setMunicipalitiesFilter" @input="queryFilter()" placeholder="MUNICIPIOS..."
+                                    :disabled="delegations_model === null ? true : false">
+                                </v-select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 w-100 pt-0 mb-1">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
+                            <div class="form-group mb-0">
+                                <select class="form-control" name="year" id="year" v-model="yearFilter"
+                                    @change="queryFilter()">
+                                    <option value="" selected disabled>AÑOS...</option>
+                                    <option v-for="(item, index) in  years" :key="index">
+                                        {{ item }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
+                            <div class="form-group mb-0">
+                                <select class="form-control" name="month" id="month" v-model="monthFilter"
+                                    @change="queryFilter()">
+                                    <option value="" selected disabled>MESES...</option>
+                                    <option v-for="(item, index) in  months" :key="index">
+                                        {{ item }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12 w-100 pt-0 mb-1">
                             <div class="input-group">
                                 <input type="search" style="border-right: none !important;" v-model="searchInput"
                                     id="search" class="form-control" @change="changeType" placeholder="Buscar...">
@@ -61,7 +86,7 @@
                                     <i class="fa-solid fa-search text-white"></i>
                                 </span>
                                 <span
-                                    v-if="permissions.generate_report_co_responsibility_agreements === 'generate_report_co_responsibility_agreements'"
+                                    v-if="permissions.generate_report_water_consumptions === 'generate_report_water_consumptions'"
                                     class="input-group-text border-search bg-success" title="Generación de reportes"
                                     data-toggle="modal" data-backdrop="static" data-target="#GenerateReportModal"
                                     @click="report = true;">
@@ -78,10 +103,10 @@
                     <!-- NOTE START MODEALES -->
 
                     <!-- START CREACIÓN Y ACTUALIZACIÓN -->
-                    <div v-show="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
-                        class="modal fade-scale" id="UpdateOrCreateCoResponsibilityAgreementsModal" tabindex="-1"
-                        role="dialog" aria-labelledby="UpdateOrCreateCoResponsibilityAgreementsLabel" aria-hidden="true">
+                    <div v-show="permissions.add_water_consumptions === 'add_water_consumptions' ||
+                        permissions.edit_water_consumptions === 'edit_water_consumptions'" class="modal fade-scale"
+                        id="UpdateOrCreateWaterConsumptionsModal" tabindex="-1" role="dialog"
+                        aria-labelledby="UpdateOrCreateWaterConsumptionsLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header" style="background: #88b76e;">
@@ -97,87 +122,21 @@
                                 </div>
                                 <div class="modal-body bv-modal">
                                     <div class="row">
-                                        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="number_of_trees_planted" rules="required">
-                                                <div slot-scope="{ errors }">
-                                                    <div class="form-group mb-0">
-                                                        <h5><b>MUNICIPIO(S) <span class="text-danger">*</span></b></h5>
-                                                        <v-select :options="municipalities" @search="setMunicipalities"
-                                                            v-model="FormCoResponsibilityAgreements.municipalities"
-                                                            placeholder="MUNICIPIOS..." multiple>
-                                                        </v-select>
-                                                    </div>
-                                                    <small>
-                                                        <b>
-                                                            <em>
-                                                                Escoja el o los municipios a los cuales el acuerdo de
-                                                                corresponsabilidad le aplica
-                                                            </em>
-                                                        </b>
-                                                    </small>
-                                                    <small>
-                                                        <p class="text-danger mb-0">
-                                                            <b>{{ errors[0] }}</b>
-                                                        </p>
-                                                    </small>
-                                                </div>
-                                            </ValidationProvider>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                            <h5 style="margin-bottom: 15px !important;">
-                                                <b>ESTADO</b>
-                                            </h5>
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" v-model="FormCoResponsibilityAgreements.state"
-                                                    class="custom-control-input" id="customSwitch1">
-                                                <label class="custom-control-label" for="customSwitch1">
-                                                    <b>VIGENTE</b>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="users" rules="required">
-                                                <div slot-scope="{ errors }">
-                                                    <div class="form-group mb-0">
-                                                        <h5><b>GESTOR(ES) AMBIENTAL(ES) <span
-                                                                    class="text-danger">*</span></b></h5>
-                                                        <v-select :options="users" @search="getUsersInput"
-                                                            v-model="FormCoResponsibilityAgreements.users"
-                                                            placeholder="GESTORES..." multiple>
-                                                        </v-select>
-                                                    </div>
-                                                    <small>
-                                                        <b>
-                                                            <em>
-                                                                Escoja el o los gestor(es) ambiental(es) involucrado(s)
-                                                            </em>
-                                                        </b>
-                                                    </small>
-                                                    <small>
-                                                        <p class="text-danger mb-0">
-                                                            <b>{{ errors[0] }}</b>
-                                                        </p>
-                                                    </small>
-                                                </div>
-                                            </ValidationProvider>
-                                        </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <ValidationProvider name="environmental_operator" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
-                                                        <h5><b>OPERADOR AMBIENTAL <span class="text-danger">*</span></b>
+                                                        <h5><b>GESTOR(A) AMBIENTAL <span class="text-danger">*</span></b>
                                                         </h5>
-                                                        <input
-                                                            v-model="FormCoResponsibilityAgreements.environmental_operator"
-                                                            type="text" name="environmental_operator"
+                                                        <input v-model="FormWaterConsumptions.environmental_manager"
+                                                            type="text" name="environmental_manager"
                                                             id="environmental_operator" class="form-control"
-                                                            placeholder="Nombre de la (Asociación de recicladores / Empresa / Gestor autorizado)"
-                                                            required>
+                                                            placeholder="Nombre del gestor(a) ambiental" required>
                                                     </div>
                                                     <small>
                                                         <b>
                                                             <em>
-                                                                Digite el nombre del operador ambiental
+                                                                Digite el nombre del gestor(a) ambiental
                                                             </em>
                                                         </b>
                                                     </small>
@@ -190,15 +149,121 @@
                                             </ValidationProvider>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="date" rules="required">
+                                            <ValidationProvider name="number_of_trees_planted" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
-                                                        <h5><b>FECHA <span class="text-danger">*</span></b></h5>
-                                                        <input v-model="FormCoResponsibilityAgreements.date" type="date"
-                                                            name="date" id="date" class="form-control"
-                                                            placeholder="Fecha de plantación" required>
+                                                        <h5><b>MUNICIPIO <span class="text-danger">*</span></b></h5>
+                                                        <v-select :options="municipalities" @search="setMunicipalities"
+                                                            v-model="FormWaterConsumptions.municipality"
+                                                            placeholder="MUNICIPIOS...">
+                                                        </v-select>
                                                     </div>
-                                                    <small><b><em>Digite la fecha de plantación</em></b></small>
+                                                    <small>
+                                                        <b>
+                                                            <em>
+                                                                Escoja el municipio al cual le va a relacionar el consumo
+                                                            </em>
+                                                        </b>
+                                                    </small>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
+                                                </div>
+                                            </ValidationProvider>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <ValidationProvider name="year" rules="required">
+                                                <div slot-scope="{ errors }">
+                                                    <div class="form-group mb-0">
+                                                        <h5><b>AÑO <span class="text-danger">*</span></b></h5>
+                                                        <div class="form-group mb-0">
+                                                            <select class="form-control" name="year" id="year"
+                                                                v-model="FormWaterConsumptions.year">
+                                                                <option v-for="(item, index) in  years" :key="index">
+                                                                    {{ item }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <small><b><em>Escoja el año al cual va a relacionar el
+                                                                consumo</em></b></small>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
+                                                </div>
+                                            </ValidationProvider>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <ValidationProvider name="month" rules="required">
+                                                <div slot-scope="{ errors }">
+                                                    <div class="form-group mb-0">
+                                                        <h5><b>MES <span class="text-danger">*</span></b></h5>
+                                                        <div class="form-group mb-0">
+                                                            <select class="form-control" name="month" id="month"
+                                                                v-model="FormWaterConsumptions.month">
+                                                                <option v-for="(item, index) in  months" :key="index">
+                                                                    {{ item }}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <small><b><em>Escoja el mes al cual va a relacionar el
+                                                                consumo</em></b></small>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
+                                                </div>
+                                            </ValidationProvider>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <ValidationProvider name="m3_monthly" rules="required">
+                                                <div slot-scope="{ errors }">
+                                                    <div class="form-group mb-0">
+                                                        <h5><b>METROS<sub>3</sub> (MES) <span
+                                                                    class="text-danger">*</span></b>
+                                                        </h5>
+                                                        <input v-model="FormWaterConsumptions.m3_monthly" type="number"
+                                                            name="m3_monthly" min="1" id="m3_monthly" class="form-control"
+                                                            placeholder="Nombre del gestor(a) ambiental" required>
+                                                    </div>
+                                                    <small>
+                                                        <b>
+                                                            <em>
+                                                                Digite la cantidad de metros cúbicos del mes
+                                                            </em>
+                                                        </b>
+                                                    </small>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
+                                                </div>
+                                            </ValidationProvider>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <ValidationProvider name="total_staff" rules="required">
+                                                <div slot-scope="{ errors }">
+                                                    <div class="form-group mb-0">
+                                                        <h5><b>TOTAL DE PERSONAL <span class="text-danger">*</span></b>
+                                                        </h5>
+                                                        <input v-model="FormWaterConsumptions.total_staff" type="number"
+                                                            name="total_staff" min="0" id="total_staff" class="form-control"
+                                                            placeholder="Nombre del gestor(a) ambiental" required>
+                                                    </div>
+                                                    <small>
+                                                        <b>
+                                                            <em>
+                                                                Digite la cantidad total de personal
+                                                            </em>
+                                                        </b>
+                                                    </small>
                                                     <small>
                                                         <p class="text-danger mb-0">
                                                             <b>{{ errors[0] }}</b>
@@ -208,10 +273,10 @@
                                             </ValidationProvider>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h5><b>OBSERVACIONES Y CAMBIOS <span class="text-danger">*</span></b>
+                                            <h5><b>OBSERVACIONES <span class="text-danger">*</span></b>
                                             </h5>
                                             <vue-editor style="background: #fff !important; margin-top: 10px;"
-                                                v-model="FormCoResponsibilityAgreements.observations"></vue-editor>
+                                                v-model="FormWaterConsumptions.observations"></vue-editor>
                                         </div>
                                     </div>
                                 </div>
@@ -220,11 +285,10 @@
                                         data-dismiss="modal">
                                         <b>CANCELAR</b>
                                     </v-btn>
-                                    <v-btn type="button"
-                                        v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                                            permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
+                                    <v-btn type="button" v-if="permissions.add_water_consumptions === 'add_water_consumptions' ||
+                                        permissions.edit_water_consumptions === 'edit_water_consumptions'"
                                         @click="createOrUpdate(); closeModal();" color="#2eb85c" small
-                                        :disabled="validateFormCoResponsibilityAgreements()"
+                                        :disabled="validateFormWaterConsumptions()"
                                         class="btn btn-success text-uppercase text-white" data-dismiss="modal">
                                         <b>{{ update ? 'Actualizar' : 'Guardar' }}</b>
                                     </v-btn>
@@ -235,10 +299,10 @@
                     <!-- END CREACIÓN Y ACTUALIZACIÓN -->
 
                     <!-- START EVIDENCIAS -->
-                    <div v-show="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
-                        class="modal fade-scale" id="EvidencesCoResponsibilityAgreementsModal" tabindex="-1" role="dialog"
-                        aria-labelledby="EvidencesCoResponsibilityAgreementsModalLabel" aria-hidden="true">
+                    <div v-show="permissions.add_water_consumptions === 'add_water_consumptions' ||
+                        permissions.edit_water_consumptions === 'edit_water_consumptions'" class="modal fade-scale"
+                        id="EvidencesWaterConsumptionsModal" tabindex="-1" role="dialog"
+                        aria-labelledby="EvidencesWaterConsumptionsModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header" style="background: #88b76e;">
@@ -268,42 +332,62 @@
                                             </vue-dropzone>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <recommendations-component></recommendations-component>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>ARCHIVOS ADJUNTOS</b></h5>
                                             <div class="table-responsive">
                                                 <table id="sub_area-table"
                                                     class="table table-sm table-bordered table-striped table-condensed bg-white">
                                                     <thead class="bg-orange headerStatic">
                                                         <tr class="text-center">
-                                                            <th class="tt-espumados">EVIDENCIA</th>
-                                                            <th class="tt-espumados">REGISTRADO</th>
-                                                            <th class="tt-espumados"
-                                                                v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
-                                                                    permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'">
+                                                            <th>EVIDENCIA</th>
+                                                            <th>REGISTRADO</th>
+                                                            <th
+                                                                v-if="permissions.edit_water_consumptions === 'edit_water_consumptions' ||
+                                                                    permissions.delete_water_consumptions === 'delete_water_consumptions'">
                                                                 OPCIÓN
                                                             </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr v-for="(itemDocument, indexDocument) in evidences"
-                                                            :key="indexDocument">
-                                                            <td class="text-lowercase text-left">
-                                                                <a :href="'/storage/co_responsibility_agreements/evidences/documents/' + itemDocument.file"
+                                                        <tr v-for="(itemEvidence, indexEvidence) in evidences"
+                                                            :key="indexEvidence">
+                                                            <td class="text-left">
+                                                                <a v-if="itemEvidence.extension === 'jpg' || itemEvidence.extension === 'png'
+                                                                    || itemEvidence.extension === 'jpeg' || itemEvidence.extension === 'gif'
+                                                                    || itemEvidence.extension === 'bmp' || itemEvidence.extension === 'tiff'
+                                                                    || itemEvidence.extension === 'tif' || itemEvidence.extension === 'webp'
+                                                                    || itemEvidence.extension === 'svg' || itemEvidence.extension === 'raw'"
+                                                                    :href="'/storage/tree_plantations/evidences/files/' + itemEvidence.file"
                                                                     download>
-                                                                    <b class="text-black">{{ itemDocument.name }}</b>
-                                                                    <span
-                                                                        class="badge badge-success text-white text-uppercase full-16 ml-3">
-                                                                        <b>DESCARGABLE</b>
-                                                                    </span>
+                                                                    <p>
+                                                                        <img :src="'/storage/water_consumptions/evidences/files/' + itemEvidence.file"
+                                                                            width="200px" height="200px">
+                                                                    </p>
+                                                                </a>
+                                                                <a v-else
+                                                                    :href="'/storage/water_consumptions/evidences/files/' + itemEvidence.file"
+                                                                    download>
+                                                                    <b class="text-black">{{ itemEvidence.name }}</b>
                                                                 </a>
                                                             </td>
                                                             <td class="text-lowercase text-center">
-                                                                {{ itemDocument.CreatedLabel }}
+                                                                {{ itemEvidence.CreatedLabel }}
                                                             </td>
-                                                            <td v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
-                                                                permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
+                                                            <td v-if="permissions.edit_water_consumptions === 'edit_water_consumptions' ||
+                                                                permissions.delete_water_consumptions === 'delete_water_consumptions'"
                                                                 class="text-center justify-content-center">
                                                                 <div class="btn-group" role="group">
-                                                                    <span @click="destroyDocument(itemDocument)"
+                                                                    <span class="text-success cursor-pointer"
+                                                                        title="Descargar adjunto">
+                                                                        <a :href="'/storage/water_consumptions/evidences/files/' + itemEvidence.file"
+                                                                            :download="itemEvidence.name">
+                                                                            <i class="fa-solid fa-download fa-2x pr-2"></i>
+                                                                        </a>
+                                                                    </span>
+                                                                    <span @click="destroyEvidence(itemEvidence)"
+                                                                        title="Eliminar adjunto"
                                                                         class="text-danger cursor-pointer">
                                                                         <i class="fas fa-trash-alt fa-2x"></i>
                                                                     </span>
@@ -328,7 +412,7 @@
                     <!-- END EVIDENCIAS -->
 
                     <!-- START GENERATE REPORTS -->
-                    <div v-show="permissions.generate_report_co_responsibility_agreements === 'generate_report_co_responsibility_agreements'"
+                    <div v-show="permissions.generate_report_water_consumptions === 'generate_report_water_consumptions'"
                         class="modal fade" id="GenerateReportModal" tabindex="-1" role="dialog"
                         aria-labelledby="GenerateReportModalTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -336,7 +420,7 @@
                                 <div class="modal-header" style="background: #88b76e">
                                     <h5 class="modal-title text-uppercase text-white">
                                         <b>{{
-                                            report ? "Reporte de Acuerdos de Corresponsabilidad" : "SIN TÍTULO"
+                                            report ? "Reporte de consumos hídricos" : "SIN TÍTULO"
                                         }}</b>
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -349,33 +433,49 @@
                                     <!-- REPORTES -->
                                     <div v-if="report" class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
-                                            <h5 class="mb-0"><b>Fechas de firmado</b></h5>
+                                            <h5 class="mb-0"><b>Fechas de consumo</b></h5>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                                             <div class="form-group mb-0">
-                                                <small class="text-danger"><b>(Desde) *</b></small>
-                                                <datepicker :language="es" v-model="FormReport.fromDay"
-                                                    :disabledDates="fromDay" :inputClass="inputClass"
-                                                    @change="validateFormReport" :format="customFormatter"
-                                                    :placeholder="fromPlaceholder">
-                                                </datepicker>
+                                                <small><b class="text-danger">(Años) *</b></small>
+                                                <select class="form-control" name="year" id="year"
+                                                    v-model="FormReport.year">
+                                                    <option value="" selected disabled>AÑOS...</option>
+                                                    <option v-for="(item, index) in  years" :key="index">
+                                                        {{ item }}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                                             <div class="form-group mb-0">
-                                                <small class="text-danger"><b>(Hasta) *</b></small>
-                                                <datepicker :language="es" v-model="FormReport.untilDay"
-                                                    :disabledDates="untilDay" :inputClass="inputClass"
-                                                    @change="validateFormReport" :format="customFormatter"
-                                                    :placeholder="untilPlaceholder">
-                                                </datepicker>
+                                                <small><b>(Meses)</b></small>
+                                                <select class="form-control" name="month" id="month"
+                                                    v-model="FormReport.month">
+                                                    <option value="" selected disabled>MESES...</option>
+                                                    <option v-for="(item, index) in  months" :key="index">
+                                                        {{ item }}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div v-if="permissions.filter_delegations_water_consumptions === 'filter_delegations_water_consumptions'"
+                                            class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
                                             <div class="form-group mb-0">
                                                 <small><b>(Delegaciones)</b></small>
                                                 <v-select :options="delegations" v-model="FormReport.delegation"
+                                                    @input="municipalities = []; setMunicipalities();"
                                                     placeholder="DELEGACIONES...">
+                                                </v-select>
+                                            </div>
+                                        </div>
+                                        <div v-if="permissions.filter_municipalities_water_consumptions === 'filter_municipalities_water_consumptions'"
+                                            class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="form-group mb-0">
+                                                <small><b>(Municipios)</b></small>
+                                                <v-select :options="municipalities" v-model="FormReport.municipality"
+                                                    placeholder="MUNICIPIOS..."
+                                                    :disabled="FormReport.delegation === null ? true : false">
                                                 </v-select>
                                             </div>
                                         </div>
@@ -385,9 +485,7 @@
                                                 <li>
                                                     Tenga en cuenta que si quiere generar un reporte debe especificar el
                                                     campo
-                                                    <b class="text-danger">(DESDE)</b>
-                                                    y el campo
-                                                    <b class="text-danger">(HASTA)</b>
+                                                    <b class="text-danger">(AÑOS)</b>
                                                     de lo contrario no se permitirá, exceptuando los botones
                                                     <b class="text-info">(MENSUAL)</b> y <b class="text-info">(ANUAL)</b>.
                                                 </li>
@@ -446,33 +544,33 @@
                     <!-- NOTE END MODEALES -->
 
                     <!-- TABLA DE INFORMACIÓN -->
-                    <div v-if="permissions.browse_co_responsibility_agreements === 'browse_co_responsibility_agreements' ||
-                        permissions.read_co_responsibility_agreements === 'read_co_responsibility_agreements' ||
-                        permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
-                        permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                        permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
+                    <div v-if="permissions.browse_water_consumptions === 'browse_water_consumptions' ||
+                        permissions.read_water_consumptions === 'read_water_consumptions' ||
+                        permissions.edit_water_consumptions === 'edit_water_consumptions' ||
+                        permissions.add_water_consumptions === 'add_water_consumptions' ||
+                        permissions.delete_water_consumptions === 'delete_water_consumptions'"
                         class="table-responsive max-h-650">
                         <table id="sub_area-table"
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th class="tt-espumados">ESTADO</th>
-                                    <th class="tt-espumados">DELEGACIÓN</th>
-                                    <th class="tt-espumados">MUNICIPIO(S)</th>
-                                    <th class="tt-espumados">OPERADOR</th>
-                                    <th class="tt-espumados">FECHA</th>
-                                    <th class="tt-espumados">OBSERVACIONES</th>
-                                    <th class="tt-espumados"
-                                        v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                                            permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
-                                            permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'">
+                                    <th>DELEGACIÓN</th>
+                                    <th>MUNICIPIO</th>
+                                    <th>GESTOR</th>
+                                    <th>AÑO</th>
+                                    <th>MES</th>
+                                    <th>METROS<sub>3</sub></th>
+                                    <th>PERSONAL</th>
+                                    <th>OBSERVACIONES</th>
+                                    <th v-if="permissions.add_water_consumptions === 'add_water_consumptions' ||
+                                        permissions.edit_water_consumptions === 'edit_water_consumptions' ||
+                                        permissions.delete_water_consumptions === 'delete_water_consumptions'">
                                         OPCIONES
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in  list " :key="index">
-                                    <td class="text- text-center" v-html="item.StateLabel"></td>
                                     <td class="text-uppercase text-center">
                                         <span class="badge badge-info text-white w-100 full-16">
                                             <b>
@@ -484,32 +582,39 @@
                                             </b>
                                         </span>
                                     </td>
-                                    <td class="text- text-left">
-                                        <span v-if="item.municipalities">
-                                            <ul class="list-custom"
-                                                v-for="(itemMunicipality, indexMunicipality) in item.municipalities"
-                                                :key="indexMunicipality">
-                                                <li class="list-custom">{{ itemMunicipality.city_name }}</li>
-                                            </ul>
-                                        </span>
+                                    <td class="text-uppercase text-center">
+                                        {{
+                                            item.municipality ?
+                                            item.municipality.city_name :
+                                            'NO APLICA'
+                                        }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ item.environmental_operator }}
+                                        {{ item.environmental_manager }}
                                     </td>
                                     <td class="text-center">
-                                        {{ item.DateLabel }}
+                                        {{ item.year }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ item.month }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ number_format(item.m3_monthly) }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ number_format(item.total_staff) }}
                                     </td>
                                     <td class="text-justify" v-html="item.observations"
                                         style="max-width: 400px !important;"></td>
-                                    <td v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements' ||
-                                        permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'
+                                    <td v-if="permissions.edit_water_consumptions === 'edit_water_consumptions' ||
+                                        permissions.delete_water_consumptions === 'delete_water_consumptions'
                                         " class="text-center justify-content-center">
                                         <div class="btn-group" role="group">
 
                                             <!-- DETALLE DEL REGISTRO -->
                                             <router-link
-                                                v-if="permissions.browse_co_responsibility_agreements === 'browse_co_responsibility_agreements'"
-                                                :to="{ name: 'co-responsibility-agreements-detail', params: { id: item.id } }"
+                                                v-if="permissions.browse_water_consumptions === 'browse_water_consumptions'"
+                                                :to="{ name: 'water-consumptions-detail', params: { id: item.id } }"
                                                 class="text-info" title="Detalle">
                                                 <i class="fas fa-eye fa-2x"></i>
                                             </router-link>
@@ -518,13 +623,12 @@
                                             <!-- EVIDENCIAS DEL REGISTRO -->
                                             <span
                                                 v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
-                                                <span v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
-                                                    permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'
-                                                    " @click="evidenceCoResponsibilityAgreements(item);"
-                                                    data-toggle="modal" title="Evidencias"
-                                                    data-target="#EvidencesCoResponsibilityAgreementsModal"
+                                                <span v-if="permissions.add_water_consumptions === 'add_water_consumptions' ||
+                                                    permissions.edit_water_consumptions === 'edit_water_consumptions'
+                                                    " @click="evidenceWaterConsumptions(item);" data-toggle="modal"
+                                                    title="Evidencias" data-target="#EvidencesWaterConsumptionsModal"
                                                     data-backdrop="static" class="cursor-pointer pl-2">
-                                                    <i v-if="item.evidence_co_responsibility_agreement.length > 0"
+                                                    <i v-if="item.evidence_water_consumption.length > 0"
                                                         class="fa-solid fa-file fa-2x text-success"></i>
                                                     <i v-else class="fa-solid fa-file fa-2x"></i>
                                                 </span>
@@ -535,10 +639,10 @@
                                             <span
                                                 v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span
-                                                    v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
+                                                    v-if="permissions.edit_water_consumptions === 'edit_water_consumptions'"
                                                     @click="update = true; writeData(item); openModal();"
                                                     data-toggle="modal" title="Editar"
-                                                    data-target="#UpdateOrCreateCoResponsibilityAgreementsModal"
+                                                    data-target="#UpdateOrCreateWaterConsumptionsModal"
                                                     data-backdrop="static" class="text-warning cursor-pointer pl-2">
                                                     <i class="fas fa-edit fa-2x"></i>
                                                 </span>
@@ -549,7 +653,7 @@
                                             <span
                                                 v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span
-                                                    v-if="permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
+                                                    v-if="permissions.delete_water_consumptions === 'delete_water_consumptions'"
                                                     @click="destroy(item); update = false" title="Eliminar"
                                                     class="text-danger cursor-pointer pl-2">
                                                     <i class="fas fa-trash fa-2x"></i>
@@ -585,7 +689,6 @@
 
 <script>
 // Importanción de paquete para diseño de mapas
-import { latLng } from "leaflet";
 import InfiniteLoading from "vue-infinite-loading"; // COMPONENTE PARA HACER UN SCROLL INFITITO EL CUAL SOLO ME HACE UNA CONSULTA INICIAL DE 10 REGISTROS ESTO SE COMPLEMENTA CON EL CONTROLADOR Y UN SIMPLEPAGINATE
 import { VueEditor } from "vue2-editor";
 import vue2Dropzone from 'vue2-dropzone'
@@ -603,18 +706,21 @@ export default {
         Datepicker,
         LoaderComponent,
     },
-    name: "CoResponsibilityAgreements",
+    name: "WaterConsumptions",
     data() {
         return {
             id: null,
-            FormCoResponsibilityAgreements: {
-                municipalities: [],
-                users: [],
-                environmental_operator: null,
-                date: null,
-                state: false,
-                observations: null,
+            FormWaterConsumptions: {
+                municipality: null,
+                environmental_manager: null,
+                year: null,
+                month: null,
+                m3_monthly: null,
+                total_staff: null,
+                observations: 'SIN OBSERVACIONES',
             },
+            years: [],
+            months: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
             update: true,
             page: 1,
             list: [],
@@ -626,24 +732,26 @@ export default {
             delegations: [],
             municipalities: [],
             users: [],
-            delegations_model: [],
-            dateFilter: null,
+            delegations_model: null,
+            municipalities_model: null,
+            yearFilter: '',
+            monthFilter: '',
             update: false,
             user: null,
             evidences: [],
-            co_responsibility_agreement_id: null,
+            water_consumption_id: null,
 
             // STAR VARIABLES PARA EL DROPZONE.JS
             csrfToken: null,
             dropzoneOptions: {
-                url: '/g-environmental-rnec/co-responsibility-agreements/evidences/storeDocument', // RUTA PARA ENVIAR AL CONTROLADOR
+                url: '/g-environmental-rnec/water-consumptions/evidences/storeEvidence', // RUTA PARA ENVIAR AL CONTROLADOR
                 thumbnailWidth: 200,
                 addRemoveLinks: true,
-                acceptedFiles: ".pdf", // RESTRINGE A DOCUMENTOS PDF
+                acceptedFiles: "image/*,.pdf", // RESTRINGE A DOCUMENTOS PDF
                 headers: { 'X-CSRF-TOKEN': this.csrfToken }, // ENVIO DE TOKEN PARA LA PETICIÓM
                 // EVENTO 'SENDING' PARA ENVIAR PARÁMETROS ADICIONALES
                 sending: function (file, xhr, formData) {
-                    formData.append("co_responsibility_agreement_id", this.co_responsibility_agreement_id); // AGREGAR EL VALOR DINÁMICO
+                    formData.append("water_consumption_id", this.water_consumption_id); // AGREGAR EL VALOR DINÁMICO
                 }.bind(this) // ASEGURARSE DE QUE 'THIS' SE REFIERA AL COMPONENTE VUE
             },
             fileAdded: false,
@@ -682,9 +790,10 @@ export default {
             untilPlaceholder: "Hasta x fecha",
             FormReport: {
                 // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
-                fromDay: null,
-                untilDay: null,
-                delegation: null
+                year: '',
+                month: '',
+                delegation: null,
+                municipality: null
             },
             day: {
                 day: new Date(Date.now()),
@@ -707,16 +816,16 @@ export default {
     props: {
     },
     methods: {
-        resetFormCoResponsibilityAgreements() {
-            this.$data["FormCoResponsibilityAgreements"] = this.$options.data.call(this)["FormCoResponsibilityAgreements"];
+        resetFormWaterConsumptions() {
+            this.$data["FormWaterConsumptions"] = this.$options.data.call(this)["FormWaterConsumptions"];
         },
         infiniteHandler($state) {
-            let api = "/g-environmental-rnec/co-responsibility-agreements/getCoResponsibilityAgreements";
+            let api = "/g-environmental-rnec/water-consumptions/getWaterConsumptions";
             axios.get(api, { params: { page: this.page, search: this.searchInput } })
                 .then(({ data }) => {
-                    if (data.coResponsibilityAgreements.data.length > 0) {
+                    if (data.waterConsumptions.data.length > 0) {
                         this.page += 1;
-                        this.list.push(...data.coResponsibilityAgreements.data);
+                        this.list.push(...data.waterConsumptions.data);
                         $state.loaded();
                     } else $state.complete();
                 }).catch(error => (error.response ? this.responseErrors(error) : ""));
@@ -727,38 +836,43 @@ export default {
             this.infiniteId += 1;
         },
         clean() {
+            const currentDate = new Date();
             this.searchInput = null;
-            this.dateFilter = null;
-            this.delegations_model = null;
+            this.yearFilter = currentDate.getFullYear().toString();
+            this.monthFilter = '';
+            this.municipalities_model = null;
             this.changeType();
+            this.setAuthenticatedUser()
         },
         queryFilter($state) {
-            let api = "/g-environmental-rnec/co-responsibility-agreements/getCoResponsibilityAgreements";
+            let api = "/g-environmental-rnec/water-consumptions/getWaterConsumptions";
             axios.get(api, {
                 params: {
                     search: this.searchInput,
                     delegations_model: this.delegations_model,
-                    dateFilter: this.dateFilter,
+                    municipalities_model: this.municipalities_model,
+                    yearFilter: this.yearFilter,
+                    monthFilter: this.monthFilter,
                 }
             }).then(({ data }) => {
                 // VACIO EL ARRAY PARA MOSTRAR LOS RESULTADOS DEL FILTRO
                 for (let i = this.list.length; i > 0; i--) this.list.pop();
 
                 // PINTO NUEVAMENTE LOS DATOS SEGÚN LOS FILTROS
-                if (data.coResponsibilityAgreements.data.length > 0) {
-                    this.list.push(...data.coResponsibilityAgreements.data);
+                if (data.waterConsumptions.data.length > 0) {
+                    this.list.push(...data.waterConsumptions.data);
                     $state.loaded();
                 } else $state.complete();
             }).catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         createOrUpdate() {
-            let url = this.update ? '/g-environmental-rnec/co-responsibility-agreements/' + this.id + '/update' : '/g-environmental-rnec/co-responsibility-agreements/store';
-            axios.post(url, this.FormCoResponsibilityAgreements)
+            let url = this.update ? '/g-environmental-rnec/water-consumptions/' + this.id + '/update' : '/g-environmental-rnec/water-consumptions/store';
+            axios.post(url, this.FormWaterConsumptions)
                 .then(response => {
                     this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                    if (!response.data.new) this.list.splice(this.list.findIndex(element => (element.id === response.data.coResponsibilityAgreement.id)), 1);
-                    this.list.unshift(response.data.coResponsibilityAgreement); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
-                    this.resetFormCoResponsibilityAgreements();
+                    if (!response.data.new) this.list.splice(this.list.findIndex(element => (element.id === response.data.waterConsumption.id)), 1);
+                    this.list.unshift(response.data.waterConsumption); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
+                    this.resetFormWaterConsumptions();
                 }) // ES UN MÉTODO PERSONALIZADO PARA MOSTRAR UNA ALERTA CON UN SWEETALERT
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
@@ -773,28 +887,28 @@ export default {
                 cancelButtonText: 'Cancelar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    axios.delete('/g-environmental-rnec/co-responsibility-agreements/' + item.id + '/destroy')
+                    axios.delete('/g-environmental-rnec/water-consumptions/' + item.id + '/destroy')
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                            this.list.splice(this.list.findIndex(element => (element.id === response.data.coResponsibilityAgreement.id)), 1);
+                            this.list.splice(this.list.findIndex(element => (element.id === response.data.waterConsumption.id)), 1);
                         }).catch(error => (error.response) ? this.responseErrors(error) : '');
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });
         },
-        evidenceCoResponsibilityAgreements(item) {
-            this.co_responsibility_agreement_id = item.id;
-            let api = "/g-environmental-rnec/co-responsibility-agreements/evidences/evidenceCoResponsibilityAgreement/" + item.id;
+        evidenceWaterConsumptions(item) {
+            this.water_consumption_id = item.id;
+            let api = "/g-environmental-rnec/water-consumptions/evidences/evidenceWaterConsumption/" + item.id;
             axios.get(api)
-                .then(({ data }) => this.evidences.push(...data.evidenceCoResponsibilityAgreements))
+                .then(({ data }) => this.evidences.push(...data.evidenceWaterConsumptions))
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
         },
-        storeDocument() {
+        storeEvidence() {
             this.$refs.myDropzone.processQueue();
         },
         handleSuccess(file, response) {
             this.alertLoading(response.timeout, response.msg, response.type)
-            if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceCoResponsibilityAgreement.id)), 1);
-            this.evidences.unshift(response.evidenceCoResponsibilityAgreement); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
+            if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceWaterConsumption.id)), 1);
+            this.evidences.unshift(response.evidenceWaterConsumption); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
             this.changeType();
         },
@@ -802,66 +916,38 @@ export default {
             this.evidences = [];
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
         },
-        destroyDocument(itemDocument) {
+        destroyEvidence(itemEvidence) {
             this.$swal({
-                title: '¿Realmente desea eliminar esta imagen?',
+                title: '¿Realmente desea eliminar esta adjunto?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, deseo eliminarla!',
+                confirmButtonText: 'Si, deseo eliminarlo!',
                 cancelButtonText: 'Cancelar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    axios.delete("/g-environmental-rnec/co-responsibility-agreements/evidences/" + itemDocument.id + "/destroyDocument")
+                    axios.delete("/g-environmental-rnec/water-consumptions/evidences/" + itemEvidence.id + "/destroyEvidence")
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                            this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceCoResponsibilityAgreement.id)), 1);
+                            this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceWaterConsumption.id)), 1);
                             this.changeType();
                         }).catch(this.response);
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });
         },
         async writeData(data = {}) {
-            /**NOTE -  CÓMO CONVERTIR STRING A FECHA PARA EDICIÓN */
-            // ASIGNACIÓN DE RESPUESTA A VARIABLE
-            let dateString = data.date;
-
-            // CONVERSIÓN DE TEXTO A FECHA
-            let date = new Date(dateString);
-
-            // OBTENCIÓN DE DÍA, MES Y AÑO
-            let day = date.getDate().toString().padStart(2, '0');
-            let month = (date.getMonth() + 1).toString().padStart(2, '0');
-            let year = date.getFullYear();
-
-            // CONSTRUCCIÓN DE LA FECHA CON EL FORMATO
-            let formattedDate = year + "-" + month + "-" + day;
-
-            // ESCRITURA DE VALORES A VARIABLES PARA EDICIÓN
             this.id = data.id
-            // MUNICIPIOS
-            let municipalities_list = []
-            data.municipalities.map((item) => {
-                municipalities_list.push({
-                    code: item.id,
-                    label: item.city_name,
-                })
-            });
-            this.FormCoResponsibilityAgreements.state = data.state === 'VIGENTE' ? true : false;
-            this.FormCoResponsibilityAgreements.municipalities = municipalities_list;
-            // GESTORES AMBIENTALES
-            let users_list = []
-            data.users.map((item) => {
-                users_list.push({
-                    code: item.id,
-                    label: item.FullName,
-                })
-            });
-            this.FormCoResponsibilityAgreements.users = users_list;
-            this.FormCoResponsibilityAgreements.environmental_operator = data.environmental_operator
-            this.FormCoResponsibilityAgreements.date = formattedDate
-            this.FormCoResponsibilityAgreements.observations = data.observations
+            this.FormWaterConsumptions.municipality = {
+                code: data.municipality.id,
+                label: data.municipality.city_name,
+            };
+            this.FormWaterConsumptions.environmental_manager = data.environmental_manager
+            this.FormWaterConsumptions.year = data.year
+            this.FormWaterConsumptions.month = data.month
+            this.FormWaterConsumptions.m3_monthly = data.m3_monthly
+            this.FormWaterConsumptions.total_staff = data.total_staff
+            this.FormWaterConsumptions.observations = data.observations
         },
         alertLoading(time, msg, type) {
             this.$toastr.Add({
@@ -925,11 +1011,6 @@ export default {
         // AGREGA ESTA FUNCIÓN PARA ABRIR EL MODAL Y ESTABLECER MODALVISIBLE EN VERDADERO
         openModal() {
             this.modalMapVisible = true;
-            // FORZAR UNA ACTUALIZACIÓN DEL MAPA DESPUÉS DE 100 MILISEGUNDOS
-            // ESTO LE DA TIEMPO AL MODAL PARA TENER SU TAMAÑO CORRECTAMENTE DEFINIDO.
-            setTimeout(() => {
-                this.$refs.mapRef.invalidateSize();
-            }, 5000);
         },
         // AGREGA ESTA FUNCIÓN PARA CERRAR EL MODAL Y ESTABLECER MODALVISIBLE EN FALSO
         closeModal() {
@@ -941,19 +1022,19 @@ export default {
         centerUpdate(center) {
             this.currentCenter = center;
         },
-        validateFormCoResponsibilityAgreements() {
-            let disabled = Object.values(this.FormCoResponsibilityAgreements).every(value => value !== null && value !== undefined && value !== "");
+        validateFormWaterConsumptions() {
+            let disabled = Object.values(this.FormWaterConsumptions).every(value => value !== null && value !== undefined && value !== "");
             return !disabled;
         },
         validateFormReport() {
             if (!this.FormTreeReport) {
-                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || key === 'month' || key === 'municipality' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
         },
         cleanFormReport() {
-            this.FormReport.fromDay = null;
-            this.FormReport.untilDay = null;
+            this.FormReport.year = '';
+            this.FormReport.month = '';
             this.setAuthenticatedUser();
         },
         customFormatter(date) {
@@ -981,17 +1062,18 @@ export default {
                     Form = this.year;
                     break;
             }
-            const url = "/g-environmental-rnec/co-responsibility-agreements/generateReport";
+            const url = "/g-environmental-rnec/water-consumptions/generateReport";
             if (Form !== null) {
                 let delegation = this.FormReport.delegation
-                axios.post(url, { ...Form, delegation })
+                let municipality = this.FormReport.municipality
+                axios.post(url, { ...Form, delegation, municipality })
                     .then(this.responseReport)
                     .catch((error) => window.toastr.warning(error, { timeOut: 2000 }));
             }
             else this.alertLoading(5000, "No se aplicó ningún filtro", "error")
         },
         responseReport(response) {
-            let fileName = "/storage/reports/co_responsibility_agreements/" + response.data.fileName;
+            let fileName = "/storage/reports/water_consumptions/" + response.data.fileName;
             let file = response.data.file;
             if (file) {
                 this.$swal({
@@ -1014,8 +1096,8 @@ export default {
         },
         getSpanishMonthName(month) {
             const spanishMonthNames = [
-                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
+                "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
             ];
             return spanishMonthNames[month];
         },
@@ -1023,11 +1105,22 @@ export default {
             const currentDate = new Date();
             const currentMonth = currentDate.getMonth();
             const monthName = this.getSpanishMonthName(currentMonth);
+            if (!this.FormWaterConsumptions.month)
+                this.FormWaterConsumptions.month = this.getSpanishMonthName(currentMonth).toString();
             return monthName;
         },
         getCurrentYear() {
             const currentDate = new Date();
+            if (!this.FormWaterConsumptions.year)
+                this.FormWaterConsumptions.year = currentDate.getFullYear().toString();
+            this.yearFilter = currentDate.getFullYear().toString();
             return currentDate.getFullYear();
+        },
+        setYears() {
+            const currentDate = new Date();
+            for (let index = 2022; index < 2029; index++) this.years.push(index.toString())
+            this.yearFilter = currentDate.getFullYear().toString();
+            return this.years;
         },
         setCsrfToken() {
             axios.get("/g-environmental-rnec/csrf-token")
@@ -1038,6 +1131,7 @@ export default {
             axios.post("/g-environmental-rnec/users/getAuthenticatedUser")
                 .then(response => {
                     this.user = response.data
+                    this.delegations_model = { code: response.data.delegation.id, label: response.data.delegation.name }
                     this.FormReport.delegation = { code: response.data.delegation.id, label: response.data.delegation.name }
                 })
                 .catch(errors => console.log(errors));
@@ -1058,7 +1152,12 @@ export default {
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
         setMunicipalities(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search } })
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormReport.delegation } })
+                .then(res => this.municipalities = res.data.data)
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
+        },
+        setMunicipalitiesFilter(search) {
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.delegations_model } })
                 .then(res => this.municipalities = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
@@ -1070,6 +1169,7 @@ export default {
         this.setPermissions();
         this.getUsersInput();
         this.setCsrfToken();
+        this.setYears();
     }
 }
 </script>

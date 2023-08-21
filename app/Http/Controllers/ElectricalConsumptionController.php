@@ -57,6 +57,7 @@ class ElectricalConsumptionController extends Controller
                 if ($request->search) $query->search($request->search);
                 // FILTRO PARA BÚSQUEDA POR AÑO
                 if ($request->yearFilter) $query->where('electrical_consumptions.year', $request->yearFilter);
+                else $query->where('electrical_consumptions.year', now()->format('Y'));
                 // FILTRO PARA BÚSQUEDA POR MES
                 if ($request->monthFilter) $query->where('electrical_consumptions.month', $request->monthFilter);
                 // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR DELEGACIÓN
@@ -65,12 +66,17 @@ class ElectricalConsumptionController extends Controller
                     if ($request->delegations_model) {
                         $delegation = json_decode($request->delegations_model);
                         $query->where('electrical_consumptions.delegation_id', $delegation->code);
+                    } else $query->where('electrical_consumptions.delegation_id', Auth::user()->delegation_id);
+                    if ($request->municipalities_model) {
+                        $municipality = json_decode($request->municipalities_model);
+                        $query->where('electrical_consumptions.municipality_id', $municipality->code);
                     }
                 }
                 // SI NO TIENE PERMISO
                 else {
-                    // PUEDE VER SOLO LOS REGISTROS DE LA DELEGACIÓN A LA CUAL PERTENECE
-                    $query->where('electrical_consumptions.delegation_id', Auth::user()->delegation_id);
+                    // PUEDE VER SOLO LOS REGISTROS DE LA DELEGACIÓN Y MUNICIPIO AL CUAL PERTENECE
+                    $query->where('electrical_consumptions.delegation_id', Auth::user()->delegation_id)
+                        ->where('electrical_consumptions.municipality_id', Auth::user()->municipality_id);
                 }
             })
             // ORDENAMIENTO POR ID

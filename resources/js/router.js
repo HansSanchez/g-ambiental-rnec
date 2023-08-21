@@ -28,7 +28,6 @@ export default new Router({
         /// ADMINISTRACIÓN
         { path: "/v/admin/users", name: "users", component: Users },
         { path: "/v/admin/audits", name: "audits", component: Audits },
-        // END
 
         // ACUERDOS
         {
@@ -77,6 +76,7 @@ export default new Router({
             name: "water-consumptions-detail",
             component: WaterConsumptionsDetail,
         },
+
         // ERROR 404
         { path: "/error-404", name: "error-404", component: NotFount },
         { path: "/v/*", redirect: "error-404" },

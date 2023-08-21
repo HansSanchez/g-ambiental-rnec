@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             DelegationsTableSeeder::class,
             MunicipalitiesTableSeeder::class,
             ElectricalConsumptionsTableSeeder::class,
+            WaterConsumptionsTableSeeder::class,
         ]);
     }
 }

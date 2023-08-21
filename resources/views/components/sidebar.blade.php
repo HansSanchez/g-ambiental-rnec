@@ -67,7 +67,7 @@
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'audits' }" class="c-sidebar-nav-link" title="Auditorias">
                     <i class="fas fa-eye c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                    Auditorias
+                    Seguimientos
                 </router-link>
             </li>
         @endif
@@ -76,7 +76,7 @@
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'users' }" class="c-sidebar-nav-link" title="Usuarios">
                     <i class="fas fa-people-group c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                    Usuarios
+                    Usuarios (AJUSTAR)
                 </router-link>
             </li>
         @endif
@@ -101,23 +101,23 @@
             </li>
         @endif
 
-        @if (array_key_exists('browse_co_responsibility_agreements', $permissions))
+        @if (array_key_exists('browse_electrical_consumptions', $permissions))
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'electrical-consumptions-index' }" class="c-sidebar-nav-link"
                     title="Consumos Eléctricos">
                     <i class="fa-solid fa-bolt c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                    C. Eléctricos (EN DESARROLLO)
+                    C. Eléctricos
                 </router-link>
             </li>
         @endif
 
 
-        @if (array_key_exists('browse_co_responsibility_agreements', $permissions))
+        @if (array_key_exists('browse_water_consumptions', $permissions))
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'water-consumptions-index' }" class="c-sidebar-nav-link"
                     title="Consumos Hídricos">
                     <i class="fa-solid fa-faucet-drip c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                    C. Hídricos (PENDIENTES)
+                    C. Hídricos
                 </router-link>
             </li>
         @endif
@@ -127,7 +127,7 @@
             <router-link :to="{ name: 'water-consumptions-index' }" class="c-sidebar-nav-link"
                 title="Manejo de los residuos">
                 <i class="fa-solid fa-recycle c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                G. Residuos (PENDIENTES)
+                G. Residuos (PENDIENTE)
             </router-link>
         </li>
     @endif

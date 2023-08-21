@@ -28,7 +28,7 @@
 
                     <!-- ENCABEZADO (BOTONES Y FILTROS) -->
                     <div class="row">
-                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-2"
+                        <!-- <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-2"
                             v-if="permissions.add_electrical_consumptions === 'add_electrical_consumptions'">
                             <button
                                 @click="update = false; resetFormElectricalConsumptions(); openModal(); getCurrentYear(); getCurrentDateWithSpanishMonth();"
@@ -37,17 +37,26 @@
                                 class="btn btn-success text-uppercase tip-customer btn-new w-100" title="Nueva registro">
                                 <v-icon color="#FFFFFF">mdi-plus-circle</v-icon>
                             </button>
-                            <!-- End button trigger modal -->
-                        </div>
-                        <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0">
+                        </div> -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-0">
                             <div v-if="permissions.filter_delegations_electrical_consumptions === 'filter_delegations_electrical_consumptions'"
                                 class="form-group mb-0">
-                                <v-select :options="delegations" @search="setDelegations" @input="queryFilter()"
+                                <v-select :options="delegations" @search="setDelegations"
+                                    @input="queryFilter(); municipalities = []; setMunicipalitiesFilter();"
                                     v-model="delegations_model" placeholder="DELEGACIONES...">
                                 </v-select>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-0">
+                            <div v-if="permissions.filter_delegations_electrical_consumptions === 'filter_delegations_electrical_consumptions'"
+                                class="form-group mb-0">
+                                <v-select :options="municipalities" v-model="municipalities_model"
+                                    @search="setMunicipalitiesFilter" @input="queryFilter()" placeholder="MUNICIPIOS..."
+                                    :disabled="delegations_model === null ? true : false">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
                             <div class="form-group mb-0">
                                 <select class="form-control" name="year" id="year" v-model="yearFilter"
                                     @change="queryFilter()">
@@ -58,7 +67,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
                             <div class="form-group mb-0">
                                 <select class="form-control" name="month" id="month" v-model="monthFilter"
                                     @change="queryFilter()">
@@ -69,7 +78,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 w-100 pt-0 mb-1">
+                        <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12 w-100 pt-0 mb-1">
                             <div class="input-group">
                                 <input type="search" style="border-right: none !important;" v-model="searchInput"
                                     id="search" class="form-control" @change="changeType" placeholder="Buscar...">
@@ -726,7 +735,8 @@ export default {
             delegations: [],
             municipalities: [],
             users: [],
-            delegations_model: [],
+            delegations_model: null,
+            municipalities_model: null,
             yearFilter: '',
             monthFilter: '',
             update: false,
@@ -829,11 +839,13 @@ export default {
             this.infiniteId += 1;
         },
         clean() {
+            const currentDate = new Date();
             this.searchInput = null;
-            this.yearFilter = '';
+            this.yearFilter = currentDate.getFullYear().toString();
             this.monthFilter = '';
-            this.delegations_model = null;
+            this.municipalities_model = null;
             this.changeType();
+            this.setAuthenticatedUser()
         },
         queryFilter($state) {
             let api = "/g-environmental-rnec/electrical-consumptions/getElectricalConsumptions";
@@ -841,6 +853,7 @@ export default {
                 params: {
                     search: this.searchInput,
                     delegations_model: this.delegations_model,
+                    municipalities_model: this.municipalities_model,
                     yearFilter: this.yearFilter,
                     monthFilter: this.monthFilter,
                 }
@@ -1106,7 +1119,9 @@ export default {
             return currentDate.getFullYear();
         },
         setYears() {
-            for (let index = 2022; index < 2043; index++) this.years.push(index.toString())
+            const currentDate = new Date();
+            for (let index = 2022; index < 2029; index++) this.years.push(index.toString())
+            this.yearFilter = currentDate.getFullYear().toString();
             return this.years;
         },
         setCsrfToken() {
@@ -1118,6 +1133,7 @@ export default {
             axios.post("/g-environmental-rnec/users/getAuthenticatedUser")
                 .then(response => {
                     this.user = response.data
+                    this.delegations_model = { code: response.data.delegation.id, label: response.data.delegation.name }
                     this.FormReport.delegation = { code: response.data.delegation.id, label: response.data.delegation.name }
                 })
                 .catch(errors => console.log(errors));
@@ -1139,6 +1155,11 @@ export default {
         },
         setMunicipalities(search) {
             axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormReport.delegation } })
+                .then(res => this.municipalities = res.data.data)
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
+        },
+        setMunicipalitiesFilter(search) {
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.delegations_model } })
                 .then(res => this.municipalities = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },

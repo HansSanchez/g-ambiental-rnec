@@ -133,6 +133,24 @@ Route::group(['middleware' => ['auth']], function () {
             });
         });
 
+
+        // GRUPO DE RUTAS PARA MÓDULO DE "CONSUMO HÍDRICO"
+        Route::group(['prefix' => 'water-consumptions'], function () {
+            Route::get('/getWaterConsumptions', [\App\Http\Controllers\WaterConsumptionController::class, 'getWaterConsumptions']);
+            Route::post('/store', [\App\Http\Controllers\WaterConsumptionController::class, 'store']);
+            Route::get('/show/{waterConsumption}', [\App\Http\Controllers\WaterConsumptionController::class, 'show']);
+            Route::post('/{waterConsumption}/update', [\App\Http\Controllers\WaterConsumptionController::class, 'update']);
+            Route::delete('/{waterConsumption}/destroy', [\App\Http\Controllers\WaterConsumptionController::class, 'destroy']);
+            Route::post('/generateReport', [\App\Http\Controllers\WaterConsumptionController::class, 'generateReport']);
+
+            // RUTAS PARA GESTIÓN DE EVIDENCIAS
+            Route::group(['prefix' => 'evidences'], function () {
+                Route::get('/evidenceWaterConsumption/{waterConsumption}', [\App\Http\Controllers\EvidenceWaterConsumptionController::class, 'evidenceWaterConsumption']);
+                Route::post('/storeEvidence', [\App\Http\Controllers\EvidenceWaterConsumptionController::class, 'storeEvidence']);
+                Route::delete('/{id}/destroyEvidence', [\App\Http\Controllers\EvidenceWaterConsumptionController::class, 'destroyEvidence']);
+            });
+        });
+
         // RUTA PARA OBTENCIÓN DE TOKEN
         Route::get('/csrf-token', function () {
             return csrf_token();
