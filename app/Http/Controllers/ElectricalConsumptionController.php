@@ -82,7 +82,7 @@ class ElectricalConsumptionController extends Controller
             // ORDENAMIENTO POR ID
             ->orderBy('electrical_consumptions.id')
             // PÁGINADO DE RESPUESTA
-            ->simplePaginate(10);
+            ->simplePaginate(12);
 
         // RESPUESTA PARA EL USUARIO
         return response()->json(['electricalConsumptions' => $electricalConsumptions]);

@@ -65,9 +65,9 @@
 
         @if (array_key_exists('browse_audits', $permissions))
             <li class="c-sidebar-nav-item">
-                <router-link :to="{ name: 'audits' }" class="c-sidebar-nav-link" title="Auditorias">
+                <router-link :to="{ name: 'follow-up' }" class="c-sidebar-nav-link" title="Seguimientos">
                     <i class="fas fa-eye c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                    Seguimientos
+                    Seguimientos (AJUSTAR)
                 </router-link>
             </li>
         @endif

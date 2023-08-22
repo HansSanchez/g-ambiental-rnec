@@ -463,7 +463,7 @@
                                         <div v-if="permissions.filter_delegations_electrical_consumptions === 'filter_delegations_electrical_consumptions'"
                                             class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
                                             <div class="form-group mb-0">
-                                                <small><b>(Delegaciones)</b></small>
+                                                <small><b class="text-danger">(Delegaciones) *</b></small>
                                                 <v-select :options="delegations" v-model="FormReport.delegation"
                                                     @input="municipalities = []; setMunicipalities();"
                                                     placeholder="DELEGACIONES...">
@@ -486,8 +486,9 @@
                                                 <li>
                                                     Tenga en cuenta que si quiere generar un reporte debe especificar el
                                                     campo
-                                                    <b class="text-danger">(AÑOS)</b>
-                                                    de lo contrario no se permitirá, exceptuando los botones
+                                                    <b class="text-danger">(AÑOS)</b> y el campo
+                                                    <b class="text-danger">(DELEGACIONES)</b> de lo contrario no se
+                                                    permitirá, exceptuando los botones
                                                     <b class="text-info">(MENSUAL)</b> y <b class="text-info">(ANUAL)</b>.
                                                 </li>
                                                 <li>
@@ -1031,7 +1032,7 @@ export default {
         },
         validateFormReport() {
             if (!this.FormTreeReport) {
-                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || key === 'month' || key === 'municipality' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                let disabled = Object.keys(this.FormReport).every(key => key === 'month' || key === 'municipality' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
         },
@@ -1154,12 +1155,12 @@ export default {
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
         setMunicipalities(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormReport.delegation } })
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormReport.delegation, filter: true } })
                 .then(res => this.municipalities = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
         setMunicipalitiesFilter(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.delegations_model } })
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.delegations_model, filter: true } })
                 .then(res => this.municipalities = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },

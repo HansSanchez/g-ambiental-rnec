@@ -12,8 +12,8 @@
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important">
                             <li class="breadcrumb-item active">
-                                <a href="/v/admin/audits">
-                                    <b>Auditorías</b>
+                                <a href="/v/admin/follow-up">
+                                    <b>Seguimientos</b>
                                 </a>
                             </li>
                         </ol>

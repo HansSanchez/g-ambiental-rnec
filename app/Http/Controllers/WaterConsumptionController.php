@@ -82,7 +82,7 @@ class WaterConsumptionController extends Controller
             // ORDENAMIENTO POR ID
             ->orderBy('water_consumptions.id')
             // PÁGINADO DE RESPUESTA
-            ->simplePaginate(10);
+            ->simplePaginate(12);
 
         // RESPUESTA PARA EL USUARIO
         return response()->json(['waterConsumptions' => $waterConsumptions]);

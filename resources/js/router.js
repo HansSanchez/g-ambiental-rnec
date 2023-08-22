@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views_vue/Home.vue";
 import Users from "./views_vue/admin/User";
-import Audits from "./views_vue/admin/Audit";
+import FollowUp from "./views_vue/admin/FollowUp";
 import NotFount from "./components/NotFountComponent";
 
 import CoResponsibilityAgreements from "./views_vue/modules/CoResponsibilityAgreements/index.vue";
@@ -27,7 +27,7 @@ export default new Router({
 
         /// ADMINISTRACIÓN
         { path: "/v/admin/users", name: "users", component: Users },
-        { path: "/v/admin/audits", name: "audits", component: Audits },
+        { path: "/v/admin/follow-up", name: "follow-up", component: FollowUp },
 
         // ACUERDOS
         {

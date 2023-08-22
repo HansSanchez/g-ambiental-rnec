@@ -18,6 +18,11 @@ class MunicipalityController extends Controller
                     $query->where('municipalities.delegation_id', $delegation->code);
                 } else $query->where('delegation_id', Auth::user()->delegation_id);
             })
+            ->where(function ($query) use ($request) {
+                if ($request->filter) {
+                    $query->where('municipalities.city_name', '<>', 'TODOS LOS MUNICIPIOS');
+                }
+            })
             ->orderBy('id', 'ASC')
             ->simplePaginate(100);
     }
