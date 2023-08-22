@@ -32,6 +32,10 @@
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
+                <b>MUNICIPIO</b>
+            </th>
+            <th
+                style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
                 <b>NOMBRE DEL USUARIO</b>
             </th>
             <th
@@ -75,6 +79,15 @@
                             ->first();
                     @endphp
                     {{ $delegation != null ? $delegation : 'SIN DELEGACIÓN' }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
+                    @php
+                        $municipality = \App\Models\Municipality::where('id', $item->u_municipality_id)
+                            ->pluck('city_name')
+                            ->first();
+                    @endphp
+                    {{ $municipality != null ? $municipality : 'SIN MUNICIPIO' }}
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">

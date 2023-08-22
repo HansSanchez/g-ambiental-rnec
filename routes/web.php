@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/permissions', [\App\Http\Controllers\HomeController::class, 'permissions']);
         });
 
-        // GRUPO DE RUTAS PARA MÓDULO DE "AUDITORIAS"
+        // GRUPO DE RUTAS PARA MÓDULO DE "SEGUIMIENTOS" (RE NOMBRADO VISUALMENTE)
         Route::group(['prefix' => 'audits'], function () {
             Route::get('/getAudits', [\App\Http\Controllers\AuditController::class, 'getAudits']);
             Route::post('/generateReport', [\App\Http\Controllers\AuditController::class, 'generateReport']);

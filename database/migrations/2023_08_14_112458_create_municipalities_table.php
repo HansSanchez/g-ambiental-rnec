@@ -19,6 +19,7 @@ class CreateMunicipalitiesTable extends Migration
             $table->string('state_name'); // NOMBRE DEL DEPARTAMENTO O DELEGACIÓN
             $table->string('city_code'); // CÓDIGO DEL MUNICIPIO
             $table->string('city_name'); // NOMBRE DEL MUNICIPIO
+            $table->longText('profile_photo_path')->nullable(); // IMAGEN DEL REPRESENTANTE
             $table->boolean('active')->default(true); // ESTADO DEL MUNICIO (ACTIVO O INACTIVO)
             $table->foreignId('delegation_id')->references('id')->on('delegations'); // SEDE O DELEGACIÓN
             $table->timestamps();

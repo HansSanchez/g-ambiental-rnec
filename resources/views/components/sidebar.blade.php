@@ -67,7 +67,7 @@
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'follow-up' }" class="c-sidebar-nav-link" title="Seguimientos">
                     <i class="fas fa-eye c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                    Seguimientos (AJUSTAR)
+                    Seguimientos
                 </router-link>
             </li>
         @endif
@@ -76,7 +76,7 @@
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'users' }" class="c-sidebar-nav-link" title="Usuarios">
                     <i class="fas fa-people-group c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                    Usuarios (AJUSTAR)
+                    Usuarios
                 </router-link>
             </li>
         @endif

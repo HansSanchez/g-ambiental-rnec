@@ -23,6 +23,7 @@ class AuditController extends Controller
                         'users.first_last_name',
                         'users.position',
                         'users.delegation_id',
+                        'users.municipality_id',
                     );
                 }
             ])
@@ -79,6 +80,7 @@ class AuditController extends Controller
                 'users.position AS u_position',
                 'users.email AS u_email',
                 'users.delegation_id AS u_delegation_id',
+                'users.municipality_id AS u_municipality_id',
             )
             ->join('users', 'users.id', '=', 'audits.user_id')
             ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $monthStartDate, $monthEndDate, $yearStartDate, $yearEndDate) {
@@ -95,14 +97,14 @@ class AuditController extends Controller
             ->groupBy('audits.id')->get();
 
         Audit::create([
-            'action' => 'GENERACIÓN DE REPORTE MASIVO DE AUDITORÍAS',
-            'module' => 'AUDITORIAS',
+            'action' => 'GENERACIÓN DE REPORTE MASIVO DE SEGUIMIENTOS',
+            'module' => 'SEGUIMIENTOS',
             'user_id' => auth()->user()->id,
         ]);
 
         if (count($report) == 0) return response()->json(['file' => false, 'msg' => 'Para este rango de fechas no existen registros, verifique por favor.', 'fileName' => null, 'icon' => 'warning']);
         else {
-            $fileName = 'REPORTE-DE-AUDITORÍAS-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
+            $fileName = 'REPORTE-DE-SEGUIMIENTOS-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
             Excel::store(new AuditsExport($report), $fileName, 'audits');
             sleep(5);
             return response()->json(['file' => true, 'msg' => 'Reporte generado con éxito', 'fileName' => $fileName, 'icon' => 'success']);

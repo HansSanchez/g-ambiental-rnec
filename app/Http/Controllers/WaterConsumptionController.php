@@ -131,7 +131,7 @@ class WaterConsumptionController extends Controller
                     'timeout' => 5000,
                     'type' => 'success',
                     'msg' => 'El registro se ha realizadó con éxito.',
-                    '$waterConsumption' => $waterConsumption,
+                    'waterConsumption' => $waterConsumption,
                     'new' => true
 
                 ]);
@@ -163,7 +163,7 @@ class WaterConsumptionController extends Controller
             $waterConsumption->User; // QUIEN REPORTÓ
 
             // RESPUESTA PARA EL USUARIO
-            return response()->json(['$waterConsumption' => $waterConsumption]);
+            return response()->json(['waterConsumption' => $waterConsumption]);
         } catch (\Exception $exception) {
             Log::error("(WaterConsumptionsController - show) ERROR => " . $exception->getMessage());
             return response()->json(['message' => $exception->getMessage(), 'icon' => 'error']);
@@ -225,7 +225,7 @@ class WaterConsumptionController extends Controller
                     'timeout' => 5000,
                     'type' => 'success',
                     'msg' => 'El registro se ha actualizado con éxito.',
-                    '$waterConsumption' => $waterConsumption,
+                    'waterConsumption' => $waterConsumption,
                     'new' => false
                 ]);
             }
@@ -269,7 +269,7 @@ class WaterConsumptionController extends Controller
                     'timeout' => 5000,
                     'type' => 'success',
                     'msg' => 'El registro se ha actualizado con éxito.',
-                    '$waterConsumption' => $waterConsumption,
+                    'waterConsumption' => $waterConsumption,
                 ]);
             }
         } catch (\Exception $exception) {

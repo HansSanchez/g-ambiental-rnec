@@ -78,7 +78,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12 w-100 pt-0 mb-1">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 w-100 pt-0 mb-1">
                             <div class="input-group">
                                 <input type="search" style="border-right: none !important;" v-model="searchInput"
                                     id="search" class="form-control" @change="changeType" placeholder="Buscar...">
@@ -225,7 +225,7 @@
                                             <ValidationProvider name="m3_monthly" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
-                                                        <h5><b>METROS<sub>3</sub> (MES) <span
+                                                        <h5><b>METROS<sup>3</sup> (MES) <span
                                                                     class="text-danger">*</span></b>
                                                         </h5>
                                                         <input v-model="FormWaterConsumptions.m3_monthly" type="number"
@@ -560,7 +560,7 @@
                                     <th>GESTOR</th>
                                     <th>AÑO</th>
                                     <th>MES</th>
-                                    <th>METROS<sub>3</sub></th>
+                                    <th>METROS<sup>3</sup></th>
                                     <th>PERSONAL</th>
                                     <th>OBSERVACIONES</th>
                                     <th v-if="permissions.add_water_consumptions === 'add_water_consumptions' ||

@@ -16,6 +16,7 @@ class Municipality extends Model
         'state_name',
         'city_code',
         'city_name',
+        'profile_photo_path',
         'active',
         'delegation_id',
         'created_at',

@@ -30,7 +30,7 @@
                     <div class="modal-header" style="background: #88b76e">
                         <h5 class="modal-title text-uppercase text-white">
                             <b>{{
-                                report ? "Reporte de auditoría" : "SIN TÍTULO"
+                                report ? "Reporte de seguimientos" : "SIN TÍTULO"
                             }}</b>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -83,7 +83,7 @@
                         </v-btn>
                         <v-btn type="button" v-if="report" @click="generateReport('FormReport')" color="#2eb85c" small
                             class="btn btn-success text-uppercase text-white" data-dismiss="modal">
-                            <b>Histórico / Rango</b>
+                            <b>GENERAR</b>
                         </v-btn>
                         <v-btn color="#e55353" small class="btn btn-danger text-white" data-dismiss="modal">
                             <b>CANCELAR</b>
@@ -175,8 +175,8 @@
                 </table>
                 <infinite-loading @distance="1" :identifier="infiniteId" @infinite="infiniteHandler" spinner="waveDots"
                     ref="infiniteHandler">
-                    <div slot="no-more">No hay más auditorías</div>
-                    <div slot="no-results">No hay auditorías</div>
+                    <div slot="no-more">No hay más seguimientos</div>
+                    <div slot="no-results">No hay seguimientos</div>
                 </infinite-loading>
             </div>
         </div>

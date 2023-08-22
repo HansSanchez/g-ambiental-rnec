@@ -78,7 +78,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12 w-100 pt-0 mb-1">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 w-100 pt-0 mb-1">
                             <div class="input-group">
                                 <input type="search" style="border-right: none !important;" v-model="searchInput"
                                     id="search" class="form-control" @change="changeType" placeholder="Buscar...">

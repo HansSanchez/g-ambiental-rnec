@@ -31,6 +31,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MEDELLÍN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -43,6 +44,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ABEJORRAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -55,6 +57,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ABRIAQUÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -67,6 +70,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALEJANDRÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -79,6 +83,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AMAGÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -91,6 +96,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AMALFI',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -103,6 +109,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANDES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -115,6 +122,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANGELÓPOLIS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -127,6 +135,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANGOSTURA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -139,6 +148,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANORÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -151,6 +161,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA FÉ DE ANTIOQUIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -163,6 +174,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANZÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -175,6 +187,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'APARTADÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -187,6 +200,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARBOLETES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -199,6 +213,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARGELIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -211,6 +226,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARMENIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -223,6 +239,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARBOSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -235,6 +252,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BELMIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -247,6 +265,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BELLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -259,6 +278,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BETANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -271,6 +291,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BETULIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -283,6 +304,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CIUDAD BOLÍVAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -295,6 +317,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BRICEÑO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -307,6 +330,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BURITICÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -319,6 +343,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÁCERES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -331,6 +356,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAICEDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -343,6 +369,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALDAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -355,6 +382,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAMPAMENTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -367,6 +395,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAÑASGORDAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -379,6 +408,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARACOLÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -391,6 +421,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARAMANTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -403,6 +434,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAREPA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -415,6 +447,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CARMEN DE VIBORAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -427,6 +460,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAROLINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -439,6 +473,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAUCASIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -451,6 +486,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIGORODÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -463,6 +499,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CISNEROS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -475,6 +512,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COCORNÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -487,6 +525,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONCEPCIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -499,6 +538,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONCORDIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -511,6 +551,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COPACABANA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -523,6 +564,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DABEIBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -535,6 +577,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DONMATÍAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -547,6 +590,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EBÉJICO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -559,6 +603,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL BAGRE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -571,6 +616,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ENTRERRÍOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -583,6 +629,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ENVIGADO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -595,6 +642,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FREDONIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -607,6 +655,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FRONTINO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -619,6 +668,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GIRALDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -631,6 +681,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GIRARDOTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -643,6 +694,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GÓMEZ PLATA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -655,6 +707,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GRANADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -667,6 +720,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUADALUPE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -679,6 +733,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUARNE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -691,6 +746,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUATAPÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -703,6 +759,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HELICONIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -715,6 +772,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HISPANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -727,6 +785,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ITAGÜÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -739,6 +798,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ITUANGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -751,6 +811,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JARDÍN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -763,6 +824,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JERICÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -775,6 +837,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA CEJA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -787,6 +850,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA ESTRELLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -799,6 +863,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA PINTADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -811,6 +876,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA UNIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -823,6 +889,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LIBORINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -835,6 +902,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MACEO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -847,6 +915,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MARINILLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -859,6 +928,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONTEBELLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -871,6 +941,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MURINDÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -883,6 +954,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MUTATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -895,6 +967,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NARIÑO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -907,6 +980,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NECOCLÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -919,6 +993,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NECHÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -931,6 +1006,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OLAYA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -943,6 +1019,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PEÑOL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -955,6 +1032,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PEQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -967,6 +1045,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUEBLORRICO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -979,6 +1058,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO BERRÍO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -991,6 +1071,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO NARE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1003,6 +1084,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO TRIUNFO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1015,6 +1097,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'REMEDIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1027,6 +1110,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RETIRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1039,6 +1123,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RIONEGRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1051,6 +1136,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SABANALARGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1063,6 +1149,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SABANETA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1075,6 +1162,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SALGAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1087,6 +1175,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ANDRÉS DE CUERQUÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1099,6 +1188,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN CARLOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1111,6 +1201,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN FRANCISCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1123,6 +1214,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JERÓNIMO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1135,6 +1227,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOSÉ DE LA MONTAÑA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1147,6 +1240,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JUAN DE URABÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1159,6 +1253,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN LUIS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1171,6 +1266,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PEDRO DE LOS MILAGROS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1183,6 +1279,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PEDRO DE URABÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1195,6 +1292,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN RAFAEL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1207,6 +1305,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ROQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1219,6 +1318,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN VICENTE FERRER',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1231,6 +1331,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA BÁRBARA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1243,6 +1344,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ROSA DE OSOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1255,6 +1357,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTO DOMINGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1267,6 +1370,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL SANTUARIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1279,6 +1383,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SEGOVIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1291,6 +1396,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SONSÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1303,6 +1409,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOPETRÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1315,6 +1422,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TÁMESIS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1327,6 +1435,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TARAZÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1339,6 +1448,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TARSO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1351,6 +1461,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TITIRIBÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1363,6 +1474,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOLEDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1375,6 +1487,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TURBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1387,6 +1500,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'URAMITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1399,6 +1513,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'URRAO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1411,6 +1526,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VALDIVIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1423,6 +1539,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VALPARAÍSO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1435,6 +1552,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VEGACHÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1447,6 +1565,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VENECIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1459,6 +1578,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VIGÍA DEL FUERTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1471,6 +1591,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YALÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1483,6 +1604,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YARUMAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1495,6 +1617,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YOLOMBÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1507,6 +1630,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YONDÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1519,6 +1643,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZARAGOZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1531,6 +1656,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARRANQUILLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1543,6 +1669,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARANOA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1555,6 +1682,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAMPO DE LA CRUZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1567,6 +1695,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CANDELARIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1579,6 +1708,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GALAPA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1591,6 +1721,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JUAN DE ACOSTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1603,6 +1734,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LURUACO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1615,6 +1747,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MALAMBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1627,6 +1760,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MANATÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1639,6 +1773,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALMAR DE VARELA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1651,6 +1786,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PIOJÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1663,6 +1799,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'POLONUEVO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1675,6 +1812,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PONEDERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1687,6 +1825,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO COLOMBIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1699,6 +1838,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'REPELÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1711,6 +1851,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SABANAGRANDE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1723,6 +1864,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SABANALARGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1735,6 +1877,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA LUCÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1747,6 +1890,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTO TOMÁS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1759,6 +1903,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOLEDAD',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1771,6 +1916,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUAN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1783,6 +1929,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TUBARÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1795,6 +1942,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'USIACURÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1807,6 +1955,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOGOTÁ',
                 'active' => 1,
                 'delegation_id' => Delegation::where('name', 'BOGOTÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sede Central Gaia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1820,6 +1969,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARTAGENA DE INDIAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1832,6 +1982,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ACHÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1844,6 +1995,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALTOS DEL ROSARIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1856,6 +2008,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARENAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1868,6 +2021,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARJONA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1880,6 +2034,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARROYOHONDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1892,6 +2047,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARRANCO DE LOBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1904,6 +2060,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALAMAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1916,6 +2073,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CANTAGALLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1928,6 +2086,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CICUCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1940,6 +2099,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÓRDOBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1952,6 +2112,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CLEMENCIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1964,6 +2125,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CARMEN DE BOLÍVAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1976,6 +2138,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL GUAMO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -1988,6 +2151,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL PEÑÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2000,6 +2164,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HATILLO DE LOBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2012,6 +2177,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MAGANGUÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2024,6 +2190,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MAHATES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2036,6 +2203,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MARGARITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2048,6 +2216,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MARÍA LA BAJA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2060,6 +2229,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONTECRISTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2072,6 +2242,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOMPÓS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2084,6 +2255,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MORALES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2096,6 +2268,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NOROSÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2108,6 +2281,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PINILLOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2120,6 +2294,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'REGIDOR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2132,6 +2307,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RÍO VIEJO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2144,6 +2320,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN CRISTÓBAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2156,6 +2333,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ESTANISLAO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2168,6 +2346,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN FERNANDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2180,6 +2359,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JACINTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2192,6 +2372,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JACINTO DEL CAUCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2204,6 +2385,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JUAN NEPOMUCENO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2216,6 +2398,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN MARTÍN DE LOBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2228,6 +2411,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PABLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2240,6 +2424,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA CATALINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2252,6 +2437,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ROSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2264,6 +2450,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ROSA DEL SUR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2276,6 +2463,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SIMITÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2288,6 +2476,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOPLAVIENTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2300,6 +2489,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TALAIGUA NUEVO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2312,6 +2502,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIQUISIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2324,6 +2515,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TURBACO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2336,6 +2528,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TURBANÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2348,6 +2541,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLANUEVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2360,6 +2554,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZAMBRANO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2372,6 +2567,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TUNJA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2384,6 +2580,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALMEIDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2396,6 +2593,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AQUITANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2408,6 +2606,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARCABUCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2420,6 +2619,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BELÉN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2432,6 +2632,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BERBEO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2444,6 +2645,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BETÉITIVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2456,6 +2658,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOAVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2468,6 +2671,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOYACÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2480,6 +2684,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BRICEÑO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2492,6 +2697,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUENAVISTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2504,6 +2710,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUSBANZÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2516,6 +2723,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALDAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2528,6 +2736,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAMPOHERMOSO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2540,6 +2749,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CERINZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2552,6 +2762,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHINAVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2564,6 +2775,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIQUINQUIRÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2576,6 +2788,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHISCAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2588,6 +2801,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2600,6 +2814,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHITARAQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2612,6 +2827,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIVATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2624,6 +2840,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CIÉNEGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2636,6 +2853,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÓMBITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2648,6 +2866,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COPER',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2660,6 +2879,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CORRALES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2672,6 +2892,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COVARACHÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2684,6 +2905,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUBARÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2696,6 +2918,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUCAITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2708,6 +2931,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUÍTIVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2720,6 +2944,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHÍQUIZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2732,6 +2957,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIVOR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2744,6 +2970,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DUITAMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2756,6 +2983,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL COCUY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2768,6 +2996,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL ESPINO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2780,6 +3009,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FIRAVITOBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2792,6 +3022,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FLORESTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2804,6 +3035,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GACHANTIVÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2816,6 +3048,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GÁMEZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2828,6 +3061,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GARAGOA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2840,6 +3074,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUACAMAYAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2852,6 +3087,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUATEQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2864,6 +3100,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAYATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2876,6 +3113,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GÜICÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2888,6 +3126,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'IZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2900,6 +3139,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JENESANO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2912,6 +3152,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JERICÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2924,6 +3165,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LABRANZAGRANDE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2936,6 +3178,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA CAPILLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2948,6 +3191,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA VICTORIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2960,6 +3204,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA UVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2972,6 +3217,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLA DE LEYVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2984,6 +3230,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MACANAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -2996,6 +3243,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MARIPÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3008,6 +3256,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MIRAFLORES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3020,6 +3269,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONGUA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3032,6 +3282,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONGUÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3044,6 +3295,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONIQUIRÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3056,6 +3308,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOTAVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3068,6 +3321,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MUZO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3080,6 +3334,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NOBSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3092,6 +3347,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NUEVO COLÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3104,6 +3360,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OICATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3116,6 +3373,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OTANCHE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3128,6 +3386,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PACHAVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3140,6 +3399,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PÁEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3152,6 +3412,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAIPA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3164,6 +3425,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAJARITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3176,6 +3438,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PANQUEBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3188,6 +3451,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAUNA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3200,6 +3464,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAYA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3212,6 +3477,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAZ DE RÍO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3224,6 +3490,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PESCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3236,6 +3503,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PISBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3248,6 +3516,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO BOYACÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3260,6 +3529,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'QUÍPAMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3272,6 +3542,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RAMIRIQUÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3284,6 +3555,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RÁQUIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3296,6 +3568,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RONDÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3308,6 +3581,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SABOYÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3320,6 +3594,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SÁCHICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3332,6 +3607,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAMACÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3344,6 +3620,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN EDUARDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3356,6 +3633,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOSÉ DE PARE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3368,6 +3646,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN LUIS DE GACENO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3380,6 +3659,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN MATEO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3392,6 +3672,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN MIGUEL DE SEMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3404,6 +3685,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PABLO DE BORBUR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3416,6 +3698,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTANA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3428,6 +3711,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA MARÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3440,6 +3724,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ROSA DE VITERBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3452,6 +3737,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA SOFÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3464,6 +3750,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SATIVANORTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3476,6 +3763,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SATIVASUR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3488,6 +3776,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SIACHOQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3500,6 +3789,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3512,6 +3802,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOCOTÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3524,6 +3815,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOCHA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3536,6 +3828,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOGAMOSO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3548,6 +3841,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOMONDOCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3560,6 +3854,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SORA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3572,6 +3867,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOTAQUIRÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3584,6 +3880,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SORACÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3596,6 +3893,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUSACÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3608,6 +3906,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUTAMARCHÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3620,6 +3919,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUTATENZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3632,6 +3932,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TASCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3644,6 +3945,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TENZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3656,6 +3958,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIBANÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3668,6 +3971,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIBASOSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3680,6 +3984,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TINJACÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3692,6 +3997,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIPACOQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3704,6 +4010,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3716,6 +4023,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOGÜÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3728,6 +4036,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TÓPAGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3740,6 +4049,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3752,6 +4062,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TUNUNGUÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3764,6 +4075,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TURMEQUÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3776,6 +4088,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TUTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3788,6 +4101,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TUTAZÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3800,6 +4114,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ÚMBITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3812,6 +4127,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VENTAQUEMADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3824,6 +4140,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VIRACACHÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3836,6 +4153,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZETAQUIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3848,6 +4166,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MANIZALES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3860,6 +4179,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AGUADAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3872,6 +4192,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANSERMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3884,6 +4205,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARANZAZU',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3896,6 +4218,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BELALCÁZAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3908,6 +4231,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHINCHINÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3920,6 +4244,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FILADELFIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3932,6 +4257,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA DORADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3944,6 +4270,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA MERCED',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3956,6 +4283,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MANZANARES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3968,6 +4296,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MARMATO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3980,6 +4309,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MARQUETALIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -3992,6 +4322,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MARULANDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4004,6 +4335,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NEIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4016,6 +4348,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NORCASIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4028,6 +4361,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PÁCORA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4040,6 +4374,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALESTINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4052,6 +4387,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PENSILVANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4064,6 +4400,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RIOSUCIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4076,6 +4413,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RISARALDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4088,6 +4426,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SALAMINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4100,6 +4439,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAMANÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4112,6 +4452,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOSÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4124,6 +4465,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUPÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4136,6 +4478,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VICTORIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4148,6 +4491,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLAMARÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4160,6 +4504,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VITERBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4172,6 +4517,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FLORENCIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4184,6 +4530,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALBANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4196,6 +4543,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BELÉN DE LOS ANDAQUÍES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4208,6 +4556,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARTAGENA DEL CHAIRÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4220,6 +4569,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CURILLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4232,6 +4582,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL DONCELLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4244,6 +4595,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL PAUJÍL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4256,6 +4608,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA MONTAÑITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4268,6 +4621,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MILÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4280,6 +4634,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MORELIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4292,6 +4647,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO RICO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4304,6 +4660,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOSÉ DEL FRAGUA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4316,6 +4673,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN VICENTE DEL CAGUÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4328,6 +4686,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOLANO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4340,6 +4699,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOLITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4352,6 +4712,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VALPARAÍSO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4364,6 +4725,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'POPAYÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4376,6 +4738,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALMAGUER',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4388,6 +4751,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARGELIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4400,6 +4764,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BALBOA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4412,6 +4777,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOLÍVAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4424,6 +4790,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUENOS AIRES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4436,6 +4803,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAJIBÍO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4448,6 +4816,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALDONO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4460,6 +4829,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALOTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4472,6 +4842,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CORINTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4484,6 +4855,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL TAMBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4496,6 +4868,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FLORENCIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4508,6 +4881,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUACHENÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4520,6 +4894,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAPÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4532,6 +4907,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'INZÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4544,6 +4920,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JAMBALÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4556,6 +4933,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA SIERRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4568,6 +4946,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA VEGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4580,6 +4959,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LÓPEZ DE MICAY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4592,6 +4972,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MERCADERES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4604,6 +4985,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MIRANDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4616,6 +4998,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MORALES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4628,6 +5011,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PADILLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4640,6 +5024,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PÁEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4652,6 +5037,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PATÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4664,6 +5050,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PIAMONTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4676,6 +5063,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PIENDAMÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4688,6 +5076,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO TEJADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4700,6 +5089,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PURACÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4712,6 +5102,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ROSAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4724,6 +5115,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN SEBASTIÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4736,6 +5128,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTANDER DE QUILICHAO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4748,6 +5141,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ROSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4760,6 +5154,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SILVIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4772,6 +5167,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOTARA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4784,6 +5180,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUÁREZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4796,6 +5193,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUCRE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4808,6 +5206,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIMBÍO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4820,6 +5219,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIMBIQUÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4832,6 +5232,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TORIBÍO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4844,6 +5245,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOTORÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4856,6 +5258,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLA RICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4868,6 +5271,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VALLEDUPAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4880,6 +5284,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AGUACHICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4892,6 +5297,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AGUSTÍN CODAZZI',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4904,6 +5310,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ASTREA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4916,6 +5323,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BECERRIL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4928,6 +5336,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOSCONIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4940,6 +5349,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIMICHAGUA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4952,6 +5362,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIRIGUANÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4964,6 +5375,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CURUMANÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4976,6 +5388,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL COPEY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -4988,6 +5401,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL PASO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5000,6 +5414,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GAMARRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5012,6 +5427,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GONZÁLEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5024,6 +5440,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA GLORIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5036,6 +5453,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA JAGUA DE IBIRICO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5048,6 +5466,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MANAURE BALCÓN DEL CESAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5060,6 +5479,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAILITAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5072,6 +5492,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PELAYA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5084,6 +5505,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUEBLO BELLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5096,6 +5518,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RÍO DE ORO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5108,6 +5531,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA PAZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5120,6 +5544,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ALBERTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5132,6 +5557,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN DIEGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5144,6 +5570,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN MARTÍN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5156,6 +5583,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TAMALAMEQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5168,6 +5596,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONTERÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5180,6 +5609,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AYAPEL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5192,6 +5622,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUENAVISTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5204,6 +5635,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CANALETE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5216,6 +5648,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CERETÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5228,6 +5661,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIMÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5240,6 +5674,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHINÚ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5252,6 +5687,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CIÉNAGA DE ORO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5264,6 +5700,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COTORRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5276,6 +5713,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA APARTADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5288,6 +5726,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LORICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5300,6 +5739,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LOS CÓRDOBAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5312,6 +5752,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOMIL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5324,6 +5765,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONTELÍBANO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5336,6 +5778,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOÑITOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5348,6 +5791,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PLANETA RICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5360,6 +5804,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUEBLO NUEVO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5372,6 +5817,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO ESCONDIDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5384,6 +5830,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO LIBERTADOR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5396,6 +5843,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PURÍSIMA DE LA CONCEPCIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5408,6 +5856,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAHAGÚN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5420,6 +5869,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ANDRÉS DE SOTAVENTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5432,6 +5882,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ANTERO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5444,6 +5895,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN BERNARDO DEL VIENTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5456,6 +5908,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN CARLOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5468,6 +5921,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOSÉ DE URÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5480,6 +5934,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PELAYO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5492,6 +5947,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIERRALTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5504,6 +5960,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TUCHÍN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5516,6 +5973,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VALENCIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5528,6 +5986,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AGUA DE DIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5540,6 +5999,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALBÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5552,6 +6012,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANAPOIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5564,6 +6025,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANOLAIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5576,6 +6038,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARBELÁEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5588,6 +6051,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BELTRÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5600,6 +6064,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BITUIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5612,6 +6077,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOJACÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5624,6 +6090,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CABRERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5636,6 +6103,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CACHIPAY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5648,6 +6116,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAJICÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5660,6 +6129,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAPARRAPÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5672,6 +6142,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÁQUEZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5684,6 +6155,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARMEN DE CARUPA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5696,6 +6168,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHAGUANÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5708,6 +6181,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5720,6 +6194,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIPAQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5732,6 +6207,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHOACHÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5744,6 +6220,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHOCONTÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5756,6 +6233,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COGUA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5768,6 +6246,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5780,6 +6259,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUCUNUBÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5792,6 +6272,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL COLEGIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5804,6 +6285,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL PEÑÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5816,6 +6298,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL ROSAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5828,6 +6311,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FACATATIVÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5840,6 +6324,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FÓMEQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5852,6 +6337,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FOSCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5864,6 +6350,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FUNZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5876,6 +6363,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FÚQUENE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5888,6 +6376,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FUSAGASUGÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5900,6 +6389,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GACHALÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5912,6 +6402,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GACHANCIPÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5924,6 +6415,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GACHETÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5936,6 +6428,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GAMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5948,6 +6441,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GIRARDOT',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5960,6 +6454,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GRANADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5972,6 +6467,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUACHETÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5984,6 +6480,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUADUAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -5996,6 +6493,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUASCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6008,6 +6506,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUATAQUÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6020,6 +6519,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUATAVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6032,6 +6532,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAYABAL DE SÍQUIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6044,6 +6545,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAYABETAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6056,6 +6558,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUTIÉRREZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6068,6 +6571,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JERUSALÉN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6080,6 +6584,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JUNÍN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6092,6 +6597,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA CALERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6104,6 +6610,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA MESA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6116,6 +6623,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA PALMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6128,6 +6636,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA PEÑA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6140,6 +6649,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA VEGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6152,6 +6662,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LENGUAZAQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6164,6 +6675,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MACHETÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6176,6 +6688,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MADRID',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6188,6 +6701,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MANTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6200,6 +6714,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MEDINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6212,6 +6727,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOSQUERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6224,6 +6740,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NARIÑO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6236,6 +6753,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NEMOCÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6248,6 +6766,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NILO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6260,6 +6779,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NIMAIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6272,6 +6792,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NOCAIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6284,6 +6805,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VENECIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6296,6 +6818,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PACHO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6308,6 +6831,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAIME',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6320,6 +6844,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PANDI',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6332,6 +6857,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PARATEBUENO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6344,6 +6870,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PASCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6356,6 +6883,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO SALGAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6368,6 +6896,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PULÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6380,6 +6909,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'QUEBRADANEGRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6392,6 +6922,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'QUETAME',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6404,6 +6935,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'QUIPILE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6416,6 +6948,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'APULO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6428,6 +6961,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RICAURTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6440,6 +6974,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ANTONIO DEL TEQUENDAMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6452,6 +6987,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN BERNARDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6464,6 +7000,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN CAYETANO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6476,6 +7013,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN FRANCISCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6488,6 +7026,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JUAN DE RIOSECO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6500,6 +7039,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SASAIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6512,6 +7052,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SESQUILÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6524,6 +7065,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SIBATÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6536,6 +7078,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SILVANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6548,6 +7091,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SIMIJACA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6560,6 +7104,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOACHA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6572,6 +7117,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOPÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6584,6 +7130,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUBACHOQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6596,6 +7143,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUESCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6608,6 +7156,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUPATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6620,6 +7169,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6632,6 +7182,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUTATAUSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6644,6 +7195,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TABIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6656,6 +7208,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TAUSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6668,6 +7221,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TENA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6680,6 +7234,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TENJO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6692,6 +7247,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIBACUY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6704,6 +7260,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIBIRITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6716,6 +7273,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOCAIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6728,6 +7286,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOCANCIPÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6740,6 +7299,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOPAIPÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6752,6 +7312,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'UBALÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6764,6 +7325,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'UBAQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6776,6 +7338,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLA DE SAN DIEGO DE UBATÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6788,6 +7351,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'UNE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6800,6 +7364,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ÚTICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6812,6 +7377,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VERGARA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6824,6 +7390,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VIANÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6836,6 +7403,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLAGÓMEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6848,6 +7416,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLAPINZÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6860,6 +7429,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLETA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6872,6 +7442,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VIOTÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6884,6 +7455,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YACOPÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6896,6 +7468,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZIPACÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6908,6 +7481,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZIPAQUIRÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6920,6 +7494,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'QUIBDÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6932,6 +7507,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ACANDÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6944,6 +7520,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALTO BAUDÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6956,6 +7533,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ATRATO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6968,6 +7546,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BAGADÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6980,6 +7559,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BAHÍA SOLANO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -6992,6 +7572,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BAJO BAUDÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7004,6 +7585,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOJAYÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7016,6 +7598,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CANTÓN DEL SAN PABLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7028,6 +7611,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARMEN DEL DARIÉN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7040,6 +7624,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÉRTEGUI',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7052,6 +7637,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONDOTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7064,6 +7650,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CARMEN DE ATRATO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7076,6 +7663,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL LITORAL DEL SAN JUAN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7088,6 +7676,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ISTMINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7100,6 +7689,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JURADÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7112,6 +7702,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LLORÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7124,6 +7715,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MEDIO ATRATO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7136,6 +7728,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MEDIO BAUDÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7148,6 +7741,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MEDIO SAN JUAN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7160,6 +7754,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NÓVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7172,6 +7767,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NUQUÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7184,6 +7780,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RÍO IRÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7196,6 +7793,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RÍO QUITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7208,6 +7806,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RIOSUCIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7220,6 +7819,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOSÉ DEL PALMAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7232,6 +7832,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SIPÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7244,6 +7845,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TADÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7256,6 +7858,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'UNGUÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7268,6 +7871,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'UNIÓN PANAMERICANA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7280,6 +7884,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NEIVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7292,6 +7897,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ACEVEDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7304,6 +7910,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AGRADO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7316,6 +7923,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AIPE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7328,6 +7936,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALGECIRAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7340,6 +7949,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALTAMIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7352,6 +7962,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARAYA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7364,6 +7975,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAMPOALEGRE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7376,6 +7988,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COLOMBIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7388,6 +8001,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ELÍAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7400,6 +8014,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GARZÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7412,6 +8027,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GIGANTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7424,6 +8040,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUADALUPE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7436,6 +8053,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HOBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7448,6 +8066,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ÍQUIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7460,6 +8079,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ISNOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7472,6 +8092,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA ARGENTINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7484,6 +8105,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA PLATA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7496,6 +8118,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NÁTAGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7508,6 +8131,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OPORAPA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7520,6 +8144,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAICOL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7532,6 +8157,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALERMO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7544,6 +8170,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALESTINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7556,6 +8183,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PITAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7568,6 +8196,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PITALITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7580,6 +8209,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RIVERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7592,6 +8222,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SALADOBLANCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7604,6 +8235,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN AGUSTÍN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7616,6 +8248,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA MARÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7628,6 +8261,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUAZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7640,6 +8274,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TARQUI',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7652,6 +8287,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TESALIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7664,6 +8300,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TELLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7676,6 +8313,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TERUEL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7688,6 +8326,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIMANÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7700,6 +8339,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLAVIEJA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7712,6 +8352,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YAGUARÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7724,6 +8365,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RIOHACHA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7736,6 +8378,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALBANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7748,6 +8391,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARRANCAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7760,6 +8404,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DIBULLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7772,6 +8417,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DISTRACCIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7784,6 +8430,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL MOLINO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7796,6 +8443,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FONSECA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7808,6 +8456,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HATONUEVO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7820,6 +8469,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA JAGUA DEL PILAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7832,6 +8482,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MAICAO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7844,6 +8495,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MANAURE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7856,6 +8508,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JUAN DEL CESAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7868,6 +8521,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'URIBIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7880,6 +8534,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'URUMITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7892,6 +8547,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLANUEVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7904,6 +8560,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA MARTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7916,6 +8573,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALGARROBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7928,6 +8586,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARACATACA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7940,6 +8599,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARIGUANÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7952,6 +8612,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CERRO DE SAN ANTONIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7964,6 +8625,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIVOLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7976,6 +8638,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CIÉNAGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -7988,6 +8651,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONCORDIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8000,6 +8664,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL BANCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8012,6 +8677,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL PIÑÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8024,6 +8690,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL RETÉN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8036,6 +8703,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FUNDACIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8048,6 +8716,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAMAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8060,6 +8729,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NUEVA GRANADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8072,6 +8742,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PEDRAZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8084,6 +8755,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PIJIÑO DEL CARMEN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8096,6 +8768,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PIVIJAY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8108,6 +8781,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PLATO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8120,6 +8794,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUEBLOVIEJO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8132,6 +8807,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'REMOLINO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8144,6 +8820,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SABANAS DE SAN ÁNGEL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8156,6 +8833,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SALAMINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8168,6 +8846,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN SEBASTIÁN DE BUENAVISTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8180,6 +8859,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ZENÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8192,6 +8872,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ANA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8204,6 +8885,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA BÁRBARA DE PINTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8216,6 +8898,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SITIONUEVO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8228,6 +8911,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TENERIFE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8240,6 +8924,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZAPAYÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8252,6 +8937,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZONA BANANERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8264,6 +8950,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLAVICENCIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8276,6 +8963,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ACACÍAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8288,6 +8976,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARRANCA DE UPÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8300,6 +8989,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CABUYARO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8312,6 +9002,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CASTILLA LA NUEVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8324,6 +9015,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN LUIS DE CUBARRAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8336,6 +9028,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUMARAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8348,6 +9041,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CALVARIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8360,6 +9054,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CASTILLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8372,6 +9067,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL DORADO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8384,6 +9080,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FUENTE DE ORO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8396,6 +9093,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GRANADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8408,6 +9106,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAMAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8420,6 +9119,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MAPIRIPÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8432,6 +9132,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MESETAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8444,6 +9145,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA MACARENA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8456,6 +9158,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'URIBE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8468,6 +9171,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LEJANÍAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8480,6 +9184,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO CONCORDIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8492,6 +9197,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO GAITÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8504,6 +9210,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO LÓPEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8516,6 +9223,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO LLERAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8528,6 +9236,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO RICO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8540,6 +9249,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RESTREPO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8552,6 +9262,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN CARLOS DE GUAROA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8564,6 +9275,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JUAN DE ARAMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8576,6 +9288,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JUANITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8588,6 +9301,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN MARTÍN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8600,6 +9314,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VISTAHERMOSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8612,6 +9327,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PASTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8624,6 +9340,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALBÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8636,6 +9353,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALDANA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8648,6 +9366,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANCUYÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8660,6 +9379,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARBOLEDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8672,6 +9392,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARBACOAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8684,6 +9405,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BELÉN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8696,6 +9418,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUESACO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8708,6 +9431,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COLÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8720,6 +9444,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONSACÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8732,6 +9457,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONTADERO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8744,6 +9470,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÓRDOBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8756,6 +9483,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUASPÚD',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8768,6 +9496,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUMBAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8780,6 +9509,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUMBITARA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8792,6 +9522,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHACHAGÜÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8804,6 +9535,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CHARCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8816,6 +9548,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL PEÑOL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8828,6 +9561,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL ROSARIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8840,6 +9574,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL TABLÓN DE GÓMEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8852,6 +9587,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL TAMBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8864,6 +9600,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FUNES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8876,6 +9613,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUACHUCAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8888,6 +9626,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAITARILLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8900,6 +9639,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUALMATÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8912,6 +9652,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ILES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8924,6 +9665,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'IMUÉS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8936,6 +9678,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'IPIALES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8948,6 +9691,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA CRUZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8960,6 +9704,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA FLORIDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8972,6 +9717,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA LLANADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8984,6 +9730,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA TOLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -8996,6 +9743,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA UNIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9008,6 +9756,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LEIVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9020,6 +9769,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LINARES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9032,6 +9782,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LOS ANDES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9044,6 +9795,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MAGÜÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9056,6 +9808,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MALLAMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9068,6 +9821,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOSQUERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9080,6 +9834,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NARIÑO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9092,6 +9847,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OLAYA HERRERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9104,6 +9860,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OSPINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9116,6 +9873,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FRANCISCO PIZARRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9128,6 +9886,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'POLICARPA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9140,6 +9899,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'POTOSÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9152,6 +9912,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PROVIDENCIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9164,6 +9925,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERRES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9176,6 +9938,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUPIALES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9188,6 +9951,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RICAURTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9200,6 +9964,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ROBERTO PAYÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9212,6 +9977,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAMANIEGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9224,6 +9990,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANDONÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9236,6 +10003,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN BERNARDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9248,6 +10016,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN LORENZO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9260,6 +10029,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PABLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9272,6 +10042,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PEDRO DE CARTAGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9284,6 +10055,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA BÁRBARA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9296,6 +10068,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTACRUZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9308,6 +10081,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAPUYES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9320,6 +10094,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TAMINANGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9332,6 +10107,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TANGUA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9344,6 +10120,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ANDRÉS DE TUMACO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9356,6 +10133,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TÚQUERRES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9368,6 +10146,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YACUANQUER',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9380,6 +10159,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÚCUTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9392,6 +10172,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ÁBREGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9404,6 +10185,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARBOLEDAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9416,6 +10198,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOCHALEMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9428,6 +10211,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUCARASICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9440,6 +10224,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÁCOTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9452,6 +10237,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÁCHIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9464,6 +10250,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHINÁCOTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9476,6 +10263,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHITAGÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9488,6 +10276,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONVENCIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9500,6 +10289,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUCUTILLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9512,6 +10302,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DURANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9524,6 +10315,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CARMEN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9536,6 +10328,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL TARRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9548,6 +10341,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL ZULIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9560,6 +10354,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GRAMALOTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9572,6 +10367,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HACARÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9584,6 +10380,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HERRÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9596,6 +10393,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LABATECA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9608,6 +10406,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA ESPERANZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9620,6 +10419,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA PLAYA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9632,6 +10432,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LOS PATIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9644,6 +10445,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LOURDES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9656,6 +10458,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MUTISCUA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9668,6 +10471,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OCAÑA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9680,6 +10484,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAMPLONA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9692,6 +10497,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAMPLONITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9704,6 +10510,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO SANTANDER',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9716,6 +10523,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RAGONVALIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9728,6 +10536,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SALAZAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9740,6 +10549,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN CALIXTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9752,6 +10562,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN CAYETANO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9764,6 +10575,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTIAGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9776,6 +10588,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SARDINATA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9788,6 +10601,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SILOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9800,6 +10614,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TEORAMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9812,6 +10627,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TIBÚ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9824,6 +10640,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOLEDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9836,6 +10653,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLA CARO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9848,6 +10666,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLA DEL ROSARIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9860,6 +10679,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARMENIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9872,6 +10692,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUENAVISTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9884,6 +10705,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALARCÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9896,6 +10718,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CIRCASIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9908,6 +10731,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CÓRDOBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9920,6 +10744,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FILANDIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9932,6 +10757,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GÉNOVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9944,6 +10770,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA TEBAIDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9956,6 +10783,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONTENEGRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9968,6 +10796,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PIJAO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9980,6 +10809,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'QUIMBAYA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -9992,6 +10822,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SALENTO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDIO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10004,6 +10835,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PEREIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10016,6 +10848,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'APÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10028,6 +10861,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BALBOA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10040,6 +10874,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BELÉN DE UMBRÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10052,6 +10887,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DOSQUEBRADAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10064,6 +10900,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUÁTICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10076,6 +10913,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA CELIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10088,6 +10926,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA VIRGINIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10100,6 +10939,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MARSELLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10112,6 +10952,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MISTRATÓ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10124,6 +10965,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUEBLO RICO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10136,6 +10978,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'QUINCHÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10148,6 +10991,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ROSA DE CABAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10160,6 +11004,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTUARIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10172,6 +11017,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUCARAMANGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10184,6 +11030,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AGUADA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10196,6 +11043,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALBANIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10208,6 +11056,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARATOCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10220,6 +11069,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARBOSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10232,6 +11082,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARICHARA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10244,6 +11095,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BARRANCABERMEJA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10256,6 +11108,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BETULIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10268,6 +11121,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOLÍVAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10280,6 +11134,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CABRERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10292,6 +11147,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALIFORNIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10304,6 +11160,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAPITANEJO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10316,6 +11173,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARCASÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10328,6 +11186,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CEPITÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10340,6 +11199,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CERRITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10352,6 +11212,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHARALÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10364,6 +11225,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHARTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10376,6 +11238,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10388,6 +11251,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHIPATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10400,6 +11264,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CIMITARRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10412,6 +11277,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONCEPCIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10424,6 +11290,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONFINES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10436,6 +11303,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CONTRATACIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10448,6 +11316,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COROMORO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10460,6 +11329,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CURITÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10472,6 +11342,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CARMEN DE CHUCURÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10484,6 +11355,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL GUACAMAYO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10496,6 +11368,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL PEÑÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10508,6 +11381,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL PLAYÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10520,6 +11394,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ENCINO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10532,6 +11407,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ENCISO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10544,6 +11420,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FLORIÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10556,6 +11433,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FLORIDABLANCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10568,6 +11446,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GALÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10580,6 +11459,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GÁMBITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10592,6 +11472,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GIRÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10604,6 +11485,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUACA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10616,6 +11498,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUADALUPE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10628,6 +11511,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAPOTÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10640,6 +11524,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAVATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10652,6 +11537,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GÜEPSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10664,6 +11550,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HATO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10676,6 +11563,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JESÚS MARÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10688,6 +11576,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JORDÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10700,6 +11589,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA BELLEZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10712,6 +11602,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LANDÁZURI',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10724,6 +11615,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA PAZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10736,6 +11628,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LEBRIJA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10748,6 +11641,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LOS SANTOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10760,6 +11654,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MACARAVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10772,6 +11667,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MÁLAGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10784,6 +11680,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MATANZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10796,6 +11693,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOGOTES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10808,6 +11706,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOLAGAVITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10820,6 +11719,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OCAMONTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10832,6 +11732,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OIBA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10844,6 +11745,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ONZAGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10856,6 +11758,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALMAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10868,6 +11771,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALMAS DEL SOCORRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10880,6 +11784,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PÁRAMO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10892,6 +11797,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PIEDECUESTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10904,6 +11810,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PINCHOTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10916,6 +11823,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUENTE NACIONAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10928,6 +11836,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO PARRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10940,6 +11849,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO WILCHES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10952,6 +11862,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RIONEGRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10964,6 +11875,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SABANA DE TORRES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10976,6 +11888,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ANDRÉS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -10988,6 +11901,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN BENITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11000,6 +11914,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN GIL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11012,6 +11927,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOAQUÍN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11024,6 +11940,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOSÉ DE MIRANDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11036,6 +11953,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN MIGUEL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11048,6 +11966,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN VICENTE DE CHUCURÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11060,6 +11979,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA BÁRBARA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11072,6 +11992,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA HELENA DEL OPÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11084,6 +12005,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SIMACOTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11096,6 +12018,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SOCORRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11108,6 +12031,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUAITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11120,6 +12044,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUCRE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11132,6 +12057,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SURATÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11144,6 +12070,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TONA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11156,6 +12083,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VALLE DE SAN JOSÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11168,6 +12096,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VÉLEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11180,6 +12109,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VETAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11192,6 +12122,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLANUEVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11204,6 +12135,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZAPATOCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11216,6 +12148,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SINCELEJO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11228,6 +12161,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUENAVISTA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11240,6 +12174,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAIMITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11252,6 +12187,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COLOSO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11264,6 +12200,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COROZAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11276,6 +12213,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COVEÑAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11288,6 +12226,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHALÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11300,6 +12239,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL ROBLE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11312,6 +12252,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GALERAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11324,6 +12265,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUARANDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11336,6 +12278,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA UNIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11348,6 +12291,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LOS PALMITOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11360,6 +12304,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MAJAGUAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11372,6 +12317,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MORROA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11384,6 +12330,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OVEJAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11396,6 +12343,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALMITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11408,6 +12356,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAMPUÉS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11420,6 +12369,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN BENITO ABAD',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11432,6 +12382,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JUAN DE BETULIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11444,6 +12395,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN MARCOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11456,6 +12408,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ONOFRE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11468,6 +12421,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PEDRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11480,6 +12434,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN LUIS DE SINCÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11492,6 +12447,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUCRE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11504,6 +12460,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTIAGO DE TOLÚ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11516,6 +12473,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TOLÚ VIEJO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11528,6 +12486,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'IBAGUÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11540,6 +12499,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALPUJARRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11552,6 +12512,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALVARADO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11564,6 +12525,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AMBALEMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11576,6 +12538,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANZOÁTEGUI',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11588,6 +12551,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARMERO GUAYABAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11600,6 +12564,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ATACO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11612,6 +12577,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAJAMARCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11624,6 +12590,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARMEN DE APICALÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11636,6 +12603,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CASABIANCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11648,6 +12616,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHAPARRAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11660,6 +12629,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COELLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11672,6 +12642,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COYAIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11684,6 +12655,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUNDAY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11696,6 +12668,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DOLORES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11708,6 +12681,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ESPINAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11720,6 +12694,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FALAN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11732,6 +12707,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FLANDES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11744,6 +12720,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FRESNO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11756,6 +12733,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUAMO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11768,6 +12746,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HERVEO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11780,6 +12759,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HONDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11792,6 +12772,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ICONONZO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11804,6 +12785,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LÉRIDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11816,6 +12798,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LÍBANO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11828,6 +12811,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN SEBASTIÁN DE MARIQUITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11840,6 +12824,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MELGAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11852,6 +12837,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MURILLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11864,6 +12850,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NATAGAIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11876,6 +12863,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ORTEGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11888,6 +12876,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALOCABILDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11900,6 +12889,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PIEDRAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11912,6 +12902,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PLANADAS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11924,6 +12915,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PRADO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11936,6 +12928,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PURIFICACIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11948,6 +12941,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RIOBLANCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11960,6 +12954,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RONCESVALLES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11972,6 +12967,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ROVIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11984,6 +12980,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SALDAÑA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -11996,6 +12993,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ANTONIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12008,6 +13006,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN LUIS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12020,6 +13019,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ISABEL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12032,6 +13032,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SUÁREZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12044,6 +13045,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VALLE DE SAN JUAN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12056,6 +13058,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VENADILLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12068,6 +13071,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLAHERMOSA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12080,6 +13084,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLARRICA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12092,6 +13097,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALI',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12104,6 +13110,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ALCALÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12116,6 +13123,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANDALUCÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12128,6 +13136,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ANSERMANUEVO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12140,6 +13149,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARGELIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12152,6 +13162,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BOLÍVAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12164,6 +13175,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUENAVENTURA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12176,6 +13188,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUADALAJARA DE BUGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12188,6 +13201,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'BUGALAGRANDE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12200,6 +13214,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CAICEDONIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12212,6 +13227,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALIMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12224,6 +13240,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CANDELARIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12236,6 +13253,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARTAGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12248,6 +13266,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'DAGUA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12260,6 +13279,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL ÁGUILA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12272,6 +13292,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CAIRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12284,6 +13305,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL CERRITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12296,6 +13318,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL DOVIO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12308,6 +13331,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FLORIDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12320,6 +13344,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GINEBRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12332,6 +13357,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'GUACARÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12344,6 +13370,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'JAMUNDÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12356,6 +13383,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA CUMBRE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12368,6 +13396,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA UNIÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12380,6 +13409,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA VICTORIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12392,6 +13422,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OBANDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12404,6 +13435,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PALMIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12416,6 +13448,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PRADERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12428,6 +13461,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RESTREPO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12440,6 +13474,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RIOFRÍO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12452,6 +13487,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ROLDANILLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12464,6 +13500,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN PEDRO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12476,6 +13513,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SEVILLA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12488,6 +13526,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TORO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12500,6 +13539,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TRUJILLO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12512,6 +13552,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TULUÁ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12524,6 +13565,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ULLOA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12536,6 +13578,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VERSALLES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12548,6 +13591,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VIJES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12560,6 +13604,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YOTOCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12572,6 +13617,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YUMBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12584,6 +13630,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ZARZAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12596,6 +13643,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARAUCA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ARAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Arauca - Chiara.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12608,6 +13656,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ARAUQUITA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ARAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Arauca - Chiara.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12620,6 +13669,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CRAVO NORTE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ARAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Arauca - Chiara.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12632,6 +13682,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'FORTUL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ARAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Arauca - Chiara.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12644,6 +13695,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO RONDÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ARAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Arauca - Chiara.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12656,6 +13708,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SARAVENA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ARAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Arauca - Chiara.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12668,6 +13721,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TAME',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ARAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Arauca - Chiara.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12680,6 +13734,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'YOPAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12692,6 +13747,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'AGUAZUL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12704,6 +13760,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CHÁMEZA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12716,6 +13773,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'HATO COROZAL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12728,6 +13786,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA SALINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12740,6 +13799,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MANÍ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12752,6 +13812,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MONTERREY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12764,6 +13825,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'NUNCHÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12776,6 +13838,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'OROCUÉ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12788,6 +13851,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PAZ DE ARIPORO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12800,6 +13864,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PORE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12812,6 +13877,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'RECETOR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12824,6 +13890,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SABANALARGA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12836,6 +13903,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SÁCAMA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12848,6 +13916,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN LUIS DE PALENQUE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12860,6 +13929,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TÁMARA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12872,6 +13942,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TAURAMENA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12884,6 +13955,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TRINIDAD',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12896,6 +13968,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLANUEVA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12908,6 +13981,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MOCOA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12920,6 +13994,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'COLÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12932,6 +14007,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'ORITO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12944,6 +14020,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO ASÍS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12956,6 +14033,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO CAICEDO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12968,6 +14046,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO GUZMÁN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12980,6 +14059,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO LEGUÍZAMO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -12992,6 +14072,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SIBUNDOY',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13004,6 +14085,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN FRANCISCO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13016,6 +14098,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN MIGUEL',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13028,6 +14111,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTIAGO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13040,6 +14124,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VALLE DEL GUAMUEZ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13052,6 +14137,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'VILLAGARZÓN',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13064,6 +14150,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN ANDRÉS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SAN ANDRÉS Y PROVIDENCIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/San Andrés y Provicencia - Mr. Crab.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13076,6 +14163,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PROVIDENCIA Y SANTA CATALINA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SAN ANDRÉS Y PROVIDENCIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/San Andrés y Provicencia - Mr. Crab.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13088,6 +14176,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LETICIA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'AMAZONAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Amazonas - Onca.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13100,6 +14189,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO NARIÑO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'AMAZONAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Amazonas - Onca.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13112,6 +14202,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'INÍRIDA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'GUAINÍA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guinía - Biku.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13124,6 +14215,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SAN JOSÉ DEL GUAVIARE',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'GUAVIARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guaviare - Titan Nare.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13136,6 +14228,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CALAMAR',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'GUAVIARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guaviare - Titan Nare.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13148,6 +14241,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'EL RETORNO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'GUAVIARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guaviare - Titan Nare.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13160,6 +14254,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MIRAFLORES',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'GUAVIARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guaviare - Titan Nare.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13172,6 +14267,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'MITÚ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VAUPÉS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vaupés - Dasé.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13184,6 +14280,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CARURÚ',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VAUPÉS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vaupés - Dasé.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13196,6 +14293,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TARAIRA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VAUPÉS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vaupés - Dasé.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13208,6 +14306,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'PUERTO CARREÑO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VICHADA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vichada_Lapa_Lupe.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13220,6 +14319,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'LA PRIMAVERA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VICHADA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vichada_Lapa_Lupe.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13232,6 +14332,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'SANTA ROSALÍA',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VICHADA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vichada_Lapa_Lupe.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13244,6 +14345,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'CUMARIBO',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VICHADA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vichada_Lapa_Lupe.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13256,6 +14358,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'AMAZONAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Amazonas - Onca.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13268,6 +14371,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ANTIOQUIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Antioquia - Duki.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13280,6 +14384,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ARAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Arauca - Chiara.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13292,6 +14397,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'ATLÁNTICO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Atlantico_titi_Tico.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13305,6 +14411,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOLÍVAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Bolivar_loro_RR_Registro.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13317,6 +14424,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'BOYACÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Boyacá -Güya 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13329,6 +14437,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CALDAS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caldas_momota_Momota.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13341,6 +14450,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAQUETÁ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Caquetá - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13353,6 +14463,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CASANARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Casanare - Goli.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13365,6 +14476,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cauca - Kotona.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13377,6 +14489,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CESAR')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cesar - Bissie Yungue.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13389,6 +14502,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CHOCÓ')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Chocó - Regina.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13401,6 +14515,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CÓRDOBA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cordoba - mono.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13413,6 +14528,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'CUNDINAMARCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Cundinamarca_chihiza.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13425,6 +14541,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'GUAINÍA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guinía - Biku.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13437,6 +14554,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'GUAVIARE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guaviare - Titan Nare.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13449,6 +14567,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'HUILA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Huila - Danti.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13461,6 +14580,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'LA GUAJIRA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Guajira_tortuga_Sawaimn.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13473,6 +14593,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'MAGDALENA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Magdalena - Ciclón.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13485,6 +14606,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'META')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Meta -Kora.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13497,6 +14619,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NARIÑO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Nariño - Alexis.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13509,6 +14632,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'NORTE DE SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/N. Santander - Motibari.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13521,6 +14645,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'PUTUMAYO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Putumayo - Renec 2.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13533,6 +14658,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'QUINDÍO')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Quindío Lori.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13545,6 +14671,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'RISARALDA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Risaralda - Zarihuella.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13557,6 +14684,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SAN ANDRÉS Y PROVIDENCIA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/San Andrés y Provicencia - Mr. Crab.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13569,6 +14697,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SANTANDER')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Santader - Antonia.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13581,6 +14710,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'SUCRE')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Sucre_Iguana_Rigu_Rigu.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13593,6 +14723,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'TOLIMA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Tolima - Ozzy.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13605,6 +14736,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VALLE DEL CAUCA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Valle del Cauca - Valluno.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13617,6 +14749,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VAUPÉS')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vaupés - Dasé.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -13629,6 +14762,7 @@ class MunicipalitiesTableSeeder extends Seeder
                 'city_name' => 'TODOS LOS MUNICIPIOS',
                 'active' => true,
                 'delegation_id' => Delegation::where('name', 'VICHADA')->value('id'),
+                'profile_photo_path' => '/assets/img/representantes/Vichada_Lapa_Lupe.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

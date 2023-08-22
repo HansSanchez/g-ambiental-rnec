@@ -39,6 +39,7 @@ class User extends \TCG\Voyager\Models\User
         'phone_number',
         'position',
         'delegation_id',
+        'municipality_id',
         'current_team_id',
         'profile_photo_path',
     ];
@@ -94,6 +95,11 @@ class User extends \TCG\Voyager\Models\User
     public function Delegation(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Delegation::class);
+    }
+
+    public function Municipality(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Municipality::class);
     }
 
     public function TreePlantations(): \Illuminate\Database\Eloquent\Relations\HasMany

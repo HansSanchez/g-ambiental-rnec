@@ -26,6 +26,9 @@ class UserController extends Controller
                 User::with([
                     'delegation' => function ($query) {
                         $query->select('delegations.id', 'delegations.name');
+                    },
+                    'municipality' => function ($query) {
+                        $query->select('municipalities.id', 'municipalities.city_name', 'municipalities.profile_photo_path');
                     }
                 ])
                 ->where('id', $id)
@@ -51,8 +54,11 @@ class UserController extends Controller
                 'delegation' => function ($query) {
                     $query->select('delegations.id', 'delegations.name');
                 },
+                'municipality' => function ($query) {
+                    $query->select('municipalities.id', 'municipalities.city_name', 'municipalities.profile_photo_path');
+                },
                 'role' => function ($query) {
-                    $query->select('roles.id', 'roles.name');
+                    $query->select('roles.id', 'roles.name', 'roles.display_name');
                 }
             ])
             ->where(function ($query) use ($request, $day) {
@@ -66,6 +72,7 @@ class UserController extends Controller
 
             ->orderBy('users.first_name')
             ->simplePaginate(50);
+
         return response()->json(['users' => $users, 'role' => auth()->user()->role->name]);
     }
 
@@ -88,7 +95,9 @@ class UserController extends Controller
             $user->second_last_name = mb_strtoupper($request->second_last_name);
             $user->password = Hash::make($request->personal_id);
             $user->position = mb_strtoupper($request->position);
+            $user->active = $request->active == true ? 'ACTIVO' : 'INACTIVO';
             $user->delegation_id = $request->delegation['code']; // DELEGACIÓN DEL USUARIO
+            $user->municipality_id = $request->municipality['code']; // MUNICIPIO DEL USUARIO
             $user->role_id = $request->role['code']; // ROL DEL USUARIO
             $user->save();
 
@@ -101,6 +110,7 @@ class UserController extends Controller
 
             // RELACIONES DEL USUARIO
             $user->delegation;
+            $user->municipality;
             $user->role;
 
             // RESPUESTA AL USUARIO
@@ -175,10 +185,11 @@ class UserController extends Controller
                 'second_last_name' => mb_strtoupper($request->second_last_name),
                 'position' => mb_strtoupper($request->position),
                 'phone_number' => $request->phone_number,
-                'active' => $request->active,
+                'active' => $request->active == true ? 'ACTIVO' : 'INACTIVO',
                 'email' => $request->email == null ? null : mb_strtolower($request->email),
                 'password' => Hash::make($request->personal_id),
                 'delegation_id' => $request->delegation['code'], // DELEGACIÓN DEL FUNCIONARIO
+                'municipality_id' => $request->municipality['code'], // DELEGACIÓN DEL FUNCIONARIO
                 'role_id' => $request->role['code'], // ROL DEL FUNCIONARIO
             ]);
 
@@ -192,6 +203,7 @@ class UserController extends Controller
 
             // RELACIONES DEL USUARIO
             $user->delegation;
+            $user->municipality;
             $user->role;
 
             // RESPUESTA AL USUARIO
@@ -250,6 +262,7 @@ class UserController extends Controller
 
             // ENVÍO DE RELACIONES AL FRONTEND
             $user->delegation;
+            $user->municipality;
             $user->role;
 
             // RESPUESTA PARA EL CLIENTE

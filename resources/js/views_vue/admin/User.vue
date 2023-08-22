@@ -56,11 +56,11 @@
                                 <span class="input-group-text border-search bg-info" title="Buscar" @click="$emit('Enter')">
                                     <i class="fa-solid fa-search text-white"></i>
                                 </span>
-                                <span v-if="permissions.import_massive_users === 'import_massive_users'"
+                                <!-- <span v-if="permissions.import_massive_users === 'import_massive_users'"
                                     class="input-group-text border-search bg-warning" title="Cargue masivo"
                                     data-toggle="modal" data-backdrop="static" data-target="#ImportUsersModal">
                                     <i class="fa-solid fa-upload text-white"></i>
-                                </span>
+                                </span> -->
                                 <span class="input-group-text border-custom bg-dark" title="Refrescar" @click="clean">
                                     <i class="fa-solid fa-rotate text-white"></i>
                                 </span>
@@ -92,13 +92,13 @@
                                                 :src="'/storage/users/' + FormPhoto.profile_photo_path" width="150px"
                                                 height="100%" alt="">
                                             <img v-if="!FormPhoto.profile_photo_path"
-                                                src="/assets/img/avatars/pngwing.com.png" width="150px" height="100%"
-                                                alt="">
+                                                :src="FormPhoto.municipality ? FormPhoto.municipality.profile_photo_path : '/assets/img/avatars/pngwing.com.png'"
+                                                width="150px" height="100%" alt="">
                                             <hr>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12">
                                             <ValidationProvider name="name" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group">
@@ -115,14 +115,26 @@
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                                            <h5 style="margin-bottom: 15px !important;">
+                                                <b>ESTADO</b>
+                                            </h5>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" v-model="FormUser.active"
+                                                    class="custom-control-input" id="customSwitch1">
+                                                <label class="custom-control-label" for="customSwitch1">
+                                                    <b>ACTIVO</b>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <ValidationProvider name="name" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group">
                                                         <h5><b>Primer nombre <span class="text-danger">*</span></b></h5>
                                                         <input v-model="FormUser.first_name" type="text" name="first_name"
                                                             id="first_name" class="form-control"
-                                                            placeholder="Primer nombre del funcionari@" required>
+                                                            placeholder="Primer nombre el/la funcionari@" required>
                                                     </div>
                                                     <small>
                                                         <p class="text-danger mb-3">
@@ -132,7 +144,7 @@
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <h5><b>Segundo nombre</b></h5>
                                                 <input v-model="FormUser.second_name" type="text" name="second_name"
@@ -140,14 +152,14 @@
                                                     placeholder="Segundo nombre del funcionari@" required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <ValidationProvider name="name" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group">
                                                         <h5><b>Primer apellido <span class="text-danger">*</span></b></h5>
                                                         <input v-model="FormUser.first_last_name" type="text"
                                                             name="first_last_name" id="first_last_name" class="form-control"
-                                                            placeholder="Primer apellido del funcionari@" required>
+                                                            placeholder="Primer apellido el/la funcionari@" required>
                                                     </div>
                                                     <small>
                                                         <p class="text-danger mb-3">
@@ -157,7 +169,7 @@
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <h5><b>Segundo apellido</b></h5>
                                                 <input v-model="FormUser.second_last_name" type="text"
@@ -165,14 +177,14 @@
                                                     placeholder="Segundo apellido del funcionari@" required>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <ValidationProvider name="phone_number" rules="required|email">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group">
                                                         <h5><b>Correo electrónico <span class="text-danger">*</span></b>
                                                         </h5>
                                                         <input v-model="FormUser.email" type="email" name="email" id="email"
-                                                            class="form-control" placeholder="Correo del/a colaborador/a">
+                                                            class="form-control" placeholder="Correo deL funcionari@">
                                                     </div>
                                                     <small>
                                                         <p class="text-danger mb-3">
@@ -182,14 +194,14 @@
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <ValidationProvider name="phone_number" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group">
                                                         <h5><b>Celular <span class="text-danger">*</span></b></h5>
                                                         <input v-model="FormUser.phone_number" type="number"
                                                             name="phone_number" id="phone_number" class="form-control"
-                                                            placeholder="Número de celular del colaborador" required>
+                                                            placeholder="Número de celular el/la funcionari@" required>
                                                     </div>
                                                     <small>
                                                         <p class="text-danger mb-3">
@@ -205,7 +217,25 @@
                                                     <div class="form-group">
                                                         <h5><b>Delegaciones <span class="text-danger">*</span></b></h5>
                                                         <v-select :options="delegations" @search="setDelegations"
+                                                            @input="municipalities = []; setMunicipalitiesFilter();"
                                                             v-model="FormUser.delegation" placeholder="Buscar...">
+                                                        </v-select>
+                                                    </div>
+                                                    <p class="text-danger">
+                                                        <b>{{ errors[0] }}</b>
+                                                    </p>
+                                                </div>
+                                            </ValidationProvider>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <ValidationProvider name="phone_number" rules="required">
+                                                <div slot-scope="{ errors }">
+                                                    <div class="form-group">
+                                                        <h5><b>Municipios <span class="text-danger">*</span></b></h5>
+                                                        <v-select :options="municipalities"
+                                                            @search="setMunicipalitiesFilter"
+                                                            v-model="FormUser.municipality" placeholder="Buscar..."
+                                                            :disabled="FormUser.delegation === null ? true : false">
                                                         </v-select>
                                                     </div>
                                                     <p class="text-danger">
@@ -231,32 +261,14 @@
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <ValidationProvider name="position" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group">
                                                         <h5><b>Cargo <span class="text-danger">*</span></b></h5>
                                                         <input v-model="FormUser.position" type="text" name="position"
                                                             id="position" class="form-control"
-                                                            placeholder="Cargo a desempeñar" required>
-                                                    </div>
-                                                    <small>
-                                                        <p class="text-danger mb-3">
-                                                            <b>{{ errors[0] }}</b>
-                                                        </p>
-                                                    </small>
-                                                </div>
-                                            </ValidationProvider>
-                                        </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="position" rules="required">
-                                                <div slot-scope="{ errors }">
-                                                    <div class="form-group">
-                                                        <h5><b>ESTADO <span class="text-danger">*</span></b></h5>
-                                                        <select class="form-control" v-model="FormUser.active" id="active">
-                                                            <option value="ACTIVO">ACTIVO</option>
-                                                            <option value="INACTIVO">INACTIVO</option>
-                                                        </select>
+                                                            placeholder="Cargo a desempeñar por el/la funcionari@" required>
                                                     </div>
                                                     <small>
                                                         <p class="text-danger mb-3">
@@ -275,7 +287,7 @@
                                     <v-btn type="button" v-if="permissions.add_users === 'add_users' ||
                                         permissions.edit_users === 'edit_users'" @click="createOrUpdate();"
                                         color="#2eb85c" small class="btn btn-success text-uppercase text-white"
-                                        data-dismiss="modal">
+                                        data-dismiss="modal" :disabled="validateFormUser()">
                                         <b>{{ update ? 'Actualizar' : 'Guardar' }}</b>
                                     </v-btn>
                                 </div>
@@ -416,6 +428,7 @@
                             <th class="tt-espumados">NOMBRE</th>
                             <th class="tt-espumados">CORREO ELECTRÓNICO</th>
                             <th class="tt-espumados" width="200px">DELEGACIÓN</th>
+                            <th class="tt-espumados" width="200px">MUNICIPIO</th>
                             <th class="tt-espumados" width="200px">CREAD@</th>
                             <th v-if="permissions.browse_users === 'browse_users' ||
                                 permissions.read_users === 'read_users' ||
@@ -438,8 +451,8 @@
                                     height: 50px !important;">
                             </td>
                             <td v-if="!item.profile_photo_path" class="text-center defaultCenter" width="52px">
-                                <img src="/assets/img/avatars/pngwing.com.png" class="defaultCenter"
-                                    @click="selectedUser = item; url = null" data-toggle="modal"
+                                <img :src="item.municipality ? item.municipality.profile_photo_path : '/assets/img/avatars/pngwing.com.png'"
+                                    class="defaultCenter" @click="selectedUser = item; url = null" data-toggle="modal"
                                     data-target="#UpdateProfileImage" style="border-radius: 20px !important; cursor: pointer;
                                     max-width: 50px !important;
                                     width: 50px !important;
@@ -460,6 +473,13 @@
                                     'SIN DELEGACIÓN'
                                 }}
                             </td>
+                            <td class="text-uppercase text-center">
+                                {{
+                                    item.municipality ?
+                                    item.municipality.city_name :
+                                    'SIN MUNICIPIO'
+                                }}
+                            </td>
                             <td class="text-lowercase text-center">
                                 {{ item.CreatedLabel }}
                             </td>
@@ -471,9 +491,9 @@
                                 class="text-center justify-content-center">
                                 <div class="btn-group" role="group">
                                     <span v-if="permissions.edit_users === 'edit_users'"
-                                        @click="update = true; writeData(item);" data-toggle="modal" title="Editar"
-                                        data-target="#UpdateOrCreateUsersModal" data-backdrop="static"
-                                        class="text-warning cursor-pointer">
+                                        @click="update = true; writeData(item); municipalities = []; setMunicipalitiesFilter();"
+                                        data-toggle="modal" title="Editar" data-target="#UpdateOrCreateUsersModal"
+                                        data-backdrop="static" class="text-warning cursor-pointer">
                                         <i class="fas fa-edit fa-2x"></i>
                                     </span>
                                 </div>
@@ -517,12 +537,14 @@ export default {
                 email: null,
                 position: null,
                 phone_number: '',
-                active: 'ACTIVO',
+                active: false,
                 delegation: null,
+                municipality: null,
                 role: { code: 2, label: 'Normal User' },
             },
             FormPhoto: {
                 profile_photo_path: null,
+                municipality: null,
             },
             FormImportUsers: {
                 file: null,
@@ -537,6 +559,7 @@ export default {
             url: null,
             infiniteId: +new Date(),
             delegations: [],
+            municipalities: [],
             roles: [],
             searchInput: '',
             setTimeoutSearch: '',
@@ -665,14 +688,27 @@ export default {
                 this.FormUser.second_name = data.second_name.toUpperCase();
                 this.FormUser.first_last_name = data.first_last_name.toUpperCase();
                 this.FormUser.second_last_name = data.second_last_name.toUpperCase();
-                this.FormUser.active = data.active;
+                this.FormUser.active = (data.active === 'ACTIVO') ? true : false;
                 this.FormUser.email = data.email;
                 this.FormUser.phone_number = data.phone_number;
                 this.FormUser.position = data.position;
                 this.FormPhoto.profile_photo_path = data.profile_photo_path;
                 if (data.delegation) this.FormUser.delegation = { code: data.delegation.id, label: data.delegation.name };
-                if (data.role) this.FormUser.role = { code: data.role.id, label: data.role.name };
+                else this.FormUser.delegation = null;
+                if (data.municipality) {
+                    this.FormUser.municipality = { code: data.municipality.id, label: data.municipality.city_name };
+                    this.FormPhoto.municipality = data.municipality;
+                } else {
+                    this.FormUser.municipality = null;
+                    this.FormPhoto.municipality = null;
+                }
+                if (data.role) this.FormUser.role = { code: data.role.id, label: data.role.display_name };
+                else this.FormUser.role = null;
             }
+        },
+        validateFormUser() {
+            let disabled = Object.keys(this.FormUser).every(key => key === 'second_name' || key === 'second_last_name' || (this.FormUser[key] !== null && this.FormUser[key] !== undefined && this.FormUser[key] !== ""));
+            return !disabled;
         },
         setPermissions() {
             axios.post("/g-environmental-rnec/home/permissions")
@@ -683,6 +719,11 @@ export default {
             axios.get('/g-environmental-rnec/delegations/getDelegations', { params: { search: search } })
                 .then(res => this.delegations = res.data.data)
                 .catch(error => (error.response) ? this.response(error) : '');
+        },
+        setMunicipalitiesFilter(search) {
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormUser.delegation, filter: true } })
+                .then(res => this.municipalities = res.data.data)
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
         setRoles(search) { // Función para traer los roles en un v-select
             axios.get('/g-environmental-rnec/users/getRoles', { params: { search: search } })
@@ -711,6 +752,7 @@ export default {
     },
     created() {
         this.setDelegations();
+        this.setMunicipalitiesFilter();
         this.setRoles();
         this.setPermissions();
     }
