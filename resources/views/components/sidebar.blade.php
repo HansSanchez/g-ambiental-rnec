@@ -72,6 +72,15 @@
             </li>
         @endif
 
+        @if (array_key_exists('browse_headquarters', $permissions))
+            <li class="c-sidebar-nav-item">
+                <router-link :to="{ name: 'headquarters' }" class="c-sidebar-nav-link" title="Usuarios">
+                    <i class="fa-solid fa-house-user c-sidebar-nav-icon" style="color: #ffffff;"></i>
+                    Sedes
+                </router-link>
+            </li>
+        @endif
+
         @if (array_key_exists('browse_users', $permissions))
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'users' }" class="c-sidebar-nav-link" title="Usuarios">
@@ -123,14 +132,14 @@
         @endif
 
         @if (array_key_exists('browse_co_responsibility_agreements', $permissions))
-        <li class="c-sidebar-nav-item">
-            <router-link :to="{ name: 'water-consumptions-index' }" class="c-sidebar-nav-link"
-                title="Manejo de los residuos">
-                <i class="fa-solid fa-recycle c-sidebar-nav-icon" style="color: #ffffff;"></i>
-                G. Residuos (PENDIENTE)
-            </router-link>
-        </li>
-    @endif
+            <li class="c-sidebar-nav-item">
+                <router-link :to="{ name: 'waste-management-index' }" class="c-sidebar-nav-link"
+                    title="Manejo de los residuos">
+                    <i class="fa-solid fa-recycle c-sidebar-nav-icon" style="color: #ffffff;"></i>
+                    G. Residuos (DEV)
+                </router-link>
+            </li>
+        @endif
 
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"

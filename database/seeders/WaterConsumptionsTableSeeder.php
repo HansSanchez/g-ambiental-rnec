@@ -30,7 +30,10 @@ class WaterConsumptionsTableSeeder extends Seeder
             // PASO 3. IDENTIFICAR TODOS LOS MUNICIPIOS
             $allMunicipalities = Municipality::select('id', 'city_name', 'delegation_id')->where('city_name', '<>', 'TODOS LOS MUNICIPIOS')->get();
 
-            // PASO 4. CREAR LOS REGISTROS DEFAULT
+            // PASO 4. ELIMINACIÓN DE REGISTROS PREVIOS
+            DB::table('water_consumptions')->delete();
+
+            // PASO 5. CREAR LOS REGISTROS DEFAULT
             $insertData = [];
 
             // RECORRER TODOS LOS AÑOS, MESES Y MUNICIPIOS
@@ -55,7 +58,7 @@ class WaterConsumptionsTableSeeder extends Seeder
                 }
             }
 
-            // PASO 5. INSERTAR LOS DATOS EN LOTES EN LA BASE DE DATOS
+            // PASO 6. INSERTAR LOS DATOS EN LOTES EN LA BASE DE DATOS
             $chunkSize = 2;
             $chunks = array_chunk($insertData, $chunkSize);
             foreach ($chunks as $chunk) DB::table('water_consumptions')->insert($chunk);

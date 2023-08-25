@@ -20,7 +20,7 @@ class ElectricalConsumptionController extends Controller
     {
         // CONSULTA DE LOS PERMISOS
         $permissions = new HomeController;
-        // CONSULTA DE LA CONSUMOS ELÉCTRICOS
+        // CONSULTA DE LOS CONSUMOS ELÉCTRICOS
         $electricalConsumptions =
             // RELACIONES
             ElectricalConsumption::with([
@@ -106,16 +106,13 @@ class ElectricalConsumptionController extends Controller
                 // GUARDADO DEL REGISTRO HECHO
                 // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
                 $electricalConsumption = new ElectricalConsumption($request->all());
-                $electricalConsumption->delegation_id = $delegation_id; // DELEGACIÓN
                 $electricalConsumption->municipality_id = $request->municipality['code']; // MUNICIPIO
                 $electricalConsumption->environmental_manager = mb_strtoupper($request->environmental_manager); // GESTOR AMBIENTAL
                 $electricalConsumption->user_id = $user_id; // USUARIO QUE GENERÓ EL REPORTE
                 $electricalConsumption->save(); // ALMACENAMIENTO DE LA INFORMACIÓN
 
                 // REGISTRO DE LAS RELACIONES
-                $electricalConsumption->Delegation;
                 $electricalConsumption->EvidenceElectricalConsumption;
-                $electricalConsumption->Municipality;
                 $electricalConsumption->User; // QUIEN REPORTÓ
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
@@ -157,9 +154,7 @@ class ElectricalConsumptionController extends Controller
         try {
 
             // REGISTRO DE LAS RELACIONES
-            $electricalConsumption->Delegation;
             $electricalConsumption->EvidenceElectricalConsumption;
-            $electricalConsumption->Municipality;
             $electricalConsumption->User; // QUIEN REPORTÓ
 
             // RESPUESTA PARA EL USUARIO
@@ -207,9 +202,7 @@ class ElectricalConsumptionController extends Controller
                 ]);
 
                 // REGISTRO DE LAS RELACIONES
-                $electricalConsumption->Delegation;
                 $electricalConsumption->EvidenceElectricalConsumption;
-                $electricalConsumption->Municipality;
                 $electricalConsumption->User; // QUIEN REPORTÓ
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
@@ -259,9 +252,7 @@ class ElectricalConsumptionController extends Controller
                 $electricalConsumption->delete();
 
                 // REGISTRO DE LAS RELACIONES
-                $electricalConsumption->Delegation;
                 $electricalConsumption->EvidenceElectricalConsumption;
-                $electricalConsumption->Municipality;
                 $electricalConsumption->User; // QUIEN REPORTÓ
 
                 // RESPUESTA SATISFATORIA PARA EL USUARIO

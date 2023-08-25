@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DelegationsTableSeeder::class,
             MunicipalitiesTableSeeder::class,
-            ElectricalConsumptionsTableSeeder::class,
-            WaterConsumptionsTableSeeder::class,
+            UsersTableSeeder::class,
+            WasteTypesTableSeeder::class,
         ]);
     }
 }

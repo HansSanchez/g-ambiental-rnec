@@ -67,6 +67,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/getMunicipalities', [\App\Http\Controllers\MunicipalityController::class, 'getMunicipalities']);
         });
 
+        // GRUPO DE RUTAS PARA MÓDULO DE "SEDES"
+        Route::group(['prefix' => 'headquarters'], function () {
+            Route::get('/getHeadquartersFilter', [\App\Http\Controllers\HeadquarterController::class, 'getHeadquartersFilter']);
+            Route::get('/getHeadquarters', [\App\Http\Controllers\HeadquarterController::class, 'getHeadquarters']);
+            Route::post('/store', [\App\Http\Controllers\HeadquarterController::class, 'store']);
+            Route::post('/{headquarter}/update', [\App\Http\Controllers\HeadquarterController::class, 'update']);
+        });
+
         // GRUPO DE RUTAS PARA MÓDULO DE "USUARIOS"
         Route::group(['prefix' => 'users'], function () {
             Route::post('/getAuthenticatedUser', [\App\Http\Controllers\UserController::class, 'getAuthenticatedUser']);
@@ -130,6 +138,28 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get('/evidenceElectricalConsumption/{electricalConsumption}', [\App\Http\Controllers\EvidenceElectricalConsumptionController::class, 'evidenceElectricalConsumption']);
                 Route::post('/storeEvidence', [\App\Http\Controllers\EvidenceElectricalConsumptionController::class, 'storeEvidence']);
                 Route::delete('/{id}/destroyEvidence', [\App\Http\Controllers\EvidenceElectricalConsumptionController::class, 'destroyEvidence']);
+            });
+        });
+
+        // GRUPO DE RUTAS PARA MÓDULO DE "GESTIÓN DE RESIDUOS"
+        Route::group(['prefix' => 'waste-management'], function () {
+            Route::get('/getWasteManagements', [\App\Http\Controllers\WasteManagementController::class, 'getWasteManagements']);
+            Route::post('/store', [\App\Http\Controllers\WasteManagementController::class, 'store']);
+            Route::get('/show/{wasteManagement}', [\App\Http\Controllers\WasteManagementController::class, 'show']);
+            Route::post('/{wasteManagement}/update', [\App\Http\Controllers\WasteManagementController::class, 'update']);
+            Route::delete('/{wasteManagement}/destroy', [\App\Http\Controllers\WasteManagementController::class, 'destroy']);
+            Route::post('/generateReport', [\App\Http\Controllers\WasteManagementController::class, 'generateReport']);
+
+            // RUTAS PARA OBTENCIÓN DE TIPOS
+            Route::group(['prefix' => 'types'], function () {
+                Route::get('/evidenceWaterConsumption/{waterConsumption}', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'evidenceWaterConsumption']);
+            });
+
+            // RUTAS PARA GESTIÓN DE EVIDENCIAS
+            Route::group(['prefix' => 'evidences'], function () {
+                Route::get('/evidenceWaterConsumption/{wasteManagement}', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'evidenceWaterConsumption']);
+                Route::post('/storeEvidence', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'storeEvidence']);
+                Route::delete('/{id}/destroyEvidence', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'destroyEvidence']);
             });
         });
 

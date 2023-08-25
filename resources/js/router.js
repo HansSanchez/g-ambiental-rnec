@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views_vue/Home.vue";
 import Users from "./views_vue/admin/User";
+import Headquarters from "./views_vue/admin/Headquarter";
 import FollowUp from "./views_vue/admin/FollowUp";
 import NotFount from "./components/NotFountComponent";
 
@@ -13,6 +14,9 @@ import ElectricalConsumptionsDetail from "./views_vue/modules/ElectricalConsumpt
 
 import TreePlantation from "./views_vue/modules/TreePlantations/index.vue";
 import TreePlantationDetail from "./views_vue/modules/TreePlantations/detail.vue";
+
+import WasteManagement from "./views_vue/modules/WasteManagement/index.vue";
+import WasteManagementDetail from "./views_vue/modules/WasteManagement/detail.vue";
 
 import WaterConsumptions from "./views_vue/modules/WaterConsumptions/index.vue";
 import WaterConsumptionsDetail from "./views_vue/modules/WaterConsumptions/detail.vue";
@@ -27,6 +31,7 @@ export default new Router({
 
         /// ADMINISTRACIÓN
         { path: "/v/admin/users", name: "users", component: Users },
+        { path: "/v/admin/headquarters", name: "headquarters", component: Headquarters },
         { path: "/v/admin/follow-up", name: "follow-up", component: FollowUp },
 
         // ACUERDOS
@@ -63,6 +68,19 @@ export default new Router({
             path: "/v/tree-plantations/detail/:id",
             name: "tree-plantations-detail",
             component: TreePlantationDetail,
+        },
+
+
+        // GESTIÓN DE RESIDUOS
+        {
+            path: "/v/waste-management/index",
+            name: "waste-management-index",
+            component: WasteManagement,
+        },
+        {
+            path: "/v/waste-management/detail/:id",
+            name: "waste-management-detail",
+            component: WasteManagementDetail,
         },
 
         // CONSUMOS HÍDRICOS

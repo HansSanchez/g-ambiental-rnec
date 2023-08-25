@@ -140,7 +140,7 @@
                                         <br>
                                         Plantados
                                         <br>
-                                        Delegación: {{ TreePlantationDetailList.delegation.name }}
+                                        {{ TreePlantationDetailList.headquarter.name }}
                                     </p>
                                     <p class="card__num__main mb-0">
                                         <i class="fa-solid fa-tree" style="color: #ffffff;"></i>

@@ -28,8 +28,8 @@ class TreePlantationController extends Controller
         $treePlantation =
             // RELACIONES
             TreePlantation::with([
-                'Delegation' => function ($query) {
-                    $query->select('delegations.id', 'delegations.name');
+                'Headquarter' => function ($query) {
+                    $query->select('headquarters.id', 'headquarters.name');
                 },
                 'EvidenceTreePlantations' => function ($query) {
                     $query->select(
@@ -45,18 +45,18 @@ class TreePlantationController extends Controller
                 if ($request->search) $query->search($request->search);
                 // FILTRO PARA BÚSQUEDA DE FECHA DE PLANTACIÓN
                 if ($request->dateFilter) $query->whereBetween('tree_plantations.date', [$day . " 00:00:00", $day . " 23:59:59"]);
-                // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR DELEGACIÓN
-                if (array_key_exists('filter_delegations_tree_plantations', $permissions->permissions())) {
+                // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR SEDE
+                if (array_key_exists('filter_headquarters_tree_plantations', $permissions->permissions())) {
                     // PUEDE ACCEDER AL FILTRO Y ENVIAR DIFERENTES DELEGACIONES POR PARAMETRO
-                    if ($request->delegations_model) {
-                        $delegation = json_decode($request->delegations_model);
-                        $query->where('tree_plantations.delegation_id', $delegation->code);
+                    if ($request->headquarters_model) {
+                        $headquarter = json_decode($request->headquarters_model);
+                        $query->where('tree_plantations.headquarter_id', $headquarter->code);
                     }
                 }
                 // SI NO TIENE PERMISO
                 else {
-                    // PUEDE VER SOLO LOS REGISTROS DE LA DELEGACIÓN A LA CUAL PERTENECE
-                    $query->where('tree_plantations.delegation_id', Auth::user()->delegation_id);
+                    // PUEDE VER SOLO LOS REGISTROS DE LA SEDE A LA CUAL PERTENECE
+                    $query->where('tree_plantations.headquarter_id', Auth::user()->headquarter_id);
                 }
             })
             // ORDENAMIENTO POR ID
@@ -80,19 +80,19 @@ class TreePlantationController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL USUARIO CON SESIÓN ACTIVA
-                $delegation_id = auth()->user()->delegation_id;
+                // OBTENCIÓN DE LA SEDE DEL USUARIO CON SESIÓN ACTIVA
+                $headquarter_id = auth()->user()->headquarter_id;
 
                 // GUARDADO DEL REGISTRO HECHO
                 // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
                 $treePlantation = new TreePlantation($request->all());
                 $treePlantation->address = mb_strtoupper($request->address); // TRATAMIENTO A LA DIRECCIÓN
-                $treePlantation->delegation_id = $delegation_id; // DELEGACIÓN
+                $treePlantation->headquarter_id = $headquarter_id; // SEDE
                 $treePlantation->user_id = $user_id; // USUARIO QUE REPORTA
                 $treePlantation->save(); // ALMACENAMIENTO DE LA INFORMACIÓN
 
                 // REGISTRO DE LAS RELACIONES
-                $treePlantation->Delegation;
+                $treePlantation->Headquarter;
                 $treePlantation->EvidenceTreePlantations;
                 $treePlantation->User;
 
@@ -135,7 +135,7 @@ class TreePlantationController extends Controller
         try {
 
             // RELACIONES
-            $treePlantation->Delegation;
+            $treePlantation->Headquarter;
             $treePlantation->EvidenceTreePlantations;
             $treePlantation->User;
 
@@ -159,8 +159,8 @@ class TreePlantationController extends Controller
                 // OBTENCIÓN DEL ID QUE HIZO EL REGISTRO
                 $user_id = $treePlantation->user_id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL USUARIO QUE HIZO EL REGISTRO
-                $delegation_id = $treePlantation->delegation_id;
+                // OBTENCIÓN DE LA SEDE DEL USUARIO QUE HIZO EL REGISTRO
+                $headquarter_id = $treePlantation->headquarter_id;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -172,7 +172,7 @@ class TreePlantationController extends Controller
 
                 // ACTUALIZACIÓN DE REGISTRO
                 $treePlantation->update([
-                    'delegation_id' => $delegation_id,
+                    'headquarter_id' => $headquarter_id,
                     'number_of_trees_planted' => $request->number_of_trees_planted,
                     'date' => $request->date,
                     'address' => mb_strtoupper($request->address),
@@ -183,7 +183,7 @@ class TreePlantationController extends Controller
                 ]);
 
                 // REGISTRO DE LAS RELACIONES
-                $treePlantation->Delegation;
+                $treePlantation->Headquarter;
                 $treePlantation->EvidenceTreePlantations;
                 $treePlantation->User;
 
@@ -234,7 +234,7 @@ class TreePlantationController extends Controller
                 $treePlantation->delete();
 
                 // REGISTRO DE LAS RELACIONES
-                $treePlantation->Delegation;
+                $treePlantation->Headquarter;
                 $treePlantation->EvidenceTreePlantations;
                 $treePlantation->User;
 
@@ -298,10 +298,10 @@ class TreePlantationController extends Controller
                 $report = DB::table('tree_plantations')
                     // COLUMNAS DE INTERÉS PARA EL REPORTE
                     ->select(
-                        'delegations.id AS d_id',
-                        'delegations.name AS d_name',
+                        'headquarters.id AS h_id',
+                        'headquarters.name AS h_name',
                         'tree_plantations.id AS tp_id',
-                        'tree_plantations.delegation_id AS tp_delegation_id',
+                        'tree_plantations.headquarter_id AS tp_headquarter_id',
                         'tree_plantations.number_of_trees_planted AS tp_number_of_trees_planted',
                         'tree_plantations.date AS tp_date',
                         'tree_plantations.address AS tp_address',
@@ -318,10 +318,10 @@ class TreePlantationController extends Controller
                         'users.second_last_name AS u_second_last_name',
                         'users.position AS u_position',
                         'users.email AS u_email',
-                        'users.delegation_id AS u_delegation_id',
+                        'users.headquarter_id AS u_headquarter_id',
                     )
-                    // RELACIÓN CON LA DELEGACIÓN EN DONDE SE HIZO EL REGISTRO
-                    ->join('delegations', 'delegations.id', '=', 'tree_plantations.delegation_id')
+                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO
+                    ->join('headquarters', 'headquarters.id', '=', 'tree_plantations.headquarter_id')
                     // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
                     ->join('users', 'users.id', '=', 'tree_plantations.user_id')
                     // FILTRO DE CONSULTA SEGÚN PARAMETROS DE FECHA
@@ -334,12 +334,12 @@ class TreePlantationController extends Controller
                         if ($fromDay == null && $untilDay != null) $query->whereBetween('tree_plantations.date', ["2000-01-01 00:00:00", $untilDay . " 23:59:59"]);
                         if ($fromDay != null && $untilDay != null) $query->whereBetween('tree_plantations.date', [$fromDay . " 00:00:00", $untilDay . " 23:59:59"]);
                     })
-                    // FILTRO DE CONSULTA POR PARAMETRO DE DELEGACIÓN
+                    // FILTRO DE CONSULTA POR PARAMETRO DE SEDE
                     ->where(function ($query) use ($request, $permissions) {
                         // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
-                        if (array_key_exists('filter_delegations_tree_plantations', $permissions->permissions()))
+                        if (array_key_exists('filter_headquarters_tree_plantations', $permissions->permissions()))
                             // PUEDE ENVIARLA POR PARAMETRO
-                            if ($request->delegation) $query->where('tree_plantations.delegation_id', $request->delegation['code']);
+                            if ($request->delegation) $query->where('tree_plantations.headquarter_id', $request->delegation['code']);
                             // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
                             else $query->get();
                     })

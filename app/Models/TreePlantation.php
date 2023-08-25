@@ -12,13 +12,13 @@ class TreePlantation extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'delegation_id', // SEDE O DELEGACIÓN
         'number_of_trees_planted', // NÚMERO DE ÁRBOLES PLANTADOS (AÑO)
         'date', // FECHA DE PLATACIÓN
         'address', // DIRECCIÓN EN DONDE SE PLANTARON LOS ÁRBOLES
         'lat', // LATITUD
         'lng', // LONGITUD
         'observations', // OBSERVACIONES SOBRE LA PLATACIÓN
+        'headquarter_id', // SEDE O DELEGACIÓN
         'user_id' // USUARIO RELACIONADO CON EL REGISTRO
     ];
 
@@ -39,9 +39,9 @@ class TreePlantation extends Model
             ->orWhere('date', 'LIKE', '%' . $search_term . '%');
     }
 
-    public function Delegation(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function Headquarter(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Delegation::class);
+        return $this->belongsTo(Headquarter::class);
     }
 
     public function EvidenceTreePlantations(): \Illuminate\Database\Eloquent\Relations\HasMany

@@ -15,12 +15,11 @@ class CreateCoResponsibilityAgreementsTable extends Migration
     {
         Schema::create('co_responsibility_agreements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('delegation_id')->references('id')->on('delegations'); // SEDE O DELEGACIÓN
-            $table->foreignId('user_id')->references('id')->on('users'); // RELACIÓN CON EL USUARIO QUE CREA EL REGISTRO O LO REPORTA
-            $table->string('environmental_operator'); // OPERADOR AMBIENTAL (ES MEJOR QUE SEA ABIERTO)
             $table->timestamp('date')->default(now()->format('Y-m-d H:i')); // FECHA DE LA FIRMA
             $table->enum('state', ['VIGENTE', 'NO VIGENTE']); // ESTADO DEL ACUERDO
             $table->longText('observations')->nullable(); // OBSERVACIONES SOBRE EL ACUERDO
+            $table->foreignId('headquarter_id')->references('id')->on('headquarters'); // RELACIÓN CON LA SEDE
+            $table->foreignId('user_id')->references('id')->on('users'); // RELACIÓN CON EL USUARIO QUE CREA EL REGISTRO O LO REPORTA
             $table->timestamps(); // CREACIÓN Y ACTUALIZACIÓN
             $table->softDeletes(); // ELIMINACIÓN
         });

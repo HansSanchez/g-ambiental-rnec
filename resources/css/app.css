@@ -958,6 +958,9 @@ tbody.full-20 {
 }
 
 @media (min-width: 320px) {
+    .pb-1-5-rem {
+        padding-bottom: 1.5rem !important;
+    }
     .logo-size {
         width: 50% !important;
         height: 100% !important;
@@ -973,6 +976,9 @@ tbody.full-20 {
 }
 
 @media (min-width: 375px) {
+    .pb-1-5-rem {
+        padding-bottom: 1.5rem !important;
+    }
     .logo-size {
         width: 45% !important;
         height: 100% !important;
@@ -984,6 +990,9 @@ tbody.full-20 {
 }
 
 @media (min-width: 425px) {
+    .pb-1-5-rem {
+        padding-bottom: 1.5rem !important;
+    }
     .logo-size {
         width: 40% !important;
         height: 100% !important;
@@ -995,6 +1004,9 @@ tbody.full-20 {
 }
 
 @media (min-width: 576px) {
+    .pb-1-5-rem {
+        padding-bottom: 1rem !important;
+    }
     .logo-size {
         width: 40% !important;
         height: 100% !important;
@@ -1006,6 +1018,9 @@ tbody.full-20 {
 }
 
 @media (min-width: 768px) {
+    .pb-1-5-rem {
+        padding-bottom: 1rem !important;
+    }
     .logo-size {
         width: 25% !important;
         height: 100% !important;
@@ -1021,6 +1036,9 @@ tbody.full-20 {
 }
 
 @media (min-width: 992px) {
+    .pb-1-5-rem {
+        padding-bottom: 1rem !important;
+    }
     .logo-size {
         width: 20% !important;
         height: 100% !important;
@@ -1032,6 +1050,9 @@ tbody.full-20 {
 }
 
 @media (min-width: 1200px) {
+    .pb-1-5-rem {
+        padding-bottom: 1rem !important;
+    }
     .logo-size {
         width: 10% !important;
         height: 100% !important;
@@ -1043,6 +1064,9 @@ tbody.full-20 {
 }
 
 @media (min-width: 1400px) {
+    .pb-1-5-rem {
+        padding-bottom: 1rem !important;
+    }
     .logo-size {
         width: 10% !important;
         height: 100% !important;

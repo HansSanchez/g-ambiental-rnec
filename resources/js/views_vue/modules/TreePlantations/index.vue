@@ -28,7 +28,7 @@
 
                     <!-- ENCABEZADO (BOTONES Y FILTROS) -->
                     <div class="row">
-                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-5"
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-1"
                             v-if="permissions.add_tree_plantations === 'add_tree_plantations'">
                             <button @click="update = false; resetFormTreePlantation(); openModal();" type="button"
                                 data-toggle="modal" data-target="#UpdateOrCreateTreePlantationModal" data-backdrop="static"
@@ -36,38 +36,48 @@
                                 title="Nueva registro">
                                 <v-icon color="#FFFFFF">mdi-plus-circle</v-icon>
                             </button>
-                            <!-- End button trigger modal -->
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0">
-                            <div v-if="permissions.filter_delegations_tree_plantations === 'filter_delegations_tree_plantations'"
-                                class="form-group mb-0">
-                                <v-select :options="delegations" @search="setDelegations" @input="queryFilter()"
-                                    v-model="delegations_model" placeholder="DELEGACIONES...">
-                                </v-select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
-                            <div class="form-group mb-0">
-                                <input type="date" class="form-control" v-model="dateFilter" @change="queryFilter()">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 w-100 pt-0 mb-1">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 w-100 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-1">
                             <div class="input-group">
                                 <input type="search" style="border-right: none !important;" v-model="searchInput"
                                     id="search" class="form-control" @change="changeType" placeholder="Buscar...">
                                 <span class="input-group-text border-search bg-info" title="Buscar" @click="$emit('Enter')">
                                     <i class="fa-solid fa-search text-white"></i>
                                 </span>
-                                <span
-                                    v-if="permissions.generate_report_tree_plantations === 'generate_report_tree_plantations'"
-                                    class="input-group-text border-search bg-success" title="Generación de reportes"
-                                    data-toggle="modal" data-backdrop="static" data-target="#GenerateReportModal"
-                                    @click="report = true;">
-                                    <i class="fa-solid fa-file-excel text-white"></i>
-                                </span>
                                 <span class="input-group-text border-custom bg-dark" title="Refrescar" @click="clean">
                                     <i class="fa-solid fa-rotate text-white"></i>
                                 </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
+                            <div class="form-group mb-0">
+                                <v-select :options="delegations" @search="setDelegations" @input="queryFilter();
+                                municipalities_model = null; headquarters_model = null
+                                municipalities = []; setMunicipalitiesFilter();" v-model="delegations_model"
+                                    placeholder="DELEGACIONES...">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
+                            <div class="form-group mb-0">
+                                <v-select :options="municipalities" v-model="municipalities_model"
+                                    @search="setMunicipalitiesFilter"
+                                    @input="queryFilter(); headquarters = []; setHeadquartersFilter();"
+                                    placeholder="MUNICIPIOS..." :disabled="delegations_model === null ? true : false">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-3 pb-xs-1">
+                            <div class="form-group mb-0">
+                                <v-select :options="headquarters" v-model="headquarters_model"
+                                    @search="setHeadquartersFilter" @input="queryFilter();" placeholder="SEDES..."
+                                    :disabled="municipalities_model === null ? true : false">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-3 pb-1-5-rem">
+                            <div class="form-group mb-0">
+                                <input type="date" class="form-control" v-model="dateFilter" @change="queryFilter()">
                             </div>
                         </div>
                     </div>
@@ -358,7 +368,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group mb-0">
                                                 <small><b>(Delegaciones)</b></small>
-                                                <v-select :options="delegations" v-model="FormReport.delegation"
+                                                <v-select :options="headquarters" v-model="FormReport.headquarter"
                                                     placeholder="DELEGACIONES...">
                                                 </v-select>
                                             </div>
@@ -440,7 +450,7 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th class="tt-espumados">DELEGACIÓN</th>
+                                    <th class="tt-espumados">SEDE</th>
                                     <th class="tt-espumados">PLANTADOS</th>
                                     <th class="tt-espumados">FECHA</th>
                                     <th class="tt-espumados">UBICACIÓN</th>
@@ -458,9 +468,9 @@
                                         <span class="badge badge-info text-white w-100 full-16">
                                             <b>
                                                 {{
-                                                    item.delegation ?
-                                                    item.delegation.name :
-                                                    'SIN DELEGACIÓN'
+                                                    item.headquarter ?
+                                                    item.headquarter.name :
+                                                    'SIN SEDE'
                                                 }}
                                             </b>
                                         </span>
@@ -492,7 +502,7 @@
 
                                             <!-- EVIDENCIAS DEL REGISTRO -->
                                             <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                v-if="Number(item.headquarter_id) === Number(user.headquarter_id) || Number(user.role_id) === 1">
                                                 <span v-if="permissions.add_tree_plantations === 'add_tree_plantations' ||
                                                     permissions.edit_tree_plantations === 'edit_tree_plantations'"
                                                     @click="evidenceTreePlantation(item);" data-toggle="modal"
@@ -507,7 +517,7 @@
 
                                             <!-- EDITAR DEL REGISTRO -->
                                             <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                v-if="Number(item.headquarter_id) === Number(user.headquarter_id) || Number(user.role_id) === 1">
                                                 <span v-if="permissions.edit_tree_plantations === 'edit_tree_plantations'"
                                                     @click="update = true; writeData(item); openModal();"
                                                     data-toggle="modal" title="Editar"
@@ -520,7 +530,7 @@
 
                                             <!-- ELIMINAR DEL REGISTRO -->
                                             <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                v-if="Number(item.headquarter_id) === Number(user.headquarter_id) || Number(user.role_id) === 1">
                                                 <span
                                                     v-if="permissions.delete_tree_plantations === 'delete_tree_plantations'"
                                                     @click="destroy(item); update = false" title="Eliminar"
@@ -598,7 +608,11 @@ export default {
             setTimeoutSearch: '',
             errors: null,
             delegations: [],
-            delegations_model: [],
+            municipalities: [],
+            headquarters: [],
+            delegations_model: null,
+            municipalities_model: null,
+            headquarters_model: null,
             dateFilter: null,
             update: false,
             user: null,
@@ -675,7 +689,7 @@ export default {
                 // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
                 fromDay: null,
                 untilDay: null,
-                delegation: null
+                headquarter: null
             },
             day: {
                 day: new Date(Date.now()),
@@ -720,7 +734,7 @@ export default {
         clean() {
             this.searchInput = null;
             this.dateFilter = null;
-            this.delegations_model = null;
+            this.headquarters_model = null;
             this.changeType();
         },
         queryFilter($state) {
@@ -728,7 +742,10 @@ export default {
             axios.get(api, {
                 params: {
                     search: this.searchInput,
+                    search: this.searchInput,
                     delegations_model: this.delegations_model,
+                    municipalities_model: this.municipalities_model,
+                    headquarters_model: this.headquarters_model,
                     dateFilter: this.dateFilter,
                 }
             }).then(({ data }) => {
@@ -787,6 +804,7 @@ export default {
             if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceTreePlantation.id)), 1);
             this.evidences.unshift(response.evidenceTreePlantation); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
+            this.changeType();
         },
         clearDropzone() {
             this.evidences = [];
@@ -983,7 +1001,7 @@ export default {
         },
         validateFormReport() {
             if (!this.FormTreeReport) {
-                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                let disabled = Object.keys(this.FormReport).every(key => key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
         },
@@ -1019,8 +1037,8 @@ export default {
             }
             const url = "/g-environmental-rnec/tree-plantations/generateReport";
             if (Form !== null) {
-                let delegation = this.FormReport.delegation
-                axios.post(url, { ...Form, delegation })
+                let headquarter = this.FormReport.headquarter
+                axios.post(url, { ...Form, headquarter })
                     .then(this.responseReport)
                     .catch((error) => window.toastr.warning(error, { timeOut: 2000 }));
             }
@@ -1074,18 +1092,28 @@ export default {
             axios.post("/g-environmental-rnec/users/getAuthenticatedUser")
                 .then(response => {
                     this.user = response.data
-                    this.FormReport.delegation = { code: response.data.delegation.id, label: response.data.delegation.name }
+                    this.FormReport.headquarter = { code: response.data.headquarter.id, label: response.data.headquarter.name }
                 })
                 .catch(errors => console.log(errors));
         },
         setPermissions() {
             axios.post("/g-environmental-rnec/home/permissions")
                 .then(response => this.permissions = response.data)
-                .catch(errors => console.log(errors));
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
         setDelegations(search) { // Función para traer las sociedades en un v-select
             axios.get('/g-environmental-rnec/delegations/getDelegations', { params: { search: search } })
                 .then(res => this.delegations = res.data.data)
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
+        },
+        setMunicipalitiesFilter(search) {
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.delegations_model, filter: true } })
+                .then(res => this.municipalities = res.data.data)
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
+        },
+        setHeadquartersFilter(search) {
+            axios.get('/g-environmental-rnec/headquarters/getHeadquartersFilter', { params: { search: search, municipality: this.municipalities_model } })
+                .then(res => this.headquarters = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
     },

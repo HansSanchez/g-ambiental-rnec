@@ -24,12 +24,29 @@ class UserController extends Controller
             $id = Auth::user()->id;
             $user =
                 User::with([
-                    'delegation' => function ($query) {
-                        $query->select('delegations.id', 'delegations.name');
+                    // RELACIÓN CON LA DELEGACIÓN
+                    'Delegation' => function ($query) {
+                        $query->select(
+                            'delegations.id',
+                            'delegations.name'
+                        );
                     },
-                    'municipality' => function ($query) {
-                        $query->select('municipalities.id', 'municipalities.city_name', 'municipalities.profile_photo_path');
-                    }
+                    // RELACIÓN CON EL MUNICIPIO
+                    'Municipality' => function ($query) {
+                        $query->select(
+                            'municipalities.id',
+                            'municipalities.city_name',
+                            'municipalities.profile_photo_path'
+                        );
+                    },
+                    // RELACIÓN CON LA SEDE
+                    'Headquarter' => function ($query) {
+                        $query->select(
+                            'headquarters.id',
+                            'headquarters.name',
+                            'headquarters.type'
+                        );
+                    },
                 ])
                 ->where('id', $id)
                 ->first();
@@ -51,14 +68,35 @@ class UserController extends Controller
         $day = date('Y-m-d', strtotime($request->dateFilter));
         $users =
             User::with([
-                'delegation' => function ($query) {
-                    $query->select('delegations.id', 'delegations.name');
+                // RELACIÓN CON LA DELEGACIÓN
+                'Delegation' => function ($query) {
+                    $query->select(
+                        'delegations.id',
+                        'delegations.name'
+                    );
                 },
-                'municipality' => function ($query) {
-                    $query->select('municipalities.id', 'municipalities.city_name', 'municipalities.profile_photo_path');
+                // RELACIÓN CON EL MUNICIPIO
+                'Municipality' => function ($query) {
+                    $query->select(
+                        'municipalities.id',
+                        'municipalities.city_name',
+                        'municipalities.profile_photo_path'
+                    );
+                },
+                // RELACIÓN CON LA SEDE
+                'Headquarter' => function ($query) {
+                    $query->select(
+                        'headquarters.id',
+                        'headquarters.name',
+                        'headquarters.type'
+                    );
                 },
                 'role' => function ($query) {
-                    $query->select('roles.id', 'roles.name', 'roles.display_name');
+                    $query->select(
+                        'roles.id',
+                        'roles.name',
+                        'roles.display_name'
+                    );
                 }
             ])
             ->where(function ($query) use ($request, $day) {
@@ -78,7 +116,18 @@ class UserController extends Controller
 
     public function getRoles()
     {
+        // CONSULTA DE LOS PERMISOS
+        $permissions = new HomeController;
         return Role::select('id AS code', 'display_name AS label')
+            // FILTRO DE CONSULTA SEGÚN PARAMETROS DE BÚSQUEDA
+            ->where(function ($query) use ($permissions) {
+                if (array_key_exists('filter_all_roles', $permissions->permissions()))
+                    $query->get(); // PUEDE VER TODOS LOS ROLES (POR LO GENERAL UN ADMIN)
+                if (array_key_exists('filter_two_roles', $permissions->permissions()))
+                    $query->where('name', 'reporter')->orWhere('name', 'validator'); // PUEDE VER 2 ROLES (UN COORDINADOR)
+                if (array_key_exists('filter_three_roles', $permissions->permissions()))
+                    $query->where('name', 'reporter')->orWhere('name', 'validator')->orWhere('name', 'central_user'); // PUEDE VER 3 ROLES (UN COORDINADOR DE SEDE CENTRAL)
+            })
             ->orderBy('id', 'ASC')
             ->simplePaginate(50);
     }
@@ -98,6 +147,7 @@ class UserController extends Controller
             $user->active = $request->active == true ? 'ACTIVO' : 'INACTIVO';
             $user->delegation_id = $request->delegation['code']; // DELEGACIÓN DEL USUARIO
             $user->municipality_id = $request->municipality['code']; // MUNICIPIO DEL USUARIO
+            $user->headquarter_id = $request->headquarter['code']; // SEDE DEL USUARIO
             $user->role_id = $request->role['code']; // ROL DEL USUARIO
             $user->save();
 
@@ -109,8 +159,9 @@ class UserController extends Controller
             ]);
 
             // RELACIONES DEL USUARIO
-            $user->delegation;
-            $user->municipality;
+            $user->Delegation;
+            $user->Municipality;
+            $user->Headquarter;
             $user->role;
 
             // RESPUESTA AL USUARIO
@@ -189,7 +240,8 @@ class UserController extends Controller
                 'email' => $request->email == null ? null : mb_strtolower($request->email),
                 'password' => Hash::make($request->personal_id),
                 'delegation_id' => $request->delegation['code'], // DELEGACIÓN DEL FUNCIONARIO
-                'municipality_id' => $request->municipality['code'], // DELEGACIÓN DEL FUNCIONARIO
+                'municipality_id' => $request->municipality['code'], // MUNICIPIO DEL FUNCIONARIO
+                'headquarter_id' => $request->headquarter['code'], // MUNICIPIO DEL FUNCIONARIO
                 'role_id' => $request->role['code'], // ROL DEL FUNCIONARIO
             ]);
 
@@ -202,8 +254,9 @@ class UserController extends Controller
             ]);
 
             // RELACIONES DEL USUARIO
-            $user->delegation;
-            $user->municipality;
+            $user->Delegation;
+            $user->Municipality;
+            $user->Headquarter;
             $user->role;
 
             // RESPUESTA AL USUARIO
@@ -261,8 +314,9 @@ class UserController extends Controller
             $user->update();
 
             // ENVÍO DE RELACIONES AL FRONTEND
-            $user->delegation;
-            $user->municipality;
+            $user->Delegation;
+            $user->Municipality;
+            $user->Headquarter;
             $user->role;
 
             // RESPUESTA PARA EL CLIENTE

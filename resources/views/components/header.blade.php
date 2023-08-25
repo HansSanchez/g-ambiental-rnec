@@ -27,11 +27,11 @@
                                 src="{{ asset('storage/users/' . auth()->user()->profile_photo_path) }}"
                                 alt="user@email.com" />
                         @else
-                            <img class="c-avatar-img" src="{{ asset('assets/img/avatars/pngwing.com.png') }}"
+                            <img class="c-avatar-img" src="{{ asset(auth()->user()->municipality->profile_photo_path) }}"
                                 alt="user@email.com" />
                         @endif
                     @else
-                        <img class="c-avatar-img" src="{{ asset('assets/img/avatars/pngwing.com.png') }}"
+                        <img class="c-avatar-img" src="{{ asset(auth()->user()->municipality->profile_photo_path) }}"
                             alt="user@email.com" />
                     @endif
                 </div>
@@ -58,10 +58,6 @@
                     <i class="fas fa-sign-out-alt c-icon mr-2"></i>
                     Cerrar sesión
                 </a>
-                {{--                <div class="dropdown-header bg-light py-2"> --}}
-                {{--                    <strong>Settings</strong> --}}
-                {{--                </div> --}}
-                {{--                <div class="dropdown-divider"></div> --}}
             </div>
         </li>
     </ul>
