@@ -20,16 +20,13 @@ class TreePlantationController extends Controller
     // FUNCIÓN DE OBTENCIÓN DE DATOS
     public function getTreePlantation(Request $request)
     {
-        // ADECUACIÓN DE TEXTO A FECHA DEL PARAMETRO QUE LLEGA
-        $day = date('Y-m-d', strtotime($request->dateFilter));
         // CONSULTA DE LOS PERMISOS
         $permissions = new HomeController;
         // CONSULTA DE LA PLANTACIÓN DE ÁRBOLES
-        $treePlantation =
-            TreePlantation::withRelations() // SCOPE EN EL MODELO (RELACIONES)
-            ->filter($request, $day, $permissions) // SCOPE EN EL MODELO (FILTROS)
-            ->paginate(15); // SCOPE EN EL MODELO (PAGINADO)
-
+        $treePlantation = TreePlantation::withRelations() // SCOPE EN EL MODELO (RELACIONES)
+            ->filter($request, date('Y-m-d', strtotime($request->dateFilter)), $permissions) // SCOPE EN EL MODELO (FILTROS)
+            ->orderBy('id', 'DESC')
+            ->simplePaginate(15); // SCOPE EN EL MODELO (PAGINADO)
         // RESPUESTA PARA EL USUARIO
         return response()->json(['treePlantation' => $treePlantation]);
     }
@@ -46,7 +43,7 @@ class TreePlantationController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA SEDE DEL USUARIO CON SESIÓN ACTIVA
+                // OBTENCIÓN DE LA SEDE DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
                 $headquarter_id = auth()->user()->headquarter_id;
 
                 // GUARDADO DEL REGISTRO HECHO
@@ -129,7 +126,7 @@ class TreePlantationController extends Controller
                 // OBTENCIÓN DEL ID QUE HIZO EL REGISTRO
                 $user_id = $treePlantation->user_id;
 
-                // OBTENCIÓN DE LA SEDE DEL USUARIO QUE HIZO EL REGISTRO
+                // OBTENCIÓN DE LA SEDE DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
                 $headquarter_id = $treePlantation->headquarter_id;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA

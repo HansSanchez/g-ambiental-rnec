@@ -320,6 +320,9 @@
                                 <div class="modal-body bv-modal">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <recommendations-component></recommendations-component>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>EVIDENCIAS</b></h5>
                                             <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="vue-dropzone"
                                                 :duplicateCheck="true" ref="myDropzone" @vdropzone-success="handleSuccess">
@@ -331,9 +334,6 @@
                                                     </div>
                                                 </div>
                                             </vue-dropzone>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <recommendations-component></recommendations-component>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>ARCHIVOS ADJUNTOS</b></h5>

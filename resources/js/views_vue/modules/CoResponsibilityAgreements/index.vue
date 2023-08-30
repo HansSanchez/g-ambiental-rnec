@@ -29,7 +29,7 @@
 
                     <!-- ENCABEZADO (BOTONES Y FILTROS) -->
                     <div class="row">
-                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-5"
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-1"
                             v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements'">
                             <button @click="update = false; resetFormCoResponsibilityAgreements(); openModal();"
                                 type="button" data-toggle="modal"
@@ -38,22 +38,8 @@
                                 title="Nueva registro">
                                 <v-icon color="#FFFFFF">mdi-plus-circle</v-icon>
                             </button>
-                            <!-- End button trigger modal -->
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0">
-                            <div v-if="permissions.filter_delegations_co_responsibility_agreements === 'filter_delegations_co_responsibility_agreements'"
-                                class="form-group mb-0">
-                                <v-select :options="delegations" @search="setDelegations" @input="queryFilter()"
-                                    v-model="delegations_model" placeholder="DELEGACIONES...">
-                                </v-select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
-                            <div class="form-group mb-0">
-                                <input type="date" class="form-control" v-model="dateFilter" @change="queryFilter()">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 w-100 pt-0 mb-1">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 w-100 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-1">
                             <div class="input-group">
                                 <input type="search" style="border-right: none !important;" v-model="searchInput"
                                     id="search" class="form-control" @change="changeType" placeholder="Buscar...">
@@ -70,6 +56,40 @@
                                 <span class="input-group-text border-custom bg-dark" title="Refrescar" @click="clean">
                                     <i class="fa-solid fa-rotate text-white"></i>
                                 </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
+                            <div v-if="permissions.filter_headquarters_co_responsibility_agreements === 'filter_headquarters_co_responsibility_agreements'"
+                                class="form-group mb-0">
+                                <v-select :options="delegations" @search="setDelegations" @input="queryFilter();
+                                municipalities_model = null; headquarters_model = null
+                                municipalities = []; setMunicipalitiesFilter();" v-model="delegations_model"
+                                    placeholder="DELEGACIONES...">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
+                            <div v-if="permissions.filter_headquarters_co_responsibility_agreements === 'filter_headquarters_co_responsibility_agreements'"
+                                class="form-group mb-0">
+                                <v-select :options="municipalities" v-model="municipalities_model"
+                                    @search="setMunicipalitiesFilter"
+                                    @input="queryFilter(); headquarters_model = null; headquarters = []; setHeadquartersFilter();"
+                                    placeholder="MUNICIPIOS..." :disabled="delegations_model === null ? true : false">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-3 pb-xs-1">
+                            <div v-if="permissions.filter_headquarters_co_responsibility_agreements === 'filter_headquarters_co_responsibility_agreements'"
+                                class="form-group mb-0">
+                                <v-select :options="headquarters" v-model="headquarters_model"
+                                    @search="setHeadquartersFilter" @input="queryFilter();" placeholder="SEDES..."
+                                    :disabled="municipalities_model === null ? true : false">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-3 pb-1-5-rem">
+                            <div class="form-group mb-0">
+                                <input type="date" class="form-control" v-model="dateFilter" @change="queryFilter()">
                             </div>
                         </div>
                     </div>
@@ -460,6 +480,7 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
+                                    <th>ID</th>
                                     <th class="tt-espumados">ESTADO</th>
                                     <th class="tt-espumados">DELEGACIÓN</th>
                                     <th class="tt-espumados">MUNICIPIO(S)</th>
@@ -476,6 +497,9 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in  list " :key="index">
+                                    <td class="text-uppercase text-center bg-register text-white">
+                                        <b>{{ item.id }}</b>
+                                    </td>
                                     <td class="text- text-center" v-html="item.StateLabel"></td>
                                     <td class="text-uppercase text-center">
                                         <span class="badge badge-info text-white w-100 full-16">
@@ -597,6 +621,7 @@ import Datepicker from "vuejs-datepicker";
 import { es } from "vuejs-datepicker/dist/locale";
 import moment from "moment-timezone";
 import LoaderComponent from '../../../components/LoaderComponent.vue';
+import MiMixin from '../../../components/mixin';
 
 export default {
     components: {
@@ -607,6 +632,7 @@ export default {
         LoaderComponent,
     },
     name: "CoResponsibilityAgreements",
+    mixins: [MiMixin],
     data() {
         return {
             id: null,
@@ -628,8 +654,11 @@ export default {
             errors: null,
             delegations: [],
             municipalities: [],
+            headquarters: [],
             users: [],
-            delegations_model: [],
+            delegations_model: null,
+            municipalities_model: null,
+            headquarters_model: null,
             dateFilter: null,
             update: false,
             user: null,
@@ -687,7 +716,9 @@ export default {
                 // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
                 fromDay: null,
                 untilDay: null,
-                delegation: null
+                delegation: null,
+                municipality: null,
+                headquarter: null,
             },
             day: {
                 day: new Date(Date.now()),
@@ -723,17 +754,6 @@ export default {
                         $state.loaded();
                     } else $state.complete();
                 }).catch(error => (error.response ? this.responseErrors(error) : ""));
-        },
-        changeType() {
-            this.page = 1;
-            this.list = [];
-            this.infiniteId += 1;
-        },
-        clean() {
-            this.searchInput = null;
-            this.dateFilter = null;
-            this.delegations_model = null;
-            this.changeType();
         },
         queryFilter($state) {
             let api = "/g-environmental-rnec/co-responsibility-agreements/getCoResponsibilityAgreements";
@@ -801,10 +821,6 @@ export default {
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
             this.changeType();
         },
-        clearDropzone() {
-            this.evidences = [];
-            this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
-        },
         destroyDocument(itemDocument) {
             this.$swal({
                 title: '¿Realmente desea eliminar esta imagen?',
@@ -821,7 +837,7 @@ export default {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceCoResponsibilityAgreement.id)), 1);
                             this.changeType();
-                        }).catch(this.response);
+                        }).catch(error => (error.response ? this.responseErrors(error) : ""));
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });
         },
@@ -866,84 +882,6 @@ export default {
             this.FormCoResponsibilityAgreements.date = formattedDate
             this.FormCoResponsibilityAgreements.observations = data.observations
         },
-        alertLoading(time, msg, type) {
-            this.$toastr.Add({
-                timeout: time,
-                type: type,
-                msg: msg,
-            });
-        },
-        responseErrors(error) {
-            if (error.response.status === 422) {
-                // CAPTURA DE ERRORES DESDE EL BACKEND
-                let msg = ''
-
-                // RECORRE TODOS LOS ERRORES Y LOS ADJUNTA EN UNA VARIABLE
-                Object.values(error.response.data.errors)
-                    .map((errors, index) =>
-                        msg += `<li style="margin-bottom: 10px !important;"><b>${index + 1}.</b> ${errors[0]}</li>`)
-
-                // ALERTA QUE MUESTRA AL USUARIO FINAL LOS ERRORES
-                this.$swal({
-                    icon: 'error', // ICONO
-                    title: '¡Hola! te invitamos a que revises tús campos', // TÍTULO DE LA NOTIFICACIÓN
-                    html: `<ul class="text-danger text-left">${msg}</ul>`, // CONTENIDO DE LA NOTIFICACIÓN
-                    showConfirmButton: true, // BOTON DE CONFIRMACIÓN PARA CERRAR LA VENTANA
-                    timer: 15000, // 15 SEG PARA QUE EL USUARIO LEA
-                    timerProgressBar: true, // PERMITE LA VISUALIZACIÓN DE UNA BARRA QUE VA INDICNDO CUANDO TIEMPO FALTA PARA QUE LA VENTANA DSE CIERRE
-                })
-            }
-
-            if (error.response.status === 500) {
-                this.$swal({
-                    icon: 'warning', // ICONO
-                    title: 'Oops!', // TÍTULO DE LA NOTIFICACIÓN
-                    html: '<p>Ocurrio un error con el servidor...</p>' +
-                        '<p class="text-justify"><b class="text-warning">ADVERTENCIA:</b> ' + error.response.data.msg + '</p>', // CONTENIDO DE LA NOTIFICACIÓN
-                    showConfirmButton: true, // BOTON DE CONFIRMACIÓN PARA CERRAR LA VENTANA
-                    timer: 15000, // 15 SEG PARA QUE EL USUARIO LEA
-                    timerProgressBar: true, // PERMITE LA VISUALIZACIÓN DE UNA BARRA QUE VA INDICNDO CUANDO TIEMPO FALTA PARA QUE LA VENTANA DSE CIERRE
-                });
-            }
-        },
-        number_format(amonth, decimals) {
-            amonth += ""; // POR SI PASAN UN NUMERO EN VEZ DE UN STRING
-            amonth = parseFloat(amonth.replace(/[^0-9\.]/g, "")); // ELIMINO CUALQUIER COSA QUE NO SEA NUMERO O PUNTO
-            decimals = decimals || 0; // POR SI LA VARIABLE NO FUE FUE PASADA
-            // SI NO ES UN NUMERO O ES IGUAL A CERO RETORNO EL MISMO CERO
-            if (isNaN(amonth) || amonth === 0)
-                return parseFloat(0).toFixed(decimals);
-            // SI ES MAYOR O MENOR QUE CERO RETORNO EL VALOR FORMATEADO COMO NUMERO
-            amonth = "" + amonth.toFixed(decimals);
-            var amonth_parts = amonth.split("."),
-                regexp = /(\d+)(\d{3})/;
-            while (regexp.test(amonth_parts[0]))
-                while (regexp.test(amonth_parts[0]))
-                    amonth_parts[0] = amonth_parts[0].replace(
-                        regexp,
-                        "$1" + "," + "$2"
-                    );
-            return amonth_parts.join(".");
-        },
-        // AGREGA ESTA FUNCIÓN PARA ABRIR EL MODAL Y ESTABLECER MODALVISIBLE EN VERDADERO
-        openModal() {
-            this.modalMapVisible = true;
-            // FORZAR UNA ACTUALIZACIÓN DEL MAPA DESPUÉS DE 100 MILISEGUNDOS
-            // ESTO LE DA TIEMPO AL MODAL PARA TENER SU TAMAÑO CORRECTAMENTE DEFINIDO.
-            setTimeout(() => {
-                this.$refs.mapRef.invalidateSize();
-            }, 5000);
-        },
-        // AGREGA ESTA FUNCIÓN PARA CERRAR EL MODAL Y ESTABLECER MODALVISIBLE EN FALSO
-        closeModal() {
-            this.modalMapVisible = false;
-        },
-        zoomUpdate(zoom) {
-            this.currentZoom = zoom;
-        },
-        centerUpdate(center) {
-            this.currentCenter = center;
-        },
         validateFormCoResponsibilityAgreements() {
             let disabled = Object.values(this.FormCoResponsibilityAgreements).every(value => value !== null && value !== undefined && value !== "");
             return !disabled;
@@ -953,14 +891,6 @@ export default {
                 let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
-        },
-        cleanFormReport() {
-            this.FormReport.fromDay = null;
-            this.FormReport.untilDay = null;
-            this.setAuthenticatedUser();
-        },
-        customFormatter(date) {
-            return moment(date).format("DD/MMMM/YYYY");
         },
         generateReport(type) {
             window.toastr.info("Generando reporte, por favor espere...", {
@@ -1014,56 +944,6 @@ export default {
                     showConfirmButton: true,
                 });
             }
-        },
-        getSpanishMonthName(month) {
-            const spanishMonthNames = [
-                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-            ];
-            return spanishMonthNames[month];
-        },
-        getCurrentDateWithSpanishMonth() {
-            const currentDate = new Date();
-            const currentMonth = currentDate.getMonth();
-            const monthName = this.getSpanishMonthName(currentMonth);
-            return monthName;
-        },
-        getCurrentYear() {
-            const currentDate = new Date();
-            return currentDate.getFullYear();
-        },
-        setCsrfToken() {
-            axios.get("/g-environmental-rnec/csrf-token")
-                .then(response => this.dropzoneOptions.headers['X-CSRF-TOKEN'] = response.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setAuthenticatedUser() {
-            axios.post("/g-environmental-rnec/users/getAuthenticatedUser")
-                .then(response => {
-                    this.user = response.data
-                    this.FormReport.delegation = { code: response.data.delegation.id, label: response.data.delegation.name }
-                })
-                .catch(errors => console.log(errors));
-        },
-        getUsersInput() {
-            axios.post("/g-environmental-rnec/users/getUsersInput")
-                .then(response => this.users = response.data.data)
-                .catch(errors => console.log(errors));
-        },
-        setPermissions() {
-            axios.post("/g-environmental-rnec/home/permissions")
-                .then(response => this.permissions = response.data)
-                .catch(errors => console.log(errors));
-        },
-        setDelegations(search) {
-            axios.get('/g-environmental-rnec/delegations/getDelegations', { params: { search: search } })
-                .then(res => this.delegations = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setMunicipalities(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search } })
-                .then(res => this.municipalities = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
     },
     created() {

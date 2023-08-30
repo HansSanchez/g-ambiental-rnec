@@ -84,8 +84,41 @@
                                     </button>
                                 </div>
                                 <div class="modal-body bv-modal">
-
                                     <div class="row">
+                                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
+                                                    <b class="full-center">
+                                                        <i class="fa-solid fa-circle-info fa-2x"></i>
+                                                        <strong class="pl-2">RECOMENDACIONES:</strong>
+                                                    </b>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Para una óptima gestión y creación de los datos, le invitamos
+                                                            verificar antes de crear una sede que no esté previamente
+                                                            registrada con un nombre diferente, se dejó este proceso abierto
+                                                            debido a la alta demanda de nuevas sedes.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Por razones de seguridad, la creación de sedes está limitada
+                                                            exclusivamente a la delegación a la cual usted pertenezca.
+                                                            Esto se hace con el objetivo de minimizar al máximo la
+                                                            duplicación de información.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general">
+                                                        <strong>
+                                                            Si tiene alguna duda con respecto a la creación de sedes lo
+                                                            invitamos a contactar con: "SEDE CENTRAL - BOGOTÁ".
+                                                        </strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12 pb-0">
                                             <ValidationProvider name="name" rules="required">
                                                 <div slot-scope="{ errors }">
@@ -207,9 +240,10 @@
                 permissions.edit_headquarters === 'edit_headquarters' ||
                 permissions.add_headquarters === 'add_headquarters' ||
                 permissions.delete_headquarters === 'delete_headquarters'" class="table-responsive max-h-650">
-                <table id="sub_area-table" class="table table-sm table-bordered table-striped table-condensed bg-white">
-                    <thead class="bg-orange headerStatic">
+                <table id="sub_area-table" class="table table-sm table-hover table-bordered table-condensed bg-white">
+                    <thead class="headerStatic">
                         <tr class="text-center">
+                            <th>ID</th>
                             <th class="tt-espumados">NOMBRE</th>
                             <th class="tt-espumados">LÍDER</th>
                             <th class="tt-espumados">TIPO</th>
@@ -228,8 +262,11 @@
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in list" :key="index">
+                            <td class="text-uppercase text-center bg-register text-white">
+                                <b>{{ item.id }}</b>
+                            </td>
                             <td class="text-uppercase text-center">
-                                {{ item.name }}
+                                <b>{{ item.name }}</b>
                             </td>
                             <td class="text-uppercase text-center">
                                 {{ item.in_charge }}

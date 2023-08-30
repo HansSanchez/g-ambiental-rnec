@@ -21,34 +21,8 @@ class UserController extends Controller
     public function getAuthenticatedUser()
     {
         if (Auth::check()) {
-            $id = Auth::user()->id;
-            $user =
-                User::with([
-                    // RELACIÓN CON LA DELEGACIÓN
-                    'Delegation' => function ($query) {
-                        $query->select(
-                            'delegations.id',
-                            'delegations.name'
-                        );
-                    },
-                    // RELACIÓN CON EL MUNICIPIO
-                    'Municipality' => function ($query) {
-                        $query->select(
-                            'municipalities.id',
-                            'municipalities.city_name',
-                            'municipalities.profile_photo_path'
-                        );
-                    },
-                    // RELACIÓN CON LA SEDE
-                    'Headquarter' => function ($query) {
-                        $query->select(
-                            'headquarters.id',
-                            'headquarters.name',
-                            'headquarters.type'
-                        );
-                    },
-                ])
-                ->where('id', $id)
+            $user = User::withRelations() // SCOPE EN EL MODELO (RELACIONES)
+                ->where('id', Auth::user()->id)
                 ->first();
             return $user;
         } else return null;
@@ -56,8 +30,7 @@ class UserController extends Controller
 
     public function getUsersInput()
     {
-        return
-            User::selectRaw('id AS code, CONCAT(users.first_name, " ", users.second_name, " ", users.first_last_name, " ", users.second_last_name) AS label')
+        return User::selectRaw('id AS code, CONCAT(users.first_name, " ", users.second_name, " ", users.first_last_name, " ", users.second_last_name) AS label')
             ->where('delegation_id', Auth::user()->delegation_id)
             ->orderBy('id', 'ASC')
             ->simplePaginate(50);
@@ -65,52 +38,10 @@ class UserController extends Controller
 
     public function getUsers(Request $request): \Illuminate\Http\JsonResponse
     {
-        $day = date('Y-m-d', strtotime($request->dateFilter));
-        $users =
-            User::with([
-                // RELACIÓN CON LA DELEGACIÓN
-                'Delegation' => function ($query) {
-                    $query->select(
-                        'delegations.id',
-                        'delegations.name'
-                    );
-                },
-                // RELACIÓN CON EL MUNICIPIO
-                'Municipality' => function ($query) {
-                    $query->select(
-                        'municipalities.id',
-                        'municipalities.city_name',
-                        'municipalities.profile_photo_path'
-                    );
-                },
-                // RELACIÓN CON LA SEDE
-                'Headquarter' => function ($query) {
-                    $query->select(
-                        'headquarters.id',
-                        'headquarters.name',
-                        'headquarters.type'
-                    );
-                },
-                'role' => function ($query) {
-                    $query->select(
-                        'roles.id',
-                        'roles.name',
-                        'roles.display_name'
-                    );
-                }
-            ])
-            ->where(function ($query) use ($request, $day) {
-                if ($request->search) $query->search($request->search);
-                if ($request->delegations_model) {
-                    $delegation = json_decode($request->delegations_model);
-                    $query->where('users.delegation_id', $delegation->code);
-                }
-                if ($request->dateFilter) $query->whereBetween('users.created_at', [$day . " 00:00:00", $day . " 23:59:59"]);
-            })
-
-            ->orderBy('users.first_name')
-            ->simplePaginate(50);
-
+        $users = User::withRelations() // SCOPE EN EL MODELO (RELACIONES)
+            ->filter($request, date('Y-m-d', strtotime($request->dateFilter))) // SCOPE EN EL MODELO (FILTROS)
+            ->orderBy('id', 'DESC')
+            ->simplePaginate(25);
         return response()->json(['users' => $users, 'role' => auth()->user()->role->name]);
     }
 
@@ -145,10 +76,10 @@ class UserController extends Controller
             $user->password = Hash::make($request->personal_id);
             $user->position = mb_strtoupper($request->position);
             $user->active = $request->active == true ? 'ACTIVO' : 'INACTIVO';
-            $user->delegation_id = $request->delegation['code']; // DELEGACIÓN DEL USUARIO
-            $user->municipality_id = $request->municipality['code']; // MUNICIPIO DEL USUARIO
-            $user->headquarter_id = $request->headquarter['code']; // SEDE DEL USUARIO
-            $user->role_id = $request->role['code']; // ROL DEL USUARIO
+            $user->delegation_id = $request->delegation['code']; // DELEGACIÓN DEL FUNCIONARIO(A)
+            $user->municipality_id = $request->municipality['code']; // MUNICIPIO DEL FUNCIONARIO(A)
+            $user->headquarter_id = $request->headquarter['code']; // SEDE DEL FUNCIONARIO(A)
+            $user->role_id = $request->role['code']; // ROL DEL FUNCIONARIO(A)
             $user->save();
 
             // REGISTRO DE ACTIVIDAD
@@ -158,7 +89,7 @@ class UserController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
 
-            // RELACIONES DEL USUARIO
+            // RELACIONES DEL FUNCIONARIO(A)
             $user->Delegation;
             $user->Municipality;
             $user->Headquarter;
@@ -247,13 +178,13 @@ class UserController extends Controller
 
             // REGISTRO DE ACTIVIDAD
             Audit::create([
-                'action' => 'ACTUALIZACIÓN (FINAL) DEL USUARIO: ' . $user->first_name . ' ' . $user->first_last_name . ' CON ID => ' . $user->id,
+                'action' => 'ACTUALIZACIÓN (FINAL) DEL FUNCIONARIO(A): ' . $user->first_name . ' ' . $user->first_last_name . ' CON ID => ' . $user->id,
                 'description' => $user,
                 'module' => 'USUARIOS',
                 'user_id' => auth()->user()->id,
             ]);
 
-            // RELACIONES DEL USUARIO
+            // RELACIONES DEL FUNCIONARIO(A)
             $user->Delegation;
             $user->Municipality;
             $user->Headquarter;
@@ -305,7 +236,7 @@ class UserController extends Controller
 
             // REGISTRO DE LA ACTIVIDAD
             Audit::create([
-                'action' => 'ACTUALIZACIÓN DE LA FOTO DE PERFIL DEL USUARIO: ' . $user->first_name . ' ' . $user->first_last_name . ' CON ID => ' . $user->id,
+                'action' => 'ACTUALIZACIÓN DE LA FOTO DE PERFIL DEL FUNCIONARIO(A): ' . $user->first_name . ' ' . $user->first_last_name . ' CON ID => ' . $user->id,
                 'module' => 'USUARIOS',
                 'user_id' => auth()->user()->id,
             ]);

@@ -16,7 +16,7 @@
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>ID DEL USUARIO</b>
+                <b>ID DEL FUNCIONARIO(A)</b>
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
@@ -36,11 +36,15 @@
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>NOMBRE DEL USUARIO</b>
+                <b>SEDE</b>
             </th>
             <th
                 style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
-                <b>CORREO DEL USUARIO</b>
+                <b>NOMBRE DEL FUNCIONARIO(A)</b>
+            </th>
+            <th
+                style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
+                <b>CORREO DEL FUNCIONARIO(A)</b>
             </th>
         </tr>
     </thead>
@@ -56,7 +60,7 @@
                     {{ $item->au_created_at ?: '-o-' }}
                 </td>
                 <td
-                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
+                    style="border: 1px solid #000000; text-align: -moz-left; text-align: -webkit-left; text-align: left">
                     {{ $item->au_module ?: '-o-' }}
                 </td>
                 <td
@@ -88,6 +92,15 @@
                             ->first();
                     @endphp
                     {{ $municipality != null ? $municipality : 'SIN MUNICIPIO' }}
+                </td>
+                <td
+                    style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">
+                    @php
+                        $headquarter = \App\Models\Headquarter::where('id', $item->u_headquarter_id)
+                            ->pluck('name')
+                            ->first();
+                    @endphp
+                    {{ $headquarter != null ? $headquarter : 'SIN SEDE' }}
                 </td>
                 <td
                     style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center">

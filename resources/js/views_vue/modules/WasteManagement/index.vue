@@ -161,7 +161,8 @@
                                                     <small>
                                                         <b>
                                                             <em>
-                                                                Escoja el municipio al cual le va a relacionar la generación de residuos
+                                                                Escoja el municipio al cual le va a relacionar la generación
+                                                                de residuos
                                                             </em>
                                                         </b>
                                                     </small>
@@ -187,7 +188,8 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <small><b><em>Escoja el año al cual va a relacionar la generación de residuos</em></b></small>
+                                                    <small><b><em>Escoja el año al cual va a relacionar la generación de
+                                                                residuos</em></b></small>
                                                     <small>
                                                         <p class="text-danger mb-0">
                                                             <b>{{ errors[0] }}</b>
@@ -210,7 +212,8 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <small><b><em>Escoja el mes al cual va a relacionar la generación de residuos</em></b></small>
+                                                    <small><b><em>Escoja el mes al cual va a relacionar la generación de
+                                                                residuos</em></b></small>
                                                     <small>
                                                         <p class="text-danger mb-0">
                                                             <b>{{ errors[0] }}</b>
@@ -317,6 +320,9 @@
                                 <div class="modal-body bv-modal">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <recommendations-component></recommendations-component>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>EVIDENCIAS</b></h5>
                                             <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="vue-dropzone"
                                                 :duplicateCheck="true" ref="myDropzone" @vdropzone-success="handleSuccess">
@@ -328,9 +334,6 @@
                                                     </div>
                                                 </div>
                                             </vue-dropzone>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <recommendations-component></recommendations-component>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>ARCHIVOS ADJUNTOS</b></h5>
@@ -1249,5 +1252,4 @@ ul.list-custom li.list-custom:before {
     line-height: 30px;
     padding: 10px 10px 10px 0;
     margin-bottom: 10px;
-}
-</style>
+}</style>

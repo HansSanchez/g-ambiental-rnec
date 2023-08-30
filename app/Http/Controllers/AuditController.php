@@ -24,6 +24,7 @@ class AuditController extends Controller
                         'users.position',
                         'users.delegation_id',
                         'users.municipality_id',
+                        'users.headquarter_id',
                     );
                 }
             ])
@@ -81,6 +82,7 @@ class AuditController extends Controller
                 'users.email AS u_email',
                 'users.delegation_id AS u_delegation_id',
                 'users.municipality_id AS u_municipality_id',
+                'users.headquarter_id AS u_headquarter_id',
             )
             ->join('users', 'users.id', '=', 'audits.user_id')
             ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $monthStartDate, $monthEndDate, $yearStartDate, $yearEndDate) {

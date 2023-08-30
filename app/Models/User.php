@@ -85,7 +85,86 @@ class User extends \TCG\Voyager\Models\User
             ->orWhere('second_name', 'LIKE', '%' . $search_term . '%')
             ->orWhere('first_last_name', 'LIKE', '%' . $search_term . '%')
             ->orWhere('second_last_name', 'LIKE', '%' . $search_term . '%')
-            ->orWhere('email', 'LIKE', '%' . $search_term . '%');
+            ->orWhere('email', 'LIKE', '%' . $search_term . '%')
+            ->orWhere(function ($query) use ($search_term) {
+                $query->whereHas('Delegation', function ($query2) use ($search_term) {
+                    $query2->where('delegations.name', 'LIKE', '%' . $search_term . '%');
+                });
+            })
+            ->orWhere(function ($query) use ($search_term) {
+                $query->whereHas('Municipality', function ($query2) use ($search_term) {
+                    $query2->where('municipalities.city_name', 'LIKE', '%' . $search_term . '%');
+                });
+            })
+            ->orWhere(function ($query) use ($search_term) {
+                $query->whereHas('Headquarter', function ($query2) use ($search_term) {
+                    $query2->where('headquarters.name', 'LIKE', '%' . $search_term . '%');
+                });
+            });
+    }
+
+    public function scopeWithRelations($query)
+    {
+        return $query->with([
+            // RELACIÓN CON LA DELEGACIÓN
+            'Delegation' => function ($query) {
+                $query->select(
+                    'delegations.id',
+                    'delegations.name'
+                );
+            },
+            // RELACIÓN CON EL MUNICIPIO
+            'Municipality' => function ($query) {
+                $query->select(
+                    'municipalities.id',
+                    'municipalities.city_name',
+                    'municipalities.profile_photo_path'
+                );
+            },
+            // RELACIÓN CON LA SEDE
+            'Headquarter' => function ($query) {
+                $query->select(
+                    'headquarters.id',
+                    'headquarters.name',
+                    'headquarters.type'
+                );
+            },
+            // RELACIÓN CON EL ROL
+            'role' => function ($query) {
+                $query->select(
+                    'roles.id',
+                    'roles.name',
+                    'roles.display_name'
+                );
+            }
+        ]);
+    }
+
+    public function scopeFilter($query, $request, $day)
+    {
+        return $query->where(function ($query) use ($request, $day) {
+            if ($request->search)
+                $query->search($request->search);
+            if ($request->delegations_model) {
+                $delegation = json_decode($request->delegations_model);
+                $query->where('users.delegation_id', $delegation->code);
+            }
+            if ($request->municipalities_model) {
+                $municipality = json_decode($request->municipalities_model);
+                $query->where('users.municipality_id', $municipality->code);
+            }
+            if ($request->delegations_model) {
+                $headquarter = json_decode($request->headquarters_model);
+                $query->where('users.headquarter_id', $headquarter->code);
+            }
+            if ($request->dateFilter)
+                $query->whereBetween('users.created_at', [$day . " 00:00:00", $day . " 23:59:59"]);
+        });
+    }
+
+    public function scopePaginate($query, $perPage)
+    {
+        return $query->orderBy('users.first_name')->simplePaginate($perPage);
     }
 
     public function Audits(): \Illuminate\Database\Eloquent\Relations\HasMany

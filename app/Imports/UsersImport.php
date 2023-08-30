@@ -25,7 +25,7 @@ class UsersImport implements ToCollection, WithStartRow
             // SE ITERAN TODAS LAS FILAS DE LA COLECCIÓN
             foreach ($rows as $row) {
 
-                // BÚSQUEDA DEL USUARIO POR CÉDULA
+                // BÚSQUEDA DEL FUNCIONARIO(A) POR CÉDULA
                 $user = User::where('personal_id', $row[0])->first();
 
                 // CASO QUE NO EXISTA
@@ -38,11 +38,11 @@ class UsersImport implements ToCollection, WithStartRow
                     $newUser->second_last_name = mb_strtoupper($row[4]); // SEGUNDO APELLIDO
                     $newUser->email = $row[5]; // CORREO ELECTRÓNICO
                     $newUser->phone_number = $row[6]; // NÚMERO DE TELÉFONO
-                    $newUser->delegation_id = Delegation::where('name', $row[7])->pluck('id')->first(); // DELEGACIÓN DEL USUARIO
+                    $newUser->delegation_id = Delegation::where('name', $row[7])->pluck('id')->first(); // DELEGACIÓN DEL FUNCIONARIO(A)
                     $newUser->position = mb_strtoupper($row[8]); // CARGO
                     $newUser->active = mb_strtoupper($row[9]); // ESTADO
                     $newUser->password = Hash::make($row[0]); // CONTRASEÑA
-                    $newUser->role_id = 2; // ROL DEL USUARIO
+                    $newUser->role_id = 2; // ROL DEL FUNCIONARIO(A)
                     $newUser->save();
                 }
 
@@ -58,11 +58,11 @@ class UsersImport implements ToCollection, WithStartRow
                         'second_last_name' => mb_strtoupper($row[4]), // SEGUNDO APELLIDO
                         'email' => $row[5] == null ? null : mb_strtolower($row[5]), // CORREO ELECTRÓNICO
                         'phone_number' => $row[6], // NÚMERO DE TELÉFONO
-                        'delegation_id' => Delegation::where('name', $row[7])->pluck('id')->first(), // DELEGACIÓN DEL USUARIO
+                        'delegation_id' => Delegation::where('name', $row[7])->pluck('id')->first(), // DELEGACIÓN DEL FUNCIONARIO(A)
                         'position' => mb_strtoupper($row[8]), // CARGO
                         'active' => mb_strtoupper($row[9]), // ESTADO
                         'password' => Hash::make($row[0]), // CONTRASEÑA
-                        'role_id' => 2, // ROL DEL USUARIO
+                        'role_id' => 2, // ROL DEL FUNCIONARIO(A)
                     ]);
                 }
             }

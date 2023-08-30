@@ -125,7 +125,8 @@ class TreePlantation extends Model
 
     public function scopePaginate($query, $perPage)
     {
-        return $query->orderBy('tree_plantations.id')->simplePaginate($perPage);
+        return $query->orderBy('id', 'ASC')
+            ->simplePaginate($perPage);
     }
 
     public function Headquarter(): \Illuminate\Database\Eloquent\Relations\BelongsTo

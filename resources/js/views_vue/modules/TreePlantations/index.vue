@@ -115,6 +115,40 @@
                                 </div>
                                 <div class="modal-body bv-modal">
                                     <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
+                                                    <b class="full-center">
+                                                        <i class="fa-solid fa-circle-info fa-2x"></i>
+                                                        <strong class="pl-2">RECOMENDACIONES:</strong>
+                                                    </b>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Tenga en cuenta que, los campos marcados con
+                                                            <b class='text-danger'>(*)</b> son de caracter obligatorio.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Para registrar las coordenadas, bastará con hacer clic sobre el
+                                                            mapa o, después de hacer clic, arrastrar el marcador a la
+                                                            ubicación que considere adecuada.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general">
+                                                        <strong>
+                                                            Si tiene alguna duda con respecto a la creación de registros
+                                                            asociados a la plantación de árboles
+                                                            lo invitamos a contactar con: "SEDE CENTRAL - BOGOTÁ".
+                                                        </strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
                                             <ValidationProvider name="number_of_trees_planted" rules="required">
                                                 <div slot-scope="{ errors }">
@@ -250,6 +284,9 @@
                                 <div class="modal-body bv-modal">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <recommendations-component></recommendations-component>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>EVIDENCIAS</b></h5>
                                             <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="vue-dropzone"
                                                 :duplicateCheck="true" ref="myDropzone" @vdropzone-success="handleSuccess">
@@ -261,9 +298,6 @@
                                                     </div>
                                                 </div>
                                             </vue-dropzone>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <recommendations-component></recommendations-component>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>ARCHIVOS ADJUNTOS</b></h5>
@@ -352,6 +386,25 @@
                                 <div class="modal-body" style="background: #e7e7e7">
                                     <!-- REPORTES -->
                                     <div v-if="report" class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
+                                                    <b class="full-center">
+                                                        <i class="fa-solid fa-circle-info fa-2x"></i>
+                                                        <strong class="pl-2">RECOMENDACIONES:</strong>
+                                                    </b>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general">
+                                                        <strong>
+                                                            Por favor, tenga en cuenta que para generar un informe es
+                                                            necesario proporcionar un valor en todos los campos marcados con
+                                                            <b class='text-danger'>(*)</b>.
+                                                        </strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                                             <h5 class="mb-0"><b>Fechas de plantaciones</b></h5>
                                         </div>
@@ -403,22 +456,6 @@
                                                 </v-select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
-                                            <div class="alert alert-info mb-0" role="alert">
-                                                <h5>
-                                                    <b>
-                                                        <i class="fa-solid fa-circle-info"></i>
-                                                        RECOMENDACIONES
-                                                    </b>
-                                                </h5>
-                                                <ul class="list-general text-justify">
-                                                    <li class="list-general">
-                                                        Por favor, tenga en cuenta que para generar un informe es necesario
-                                                        proporcionar un valor en todos los campos correspondientes.
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                     </div>
                                     <!-- END -->
                                 </div>
@@ -461,16 +498,18 @@
                         permissions.delete_tree_plantations === 'delete_tree_plantations'"
                         class="table-responsive max-h-650">
                         <table id="sub_area-table"
-                            class="table table-sm table-bordered table-striped table-condensed bg-white">
-                            <thead class="bg-orange headerStatic">
+                            class="table table-sm table-hover table-bordered table-condensed bg-white">
+                            <thead class="headerStatic">
                                 <tr class="text-center">
-                                    <th class="tt-espumados">DELEGACIÓN - MUNICIPIO - SEDE</th>
-                                    <th class="tt-espumados">REPORTADOR(A)</th>
-                                    <th class="tt-espumados">PLANTADOS</th>
-                                    <th class="tt-espumados">FECHA</th>
-                                    <th class="tt-espumados">UBICACIÓN</th>
-                                    <th class="tt-espumados">OBSERVACIONES</th>
-                                    <th class="tt-espumados" v-if="permissions.add_tree_plantations === 'add_tree_plantations' ||
+                                    <th>ID</th>
+                                    <th>DELEGACIÓN - MUNICIPIO - SEDE</th>
+                                    <th>REPORTADOR(A)</th>
+                                    <th>PLANTADOS</th>
+                                    <th>FECHA</th>
+                                    <th>UBICACIÓN</th>
+                                    <th>REPORTADO</th>
+                                    <th>OBSERVACIONES</th>
+                                    <th v-if="permissions.add_tree_plantations === 'add_tree_plantations' ||
                                         permissions.edit_tree_plantations === 'edit_tree_plantations' ||
                                         permissions.delete_tree_plantations === 'delete_tree_plantations'">
                                         OPCIONES
@@ -479,6 +518,9 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in list" :key="index">
+                                    <td class="text-uppercase text-center bg-register text-white">
+                                        <b>{{ item.id }}</b>
+                                    </td>
                                     <td class="text-uppercase text-center">
                                         <b>
                                             {{
@@ -501,6 +543,9 @@
                                     </td>
                                     <td class="text-center">
                                         {{ item.address }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ item.CreatedLabel }}
                                     </td>
                                     <td class="text-justify" v-html="item.observations"
                                         style="max-width: 400px !important;"></td>
@@ -566,10 +611,10 @@
                         <infinite-loading @distance="1" :identifier="infiniteId" @infinite="infiniteHandler"
                             spinner="waveDots" ref="infiniteHandler">
                             <div slot="no-more">
-                                No hay más registros
+                                No hay más registros de plantaciones
                             </div>
                             <div slot="no-results">
-                                No hay registros
+                                No hay registros de plantaciones
                             </div>
                         </infinite-loading>
                     </div>
@@ -595,7 +640,7 @@ import Datepicker from "vuejs-datepicker";
 import { es } from "vuejs-datepicker/dist/locale";
 import moment from "moment-timezone";
 import LoaderComponent from '../../../components/LoaderComponent.vue';
-import NotFountComponent from '../../../components/NotFountComponent.vue';
+import MiMixin from '../../../components/mixin';
 
 export default {
     components: {
@@ -606,6 +651,7 @@ export default {
         LoaderComponent,
     },
     name: "TreePlantation",
+    mixins: [MiMixin],
     data() {
         return {
             id: null,
@@ -746,22 +792,6 @@ export default {
                     } else $state.complete();
                 }).catch(error => (error.response ? this.responseErrors(error) : ""));
         },
-        changeType() {
-            this.page = 1;
-            this.list = [];
-            this.infiniteId += 1;
-        },
-        clean() {
-            this.searchInput = null;
-            this.dateFilter = null;
-            this.delegations_model = null;
-            this.municipalities_model = null;
-            this.headquarters_model = null;
-            this.changeType();
-            this.setAuthenticatedUser();
-            this.setMunicipalitiesFilter();
-            this.setHeadquartersFilter();
-        },
         queryFilter($state) {
             let api = "/g-environmental-rnec/tree-plantations/getTreePlantation";
             axios.get(api, {
@@ -831,10 +861,6 @@ export default {
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
             this.changeType();
         },
-        clearDropzone() {
-            this.evidences = [];
-            this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
-        },
         destroyImage(itemImage) {
             this.$swal({
                 title: '¿Realmente desea eliminar esta imagen?',
@@ -882,84 +908,6 @@ export default {
             this.FormTreePlantation.lat = parseFloat(data.lat)
             this.FormTreePlantation.lng = parseFloat(data.lng)
             this.FormTreePlantation.observations = data.observations
-        },
-        alertLoading(time, msg, type) {
-            this.$toastr.Add({
-                timeout: time,
-                type: type,
-                msg: msg,
-            });
-        },
-        responseErrors(error) {
-            if (error.response.status === 422) {
-                // CAPTURA DE ERRORES DESDE EL BACKEND
-                let msg = ''
-
-                // RECORRE TODOS LOS ERRORES Y LOS ADJUNTA EN UNA VARIABLE
-                Object.values(error.response.data.errors)
-                    .map((errors, index) =>
-                        msg += `<li style="margin-bottom: 10px !important;"><b>${index + 1}.</b> ${errors[0]}</li>`)
-
-                // ALERTA QUE MUESTRA AL USUARIO FINAL LOS ERRORES
-                this.$swal({
-                    icon: 'error', // ICONO
-                    title: '¡Hola! te invitamos a que revises tús campos', // TÍTULO DE LA NOTIFICACIÓN
-                    html: `<ul class="text-danger text-left">${msg}</ul>`, // CONTENIDO DE LA NOTIFICACIÓN
-                    showConfirmButton: true, // BOTON DE CONFIRMACIÓN PARA CERRAR LA VENTANA
-                    timer: 15000, // 15 SEG PARA QUE EL USUARIO LEA
-                    timerProgressBar: true, // PERMITE LA VISUALIZACIÓN DE UNA BARRA QUE VA INDICNDO CUANDO TIEMPO FALTA PARA QUE LA VENTANA DSE CIERRE
-                })
-            }
-
-            if (error.response.status === 500) {
-                this.$swal({
-                    icon: 'warning', // ICONO
-                    title: 'Oops!', // TÍTULO DE LA NOTIFICACIÓN
-                    html: '<p>Ocurrio un error con el servidor...</p>' +
-                        '<p class="text-justify"><b class="text-warning">ADVERTENCIA:</b> ' + error.response.data.msg + '</p>', // CONTENIDO DE LA NOTIFICACIÓN
-                    showConfirmButton: true, // BOTON DE CONFIRMACIÓN PARA CERRAR LA VENTANA
-                    timer: 15000, // 15 SEG PARA QUE EL USUARIO LEA
-                    timerProgressBar: true, // PERMITE LA VISUALIZACIÓN DE UNA BARRA QUE VA INDICNDO CUANDO TIEMPO FALTA PARA QUE LA VENTANA DSE CIERRE
-                });
-            }
-        },
-        number_format(amonth, decimals) {
-            amonth += ""; // POR SI PASAN UN NUMERO EN VEZ DE UN STRING
-            amonth = parseFloat(amonth.replace(/[^0-9\.]/g, "")); // ELIMINO CUALQUIER COSA QUE NO SEA NUMERO O PUNTO
-            decimals = decimals || 0; // POR SI LA VARIABLE NO FUE FUE PASADA
-            // SI NO ES UN NUMERO O ES IGUAL A CERO RETORNO EL MISMO CERO
-            if (isNaN(amonth) || amonth === 0)
-                return parseFloat(0).toFixed(decimals);
-            // SI ES MAYOR O MENOR QUE CERO RETORNO EL VALOR FORMATEADO COMO NUMERO
-            amonth = "" + amonth.toFixed(decimals);
-            var amonth_parts = amonth.split("."),
-                regexp = /(\d+)(\d{3})/;
-            while (regexp.test(amonth_parts[0]))
-                while (regexp.test(amonth_parts[0]))
-                    amonth_parts[0] = amonth_parts[0].replace(
-                        regexp,
-                        "$1" + "," + "$2"
-                    );
-            return amonth_parts.join(".");
-        },
-        // AGREGA ESTA FUNCIÓN PARA ABRIR EL MODAL Y ESTABLECER MODALVISIBLE EN VERDADERO
-        openModal() {
-            this.modalMapVisible = true;
-            // FORZAR UNA ACTUALIZACIÓN DEL MAPA DESPUÉS DE 100 MILISEGUNDOS
-            // ESTO LE DA TIEMPO AL MODAL PARA TENER SU TAMAÑO CORRECTAMENTE DEFINIDO.
-            setTimeout(() => {
-                this.$refs.mapRef.invalidateSize();
-            }, 5000);
-        },
-        // AGREGA ESTA FUNCIÓN PARA CERRAR EL MODAL Y ESTABLECER MODALVISIBLE EN FALSO
-        closeModal() {
-            this.modalMapVisible = false;
-        },
-        zoomUpdate(zoom) {
-            this.currentZoom = zoom;
-        },
-        centerUpdate(center) {
-            this.currentCenter = center;
         },
         // AGREGA ESTA FUNCIÓN PARA MANEJAR EL EVENTO DE CLIC EN EL MAPA
         addMarker(event) {
@@ -1030,16 +978,6 @@ export default {
                 return !disabled;
             }
         },
-        cleanFormReport() {
-            this.FormReport.fromDay = null;
-            this.FormReport.untilDay = null;
-            this.setAuthenticatedUser();
-            this.setMunicipalitiesFilter();
-            this.setHeadquartersFilter();
-        },
-        customFormatter(date) {
-            return moment(date).format("DD/MMMM/YYYY");
-        },
         generateReport(type) {
             window.toastr.info("Generando reporte, por favor espere...", {
                 timeOut: 5000,
@@ -1092,69 +1030,6 @@ export default {
                     showConfirmButton: true,
                 });
             }
-        },
-        getSpanishMonthName(month) {
-            const spanishMonthNames = [
-                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-            ];
-            return spanishMonthNames[month];
-        },
-        getCurrentDateWithSpanishMonth() {
-            const currentDate = new Date();
-            const currentMonth = currentDate.getMonth();
-            const monthName = this.getSpanishMonthName(currentMonth);
-            return monthName;
-        },
-        getCurrentYear() {
-            const currentDate = new Date();
-            return currentDate.getFullYear();
-        },
-        setCsrfToken() {
-            axios.get("/g-environmental-rnec/csrf-token")
-                .then(response => this.dropzoneOptions.headers['X-CSRF-TOKEN'] = response.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setAuthenticatedUser() {
-            axios.post("/g-environmental-rnec/users/getAuthenticatedUser")
-                .then(response => {
-                    this.user = response.data
-                    this.delegations_model = { code: response.data.delegation.id, label: response.data.delegation.name }
-                    this.municipalities_model = { code: response.data.municipality.id, label: response.data.municipality.city_name }
-                    this.FormReport.delegation = { code: response.data.delegation.id, label: response.data.delegation.name }
-                    this.FormReport.municipality = { code: response.data.municipality.id, label: response.data.municipality.city_name }
-                    this.FormReport.headquarter = { code: response.data.headquarter.id, label: response.data.headquarter.name }
-                }).catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setPermissions() {
-            axios.post("/g-environmental-rnec/home/permissions")
-                .then(response => this.permissions = response.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setDelegations(search) { // Función para traer las sociedades en un v-select
-            axios.get('/g-environmental-rnec/delegations/getDelegations', { params: { search: search } })
-                .then(res => this.delegations = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setMunicipalitiesFilter(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.delegations_model, filter: true } })
-                .then(res => this.municipalities = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setMunicipalitiesFilterExport(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormReport.delegation, filter: true } })
-                .then(res => this.municipalities = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setHeadquartersFilter(search) {
-            axios.get('/g-environmental-rnec/headquarters/getHeadquartersFilter', { params: { search: search, municipality: this.municipalities_model } })
-                .then(res => this.headquarters = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setHeadquartersFilterExport(search) {
-            axios.get('/g-environmental-rnec/headquarters/getHeadquartersFilter', { params: { search: search, municipality: this.FormReport.municipality } })
-                .then(res => this.headquarters = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
     },
     created() {

@@ -95,6 +95,32 @@
                                     </button>
                                 </div>
                                 <div class="modal-body bv-modal">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
+                                                    <b class="full-center">
+                                                        <i class="fa-solid fa-circle-info fa-2x"></i>
+                                                        <strong class="pl-2">RECOMENDACIONES:</strong>
+                                                    </b>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Tenga en cuenta que, los campos marcados con
+                                                            <b class='text-danger'>(*)</b> son de caracter obligatorio.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general">
+                                                        <strong>
+                                                            Si tiene alguna duda con respecto a la creación de usuarios lo
+                                                            invitamos a contactar con: "SEDE CENTRAL - BOGOTÁ".
+                                                        </strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row justify-content-center text-center">
                                         <div v-if="update" class="col-lg-3 col-md-4 col-sm-12 col-xs-12"
                                             style="display: grid; justify-content: center;">
@@ -116,7 +142,7 @@
                                                         <h5><b>Cédula <span class="text-danger">*</span></b></h5>
                                                         <input v-model="FormUser.personal_id" type="number"
                                                             name="personal_id" id="personal_id" class="form-control"
-                                                            placeholder="Número de cédula del funcionario(a)" required>
+                                                            placeholder="Número de cédula el/la funcionario(a)" required>
                                                     </div>
                                                     <small>
                                                         <p class="text-danger mb-0">
@@ -160,7 +186,7 @@
                                                 <h5><b>Segundo nombre</b></h5>
                                                 <input v-model="FormUser.second_name" type="text" name="second_name"
                                                     id="second_name" class="form-control"
-                                                    placeholder="Segundo nombre del funcionario(a)" required>
+                                                    placeholder="Segundo nombre el/la funcionario(a)" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
@@ -185,7 +211,7 @@
                                                 <h5><b>Segundo apellido</b></h5>
                                                 <input v-model="FormUser.second_last_name" type="text"
                                                     name="second_last_name" id="second_last_name" class="form-control"
-                                                    placeholder="Segundo apellido del funcionario(a)" required>
+                                                    placeholder="Segundo apellido el/la funcionario(a)" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
@@ -195,7 +221,7 @@
                                                         <h5><b>Correo electrónico <span class="text-danger">*</span></b>
                                                         </h5>
                                                         <input v-model="FormUser.email" type="email" name="email" id="email"
-                                                            class="form-control" placeholder="Correo del funcionario(a)">
+                                                            class="form-control" placeholder="Correo el/la funcionario(a)">
                                                     </div>
                                                     <small>
                                                         <p class="text-danger mb-0">
@@ -223,7 +249,7 @@
                                             </ValidationProvider>
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pb-0">
-                                            <ValidationProvider name="phone_number" rules="required">
+                                            <ValidationProvider name="delegation" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-1">
                                                         <h5><b>Delegaciones <span class="text-danger">*</span></b></h5>
@@ -232,14 +258,16 @@
                                                             v-model="FormUser.delegation" placeholder="Buscar...">
                                                         </v-select>
                                                     </div>
-                                                    <p class="text-danger mb-0">
-                                                        <b>{{ errors[0] }}</b>
-                                                    </p>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
                                                 </div>
                                             </ValidationProvider>
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pb-0">
-                                            <ValidationProvider name="phone_number" rules="required">
+                                            <ValidationProvider name="municipality" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-1">
                                                         <h5><b>Municipios <span class="text-danger">*</span></b></h5>
@@ -250,9 +278,11 @@
                                                             :disabled="FormUser.delegation === null ? true : false">
                                                         </v-select>
                                                     </div>
-                                                    <p class="text-danger mb-0">
-                                                        <b>{{ errors[0] }}</b>
-                                                    </p>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
                                                 </div>
                                             </ValidationProvider>
                                         </div>
@@ -266,13 +296,15 @@
                                                             :disabled="FormUser.municipality === null ? true : false">
                                                         </v-select>
                                                     </div>
-                                                    <p class="text-danger">
-                                                        <b>{{ errors[0] }}</b>
-                                                    </p>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pt-0 pb-0">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
                                             <ValidationProvider name="position" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-1">
@@ -283,13 +315,15 @@
                                                             v-model="FormUser.role" placeholder="Buscar...">
                                                         </v-select>
                                                     </div>
-                                                    <p class="text-danger">
-                                                        <b>{{ errors[0] }}</b>
-                                                    </p>
+                                                    <small>
+                                                        <p class="text-danger mb-0">
+                                                            <b>{{ errors[0] }}</b>
+                                                        </p>
+                                                    </small>
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pt-0">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                             <ValidationProvider name="position" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-1">
@@ -401,7 +435,7 @@
                     <div class="modal-content">
                         <div class="modal-header" style="background: #88b76e;">
                             <h5 class="modal-title text-uppercase text-white">
-                                <b>ACTUALIZACIÓN DE FOTO DEL USUARIO {{ selectedUser.first_name }}</b>
+                                <b>ACTUALIZACIÓN DE FOTO DEL FUNCIONARIO(A) {{ selectedUser.first_name }}</b>
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">
@@ -449,9 +483,10 @@
                 permissions.edit_users === 'edit_users' ||
                 permissions.add_users === 'add_users' ||
                 permissions.delete_users === 'delete_users'" class="table-responsive max-h-650">
-                <table id="sub_area-table" class="table table-sm table-bordered table-striped table-condensed bg-white">
-                    <thead class="bg-orange headerStatic">
+                <table id="sub_area-table" class="table table-sm table-hover table-bordered table-condensed bg-white">
+                    <thead class="headerStatic">
                         <tr class="text-center">
+                            <th>ID</th>
                             <th class="tt-espumados">FOTO</th>
                             <th class="tt-espumados">ACTIVO</th>
                             <th class="tt-espumados">NOMBRE</th>
@@ -471,6 +506,9 @@
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in list" :key="index">
+                            <td class="text-uppercase text-center bg-register text-white">
+                                <b>{{ item.id }}</b>
+                            </td>
                             <td v-if="item.profile_photo_path" class="text-center defaultCenter" width="52px">
                                 <img :src="'/storage/users/' + item.profile_photo_path" class="defaultCenter"
                                     @click="selectedUser = item; url = null" data-toggle="modal"

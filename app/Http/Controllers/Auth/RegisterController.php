@@ -70,7 +70,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // CREACIÓN DEL USUARIO
+        // CREACIÓN DEL FUNCIONARIO(A)
         $user = new User();
         $user->first_name = strtoupper($data["first_name"]);
         $user->second_name = strtoupper($data["second_name"]);
@@ -91,7 +91,7 @@ class RegisterController extends Controller
         // RELACIÓN CON EL ROL
         $user->role;
 
-        // RETORNO DEL USUARIO CREADO
+        // RETORNO DEL FUNCIONARIO(A) CREADO
         return $user;
 
     }

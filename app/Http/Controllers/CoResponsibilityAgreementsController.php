@@ -104,7 +104,7 @@ class CoResponsibilityAgreementsController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL USUARIO CON SESIÓN ACTIVA
+                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
                 $delegation_id = auth()->user()->delegation_id;
 
                 // GUARDADO DEL REGISTRO HECHO
@@ -200,7 +200,7 @@ class CoResponsibilityAgreementsController extends Controller
                 // OBTENCIÓN DEL ID QUE HIZO EL REGISTRO
                 $user_id = $coResponsibilityAgreement->user_id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL USUARIO QUE HIZO EL REGISTRO
+                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
                 $delegation_id = $coResponsibilityAgreement->delegation_id;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA

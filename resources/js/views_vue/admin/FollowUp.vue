@@ -4,7 +4,7 @@
     </div>
     <div v-else-if="permissions.browse_audits === 'browse_audits' ||
         permissions.read_audits === 'read_audits' ||
-        permissions.generate_report === 'generate_report'
+        permissions.generate_report_audits === 'generate_report_audits'
         " class="card text-uppercase">
         <div class="card-header bg-espumados text-uppercase">
             <div class="row">
@@ -23,8 +23,8 @@
         </div>
 
         <!-- AUDITS MODAL -->
-        <div v-show="permissions.generate_report === 'generate_report'" class="modal fade" id="AuditsModal" tabindex="-1"
-            role="dialog" aria-labelledby="AuditsModalTitle" aria-hidden="true">
+        <div v-show="permissions.generate_report_audits === 'generate_report_audits'" class="modal fade" id="AuditsModal"
+            tabindex="-1" role="dialog" aria-labelledby="AuditsModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header" style="background: #88b76e">
@@ -33,7 +33,8 @@
                                 report ? "Reporte de seguimientos" : "SIN TÍTULO"
                             }}</b>
                         </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            @click="cleanFormReport()">
                             <span aria-hidden="true">
                                 <v-icon style="color: #fff">mdi-close</v-icon>
                             </span>
@@ -42,11 +43,37 @@
                     <div class="modal-body" style="background: #e7e7e7">
                         <!-- REPORTES -->
                         <div v-if="report" class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
+                                <div class="alert alert-info mb-0" role="alert">
+                                    <h5>
+                                        <b class="full-center">
+                                            <i class="fa-solid fa-circle-info fa-2x"></i>
+                                            <strong class="pl-2">RECOMENDACIONES:</strong>
+                                        </b>
+                                    </h5>
+                                    <ul class="list-general text-justify">
+                                        <li class="list-general pb-3">
+                                            <strong>
+                                                Tenga en cuenta que, si desea generar un reporte, es necesario especificar
+                                                el campo <b class='text-danger'>(DESDE)</b> y el campo
+                                                <b class='text-danger'>(HASTA)</b>; de lo contrario, no se permitirá la
+                                                generación del reporte, excepto en el caso de los botones de color azul.
+                                            </strong>
+                                        </li>
+                                        <li class="list-general">
+                                            <strong>
+                                                Por otro lado, es importante aclarar que los botones azules indican el día,
+                                                la semana, el mes y el año actual.
+                                            </strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                                 <h5 class="mb-0"><b>Fechas de acciones</b></h5>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="form-group">
+                                <div class="form-group mb-0">
                                     <small class="text-danger"><b>(Desde)</b></small>
                                     <datepicker :language="es" v-model="FormReport.fromDay" :disabledDates="fromDay"
                                         :inputClass="inputClass" :format="customFormatter" :placeholder="fromPlaceholder">
@@ -54,7 +81,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="form-group">
+                                <div class="form-group mb-0">
                                     <small class="text-danger"><b>(Hasta)</b></small>
                                     <datepicker :language="es" v-model="FormReport.untilDay" :disabledDates="untilDay"
                                         :inputClass="inputClass" :format="customFormatter" :placeholder="untilPlaceholder">
@@ -64,28 +91,38 @@
                         </div>
                         <!-- END -->
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer justify-content-center">
+                        <v-btn v-if="report" color="#6c757d" title="Limpiar" small @click="cleanFormReport()"
+                            class="btn btn-sm btn-grey text-white text-uppercase">
+                            <b>LIMPIAR</b>
+                        </v-btn>
                         <v-btn v-if="report" color="#39f" title="Hoy" small @click="generateReport('day')"
-                            class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
+                            class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
+                            :disabled="!validateFormReport()">
                             <b>DIARIO</b>
                         </v-btn>
                         <v-btn v-if="report" color="#39f" title="Semanala" small @click="generateReport('week')"
-                            class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
+                            class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
+                            :disabled="!validateFormReport()">
                             <b>SEMANAL</b>
                         </v-btn>
                         <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('month')"
-                            class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
+                            class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
+                            :disabled="!validateFormReport()">
                             <b>MENSUAL</b>
                         </v-btn>
                         <v-btn v-if="report" color="#39f" title="Anual" small @click="generateReport('year')"
-                            class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal">
+                            class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
+                            :disabled="!validateFormReport()">
                             <b>ANUAL</b>
                         </v-btn>
                         <v-btn type="button" v-if="report" @click="generateReport('FormReport')" color="#2eb85c" small
-                            class="btn btn-success text-uppercase text-white" data-dismiss="modal">
+                            class="btn btn-success text-uppercase text-white" data-dismiss="modal"
+                            :disabled="validateFormReport()">
                             <b>GENERAR</b>
                         </v-btn>
-                        <v-btn color="#e55353" small class="btn btn-danger text-white" data-dismiss="modal">
+                        <v-btn color="#e55353" small class="btn btn-danger text-white" data-dismiss="modal"
+                            @click="cleanFormReport()">
                             <b>CANCELAR</b>
                         </v-btn>
                     </div>
@@ -103,8 +140,8 @@
                         <span class="input-group-text border-search bg-info" title="Buscar" @click="$emit('Enter')">
                             <i class="fa-solid fa-search text-white"></i>
                         </span>
-                        <span v-if="permissions.generate_report ===
-                            'generate_report'
+                        <span v-if="permissions.generate_report_audits ===
+                            'generate_report_audits'
                             " class="input-group-text border-search bg-success" title="Generación de reportes"
                             data-toggle="modal" data-backdrop="static" data-target="#AuditsModal" @click="report = true">
                             <i class="fa-solid fa-file-excel text-white"></i>
@@ -116,27 +153,33 @@
                 </div>
             </div>
             <div v-if="permissions.browse_audits === 'browse_audits' ||
-                permissions.read_audits === 'read_audits'
-                " class="table-responsive max-h-650">
-                <table id="sub_area-table" class="table table-sm table-bordered table-striped table-condensed bg-white">
+                permissions.read_audits === 'read_audits'" class="table-responsive max-h-650">
+                <table class="table table-sm table-hover table-bordered table-condensed bg-white">
                     <thead class="bg-orange headerStatic">
                         <tr class="text-center">
-                            <th class="tt-espumados">ACCIÓN</th>
-                            <th class="tt-espumados">DESCRIPCIÓN</th>
-                            <th class="tt-espumados">FECHA</th>
-                            <th class="tt-espumados">MÓDULO</th>
-                            <th class="tt-espumados">FUNCIONARI@</th>
-                            <th class="tt-espumados">CARGO</th>
-                            <th class="tt-espumados">DELEGACIÓN</th>
+                            <th class="tt-espumados">ID</th>
+                            <th>ACCIÓN</th>
+                            <th>DESCRIPCIÓN</th>
+                            <th>FECHA</th>
+                            <th>MÓDULO</th>
+                            <th>FUNCIONARIO(A)</th>
+                            <th>CARGO</th>
+                            <th>DELEGACIÓN - MUNICIPIO - SEDE</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in list" :key="index">
+                            <td class="text-uppercase text-center bg-register text-white">
+                                <b>{{ item.id }}</b>
+                            </td>
                             <td class="text-uppercase">{{ item.action }}</td>
                             <td class="text-center text-lowercase">
                                 <span v-if="item.description" @click="commentAlert(item)" title="Descripción de la acción"
                                     class="text-info cursor-pointer">
                                     <i class="fas fa-comment-alt fa-2x"></i>
+                                </span>
+                                <span v-else title="Sin descripción" class="cursor-pointer">
+                                    <i class="fa-solid fa-ban fa-2x"></i>
                                 </span>
                             </td>
                             <td class="text-center" v-html="item.CreatedLabel"></td>
@@ -167,6 +210,22 @@
                                     ? item.user.delegation
                                         ? item.user.delegation.name
                                         : "SIN DELEGACIÓN"
+                                    : "SIN USUARIO"
+                                }}
+                                -
+                                {{
+                                    item.user
+                                    ? item.user.municipality
+                                        ? item.user.municipality.city_name
+                                        : "SIN MUNICIPIO"
+                                    : "SIN USUARIO"
+                                }}
+                                -
+                                {{
+                                    item.user
+                                    ? item.user.headquarter
+                                        ? item.user.headquarter.name
+                                        : "SIN SEDE"
                                     : "SIN USUARIO"
                                 }}
                             </td>
@@ -312,6 +371,16 @@ export default {
                     "</code></pre>",
                 showConfirmButton: true,
             });
+        },
+        cleanFormReport() {
+            this.FormReport.fromDay = null;
+            this.FormReport.untilDay = null;
+        },
+        validateFormReport() {
+            if (!this.FormTreeReport) {
+                let disabled = Object.keys(this.FormReport).every(key => (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                return !disabled;
+            }
         },
         generateReport(type) {
             window.toastr.info("Generando reporte, por favor espere...", {

@@ -117,7 +117,7 @@ class WasteManagementController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL USUARIO CON SESIÓN ACTIVA
+                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
                 $delegation_id = auth()->user()->delegation_id;
 
                 // GUARDADO DEL REGISTRO HECHO
@@ -199,7 +199,7 @@ class WasteManagementController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL USUARIO QUE HIZO EL REGISTRO
+                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
                 $delegation_id = $wasteManagement->delegation_id;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA

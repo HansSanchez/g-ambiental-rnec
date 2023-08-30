@@ -33,9 +33,21 @@ class Audit extends Model
                 ->orWhereHas('user', function ($query) use ($search_term) {
                     if ($search_term != null)
                         $query->where('first_name', 'like', '%' . $search_term . '%')
-                        ->orWhere('second_name', 'like', '%' . $search_term . '%')
-                        ->orWhere('first_last_name', 'like', '%' . $search_term . '%')
-                        ->orWhere('second_last_name', 'like', '%' . $search_term . '%');
+                            ->orWhere('second_name', 'like', '%' . $search_term . '%')
+                            ->orWhere('first_last_name', 'like', '%' . $search_term . '%')
+                            ->orWhere('second_last_name', 'like', '%' . $search_term . '%')
+                            ->orWhereHas('delegation', function ($query) use ($search_term) {
+                                if ($search_term != null)
+                                    $query->where('delegations.name', 'like', '%' . $search_term . '%');
+                            })
+                            ->orWhereHas('Municipality', function ($query) use ($search_term) {
+                                if ($search_term != null)
+                                    $query->where('municipalities.city_name', 'like', '%' . $search_term . '%');
+                            })
+                            ->orWhereHas('Headquarter', function ($query) use ($search_term) {
+                                if ($search_term != null)
+                                    $query->where('headquarters.name', 'like', '%' . $search_term . '%');
+                            });
                 });
     }
 
@@ -45,6 +57,12 @@ class Audit extends Model
             ->with([
                 'delegation' => function ($query) {
                     $query->select('delegations.id', 'delegations.name');
+                },
+                'Municipality' => function ($query) {
+                    $query->select('municipalities.id', 'municipalities.city_name');
+                },
+                'Headquarter' => function ($query) {
+                    $query->select('headquarters.id', 'headquarters.name');
                 },
             ]);
     }

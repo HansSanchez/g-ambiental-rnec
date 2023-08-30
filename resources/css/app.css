@@ -908,7 +908,7 @@ tbody.full-20 {
 }
 
 .bg-register {
-    background: #002d55 !important;
+    background: #3c4b64 !important;
 }
 
 .bg-register-opacity {
@@ -916,7 +916,7 @@ tbody.full-20 {
 }
 
 .btn-register {
-    background: #002d55 !important;
+    background: #3c4b64 !important;
     color: white;
 }
 
@@ -1082,7 +1082,7 @@ tbody.full-20 {
 }
 
 .text-register {
-    color: #002d55;
+    color: #3c4b64;
 }
 
 .headerStatic {
@@ -1416,6 +1416,7 @@ tbody.full-20 {
     justify-content: center;
     text-align: center;
     align-items: center;
+    vertical-align: middle;
 }
 
 ul.list-general {
