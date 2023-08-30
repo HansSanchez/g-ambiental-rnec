@@ -44,13 +44,21 @@
                                 <span class="input-group-text border-search bg-info" title="Buscar" @click="$emit('Enter')">
                                     <i class="fa-solid fa-search text-white"></i>
                                 </span>
+                                <span
+                                    v-if="permissions.generate_report_tree_plantations === 'generate_report_tree_plantations'"
+                                    class="input-group-text border-search bg-success" title="Generación de reportes"
+                                    data-toggle="modal" data-backdrop="static" data-target="#GenerateReportModal"
+                                    @click="report = true;">
+                                    <i class="fa-solid fa-file-excel text-white"></i>
+                                </span>
                                 <span class="input-group-text border-custom bg-dark" title="Refrescar" @click="clean">
                                     <i class="fa-solid fa-rotate text-white"></i>
                                 </span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
-                            <div class="form-group mb-0">
+                            <div v-if="permissions.filter_headquarters_tree_plantations === 'filter_headquarters_tree_plantations'"
+                                class="form-group mb-0">
                                 <v-select :options="delegations" @search="setDelegations" @input="queryFilter();
                                 municipalities_model = null; headquarters_model = null
                                 municipalities = []; setMunicipalitiesFilter();" v-model="delegations_model"
@@ -59,16 +67,18 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
-                            <div class="form-group mb-0">
+                            <div v-if="permissions.filter_headquarters_tree_plantations === 'filter_headquarters_tree_plantations'"
+                                class="form-group mb-0">
                                 <v-select :options="municipalities" v-model="municipalities_model"
                                     @search="setMunicipalitiesFilter"
-                                    @input="queryFilter(); headquarters = []; setHeadquartersFilter();"
+                                    @input="queryFilter(); headquarters_model = null; headquarters = []; setHeadquartersFilter();"
                                     placeholder="MUNICIPIOS..." :disabled="delegations_model === null ? true : false">
                                 </v-select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-3 pb-xs-1">
-                            <div class="form-group mb-0">
+                            <div v-if="permissions.filter_headquarters_tree_plantations === 'filter_headquarters_tree_plantations'"
+                                class="form-group mb-0">
                                 <v-select :options="headquarters" v-model="headquarters_model"
                                     @search="setHeadquartersFilter" @input="queryFilter();" placeholder="SEDES..."
                                     :disabled="municipalities_model === null ? true : false">
@@ -105,7 +115,7 @@
                                 </div>
                                 <div class="modal-body bv-modal">
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
                                             <ValidationProvider name="number_of_trees_planted" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
@@ -125,7 +135,7 @@
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
                                             <ValidationProvider name="date" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
@@ -143,7 +153,7 @@
                                                 </div>
                                             </ValidationProvider>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                                             <ValidationProvider name="address" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
@@ -175,7 +185,7 @@
                                                 </l-marker>
                                             </l-map>
                                             <div class="row" style="margin-top: 10px;">
-                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                     <div class="form-group mb-0">
                                                         <h5><b>LATITUD</b></h5>
                                                         <input v-model="FormTreePlantation.lat" type="text" name="lat"
@@ -183,7 +193,7 @@
                                                             placeholder="Coordenada de latitud" required readonly>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                     <div class="form-group mb-0">
                                                         <h5><b>LONGITUD</b></h5>
                                                         <input v-model="FormTreePlantation.lng" type="text" name="lng"
@@ -365,45 +375,49 @@
                                                 </datepicker>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-0">
                                             <div class="form-group mb-0">
-                                                <small><b>(Delegaciones)</b></small>
+                                                <small class="text-danger"><b>(Delegaciones) *</b></small>
+                                                <v-select :options="delegations" v-model="FormReport.delegation"
+                                                    @input="FormReport.municipality = null;
+                                                    FormReport.headquarter = null; municipalities = []; setMunicipalitiesFilterExport();" placeholder="Buscar...">
+                                                </v-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-0">
+                                            <div class="form-group mb-0">
+                                                <small class="text-danger"><b>(Municipios) *</b></small>
+                                                <v-select :options="municipalities" v-model="FormReport.municipality"
+                                                    @input="FormReport.headquarter = null; headquarters = []; setHeadquartersFilterExport();"
+                                                    placeholder="Buscar..."
+                                                    :disabled="FormReport.delegation === null ? true : false">
+                                                </v-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-0">
+                                            <div class="form-group mb-0">
+                                                <small><b>(Sedes)</b></small>
                                                 <v-select :options="headquarters" v-model="FormReport.headquarter"
-                                                    placeholder="DELEGACIONES...">
+                                                    placeholder="Buscar..."
+                                                    :disabled="FormReport.municipality === null ? true : false">
                                                 </v-select>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
-                                            <h5>RECOMENDACIONES:</h5>
-                                            <ul>
-                                                <li>
-                                                    Tenga en cuenta que si quiere generar un reporte debe especificar el
-                                                    campo
-                                                    <b class="text-danger">(DESDE)</b>
-                                                    y el campo
-                                                    <b class="text-danger">(HASTA)</b>
-                                                    de lo contrario no se permitirá, exceptuando los botones
-                                                    <b class="text-info">(MENSUAL)</b> y <b class="text-info">(ANUAL)</b>.
-                                                </li>
-                                                <li>
-                                                    <br>
-                                                    Por otro lado, se deja aclaración que los botones hacen referencia al
-                                                    mes y al año actual.
-                                                    <br>
-                                                    <br>
-                                                    <b>Ejemplo:</b>
-                                                    <br>
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
                                                     <b>
-                                                        <span class="text-info">(ANUAL)</span> :
-                                                        {{ getCurrentYear() }}
+                                                        <i class="fa-solid fa-circle-info"></i>
+                                                        RECOMENDACIONES
                                                     </b>
-                                                    <br>
-                                                    <b>
-                                                        <span class="text-info">(MENSUAL)</span> :
-                                                        {{ getCurrentDateWithSpanishMonth() }}
-                                                    </b>
-                                                </li>
-                                            </ul>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general">
+                                                        Por favor, tenga en cuenta que para generar un informe es necesario
+                                                        proporcionar un valor en todos los campos correspondientes.
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- END -->
@@ -413,7 +427,7 @@
                                         class="btn btn-sm btn-grey text-white text-uppercase">
                                         <b>LIMPIAR</b>
                                     </v-btn>
-                                    <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('month')"
+                                    <!-- <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('month')"
                                         class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
                                         :disabled="!validateFormReport()">
                                         <b>MENSUAL</b>
@@ -422,7 +436,7 @@
                                         class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
                                         :disabled="!validateFormReport()">
                                         <b>ANUAL</b>
-                                    </v-btn>
+                                    </v-btn> -->
                                     <v-btn type="button" v-if="report" @click="generateReport('FormReport')" color="#2eb85c"
                                         small class="btn btn-success text-uppercase text-white" data-dismiss="modal"
                                         :disabled="validateFormReport()">
@@ -450,7 +464,8 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th class="tt-espumados">SEDE</th>
+                                    <th class="tt-espumados">DELEGACIÓN - MUNICIPIO - SEDE</th>
+                                    <th class="tt-espumados">REPORTADOR(A)</th>
                                     <th class="tt-espumados">PLANTADOS</th>
                                     <th class="tt-espumados">FECHA</th>
                                     <th class="tt-espumados">UBICACIÓN</th>
@@ -465,15 +480,18 @@
                             <tbody>
                                 <tr v-for="(item, index) in list" :key="index">
                                     <td class="text-uppercase text-center">
-                                        <span class="badge badge-info text-white w-100 full-16">
-                                            <b>
-                                                {{
-                                                    item.headquarter ?
-                                                    item.headquarter.name :
-                                                    'SIN SEDE'
-                                                }}
-                                            </b>
-                                        </span>
+                                        <b>
+                                            {{
+                                                item.headquarter ?
+                                                item.headquarter.delegation.name + " - " +
+                                                item.headquarter.municipality.city_name + " - " +
+                                                item.headquarter.name :
+                                                'SIN SEDE'
+                                            }}
+                                        </b>
+                                    </td>
+                                    <td class="text- text-center">
+                                        {{ item.user.FullName }}
                                     </td>
                                     <td class="text- text-center">
                                         {{ item.number_of_trees_planted }}
@@ -689,7 +707,9 @@ export default {
                 // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
                 fromDay: null,
                 untilDay: null,
-                headquarter: null
+                delegation: null,
+                municipality: null,
+                headquarter: null,
             },
             day: {
                 day: new Date(Date.now()),
@@ -734,8 +754,13 @@ export default {
         clean() {
             this.searchInput = null;
             this.dateFilter = null;
+            this.delegations_model = null;
+            this.municipalities_model = null;
             this.headquarters_model = null;
             this.changeType();
+            this.setAuthenticatedUser();
+            this.setMunicipalitiesFilter();
+            this.setHeadquartersFilter();
         },
         queryFilter($state) {
             let api = "/g-environmental-rnec/tree-plantations/getTreePlantation";
@@ -1009,6 +1034,8 @@ export default {
             this.FormReport.fromDay = null;
             this.FormReport.untilDay = null;
             this.setAuthenticatedUser();
+            this.setMunicipalitiesFilter();
+            this.setHeadquartersFilter();
         },
         customFormatter(date) {
             return moment(date).format("DD/MMMM/YYYY");
@@ -1092,9 +1119,12 @@ export default {
             axios.post("/g-environmental-rnec/users/getAuthenticatedUser")
                 .then(response => {
                     this.user = response.data
+                    this.delegations_model = { code: response.data.delegation.id, label: response.data.delegation.name }
+                    this.municipalities_model = { code: response.data.municipality.id, label: response.data.municipality.city_name }
+                    this.FormReport.delegation = { code: response.data.delegation.id, label: response.data.delegation.name }
+                    this.FormReport.municipality = { code: response.data.municipality.id, label: response.data.municipality.city_name }
                     this.FormReport.headquarter = { code: response.data.headquarter.id, label: response.data.headquarter.name }
-                })
-                .catch(errors => console.log(errors));
+                }).catch(error => (error.response) ? this.responseErrors(error) : '');
         },
         setPermissions() {
             axios.post("/g-environmental-rnec/home/permissions")
@@ -1111,8 +1141,18 @@ export default {
                 .then(res => this.municipalities = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
+        setMunicipalitiesFilterExport(search) {
+            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormReport.delegation, filter: true } })
+                .then(res => this.municipalities = res.data.data)
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
+        },
         setHeadquartersFilter(search) {
             axios.get('/g-environmental-rnec/headquarters/getHeadquartersFilter', { params: { search: search, municipality: this.municipalities_model } })
+                .then(res => this.headquarters = res.data.data)
+                .catch(error => (error.response) ? this.responseErrors(error) : '');
+        },
+        setHeadquartersFilterExport(search) {
+            axios.get('/g-environmental-rnec/headquarters/getHeadquartersFilter', { params: { search: search, municipality: this.FormReport.municipality } })
                 .then(res => this.headquarters = res.data.data)
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
@@ -1121,6 +1161,8 @@ export default {
         this.setAuthenticatedUser();
         this.setPermissions();
         this.setDelegations();
+        this.setMunicipalitiesFilter();
+        this.setHeadquartersFilter();
         this.setCsrfToken();
     }
 }

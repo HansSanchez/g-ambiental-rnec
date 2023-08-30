@@ -26,43 +26,9 @@ class TreePlantationController extends Controller
         $permissions = new HomeController;
         // CONSULTA DE LA PLANTACIÓN DE ÁRBOLES
         $treePlantation =
-            // RELACIONES
-            TreePlantation::with([
-                'Headquarter' => function ($query) {
-                    $query->select('headquarters.id', 'headquarters.name');
-                },
-                'EvidenceTreePlantations' => function ($query) {
-                    $query->select(
-                        'evidence_tree_plantations.id',
-                        'evidence_tree_plantations.file',
-                        'evidence_tree_plantations.tree_plantation_id'
-                    );
-                },
-            ])
-            // FILTRO DE CONSULTA SEGÚN PARAMETROS DE BÚSQUEDA
-            ->where(function ($query) use ($request, $day, $permissions) {
-                // FILTRO PARA BÚSQUEDA DE TEXTO EN OBSERVACIONES
-                if ($request->search) $query->search($request->search);
-                // FILTRO PARA BÚSQUEDA DE FECHA DE PLANTACIÓN
-                if ($request->dateFilter) $query->whereBetween('tree_plantations.date', [$day . " 00:00:00", $day . " 23:59:59"]);
-                // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR SEDE
-                if (array_key_exists('filter_headquarters_tree_plantations', $permissions->permissions())) {
-                    // PUEDE ACCEDER AL FILTRO Y ENVIAR DIFERENTES DELEGACIONES POR PARAMETRO
-                    if ($request->headquarters_model) {
-                        $headquarter = json_decode($request->headquarters_model);
-                        $query->where('tree_plantations.headquarter_id', $headquarter->code);
-                    }
-                }
-                // SI NO TIENE PERMISO
-                else {
-                    // PUEDE VER SOLO LOS REGISTROS DE LA SEDE A LA CUAL PERTENECE
-                    $query->where('tree_plantations.headquarter_id', Auth::user()->headquarter_id);
-                }
-            })
-            // ORDENAMIENTO POR ID
-            ->orderBy('tree_plantations.id')
-            // PÁGINADO DE RESPUESTA
-            ->simplePaginate(10);
+            TreePlantation::withRelations() // SCOPE EN EL MODELO (RELACIONES)
+            ->filter($request, $day, $permissions) // SCOPE EN EL MODELO (FILTROS)
+            ->paginate(15); // SCOPE EN EL MODELO (PAGINADO)
 
         // RESPUESTA PARA EL USUARIO
         return response()->json(['treePlantation' => $treePlantation]);
@@ -93,6 +59,8 @@ class TreePlantationController extends Controller
 
                 // REGISTRO DE LAS RELACIONES
                 $treePlantation->Headquarter;
+                $treePlantation->Headquarter->Delegation;
+                $treePlantation->Headquarter->Municipality;
                 $treePlantation->EvidenceTreePlantations;
                 $treePlantation->User;
 
@@ -136,6 +104,8 @@ class TreePlantationController extends Controller
 
             // RELACIONES
             $treePlantation->Headquarter;
+            $treePlantation->Headquarter->Delegation;
+            $treePlantation->Headquarter->Municipality;
             $treePlantation->EvidenceTreePlantations;
             $treePlantation->User;
 
@@ -184,6 +154,8 @@ class TreePlantationController extends Controller
 
                 // REGISTRO DE LAS RELACIONES
                 $treePlantation->Headquarter;
+                $treePlantation->Headquarter->Delegation;
+                $treePlantation->Headquarter->Municipality;
                 $treePlantation->EvidenceTreePlantations;
                 $treePlantation->User;
 
@@ -235,6 +207,8 @@ class TreePlantationController extends Controller
 
                 // REGISTRO DE LAS RELACIONES
                 $treePlantation->Headquarter;
+                $treePlantation->Headquarter->Delegation;
+                $treePlantation->Headquarter->Municipality;
                 $treePlantation->EvidenceTreePlantations;
                 $treePlantation->User;
 
@@ -255,6 +229,7 @@ class TreePlantationController extends Controller
     // FUNCIÓN PARA GENERACIÓN DE REPORTES
     public function generateReport(Request $request)
     {
+        // dd($request->all());
         // CONTROL DE ERRORES
         try {
 
@@ -268,38 +243,25 @@ class TreePlantationController extends Controller
                 $fromDay = null;
                 $untilDay = null;
                 $day = null;
-                $weekStartDate = null;
-                $weekEndDate = null;
-                $monthStartDate = null;
-                $monthEndDate = null;
-                $yearStartDate = null;
-                $yearEndDate = null;
-                $date = Carbon::now();
                 $permissions = new HomeController;
 
                 // CONDICIONALES POR SI LLEGAN NULOS LOS CAMPOS, NO VIENEN O SI HAY QUE TENERLOS EN CUENTA
                 if ($request->fromDay != null) $fromDay = date('Y-m-d', strtotime($request->fromDay));
                 if ($request->untilDay != null) $untilDay = date('Y-m-d', strtotime($request->untilDay));
                 if ($request->has('day')) $day = date('Y-m-d', strtotime($request->day));
-                if ($request->has('week')) {
-                    $weekStartDate = $date->startOfWeek()->format('Y-m-d H:i');
-                    $weekEndDate = $date->endOfWeek()->format('Y-m-d H:i');
-                }
-                if ($request->has('month')) {
-                    $monthStartDate = $date->startOfMonth()->format('Y-m-d H:i');
-                    $monthEndDate = $date->endOfMonth()->format('Y-m-d H:i');
-                }
-                if ($request->has('year')) {
-                    $yearStartDate = $date->startOfYear()->format('Y-m-d H:i');
-                    $yearEndDate = $date->endOfYear()->format('Y-m-d H:i');
-                }
 
                 // CONSULTA POR RANGO DE FECHAS, DÍA, SEMANA, MES O AÑO
                 $report = DB::table('tree_plantations')
                     // COLUMNAS DE INTERÉS PARA EL REPORTE
                     ->select(
+                        'delegations.id AS d_id',
+                        'delegations.name AS d_name',
                         'headquarters.id AS h_id',
                         'headquarters.name AS h_name',
+                        'headquarters.delegation_id AS h_delegation_id',
+                        'headquarters.municipality_id AS h_municipality_id',
+                        'municipalities.id AS m_id',
+                        'municipalities.city_name AS m_city_name',
                         'tree_plantations.id AS tp_id',
                         'tree_plantations.headquarter_id AS tp_headquarter_id',
                         'tree_plantations.number_of_trees_planted AS tp_number_of_trees_planted',
@@ -311,7 +273,6 @@ class TreePlantationController extends Controller
                         'tree_plantations.created_at AS tp_created_at',
                         'tree_plantations.user_id AS tp_user_id',
                         'users.id AS u_id',
-                        'users.personal_id AS u_personal_id',
                         'users.first_name AS u_first_name',
                         'users.second_name AS u_second_name',
                         'users.first_last_name AS u_first_last_name',
@@ -320,16 +281,15 @@ class TreePlantationController extends Controller
                         'users.email AS u_email',
                         'users.headquarter_id AS u_headquarter_id',
                     )
-                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO
+                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO (SEDE, MUNICIPIO Y DELEGACIÓN)
                     ->join('headquarters', 'headquarters.id', '=', 'tree_plantations.headquarter_id')
+                    ->join('municipalities', 'municipalities.id', '=', 'headquarters.municipality_id')
+                    ->join('delegations', 'delegations.id', '=', 'headquarters.delegation_id')
                     // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
                     ->join('users', 'users.id', '=', 'tree_plantations.user_id')
                     // FILTRO DE CONSULTA SEGÚN PARAMETROS DE FECHA
-                    ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $monthStartDate, $monthEndDate, $yearStartDate, $yearEndDate) {
+                    ->where(function ($query) use ($fromDay, $untilDay, $day) {
                         if ($day != null) $query->whereBetween('tree_plantations.date', [$day . " 00:00:00", $day . " 23:59:59"]);
-                        if ($weekStartDate != null || $weekEndDate != null) $query->whereBetween('tree_plantations.date', [$weekStartDate, $weekEndDate]);
-                        if ($monthStartDate != null || $monthEndDate != null) $query->whereBetween('tree_plantations.date', [$monthStartDate, $monthEndDate]);
-                        if ($yearStartDate != null || $yearEndDate != null) $query->whereBetween('tree_plantations.date', [$yearStartDate, $yearEndDate]);
                         if ($fromDay != null && $untilDay == null) $query->whereBetween('tree_plantations.date', [$fromDay . " 00:00:00", now()->format('Y-m-d') . " 23:59:59"]);
                         if ($fromDay == null && $untilDay != null) $query->whereBetween('tree_plantations.date', ["2000-01-01 00:00:00", $untilDay . " 23:59:59"]);
                         if ($fromDay != null && $untilDay != null) $query->whereBetween('tree_plantations.date', [$fromDay . " 00:00:00", $untilDay . " 23:59:59"]);
@@ -337,28 +297,44 @@ class TreePlantationController extends Controller
                     // FILTRO DE CONSULTA POR PARAMETRO DE SEDE
                     ->where(function ($query) use ($request, $permissions) {
                         // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
-                        if (array_key_exists('filter_headquarters_tree_plantations', $permissions->permissions()))
-                            // PUEDE ENVIARLA POR PARAMETRO
-                            if ($request->delegation) $query->where('tree_plantations.headquarter_id', $request->delegation['code']);
-                            // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
-                            else $query->get();
+                        if (array_key_exists('filter_headquarters_tree_plantations', $permissions->permissions())) { // PUEDE ENVIARLA POR PARAMETRO
+                            if ($request->headquarter)
+                                $query->where('tree_plantations.headquarter_id', $request->headquarter['code']);
+                        }
+                        // SI NO TIENE PERMISO
+                        else {
+                            // PUEDE VER SOLO LOS REGISTROS DE LA SEDE A LA CUAL PERTENECE
+                            $query->where('tree_plantations.headquarter_id', Auth::user()->headquarter_id);
+                        }
                     })
                     // OBTENCIÓN DE LOS REGISTROS
-                    ->get();
+                    ->get()
+                    ->groupBy('h_name'); // AGRUPAR POR NOMBRE DE SEDE
+
 
                 // ESTA FUNCIÓN EN NECESARIA YA QUE LAS OBSERVACIONES SE GUARDAN CON HTML ES NECESARIO LIMPIARLAS PARA TENER SOLO EL TEXTO
-                $cleanedReport = $report->map(function ($item) {
-                    // LIMPIAR TEXTO HTML A TEXTO PLANO
-                    $item->tp_observations = Str::of(strip_tags($item->tp_observations))->trim()->__toString();
-                    // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->tp_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->tp_date)->format('d-m-Y');
-                    // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->tp_created_at = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->tp_created_at)->format('d-m-Y h:i:s');
-                    // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
-                    $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
-                    // RETORNO DE LOS CAMBIOS
-                    return $item;
-                });
+                $cleanedReport = [];
+                foreach ($report as $headquarterName => $headquarterData) {
+                    foreach ($headquarterData as $index => $record) {
+                        if (is_object($record)) {
+                            // CREAR UN NUEVO OBJETO PARA EL REGISTRO
+                            $cleanedRecord = (object)[];
+
+                            // COPIAR LAS PROPIEDADES DEL REGISTRO ORIGINAL
+                            foreach ($record as $key => $value) $cleanedRecord->{$key} = $value;
+
+                            // LIMPIEZA Y TRANSFORMACIÓN PARA CADA REGISTRO
+                            $cleanedRecord->tp_observations = Str::of(strip_tags($record->tp_observations))->trim()->__toString();
+                            $cleanedRecord->tp_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $record->tp_date)->format('d-m-Y');
+                            $cleanedRecord->tp_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $record->tp_created_at)->format('d-m-Y h:i:s');
+                            $cleanedRecord->h_full_name = mb_strtoupper($record->d_name . ' / ' . $record->m_city_name . ' / ' . $record->h_name, "UTF-8");
+                            $cleanedRecord->u_full_name = mb_strtoupper($record->u_first_name . ' ' . $record->u_second_name . ' ' . $record->u_first_last_name . ' ' . $record->u_second_last_name, "UTF-8");
+
+                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA CIUDAD
+                            $cleanedReport[$headquarterName][$index] = $cleanedRecord;
+                        }
+                    }
+                }
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([

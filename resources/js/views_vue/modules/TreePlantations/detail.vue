@@ -58,7 +58,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div v-if="TreePlantationDetailList.evidence_tree_plantations.length > 0"
                                         class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
-                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                        <div id="carouselExampleControlsModal" class="carousel slide" data-ride="carousel">
                                             <div class="carousel-inner">
                                                 <div class="carousel-item"
                                                     v-for="(itemImage, indexImage) in TreePlantationDetailList.evidence_tree_plantations"
@@ -67,7 +67,7 @@
                                                         :src="'/storage/tree_plantations/evidences/images/' + itemImage.file">
                                                 </div>
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                            <a class="carousel-control-prev" href="#carouselExampleControlsModal" role="button"
                                                 data-slide="prev">
                                                 <span v-if="TreePlantationDetailList.evidence_tree_plantations.length > 1"
                                                     class="carousel-control-prev-icon" aria-hidden="true">
@@ -76,7 +76,7 @@
                                                 </span>
                                                 <span class="sr-only">Anterior</span>
                                             </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                            <a class="carousel-control-next" href="#carouselExampleControlsModal" role="button"
                                                 data-slide="next">
                                                 <span v-if="TreePlantationDetailList.evidence_tree_plantations.length > 1"
                                                     class="carousel-control-next-icon" aria-hidden="true">
@@ -140,7 +140,13 @@
                                         <br>
                                         Plantados
                                         <br>
-                                        {{ TreePlantationDetailList.headquarter.name }}
+                                        {{
+                                            TreePlantationDetailList.headquarter ?
+                                            TreePlantationDetailList.headquarter.delegation.name + " - " +
+                                            TreePlantationDetailList.headquarter.municipality.city_name + " - " +
+                                            TreePlantationDetailList.headquarter.name :
+                                            'SIN SEDE'
+                                        }}
                                     </p>
                                     <p class="card__num__main mb-0">
                                         <i class="fa-solid fa-tree" style="color: #ffffff;"></i>
@@ -152,7 +158,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div v-if="TreePlantationDetailList.evidence_tree_plantations.length > 0"
                                 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
-                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div id="carouselExampleControlsDisplay" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item"
                                             v-for="(itemImage, indexImage) in TreePlantationDetailList.evidence_tree_plantations"
@@ -163,7 +169,7 @@
                                                 :src="'/storage/tree_plantations/evidences/images/' + itemImage.file">
                                         </div>
                                     </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                    <a class="carousel-control-prev" href="#carouselExampleControlsDisplay" role="button"
                                         data-slide="prev">
                                         <span v-if="TreePlantationDetailList.evidence_tree_plantations.length > 1"
                                             class="carousel-control-prev-icon" aria-hidden="true">
@@ -172,7 +178,7 @@
                                         </span>
                                         <span class="sr-only">Anterior</span>
                                     </a>
-                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                    <a class="carousel-control-next" href="#carouselExampleControlsDisplay" role="button"
                                         data-slide="next">
                                         <span v-if="TreePlantationDetailList.evidence_tree_plantations.length > 1"
                                             class="carousel-control-next-icon" aria-hidden="true">
