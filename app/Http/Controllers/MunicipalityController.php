@@ -10,6 +10,7 @@ class MunicipalityController extends Controller
 {
     public function getMunicipalities(Request $request)
     {
+        // dd($request->all());
         return Municipality::select('id AS code', 'city_name AS label')
             ->search($request->search)
             ->where(function ($query) use ($request) {

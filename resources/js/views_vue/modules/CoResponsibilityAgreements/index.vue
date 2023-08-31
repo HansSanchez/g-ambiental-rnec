@@ -29,7 +29,7 @@
 
                     <!-- ENCABEZADO (BOTONES Y FILTROS) -->
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-1"
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-1"
                             v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements'">
                             <button @click="update = false; resetFormCoResponsibilityAgreements(); openModal();"
                                 type="button" data-toggle="modal"
@@ -38,6 +38,16 @@
                                 title="Nueva registro">
                                 <v-icon color="#FFFFFF">mdi-plus-circle</v-icon>
                             </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-1">
+                            <div class="form-group mb-0">
+                                <select class="form-control" name="state" id="state" v-model="stateFilter"
+                                    @change="queryFilter()">
+                                    <option value="" selected disabled>ESTADO...</option>
+                                    <option>VIGENTE</option>
+                                    <option>NO VIGENTE</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 w-100 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-1">
                             <div class="input-group">
@@ -117,21 +127,62 @@
                                 </div>
                                 <div class="modal-body bv-modal">
                                     <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
+                                                    <b class="full-center">
+                                                        <i class="fa-solid fa-circle-info fa-2x"></i>
+                                                        <strong class="pl-2">RECOMENDACIONES:</strong>
+                                                    </b>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Tenga en cuenta que, los campos marcados con
+                                                            <b class='text-danger'>(*)</b> son de caracter obligatorio.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Podrá seleccionar una o varias sedes a las cuales les aplique el
+                                                            acuerdo de corresponsabilidad que va a registrar,
+                                                            asimismo podrá asociar a uno o varios gestores ambientales.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Existiran casos en los cuales una o varias sedes tengan más de
+                                                            un acuerdo vigente, lo invitamos a validar dicha vigencia antes
+                                                            de registrar un nuevo acuerdo de corresponsabilidad.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general">
+                                                        <strong>
+                                                            Si tiene alguna duda con respecto a la creación de registros
+                                                            asociados a los acuerdos de corresponsabilidad
+                                                            lo invitamos a contactar con: "SEDE CENTRAL - BOGOTÁ".
+                                                        </strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
                                             <ValidationProvider name="number_of_trees_planted" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
-                                                        <h5><b>MUNICIPIO(S) <span class="text-danger">*</span></b></h5>
-                                                        <v-select :options="municipalities" @search="setMunicipalities"
-                                                            v-model="FormCoResponsibilityAgreements.municipalities"
-                                                            placeholder="MUNICIPIOS..." multiple>
+                                                        <h5><b>SEDE(S) <span class="text-danger">*</span></b></h5>
+                                                        <v-select :options="headquarters" @search="setHeadquartersFilter"
+                                                            v-model="FormCoResponsibilityAgreements.headquarters"
+                                                            placeholder="SEDES..." multiple>
                                                         </v-select>
                                                     </div>
                                                     <small>
                                                         <b>
                                                             <em>
-                                                                Escoja el o los municipios a los cuales el acuerdo de
-                                                                corresponsabilidad le aplica
+                                                                Escoja la(s) sede(s) a la(s) cual(es) el acuerdo de
+                                                                corresponsabilidad le(s) aplica
                                                             </em>
                                                         </b>
                                                     </small>
@@ -216,9 +267,9 @@
                                                         <h5><b>FECHA <span class="text-danger">*</span></b></h5>
                                                         <input v-model="FormCoResponsibilityAgreements.date" type="date"
                                                             name="date" id="date" class="form-control"
-                                                            placeholder="Fecha de plantación" required>
+                                                            placeholder="Fecha de firmado" required>
                                                     </div>
-                                                    <small><b><em>Digite la fecha de plantación</em></b></small>
+                                                    <small><b><em>Digite la fecha de firmado</em></b></small>
                                                     <small>
                                                         <p class="text-danger mb-0">
                                                             <b>{{ errors[0] }}</b>
@@ -274,6 +325,31 @@
                                 </div>
                                 <div class="modal-body bv-modal">
                                     <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
+                                                    <b class="full-center">
+                                                        <i class="fa-solid fa-circle-info fa-2x"></i>
+                                                        <strong class="pl-2">RECOMENDACIONES:</strong>
+                                                    </b>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Asegúrese de que los documentos estén en formato:
+                                                            <b class="text-danger">.pdf</b>.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general">
+                                                        <strong>
+                                                            Por último, podrás cargar un máximo de 2 archivos
+                                                            simultáneamente.
+                                                        </strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>EVIDENCIAS</b></h5>
                                             <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="vue-dropzone"
@@ -372,6 +448,25 @@
                                 <div class="modal-body" style="background: #e7e7e7">
                                     <!-- REPORTES -->
                                     <div v-if="report" class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
+                                                    <b class="full-center">
+                                                        <i class="fa-solid fa-circle-info fa-2x"></i>
+                                                        <strong class="pl-2">RECOMENDACIONES:</strong>
+                                                    </b>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general">
+                                                        <strong>
+                                                            Por favor, tenga en cuenta que para generar un informe es
+                                                            necesario proporcionar un valor en todos los campos marcados con
+                                                            <b class='text-danger'>(*)</b>.
+                                                        </strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                                             <h5 class="mb-0"><b>Fechas de firmado</b></h5>
                                         </div>
@@ -395,45 +490,33 @@
                                                 </datepicker>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-0">
                                             <div class="form-group mb-0">
-                                                <small><b>(Delegaciones)</b></small>
+                                                <small class="text-danger"><b>(Delegaciones) *</b></small>
                                                 <v-select :options="delegations" v-model="FormReport.delegation"
-                                                    placeholder="DELEGACIONES...">
+                                                    @input="FormReport.municipality = null;
+                                                    FormReport.headquarter = null; municipalities = []; setMunicipalitiesFilterExport();" placeholder="Buscar...">
                                                 </v-select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
-                                            <h5>RECOMENDACIONES:</h5>
-                                            <ul>
-                                                <li>
-                                                    Tenga en cuenta que si quiere generar un reporte debe especificar el
-                                                    campo
-                                                    <b class="text-danger">(DESDE)</b>
-                                                    y el campo
-                                                    <b class="text-danger">(HASTA)</b>
-                                                    de lo contrario no se permitirá, exceptuando los botones
-                                                    <b class="text-info">(MENSUAL)</b> y <b class="text-info">(ANUAL)</b>.
-                                                </li>
-                                                <li>
-                                                    <br>
-                                                    Por otro lado, se deja aclaración que los botones hacen referencia al
-                                                    mes y al año actual.
-                                                    <br>
-                                                    <br>
-                                                    <b>Ejemplo:</b>
-                                                    <br>
-                                                    <b>
-                                                        <span class="text-info">(ANUAL)</span> :
-                                                        {{ getCurrentYear() }}
-                                                    </b>
-                                                    <br>
-                                                    <b>
-                                                        <span class="text-info">(MENSUAL)</span> :
-                                                        {{ getCurrentDateWithSpanishMonth() }}
-                                                    </b>
-                                                </li>
-                                            </ul>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-0">
+                                            <div class="form-group mb-0">
+                                                <small class="text-danger"><b>(Municipios) *</b></small>
+                                                <v-select :options="municipalities" v-model="FormReport.municipality"
+                                                    @input="FormReport.headquarter = null; headquarters = []; setHeadquartersFilterExport();"
+                                                    placeholder="Buscar..."
+                                                    :disabled="FormReport.delegation === null ? true : false">
+                                                </v-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-0">
+                                            <div class="form-group mb-0">
+                                                <small><b>(Sedes)</b></small>
+                                                <v-select :options="headquarters" v-model="FormReport.headquarter"
+                                                    placeholder="Buscar..."
+                                                    :disabled="FormReport.municipality === null ? true : false">
+                                                </v-select>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- END -->
@@ -442,16 +525,6 @@
                                     <v-btn v-if="report" color="#6c757d" title="Limpiar" small @click="cleanFormReport()"
                                         class="btn btn-sm btn-grey text-white text-uppercase">
                                         <b>LIMPIAR</b>
-                                    </v-btn>
-                                    <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('month')"
-                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
-                                        :disabled="!validateFormReport()">
-                                        <b>MENSUAL</b>
-                                    </v-btn>
-                                    <v-btn v-if="report" color="#39f" title="Anual" small @click="generateReport('year')"
-                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
-                                        :disabled="!validateFormReport()">
-                                        <b>ANUAL</b>
                                     </v-btn>
                                     <v-btn type="button" v-if="report" @click="generateReport('FormReport')" color="#2eb85c"
                                         small class="btn btn-success text-uppercase text-white" data-dismiss="modal"
@@ -483,7 +556,8 @@
                                     <th>ID</th>
                                     <th class="tt-espumados">ESTADO</th>
                                     <th class="tt-espumados">DELEGACIÓN</th>
-                                    <th class="tt-espumados">MUNICIPIO(S)</th>
+                                    <th class="tt-espumados">MUNICIPIO</th>
+                                    <th class="tt-espumados">SEDE(S)</th>
                                     <th class="tt-espumados">OPERADOR</th>
                                     <th class="tt-espumados">FECHA</th>
                                     <th class="tt-espumados">OBSERVACIONES</th>
@@ -505,19 +579,30 @@
                                         <span class="badge badge-info text-white w-100 full-16">
                                             <b>
                                                 {{
-                                                    item.delegation ?
-                                                    item.delegation.name :
+                                                    item.headquarter.delegation ?
+                                                    item.headquarter.delegation.name :
                                                     'SIN DELEGACIÓN'
                                                 }}
                                             </b>
                                         </span>
                                     </td>
+                                    <td class="text-uppercase text-center">
+                                        <span class="badge badge-info text-white w-100 full-16">
+                                            <b>
+                                                {{
+                                                    item.headquarter.municipality ?
+                                                    item.headquarter.municipality.city_name :
+                                                    'SIN MUNICIPIO'
+                                                }}
+                                            </b>
+                                        </span>
+                                    </td>
                                     <td class="text- text-left">
-                                        <span v-if="item.municipalities">
+                                        <span v-if="item.headquarters">
                                             <ul class="list-custom"
-                                                v-for="(itemMunicipality, indexMunicipality) in item.municipalities"
-                                                :key="indexMunicipality">
-                                                <li class="list-custom">{{ itemMunicipality.city_name }}</li>
+                                                v-for="(itemHeadquarter, indexHeadquarter) in item.headquarters"
+                                                :key="indexHeadquarter">
+                                                <li class="list-custom">{{ itemHeadquarter.name }}</li>
                                             </ul>
                                         </span>
                                     </td>
@@ -593,10 +678,10 @@
                         <infinite-loading @distance="1" :identifier="infiniteId" @infinite="infiniteHandler"
                             spinner="waveDots" ref="infiniteHandler">
                             <div slot="no-more">
-                                No hay más registros
+                                No hay más registros para acuerdos de corresponsabilidad
                             </div>
                             <div slot="no-results">
-                                No hay registros
+                                No hay registros para acuerdos de corresponsabilidad
                             </div>
                         </infinite-loading>
                     </div>
@@ -637,7 +722,7 @@ export default {
         return {
             id: null,
             FormCoResponsibilityAgreements: {
-                municipalities: [],
+                headquarters: [],
                 users: [],
                 environmental_operator: null,
                 date: null,
@@ -660,6 +745,7 @@ export default {
             municipalities_model: null,
             headquarters_model: null,
             dateFilter: null,
+            stateFilter: "",
             update: false,
             user: null,
             evidences: [],
@@ -761,7 +847,10 @@ export default {
                 params: {
                     search: this.searchInput,
                     delegations_model: this.delegations_model,
+                    municipalities_model: this.municipalities_model,
+                    headquarters_model: this.headquarters_model,
                     dateFilter: this.dateFilter,
+                    stateFilter: this.stateFilter,
                 }
             }).then(({ data }) => {
                 // VACIO EL ARRAY PARA MOSTRAR LOS RESULTADOS DEL FILTRO
@@ -860,15 +949,15 @@ export default {
             // ESCRITURA DE VALORES A VARIABLES PARA EDICIÓN
             this.id = data.id
             // MUNICIPIOS
-            let municipalities_list = []
-            data.municipalities.map((item) => {
-                municipalities_list.push({
+            let headquarters_list = []
+            data.headquarters.map((item) => {
+                headquarters_list.push({
                     code: item.id,
-                    label: item.city_name,
+                    label: item.name,
                 })
             });
             this.FormCoResponsibilityAgreements.state = data.state === 'VIGENTE' ? true : false;
-            this.FormCoResponsibilityAgreements.municipalities = municipalities_list;
+            this.FormCoResponsibilityAgreements.headquarters = headquarters_list;
             // GESTORES AMBIENTALES
             let users_list = []
             data.users.map((item) => {
@@ -888,7 +977,7 @@ export default {
         },
         validateFormReport() {
             if (!this.FormTreeReport) {
-                let disabled = Object.keys(this.FormReport).every(key => key === 'delegation' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                let disabled = Object.keys(this.FormReport).every(key => key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
         },
@@ -950,6 +1039,7 @@ export default {
         this.setAuthenticatedUser();
         this.setDelegations();
         this.setMunicipalities();
+        this.setHeadquartersFilter();
         this.setPermissions();
         this.getUsersInput();
         this.setCsrfToken();

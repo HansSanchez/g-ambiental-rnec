@@ -39,7 +39,15 @@ class TreePlantation extends Model
             ->orWhere('number_of_trees_planted', 'LIKE', '%' . $search_term . '%')
             ->orWhere('date', 'LIKE', '%' . $search_term . '%')
             ->orWhere('address', 'LIKE', '%' . $search_term . '%')
-            ->orWhere('observations', 'LIKE', '%' . $search_term . '%');
+            ->orWhere('observations', 'LIKE', '%' . $search_term . '%')
+            ->orWhere(function ($query) use ($search_term) {
+                $query->whereHas('User', function ($query2) use ($search_term) {
+                    $query2->where('users.first_name', 'LIKE', '%' . $search_term . '%')
+                        ->orWhere('users.second_name', 'LIKE', '%' . $search_term . '%')
+                        ->orWhere('users.first_last_name', 'LIKE', '%' . $search_term . '%')
+                        ->orWhere('users.second_last_name', 'LIKE', '%' . $search_term . '%');
+                });
+            });
     }
 
     public function scopeWithRelations($query)

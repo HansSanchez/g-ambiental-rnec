@@ -14,22 +14,25 @@
                                     :to="{ name: 'tree-plantations-detail', params: { id: CoResponsibilityAgreementDetailList.id } }"
                                     @click="show = !show">
                                     <b>
-                                        Detalle del acuerdo de corresponsabilidad para
-                                        {{ CoResponsibilityAgreementDetailList.delegation.name }}
+                                        Detalle del acuerdo de corresponsabilidad para:
+                                        <br>
+                                        {{ CoResponsibilityAgreementDetailList.headquarter.delegation.name }} -
+                                        {{ CoResponsibilityAgreementDetailList.headquarter.municipality.city_name }} -
+                                        {{ CoResponsibilityAgreementDetailList.headquarter.name }}
                                     </b>
                                 </router-link>
                             </li>
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-4">
-                    <nav aria-label="breadcrumb" role="navigation">
+                <div class="col-md-4 full-center">
+                    <nav aria-label="breadcrumb" role="navigation" class="w-100">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important;">
                             <li class="breadcrumb-item active w-100" v-html="CoResponsibilityAgreementDetailList.StateLabel"></li>
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 full-center">
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb m-0 p-0" style="border: none !important; float: right !important;">
                             <li class="breadcrumb-item active">
@@ -46,11 +49,11 @@
         <div class="card-body" style="background: #d7d7d7 !important;">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <h5><b>MUNICIPIOS A LOS CUALES LES APLICA</b></h5>
+                    <h5><b>SEDE(S) A LA(S) CUAL(ES) LE(S) APLICA</b></h5>
                     <div>
                         <ul class="list-custom"
-                            v-for="(item, index) in  CoResponsibilityAgreementDetailList.municipalities " :key="index">
-                            <li class="list-custom">{{ item.FullCityName }}</li>
+                            v-for="(item, index) in  CoResponsibilityAgreementDetailList.headquarters " :key="index">
+                            <li class="list-custom">{{ item.name }}</li>
                         </ul>
                     </div>
                 </div>
@@ -66,7 +69,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group mb-0">
                         <h5><b>OPERADOR AMBIENTAL (ASOCIACIÓN DE RECICLADORES / EMPRESA / GESTOR AUTORIZADO)</b></h5>
-                        {{ CoResponsibilityAgreementDetailList.environmental_operator }}
+                        <b>{{ CoResponsibilityAgreementDetailList.environmental_operator }}</b>
                     </div>
                 </div>
                 <div v-if="CoResponsibilityAgreementDetailList.evidence_co_responsibility_agreement.length > 0"
@@ -93,11 +96,11 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                             <h5><b>REPORTANTE</b></h5>
-                            {{ CoResponsibilityAgreementDetailList.user.FullName }}
+                            <b>{{ CoResponsibilityAgreementDetailList.user.FullName }}</b>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                             <h5><b>REPORTADO</b></h5>
-                            {{ CoResponsibilityAgreementDetailList.user.CreatedLabel }}
+                            <b>{{ CoResponsibilityAgreementDetailList.user.CreatedLabel }}</b>
                         </div>
                     </div>
                 </div>

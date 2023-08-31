@@ -616,7 +616,7 @@ export default {
                 delegation: null,
                 municipality: null,
                 headquarter: null,
-                role: { code: 2, label: 'Normal User' },
+                role: { code: 2, label: 'Usuario normal' },
             },
             FormPhoto: {
                 profile_photo_path: null,

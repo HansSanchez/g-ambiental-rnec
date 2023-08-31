@@ -15,6 +15,7 @@ class CreateCoResponsibilityAgreementsTable extends Migration
     {
         Schema::create('co_responsibility_agreements', function (Blueprint $table) {
             $table->id();
+            $table->string('environmental_operator'); // NOMBRE DE LA (ASOCIACIÓN DE RECICLADORES / EMPRESA / GESTOR AUTORIZADO)
             $table->timestamp('date')->default(now()->format('Y-m-d H:i')); // FECHA DE LA FIRMA
             $table->enum('state', ['VIGENTE', 'NO VIGENTE']); // ESTADO DEL ACUERDO
             $table->longText('observations')->nullable(); // OBSERVACIONES SOBRE EL ACUERDO

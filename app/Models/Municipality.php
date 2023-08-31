@@ -39,12 +39,6 @@ class Municipality extends Model
             ->orWhere(DB::raw("CONCAT_WS(' ',city_code,state_code,state_name)"), 'like', "%" . $searchTerm . "%");
     }
 
-    public function CoResponsibilityAgreements()
-    {
-        return $this->belongsToMany(CoResponsibilityAgreement::class, 'municipality_co_responsibility_agreements')
-            ->withTimestamps();;
-    }
-
     public function getFullCityNameAttribute()
     {
         return ucwords(mb_strtolower($this->city_name . ' - ' . $this->state_name, "UTF-8"));

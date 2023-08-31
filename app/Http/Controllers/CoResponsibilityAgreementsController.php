@@ -18,78 +18,30 @@ class CoResponsibilityAgreementsController extends Controller
     // FUNCIÓN DE OBTENCIÓN DE DATOS
     public function getCoResponsibilityAgreements(Request $request)
     {
-        // ADECUACIÓN DE TEXTO A FECHA DEL PARAMETRO QUE LLEGA
-        $day = date('Y-m-d', strtotime($request->dateFilter));
         // CONSULTA DE LOS PERMISOS
         $permissions = new HomeController;
         // CONSULTA DE LA ACUERDOS DE CORRESPONSABILIDAD
-        $coResponsibilityAgreements =
-            // RELACIONES
-            CoResponsibilityAgreement::with([
-                'Delegation' => function ($query) {
-                    $query->select('delegations.id', 'delegations.name');
-                },
-                'EvidenceCoResponsibilityAgreement' => function ($query) {
-                    $query->select(
-                        'evidence_co_responsibility_agreements.id',
-                        'evidence_co_responsibility_agreements.file',
-                        'evidence_co_responsibility_agreements.co_responsibility_agreement_id'
-                    );
-                },
-                'Municipalities' => function ($query) {
-                    $query->select(
-                        'municipalities.id',
-                        'municipalities.city_name',
-                    );
-                },
-                // RELACIÓN CON EL REPORTANTE
-                'User' => function ($query) {
-                    $query->select(
-                        'users.id',
-                        'users.first_name',
-                        'users.second_name',
-                        'users.first_last_name',
-                        'users.second_last_name',
-                    );
-                },
-                // RELACIÓN CON LOS GESTORES AMBIENTALES (TABLA PIVOT)
-                'Users' => function ($query) {
-                    $query->select(
-                        'users.id',
-                        'users.first_name',
-                        'users.second_name',
-                        'users.first_last_name',
-                        'users.second_last_name',
-                    );
-                }
-            ])
-            // FILTRO DE CONSULTA SEGÚN PARAMETROS DE BÚSQUEDA
-            ->where(function ($query) use ($request, $day, $permissions) {
-                // FILTRO PARA BÚSQUEDA DE TEXTO EN OBSERVACIONES
-                if ($request->search) $query->search($request->search);
-                // FILTRO PARA BÚSQUEDA DE FECHA DE FIRMACIÓN
-                if ($request->dateFilter) $query->whereBetween('co_responsibility_agreements.date', [$day . " 00:00:00", $day . " 23:59:59"]);
-                // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR DELEGACIÓN
-                if (array_key_exists('filter_delegations_co_responsibility_agreements', $permissions->permissions())) {
-                    // PUEDE ACCEDER AL FILTRO Y ENVIAR DIFERENTES DELEGACIONES POR PARAMETRO
-                    if ($request->delegations_model) {
-                        $delegation = json_decode($request->delegations_model);
-                        $query->where('co_responsibility_agreements.delegation_id', $delegation->code);
-                    }
-                }
-                // SI NO TIENE PERMISO
-                else {
-                    // PUEDE VER SOLO LOS REGISTROS DE LA DELEGACIÓN A LA CUAL PERTENECE
-                    $query->where('co_responsibility_agreements.delegation_id', Auth::user()->delegation_id);
-                }
-            })
+        $coResponsibilityAgreements = CoResponsibilityAgreement::withRelations() // SCOPE EN EL MODELO (RELACIONES)
+            ->filter($request, date('Y-m-d', strtotime($request->dateFilter)), $permissions) // SCOPE EN EL MODELO (FILTROS)
             // ORDENAMIENTO POR ID
-            ->orderBy('co_responsibility_agreements.id')
+            ->orderBy('co_responsibility_agreements.id', 'DESC')
             // PÁGINADO DE RESPUESTA
-            ->simplePaginate(10);
+            ->simplePaginate(15);
 
         // RESPUESTA PARA EL USUARIO
         return response()->json(['coResponsibilityAgreements' => $coResponsibilityAgreements]);
+    }
+
+    public function allRelations($coResponsibilityAgreement)
+    {
+        // REGISTRO DE LAS RELACIONES
+        $coResponsibilityAgreement->Headquarter;
+        $coResponsibilityAgreement->Headquarter->Delegation;
+        $coResponsibilityAgreement->Headquarter->Municipality;
+        $coResponsibilityAgreement->Headquarters;
+        $coResponsibilityAgreement->EvidenceCoResponsibilityAgreement;
+        $coResponsibilityAgreement->User; // QUIEN REPORTÓ
+        $coResponsibilityAgreement->Users; // GESTORES AMBIENTALES
     }
 
     // FUNCIÓN PARA CREACIÓN
@@ -104,35 +56,29 @@ class CoResponsibilityAgreementsController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
-                $delegation_id = auth()->user()->delegation_id;
+                // OBTENCIÓN DE LA SEDE DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
+                $headquarter_id = auth()->user()->headquarter_id;
 
                 // GUARDADO DEL REGISTRO HECHO
                 // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
                 $coResponsibilityAgreement = new CoResponsibilityAgreement($request->all());
-                $coResponsibilityAgreement->delegation_id = $delegation_id; // DELEGACIÓN
-                $coResponsibilityAgreement->environmental_operator = mb_strtoupper($request->environmental_operator); // OPERADOR AMBIENTAL
                 $coResponsibilityAgreement->state = $request->state == true ? 'VIGENTE' : 'NO VIGENTE';
+                $coResponsibilityAgreement->headquarter_id = $headquarter_id; // SEDE
                 $coResponsibilityAgreement->user_id = $user_id; // USUARIO QUE GENERÓ EL REPORTE
                 $coResponsibilityAgreement->save(); // ALMACENAMIENTO DE LA INFORMACIÓN
 
-                // RELACIONAMIENTO DEL ACUERDO CON EL(LOS) MUNICIPIO(S)
-                if ($request->input('municipalities'))
-                    foreach ($request->input('municipalities') as $municipalitiy)
-                        $coResponsibilityAgreement->municipalities()->attach($municipalitiy['code']);
+                // RELACIONAMIENTO DEL ACUERDO CON LA(LAS) SEDE(S)
+                if ($request->input('headquarters'))
+                    foreach ($request->input('headquarters') as $headquarter)
+                        $coResponsibilityAgreement->headquarters()->attach($headquarter['code']);
 
                 // RELACIONAMIENTO DEL ACUERDO CON LOS GESTORES AMBIENTALES (USUARIOS)
                 if ($request->input('users'))
                     foreach ($request->input('users') as $user)
                         $coResponsibilityAgreement->users()->attach($user['code']);
 
-
-                // REGISTRO DE LAS RELACIONES
-                $coResponsibilityAgreement->Delegation;
-                $coResponsibilityAgreement->EvidenceCoResponsibilityAgreement;
-                $coResponsibilityAgreement->Municipalities;
-                $coResponsibilityAgreement->User; // QUIEN REPORTÓ
-                $coResponsibilityAgreement->Users; // GESTORES AMBIENTALES
+                // RELACIONES
+                $this->allRelations($coResponsibilityAgreement);
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -171,15 +117,8 @@ class CoResponsibilityAgreementsController extends Controller
     {
         // CONTROL DE ERRORES
         try {
-
-            // REGISTRO DE LAS RELACIONES
-            $coResponsibilityAgreement->Delegation;
-            $coResponsibilityAgreement->EvidenceCoResponsibilityAgreement;
-            $coResponsibilityAgreement->Municipalities;
-            $coResponsibilityAgreement->User; // QUIEN REPORTÓ
-            $coResponsibilityAgreement->Users; // GESTORES AMBIENTALES
-
-
+            // RELACIONES
+            $this->allRelations($coResponsibilityAgreement);
             // RESPUESTA PARA EL USUARIO
             return response()->json(['coResponsibilityAgreement' => $coResponsibilityAgreement]);
         } catch (\Exception $exception) {
@@ -200,8 +139,8 @@ class CoResponsibilityAgreementsController extends Controller
                 // OBTENCIÓN DEL ID QUE HIZO EL REGISTRO
                 $user_id = $coResponsibilityAgreement->user_id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
-                $delegation_id = $coResponsibilityAgreement->delegation_id;
+                // OBTENCIÓN DE LA SEDE DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
+                $headquarter_id = $coResponsibilityAgreement->headquarter_id;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -213,19 +152,18 @@ class CoResponsibilityAgreementsController extends Controller
 
                 // ACTUALIZACIÓN DE REGISTRO
                 $coResponsibilityAgreement->update([
-                    'delegation_id' => $delegation_id, // DELEGACIÓN
-                    'environmental_operator' => mb_strtoupper($request->environmental_operator), // OPERADOR AMBIENTAL
+                    'headquarter_id' => $headquarter_id, // SEDE
                     'date' => $request->date, // FECHA DE FIRMA
                     'state' => $request->state == true ? 'VIGENTE' : 'NO VIGENTE', // ESTADO
                     'observations' => $request->observations, // OBSERVACIONES
                     'user_id' => $user_id, // REPORTANTE
                 ]);
 
-                // RELACIONAMIENTO DEL ACUERDO CON EL(LOS) MUNICIPIO(S)
-                $coResponsibilityAgreement->municipalities()->detach(); // SIEMPRE QUE SE EDITA
-                if ($request->input('municipalities'))
-                    foreach ($request->input('municipalities') as $municipalitiy)
-                        $coResponsibilityAgreement->municipalities()->attach($municipalitiy['code']);
+                // RELACIONAMIENTO DEL ACUERDO CON LA(LAS) SEDE(S)
+                $coResponsibilityAgreement->headquarters()->detach(); // SIEMPRE QUE SE EDITA
+                if ($request->input('headquarters'))
+                    foreach ($request->input('headquarters') as $headquarter)
+                        $coResponsibilityAgreement->headquarters()->attach($headquarter['code']);
 
                 // RELACIONAMIENTO DEL ACUERDO CON LOS GESTORES AMBIENTALES (USUARIOS)
                 $coResponsibilityAgreement->users()->detach(); // SIEMPRE QUE SE EDITA
@@ -233,12 +171,8 @@ class CoResponsibilityAgreementsController extends Controller
                     foreach ($request->input('users') as $user)
                         $coResponsibilityAgreement->users()->attach($user['code']);
 
-                // REGISTRO DE LAS RELACIONES
-                $coResponsibilityAgreement->Delegation;
-                $coResponsibilityAgreement->EvidenceCoResponsibilityAgreement;
-                $coResponsibilityAgreement->Municipalities;
-                $coResponsibilityAgreement->User; // QUIEN REPORTÓ
-                $coResponsibilityAgreement->Users; // GESTORES AMBIENTALES
+                // RELACIONES
+                $this->allRelations($coResponsibilityAgreement);
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -286,11 +220,9 @@ class CoResponsibilityAgreementsController extends Controller
                 // ELIMINACIÓN DEL REGISTRO
                 $coResponsibilityAgreement->delete();
 
-                // REGISTRO DE LAS RELACIONES
-                $coResponsibilityAgreement->Delegation;
-                $coResponsibilityAgreement->EvidenceTreePlantations;
-                $coResponsibilityAgreement->User;
-
+                // RELACIONES
+                $this->allRelations($coResponsibilityAgreement);
+                
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
                     'timeout' => 5000,
@@ -354,7 +286,7 @@ class CoResponsibilityAgreementsController extends Controller
                         'delegations.id AS d_id',
                         'delegations.name AS d_name',
                         'co_responsibility_agreements.id AS cra_id',
-                        'co_responsibility_agreements.delegation_id AS cra_delegation_id',
+                        'co_responsibility_agreements.headquarter_id AS cra_headquarter_id',
                         'co_responsibility_agreements.environmental_operator AS cra_environmental_operator',
                         'co_responsibility_agreements.date AS cra_date',
                         'co_responsibility_agreements.state AS cra_state',
@@ -371,10 +303,10 @@ class CoResponsibilityAgreementsController extends Controller
                         'users.second_last_name AS u_second_last_name',
                         'users.position AS u_position',
                         'users.email AS u_email',
-                        'users.delegation_id AS u_delegation_id',
+                        'users.headquarter_id AS u_headquarter_id',
                     )
-                    // RELACIÓN CON LA DELEGACIÓN EN DONDE SE HIZO EL REGISTRO
-                    ->join('delegations', 'delegations.id', '=', 'co_responsibility_agreements.delegation_id')
+                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO
+                    ->join('delegations', 'delegations.id', '=', 'co_responsibility_agreements.headquarter_id')
                     // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
                     ->join('users', 'users.id', '=', 'co_responsibility_agreements.user_id')
                     // RELACIÓN CON EL(LOS) MUNICIPIO(S)
@@ -390,12 +322,12 @@ class CoResponsibilityAgreementsController extends Controller
                         if ($fromDay == null && $untilDay != null) $query->whereBetween('co_responsibility_agreements.date', ["2000-01-01 00:00:00", $untilDay . " 23:59:59"]);
                         if ($fromDay != null && $untilDay != null) $query->whereBetween('co_responsibility_agreements.date', [$fromDay . " 00:00:00", $untilDay . " 23:59:59"]);
                     })
-                    // FILTRO DE CONSULTA POR PARAMETRO DE DELEGACIÓN
+                    // FILTRO DE CONSULTA POR PARAMETRO DE SEDE
                     ->where(function ($query) use ($request, $permissions) {
                         // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
                         if (array_key_exists('filter_delegations_co_responsibility_agreements', $permissions->permissions()))
                             // PUEDE ENVIARLA POR PARAMETRO
-                            if ($request->delegation) $query->where('co_responsibility_agreements.delegation_id', $request->delegation['code']);
+                            if ($request->delegation) $query->where('co_responsibility_agreements.headquarter_id', $request->delegation['code']);
                             // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
                             else $query->get();
                     })

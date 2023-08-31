@@ -48,6 +48,12 @@ class Headquarter extends Model
         return $this->belongsTo(Municipality::class);
     }
 
+    public function CoResponsibilityAgreements()
+    {
+        return $this->belongsToMany(CoResponsibilityAgreement::class, 'headquarter_co_responsibility_agreements')
+            ->withTimestamps();;
+    }
+
     public function User()
     {
         return $this->belongsTo(User::class);

@@ -1,5 +1,6 @@
 // miMixin.js
 import axios from "axios";
+import moment from "moment-timezone";
 
 export default {
     methods: {
@@ -75,16 +76,12 @@ export default {
                     error.response ? this.responseErrors(error) : ""
                 );
         },
-        setMunicipalitiesFilterExport(search) {
+        setHeadquarters(search) {
             axios
-                .get("/g-environmental-rnec/municipalities/getMunicipalities", {
-                    params: {
-                        search: search,
-                        delegation: this.FormReport.delegation,
-                        filter: true,
-                    },
+                .get("/g-environmental-rnec/headquarters/getHeadquarters", {
+                    params: { search: search },
                 })
-                .then((res) => (this.municipalities = res.data.data))
+                .then((res) => (this.headquarters = res.data.data))
                 .catch((error) =>
                     error.response ? this.responseErrors(error) : ""
                 );
@@ -97,22 +94,6 @@ export default {
                         params: {
                             search: search,
                             municipality: this.municipalities_model,
-                        },
-                    }
-                )
-                .then((res) => (this.headquarters = res.data.data))
-                .catch((error) =>
-                    error.response ? this.responseErrors(error) : ""
-                );
-        },
-        setHeadquartersFilterExport(search) {
-            axios
-                .get(
-                    "/g-environmental-rnec/headquarters/getHeadquartersFilter",
-                    {
-                        params: {
-                            search: search,
-                            municipality: this.FormReport.municipality,
                         },
                     }
                 )
@@ -174,6 +155,7 @@ export default {
         clean() {
             this.searchInput = null;
             this.dateFilter = null;
+            this.stateFilter = "";
             this.delegations_model = null;
             this.municipalities_model = null;
             this.headquarters_model = null;
