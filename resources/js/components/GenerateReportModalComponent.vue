@@ -264,9 +264,7 @@ export default {
             this.setHeadquartersFilterExport();
         },
         generateReport(type) {
-            window.toastr.info("Generando reporte, por favor espere...", {
-                timeOut: 5000,
-            });
+            this.alertLoading(8000, "Generando reporte, por favor espere...", "info")
             let Form = null;
             switch (type) {
                 case "FormReport":
@@ -291,7 +289,7 @@ export default {
                     .then(this.responseReport)
                     .catch((error) => window.toastr.warning(error, { timeOut: 2000 }));
             }
-            else this.alertLoading(5000, "No se aplicó ningún filtro", "error")
+            else this.alertLoading(10000, "No se aplicó ningún filtro", "error")
         },
         responseReport(response) {
             let fileName = this.fileName + response.data.fileName;
@@ -315,7 +313,13 @@ export default {
                 });
             }
         },
-
+        alertLoading(time, msg, type) {
+            this.$toastr.Add({
+                timeout: time,
+                type: type,
+                msg: msg,
+            });
+        },
     },
     created() {
         this.$parent.$on('create-funtions', this.handleCreateFuntions);

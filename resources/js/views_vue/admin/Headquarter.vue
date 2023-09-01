@@ -221,7 +221,7 @@
                                     </v-btn>
                                     <v-btn type="button" v-if="permissions.add_headquarters === 'add_headquarters' ||
                                         permissions.edit_headquarters === 'edit_headquarters'"
-                                        @click="createOrUpdate(); alertLoading(12000, 'Cargando y creando bloques de información para la sede', 'info');"
+                                        @click="createOrUpdate(); alertLoading(15000, 'Cargando y creando bloques de información para la sede.', 'info');"
                                         color="#2eb85c" small class="btn btn-success text-uppercase text-white"
                                         data-dismiss="modal" :disabled="validateFormHeadquarters()">
                                         <b>{{ update ? 'Actualizar' : 'Guardar' }}</b>

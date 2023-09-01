@@ -37,12 +37,15 @@ class TreePlantationExport implements FromView, ShouldAutoSize, WithColumnWidths
         $sheet->getStyle('A:I')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
         // SIRVE PARA AUTOAJUSTAR EL TEXTO CUANDO EL TEXTO ES MUY GARNDE EN LA CELDA
         // SIRVE PARA AUTOAJUSTAR EL TEXTO CUANDO EL TEXTO ES MUY GARNDE EN LA CELDA
-        $sheet->getStyle('A:I')->getAlignment()->setWrapText(true);    }
+        $sheet->getStyle('A:I')->getAlignment()->setWrapText(true);
+    }
 
     public function registerEvents(): array
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
+                // RANGO PARA COLOCAR AUTOMATICAMENTE FILTROS
+                $event->sheet->setAutoFilter('A1:I1');
                 // ESTABLECE LA ALTURA DE LA FILA NÚMERO (X) EN (Y) UNIDADES EN LA HOJA DE CÁLCULO ACTUAL.
                 $event->sheet->getDelegate()->getRowDimension('1')->setRowHeight(25); // FILLAS DE LOS ENCABEZADOS
                 // ESTO FIJARÁ LA COLUMNA AL DESPLAZARSE HORIZONTALMENTE

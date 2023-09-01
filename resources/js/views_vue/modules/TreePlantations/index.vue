@@ -369,7 +369,7 @@
                     <GenerateReportModalComponent
                         v-show="permissions.generate_report_tree_plantations === 'generate_report_tree_plantations'"
                         :permissions="permissions" :title="'Reporte de plantación de árboles'"
-                        :title_2="'Fechas de firmado'" :url="'/g-environmental-rnec/tree-plantations/generateReport'"
+                        :title_2="'Fechas de plantación'" :url="'/g-environmental-rnec/tree-plantations/generateReport'"
                         :fileName="'/storage/reports/tree_plantations/'" :delegationsExport="delegations_export"
                         :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export" />
                     <!-- END GENERATE REPORTS -->

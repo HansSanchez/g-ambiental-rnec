@@ -222,7 +222,7 @@ class CoResponsibilityAgreementsController extends Controller
 
                 // RELACIONES
                 $this->allRelations($coResponsibilityAgreement);
-                
+
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
                     'timeout' => 5000,
@@ -285,6 +285,12 @@ class CoResponsibilityAgreementsController extends Controller
                     ->select(
                         'delegations.id AS d_id',
                         'delegations.name AS d_name',
+                        'headquarters.id AS h_id',
+                        'headquarters.name AS h_name',
+                        'headquarters.delegation_id AS h_delegation_id',
+                        'headquarters.municipality_id AS h_municipality_id',
+                        'municipalities.id AS m_id',
+                        'municipalities.city_name AS m_city_name',
                         'co_responsibility_agreements.id AS cra_id',
                         'co_responsibility_agreements.headquarter_id AS cra_headquarter_id',
                         'co_responsibility_agreements.environmental_operator AS cra_environmental_operator',
@@ -293,8 +299,6 @@ class CoResponsibilityAgreementsController extends Controller
                         'co_responsibility_agreements.observations AS cra_observations',
                         'co_responsibility_agreements.created_at AS cra_created_at',
                         'co_responsibility_agreements.user_id AS cra_user_id',
-                        'municipalities.id AS m_id',
-                        'municipalities.city_name AS m_city_name',
                         'users.id AS u_id',
                         'users.personal_id AS u_personal_id',
                         'users.first_name AS u_first_name',
@@ -305,13 +309,12 @@ class CoResponsibilityAgreementsController extends Controller
                         'users.email AS u_email',
                         'users.headquarter_id AS u_headquarter_id',
                     )
-                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO
-                    ->join('delegations', 'delegations.id', '=', 'co_responsibility_agreements.headquarter_id')
+                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO (SEDE, MUNICIPIO Y DELEGACIÓN)
+                    ->join('headquarters', 'headquarters.id', '=', 'co_responsibility_agreements.headquarter_id')
+                    ->join('municipalities', 'municipalities.id', '=', 'headquarters.municipality_id')
+                    ->join('delegations', 'delegations.id', '=', 'headquarters.delegation_id')
                     // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
                     ->join('users', 'users.id', '=', 'co_responsibility_agreements.user_id')
-                    // RELACIÓN CON EL(LOS) MUNICIPIO(S)
-                    ->join('municipality_co_responsibility_agreements', 'municipality_co_responsibility_agreements.co_responsibility_agreement_id', '=', 'co_responsibility_agreements.id')
-                    ->join('municipalities', 'municipalities.id', '=', 'municipality_co_responsibility_agreements.municipality_id')
                     // FILTRO DE CONSULTA SEGÚN PARAMETROS DE FECHA
                     ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $monthStartDate, $monthEndDate, $yearStartDate, $yearEndDate) {
                         if ($day != null) $query->whereBetween('co_responsibility_agreements.date', [$day . " 00:00:00", $day . " 23:59:59"]);
@@ -332,55 +335,109 @@ class CoResponsibilityAgreementsController extends Controller
                             else $query->get();
                     })
                     // OBTENCIÓN DE LOS REGISTROS
-                    ->get();
+                    ->get()
+                    ->groupBy('h_name'); // AGRUPAR POR NOMBRE DE SEDE
 
                 // ESTA FUNCIÓN EN NECESARIA YA QUE LAS OBSERVACIONES SE GUARDAN CON HTML ES NECESARIO LIMPIARLAS PARA TENER SOLO EL TEXTO
-                $cleanedReport = $report->map(function ($item) {
-                    // LIMPIAR TEXTO HTML A TEXTO PLANO
-                    $item->cra_observations = Str::of(strip_tags($item->cra_observations))->trim()->__toString();
-                    // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->cra_date = Carbon::createFromFormat('Y-m-d H:i:s', $item->cra_date)->format('d-m-Y');
-                    // CAMBIAR EL FORMATO DE LA FECHA
-                    $item->cra_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $item->cra_created_at)->format('d-m-Y h:i:s');
-                    // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
-                    $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
-                    // RETORNO DE LOS CAMBIOS
-                    return $item;
-                });
+                $cleanedReport = [];
+                foreach ($report as $key1 => $headquarterData) {
+                    foreach ($headquarterData as $key_2 => $record) {
+                        if (is_object($record)) {
+                            // CREAR UN NUEVO OBJETO PARA EL REGISTRO
+                            $cleanedRecord = (object)[];
 
+                            // COPIAR LAS PROPIEDADES DEL REGISTRO ORIGINAL
+                            foreach ($record as $key => $value) $cleanedRecord->{$key} = $value;
+
+                            // LIMPIEZA Y TRANSFORMACIÓN PARA CADA REGISTRO
+                            $cleanedRecord->cra_observations = Str::of(strip_tags($record->cra_observations))->trim()->__toString();
+                            $cleanedRecord->cra_date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $record->cra_date)->format('d-m-Y');
+                            $cleanedRecord->cra_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $record->cra_created_at)->format('d-m-Y h:i:s');
+                            $cleanedRecord->h_full_name = mb_strtoupper($record->d_name . ' / ' . $record->m_city_name . ' / ' . $record->h_name, "UTF-8");
+                            $cleanedRecord->u_full_name_r = mb_strtoupper($record->u_first_name . ' ' . $record->u_second_name . ' ' . $record->u_first_last_name . ' ' . $record->u_second_last_name, "UTF-8");
+
+                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA CIUDAD
+                            // $key_1 CORRESPONDE AL AGRUPAMIENTO DE LAS SEDES (#NOTE - groupBy('h_name') LÍNEA 339)
+                            // $key_2 CORRESPONDE A LA CANTIDAD DE ACUERDOS REGISTRADOS POR SEDE
+                            $cleanedReport[$key1][$key_2] = $cleanedRecord;
+                        }
+                    }
+                }
 
                 // TRANSFORMAR LA INFORMACIÓN DE USUARIOS DENTRO DE CADA ELEMENTO DEL REPORTE
-                foreach ($cleanedReport as $key => $item) {
-                    // CONSULTA DE ID'S DE LOS USUARIOS EN LA TABLA INTERMEDIA
-                    $IdUsers = DB::table('user_co_responsibility_agreements')
-                        ->select('user_id AS ucra_user_id')
-                        ->where('co_responsibility_agreement_id', $item->cra_id)
-                        ->get();
+                foreach ($cleanedReport as $key_1 => $item) {
+                    foreach ($item as $key_2 => $value) {
+                        // CONSULTA DE ID'S DE LOS USUARIOS EN LA TABLA INTERMEDIA
+                        $IdUsers = DB::table('user_co_responsibility_agreements')
+                            ->select('user_id AS ucra_user_id')
+                            ->where('co_responsibility_agreement_id', $value->cra_id)
+                            ->get();
 
-                    $users = []; // CREAR UN ARRAY PARA ALMACENAR LA INFORMACIÓN DE LOS USUARIOS
+                        // CONSULTA DE ID'S DE LAS SEDES EN LA TABLA INTERMEDIA
+                        $IdHeadquarters = DB::table('headquarter_co_responsibility_agreements')
+                            ->select('headquarter_id AS hcra_headquarter_id')
+                            ->where('co_responsibility_agreement_id', $value->cra_id)
+                            ->get();
 
-                    // CICLO PARA CONSULTAR LOS DATOS DE LOS USUARIOS RELACIONADOS COMO GESTOR(ES) AMBIENTAL(ES)
-                    foreach ($IdUsers as $key => $value) {
-                        $user = DB::table('users')
-                            ->select('users.id AS u_id', 'users.first_name AS u_first_name', 'users.second_name AS u_second_name', 'users.first_last_name AS u_first_last_name', 'users.second_last_name AS u_second_last_name')
-                            ->where('id', $value->ucra_user_id)
-                            ->first();
-                        if ($user) $users[] = $user; // AGREGAR EL USUARIO AL ARRAY
+                        $users = []; // CREAR UN ARRAY PARA ALMACENAR LA INFORMACIÓN DE LOS USUARIOS
+                        $headquarters = []; // CREAR UN ARRAY PARA ALMACENAR LA INFORMACIÓN DE LAS SEDES
+
+                        // CICLO PARA CONSULTAR LOS DATOS DE LOS USUARIOS RELACIONADOS COMO GESTOR(ES) AMBIENTAL(ES)
+                        foreach ($IdUsers as $key_3 => $value) {
+                            $user = DB::table('users')
+                                ->select('users.id AS u_id', 'users.first_name AS u_first_name', 'users.second_name AS u_second_name', 'users.first_last_name AS u_first_last_name', 'users.second_last_name AS u_second_last_name')
+                                ->where('id', $value->ucra_user_id)
+                                ->first();
+                            if ($user) $users[] = $user; // AGREGAR EL USUARIO AL ARRAY
+                        }
+
+                        // CICLO PARA CONSULTAR LOS DATOS DE LAS SEDES
+                        foreach ($IdHeadquarters as $key_4 => $value) {
+                            $headquarter = DB::table('headquarters')
+                                ->select(
+                                    'headquarters.id AS h_id',
+                                    'headquarters.name AS h_name',
+                                    'headquarters.delegation_id AS h_delegation_id',
+                                    'headquarters.municipality_id AS h_municipality_id',
+                                    'delegations.id AS d_id',
+                                    'delegations.name AS d_name',
+                                    'municipalities.id AS m_id',
+                                    'municipalities.city_name AS m_city_name',
+                                )
+                                ->join('municipalities', 'municipalities.id', '=', 'headquarters.municipality_id')
+                                ->join('delegations', 'delegations.id', '=', 'headquarters.delegation_id')
+                                ->where('headquarters.id', $value->hcra_headquarter_id)
+                                ->first();
+                            if ($headquarter) $headquarters[] = $headquarter; // AGREGAR LA SEDE AL ARRAY
+                        }
+
+                        // CONVERTIR EL ARRAY EN UNA COLECCIÓN ANTES DE USAR MAP()
+                        $usersCollection = collect($users);
+                        $headquartersCollection = collect($headquarters);
+
+                        // APLICAR MAP() EN LA COLECCIÓN
+                        $newUsers = $usersCollection->map(function ($value) {
+                            // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
+                            $value->u_full_name_g = $value->u_first_name . ' ' . $value->u_second_name . ' ' . $value->u_first_last_name . ' ' . $value->u_second_last_name;
+                            // RETORNO DE LOS CAMBIOS
+                            return $value;
+                        });
+
+                        // APLICAR MAP() EN LA COLECCIÓN
+                        $newHeadquarters = $headquartersCollection->map(function ($value) {
+                            // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
+                            $value->h_full_name = $value->h_name;
+                            // RETORNO DE LOS CAMBIOS
+                            return $value;
+                        });
+
+
+                        // AGREGAR LA INFORMACIÓN TRANSFORMADA AL ELEMENTO DEL REPORTE
+                        // $key_1 CORRESPONDE AL AGRUPAMIENTO DE LAS SEDES (#NOTE - groupBy('h_name') LÍNEA 339)
+                        // $key_2 CORRESPONDE A LA CANTIDAD DE ACUERDOS REGISTRADOS POR SEDE
+                        $cleanedReport[$key_1][$key_2]->users = $newUsers;
+                        $cleanedReport[$key_1][$key_2]->headquarters = $newHeadquarters;
                     }
-
-                    // CONVERTIR EL ARRAY EN UNA COLECCIÓN ANTES DE USAR MAP()
-                    $usersCollection = collect($users);
-
-                    // APLICAR MAP() EN LA COLECCIÓN
-                    $newUsers = $usersCollection->map(function ($item) {
-                        // AGREGAR UN CAMPO PERSONALIZADO (NOMBRE COMPLETO)
-                        $item->u_full_name = $item->u_first_name . ' ' . $item->u_second_name . ' ' . $item->u_first_last_name . ' ' . $item->u_second_last_name;
-                        // RETORNO DE LOS CAMBIOS
-                        return $item;
-                    });
-
-                    // AGREGAR LA INFORMACIÓN TRANSFORMADA AL ELEMENTO DEL REPORTE
-                    $item->users = $newUsers;
                 }
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
