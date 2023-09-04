@@ -121,7 +121,7 @@ class TreePlantation extends Model
                 if ($request->headquarters_model) {
                     $headquarter = json_decode($request->headquarters_model);
                     $query->where('tree_plantations.headquarter_id', $headquarter->code);
-                }
+                } else $query->where('tree_plantations.headquarter_id', Auth::user()->headquarter_id);
             }
             // SI NO TIENE PERMISO
             else {

@@ -114,20 +114,26 @@ export default {
                     error.response ? this.responseErrors(error) : ""
                 );
         },
+        setYears() {
+            const currentDate = new Date();
+            for (let index = 2022; index <= 2032; index++) this.years.push(index.toString())
+            this.yearFilter = currentDate.getFullYear().toString();
+            return this.years;
+        },
         getSpanishMonthName(month) {
             const spanishMonthNames = [
-                "Enero",
-                "Febrero",
-                "Marzo",
-                "Abril",
-                "Mayo",
-                "Junio",
-                "Julio",
-                "Agosto",
-                "Septiembre",
-                "Octubre",
-                "Noviembre",
-                "Diciembre",
+                "ENERO",
+                "FEBRERO",
+                "MARZO",
+                "ABRIL",
+                "MAYO",
+                "JUNIO",
+                "JULIO",
+                "AGOSTO",
+                "SEPTIEMBRE",
+                "OCTUBRE",
+                "NOVIEMBRE",
+                "DICIEMBRE",
             ];
             return spanishMonthNames[month];
         },
@@ -135,10 +141,18 @@ export default {
             const currentDate = new Date();
             const currentMonth = currentDate.getMonth();
             const monthName = this.getSpanishMonthName(currentMonth);
+            if (!this.FormElectricalConsumptions.month)
+                this.FormElectricalConsumptions.month = this.getSpanishMonthName(currentMonth).toString();
             return monthName;
         },
         getCurrentYear() {
             const currentDate = new Date();
+            return currentDate.getFullYear();
+        },
+        getCurrentYearElectrical() {
+            const currentDate = new Date();
+            if (!this.FormElectricalConsumptions.year)
+                this.FormElectricalConsumptions.year = currentDate.getFullYear().toString();
             return currentDate.getFullYear();
         },
         getUsersInput() {
@@ -153,12 +167,15 @@ export default {
             this.infiniteId += 1;
         },
         clean() {
+            const currentDate = new Date();
             this.searchInput = null;
             this.dateFilter = null;
             this.stateFilter = "";
             this.delegations_model = null;
             this.municipalities_model = null;
             this.headquarters_model = null;
+            this.yearFilter = currentDate.getFullYear().toString();
+            this.monthFilter = '';
             this.changeType();
             this.defaultFuntions();
         },
@@ -266,5 +283,6 @@ export default {
                 });
             }
         },
+
     },
 };

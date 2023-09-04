@@ -25,34 +25,33 @@
         <div class="card-body" style="background: #d7d7d7 !important;">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                    <!-- ENCABEZADO (BOTONES Y FILTROS) -->
                     <div class="row">
-                        <!-- <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-0 mb-sm-2"
-                            v-if="permissions.add_electrical_consumptions === 'add_electrical_consumptions'">
-                            <button
-                                @click="update = false; resetFormElectricalConsumptions(); openModal(); getCurrentYear(); getCurrentDateWithSpanishMonth();"
-                                type="button" data-toggle="modal" data-target="#UpdateOrCreateElectricalConsumptionsModal"
-                                data-backdrop="static" data-dismiss="modal"
-                                class="btn btn-success text-uppercase tip-customer btn-new w-100" title="Nueva registro">
-                                <v-icon color="#FFFFFF">mdi-plus-circle</v-icon>
-                            </button>
-                        </div> -->
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-0">
-                            <div v-if="permissions.filter_delegations_electrical_consumptions === 'filter_delegations_electrical_consumptions'"
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
+                            <div v-if="permissions.filter_headquarters_electrical_consumptions === 'filter_headquarters_electrical_consumptions'"
                                 class="form-group mb-0">
-                                <v-select :options="delegations" @search="setDelegations"
-                                    @input="queryFilter(); municipalities = []; setMunicipalitiesFilter();"
-                                    v-model="delegations_model" placeholder="DELEGACIONES...">
+                                <v-select :options="delegations" @search="setDelegations" @input="queryFilter();
+                                municipalities_model = null; headquarters_model = null
+                                municipalities = []; setMunicipalitiesFilter();" v-model="delegations_model"
+                                    placeholder="DELEGACIONES...">
                                 </v-select>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-0">
-                            <div v-if="permissions.filter_delegations_electrical_consumptions === 'filter_delegations_electrical_consumptions'"
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
+                            <div v-if="permissions.filter_headquarters_electrical_consumptions === 'filter_headquarters_electrical_consumptions'"
                                 class="form-group mb-0">
                                 <v-select :options="municipalities" v-model="municipalities_model"
-                                    @search="setMunicipalitiesFilter" @input="queryFilter()" placeholder="MUNICIPIOS..."
-                                    :disabled="delegations_model === null ? true : false">
+                                    @search="setMunicipalitiesFilter"
+                                    @input="queryFilter(); headquarters_model = null; headquarters = []; setHeadquartersFilter();"
+                                    placeholder="MUNICIPIOS..." :disabled="delegations_model === null ? true : false">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-1 pb-xs-1">
+                            <div v-if="permissions.filter_headquarters_electrical_consumptions === 'filter_headquarters_electrical_consumptions'"
+                                class="form-group mb-0">
+                                <v-select :options="headquarters" v-model="headquarters_model"
+                                    @search="setHeadquartersFilter" @input="queryFilter();" placeholder="SEDES..."
+                                    :disabled="municipalities_model === null ? true : false">
                                 </v-select>
                             </div>
                         </div>
@@ -67,7 +66,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-0 pb-xs-1">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pt-0 mb-0 pb-sm-3 pb-xs-1">
                             <div class="form-group mb-0">
                                 <select class="form-control" name="month" id="month" v-model="monthFilter"
                                     @change="queryFilter()">
@@ -78,7 +77,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 w-100 pt-0 mb-1">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 w-100 pt-0 mb-0 pb-sm-3 pb-1-5-rem">
                             <div class="input-group">
                                 <input type="search" style="border-right: none !important;" v-model="searchInput"
                                     id="search" class="form-control" @change="changeType" placeholder="Buscar...">
@@ -89,7 +88,7 @@
                                     v-if="permissions.generate_report_electrical_consumptions === 'generate_report_electrical_consumptions'"
                                     class="input-group-text border-search bg-success" title="Generación de reportes"
                                     data-toggle="modal" data-backdrop="static" data-target="#GenerateReportModal"
-                                    @click="report = true;">
+                                    @click="createFuntions()">
                                     <i class="fa-solid fa-file-excel text-white"></i>
                                 </span>
                                 <span class="input-group-text border-custom bg-dark" title="Refrescar" @click="clean">
@@ -98,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ENCABEZADO (BOTONES Y FILTROS) -->
+
 
                     <!-- NOTE START MODEALES -->
 
@@ -122,46 +121,59 @@
                                 </div>
                                 <div class="modal-body bv-modal">
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="environmental_operator" rules="required">
-                                                <div slot-scope="{ errors }">
-                                                    <div class="form-group mb-0">
-                                                        <h5><b>GESTOR(A) AMBIENTAL <span class="text-danger">*</span></b>
-                                                        </h5>
-                                                        <input v-model="FormElectricalConsumptions.environmental_manager"
-                                                            type="text" name="environmental_manager"
-                                                            id="environmental_operator" class="form-control"
-                                                            placeholder="Nombre del gestor(a) ambiental" required>
-                                                    </div>
-                                                    <small>
-                                                        <b>
-                                                            <em>
-                                                                Digite el nombre del gestor(a) ambiental
-                                                            </em>
-                                                        </b>
-                                                    </small>
-                                                    <small>
-                                                        <p class="text-danger mb-0">
-                                                            <b>{{ errors[0] }}</b>
-                                                        </p>
-                                                    </small>
-                                                </div>
-                                            </ValidationProvider>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                <h5>
+                                                    <b class="full-center">
+                                                        <i class="fa-solid fa-circle-info fa-2x"></i>
+                                                        <strong class="pl-2">RECOMENDACIONES:</strong>
+                                                    </b>
+                                                </h5>
+                                                <ul class="list-general text-justify">
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            Tenga en cuenta que, los campos marcados con
+                                                            <b class='text-danger'>(*)</b> son de caracter obligatorio.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general pb-3">
+                                                        <strong>
+                                                            En este módulo, solo debes registrar el valor de los
+                                                            <b><strong class="text-info">KILOWATTS (MES)</strong></b>,
+                                                            <b><strong class="text-info">TOTAL DE PERSONAL</strong></b>
+                                                            y si lo consideras necesario, agregar
+                                                            <b><strong class="text-info">OBSERVACIONES</strong></b>; de lo
+                                                            contrario, puedes dejar el texto predeterminado.
+                                                        </strong>
+                                                    </li>
+                                                    <li class="list-general">
+                                                        <strong>
+                                                            Si tiene alguna duda con respecto a la creación de registros
+                                                            asociados a los consumos eléctricos
+                                                            lo invitamos a contactar con: "SEDE CENTRAL - BOGOTÁ".
+                                                        </strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <ValidationProvider name="number_of_trees_planted" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
-                                                        <h5><b>MUNICIPIO <span class="text-danger">*</span></b></h5>
-                                                        <v-select :options="municipalities" @search="setMunicipalities"
-                                                            v-model="FormElectricalConsumptions.municipality"
-                                                            placeholder="MUNICIPIOS...">
+                                                        <h5><b>SEDE <span class="text-danger">*</span></b></h5>
+                                                        <v-select :options="headquarters" @search="setHeadquarters"
+                                                            v-model="FormElectricalConsumptions.headquarter"
+                                                            placeholder="SEDES..."
+                                                            :disabled="FormElectricalConsumptions.headquarter !== null ? true : false">
                                                         </v-select>
                                                     </div>
                                                     <small>
                                                         <b>
-                                                            <em>
-                                                                Escoja el municipio al cual le va a relacionar el consumo
+                                                            <em class="text-info">
+                                                                Por defecto, solo podrás ver y editar los registros de la
+                                                                sede a la cual perteneces.
                                                             </em>
                                                         </b>
                                                     </small>
@@ -180,15 +192,22 @@
                                                         <h5><b>AÑO <span class="text-danger">*</span></b></h5>
                                                         <div class="form-group mb-0">
                                                             <select class="form-control" name="year" id="year"
-                                                                v-model="FormElectricalConsumptions.year">
+                                                                v-model="FormElectricalConsumptions.year"
+                                                                :disabled="FormElectricalConsumptions.year !== null ? true : false">
                                                                 <option v-for="(item, index) in  years" :key="index">
                                                                     {{ item }}
                                                                 </option>
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <small><b><em>Escoja el año al cual va a relacionar el
-                                                                consumo</em></b></small>
+                                                    <small>
+                                                        <b>
+                                                            <em class="text-info">
+                                                                Por defecto, solo podrás ver y editar los registros del año
+                                                                que pertenece el registro
+                                                            </em>
+                                                        </b>
+                                                    </small>
                                                     <small>
                                                         <p class="text-danger mb-0">
                                                             <b>{{ errors[0] }}</b>
@@ -204,15 +223,22 @@
                                                         <h5><b>MES <span class="text-danger">*</span></b></h5>
                                                         <div class="form-group mb-0">
                                                             <select class="form-control" name="month" id="month"
-                                                                v-model="FormElectricalConsumptions.month">
+                                                                v-model="FormElectricalConsumptions.month"
+                                                                :disabled="FormElectricalConsumptions.month !== null ? true : false">
                                                                 <option v-for="(item, index) in  months" :key="index">
                                                                     {{ item }}
                                                                 </option>
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <small><b><em>Escoja el mes al cual va a relacionar el
-                                                                consumo</em></b></small>
+                                                    <small>
+                                                        <b>
+                                                            <em class="text-info">
+                                                                Por defecto, solo podrás ver y editar los registros del mes
+                                                                que pertenece el registro
+                                                            </em>
+                                                        </b>
+                                                    </small>
                                                     <small>
                                                         <p class="text-danger mb-0">
                                                             <b>{{ errors[0] }}</b>
@@ -225,7 +251,8 @@
                                             <ValidationProvider name="kw_monthly" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
-                                                        <h5><b>KILOWATTS (MES) <span class="text-danger">*</span></b>
+                                                        <h5>
+                                                            <b>KILOWATTS (MES) <span class="text-danger">*</span></b>
                                                         </h5>
                                                         <input v-model="FormElectricalConsumptions.kw_monthly" type="number"
                                                             name="kw_monthly" min="1" id="kw_monthly" class="form-control"
@@ -250,7 +277,8 @@
                                             <ValidationProvider name="total_staff" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
-                                                        <h5><b>TOTAL DE PERSONAL <span class="text-danger">*</span></b>
+                                                        <h5>
+                                                            <b>TOTAL DE PERSONAL <span class="text-danger">*</span></b>
                                                         </h5>
                                                         <input v-model="FormElectricalConsumptions.total_staff"
                                                             type="number" name="total_staff" min="0" id="total_staff"
@@ -360,7 +388,7 @@
                                                                     || itemEvidence.extension === 'bmp' || itemEvidence.extension === 'tiff'
                                                                     || itemEvidence.extension === 'tif' || itemEvidence.extension === 'webp'
                                                                     || itemEvidence.extension === 'svg' || itemEvidence.extension === 'raw'"
-                                                                    :href="'/storage/tree_plantations/evidences/files/' + itemEvidence.file"
+                                                                    :href="'/storage/electrical_consumptions/evidences/files/' + itemEvidence.file"
                                                                     download>
                                                                     <p>
                                                                         <img :src="'/storage/electrical_consumptions/evidences/files/' + itemEvidence.file"
@@ -412,136 +440,14 @@
                     </div>
                     <!-- END EVIDENCIAS -->
 
+
                     <!-- START GENERATE REPORTS -->
-                    <div v-show="permissions.generate_report_electrical_consumptions === 'generate_report_electrical_consumptions'"
-                        class="modal fade" id="GenerateReportModal" tabindex="-1" role="dialog"
-                        aria-labelledby="GenerateReportModalTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header" style="background: #88b76e">
-                                    <h5 class="modal-title text-uppercase text-white">
-                                        <b>{{
-                                            report ? "Reporte de consumos eléctricos" : "SIN TÍTULO"
-                                        }}</b>
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">
-                                            <v-icon style="color: #fff">mdi-close</v-icon>
-                                        </span>
-                                    </button>
-                                </div>
-                                <div class="modal-body" style="background: #e7e7e7">
-                                    <!-- REPORTES -->
-                                    <div v-if="report" class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
-                                            <h5 class="mb-0"><b>Fechas de consumo</b></h5>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
-                                            <div class="form-group mb-0">
-                                                <small><b class="text-danger">(Años) *</b></small>
-                                                <select class="form-control" name="year" id="year"
-                                                    v-model="FormReport.year">
-                                                    <option value="" selected disabled>AÑOS...</option>
-                                                    <option v-for="(item, index) in  years" :key="index">
-                                                        {{ item }}
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
-                                            <div class="form-group mb-0">
-                                                <small><b>(Meses)</b></small>
-                                                <select class="form-control" name="month" id="month"
-                                                    v-model="FormReport.month">
-                                                    <option value="" selected disabled>MESES...</option>
-                                                    <option v-for="(item, index) in  months" :key="index">
-                                                        {{ item }}
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div v-if="permissions.filter_delegations_electrical_consumptions === 'filter_delegations_electrical_consumptions'"
-                                            class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pb-0">
-                                            <div class="form-group mb-0">
-                                                <small><b class="text-danger">(Delegaciones) *</b></small>
-                                                <v-select :options="delegations" v-model="FormReport.delegation"
-                                                    @input="municipalities = []; setMunicipalities();"
-                                                    placeholder="DELEGACIONES...">
-                                                </v-select>
-                                            </div>
-                                        </div>
-                                        <div v-if="permissions.filter_municipalities_electrical_consumptions === 'filter_municipalities_electrical_consumptions'"
-                                            class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                            <div class="form-group mb-0">
-                                                <small><b>(Municipios)</b></small>
-                                                <v-select :options="municipalities" v-model="FormReport.municipality"
-                                                    placeholder="MUNICIPIOS..."
-                                                    :disabled="FormReport.delegation === null ? true : false">
-                                                </v-select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify">
-                                            <h5>RECOMENDACIONES:</h5>
-                                            <ul>
-                                                <li>
-                                                    Tenga en cuenta que si quiere generar un reporte debe especificar el
-                                                    campo
-                                                    <b class="text-danger">(AÑOS)</b> y el campo
-                                                    <b class="text-danger">(DELEGACIONES)</b> de lo contrario no se
-                                                    permitirá, exceptuando los botones
-                                                    <b class="text-info">(MENSUAL)</b> y <b class="text-info">(ANUAL)</b>.
-                                                </li>
-                                                <li>
-                                                    <br>
-                                                    Por otro lado, se deja aclaración que los botones hacen referencia al
-                                                    mes y al año actual.
-                                                    <br>
-                                                    <br>
-                                                    <b>Ejemplo:</b>
-                                                    <br>
-                                                    <b>
-                                                        <span class="text-info">(ANUAL)</span> :
-                                                        {{ getCurrentYear() }}
-                                                    </b>
-                                                    <br>
-                                                    <b>
-                                                        <span class="text-info">(MENSUAL)</span> :
-                                                        {{ getCurrentDateWithSpanishMonth() }}
-                                                    </b>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- END -->
-                                </div>
-                                <div class="modal-footer">
-                                    <v-btn v-if="report" color="#6c757d" title="Limpiar" small @click="cleanFormReport()"
-                                        class="btn btn-sm btn-grey text-white text-uppercase">
-                                        <b>LIMPIAR</b>
-                                    </v-btn>
-                                    <v-btn v-if="report" color="#39f" title="Mensual" small @click="generateReport('month')"
-                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
-                                        :disabled="!validateFormReport()">
-                                        <b>MENSUAL</b>
-                                    </v-btn>
-                                    <v-btn v-if="report" color="#39f" title="Anual" small @click="generateReport('year')"
-                                        class="btn btn-sm btn-info text-white text-uppercase" data-dismiss="modal"
-                                        :disabled="!validateFormReport()">
-                                        <b>ANUAL</b>
-                                    </v-btn>
-                                    <v-btn type="button" v-if="report" @click="generateReport('FormReport')" color="#2eb85c"
-                                        small class="btn btn-success text-uppercase text-white" data-dismiss="modal"
-                                        :disabled="validateFormReport()">
-                                        <b>GENERAR</b>
-                                    </v-btn>
-                                    <v-btn color="#e55353" small class="btn btn-danger text-white" data-dismiss="modal">
-                                        <b>CANCELAR</b>
-                                    </v-btn>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END GENERATE REPORTS -->
+                    <GenerateReportModalComponent
+                        v-show="permissions.generate_report_electrical_consumptions === 'generate_report_electrical_consumptions'"
+                        :permissions="permissions" :title="'Reporte de consumos eléctricos'" :title_2="'Fechas de consumo'"
+                        :url="'/g-environmental-rnec/electrical-consumptions/generateReport'"
+                        :fileName="'/storage/reports/electrical_consumptions/'" :delegationsExport="delegations_export"
+                        :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export" />
 
                     <!-- NOTE END MODEALES -->
 
@@ -556,8 +462,8 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th>DELEGACIÓN</th>
-                                    <th>MUNICIPIO</th>
+                                    <th>ID</th>
+                                    <th>DELEGACIÓN - MUNICIPIO - SEDE</th>
                                     <th>GESTOR</th>
                                     <th>AÑO</th>
                                     <th>MES</th>
@@ -574,26 +480,22 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in  list " :key="index">
-                                    <td class="text-uppercase text-center">
-                                        <span class="badge badge-info text-white w-100 full-16">
-                                            <b>
-                                                {{
-                                                    item.delegation ?
-                                                    item.delegation.name :
-                                                    'SIN DELEGACIÓN'
-                                                }}
-                                            </b>
-                                        </span>
+                                    <td class="text-uppercase text-center bg-register text-white">
+                                        <b>{{ item.id }}</b>
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{
-                                            item.municipality ?
-                                            item.municipality.city_name :
-                                            'NO APLICA'
-                                        }}
+                                        <b>
+                                            {{
+                                                item.headquarter ?
+                                                item.headquarter.delegation.name + " - " +
+                                                item.headquarter.municipality.city_name + " - " +
+                                                item.headquarter.name :
+                                                'SIN SEDE'
+                                            }}
+                                        </b>
                                     </td>
-                                    <td class="text-uppercase text-center">
-                                        {{ item.environmental_manager }}
+                                    <td class="text- text-center">
+                                        {{ item.user.FullName }}
                                     </td>
                                     <td class="text-center">
                                         {{ item.year }}
@@ -697,26 +599,26 @@ import InfiniteLoading from "vue-infinite-loading"; // COMPONENTE PARA HACER UN 
 import { VueEditor } from "vue2-editor";
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
-import Datepicker from "vuejs-datepicker";
 import { es } from "vuejs-datepicker/dist/locale";
-import moment from "moment-timezone";
 import LoaderComponent from '../../../components/LoaderComponent.vue';
+import GenerateReportModalComponent from '../../../components/GenerateReportModalComponent.vue';
+import MiMixin from '../../../components/mixin';
 
 export default {
     components: {
         InfiniteLoading,
         VueEditor,
         vueDropzone: vue2Dropzone,
-        Datepicker,
         LoaderComponent,
+        GenerateReportModalComponent
     },
     name: "ElectricalConsumptions",
+    mixins: [MiMixin],
     data() {
         return {
             id: null,
             FormElectricalConsumptions: {
-                municipality: null,
-                environmental_manager: null,
+                headquarter: null,
                 year: null,
                 month: null,
                 kw_monthly: null,
@@ -735,9 +637,14 @@ export default {
             errors: null,
             delegations: [],
             municipalities: [],
-            users: [],
+            headquarters: [],
+            delegations_export: [],
+            municipalities_export: [],
+            headquarters_export: [],
             delegations_model: null,
             municipalities_model: null,
+            headquarters_model: null,
+            users: [],
             yearFilter: '',
             monthFilter: '',
             update: false,
@@ -834,20 +741,6 @@ export default {
                     } else $state.complete();
                 }).catch(error => (error.response ? this.responseErrors(error) : ""));
         },
-        changeType() {
-            this.page = 1;
-            this.list = [];
-            this.infiniteId += 1;
-        },
-        clean() {
-            const currentDate = new Date();
-            this.searchInput = null;
-            this.yearFilter = currentDate.getFullYear().toString();
-            this.monthFilter = '';
-            this.municipalities_model = null;
-            this.changeType();
-            this.setAuthenticatedUser()
-        },
         queryFilter($state) {
             let api = "/g-environmental-rnec/electrical-consumptions/getElectricalConsumptions";
             axios.get(api, {
@@ -855,6 +748,7 @@ export default {
                     search: this.searchInput,
                     delegations_model: this.delegations_model,
                     municipalities_model: this.municipalities_model,
+                    headquarters_model: this.headquarters_model,
                     yearFilter: this.yearFilter,
                     monthFilter: this.monthFilter,
                 }
@@ -942,237 +836,34 @@ export default {
         },
         async writeData(data = {}) {
             this.id = data.id
-            this.FormElectricalConsumptions.municipality = {
-                code: data.municipality.id,
-                label: data.municipality.city_name,
+            this.FormElectricalConsumptions.headquarter = {
+                code: data.headquarter.id,
+                label: data.headquarter.name,
             };
-            this.FormElectricalConsumptions.environmental_manager = data.environmental_manager
             this.FormElectricalConsumptions.year = data.year
             this.FormElectricalConsumptions.month = data.month
             this.FormElectricalConsumptions.kw_monthly = data.kw_monthly
             this.FormElectricalConsumptions.total_staff = data.total_staff
             this.FormElectricalConsumptions.observations = data.observations
         },
-        alertLoading(time, msg, type) {
-            this.$toastr.Add({
-                timeout: time,
-                type: type,
-                msg: msg,
-            });
-        },
-        responseErrors(error) {
-            if (error.response.status === 422) {
-                // CAPTURA DE ERRORES DESDE EL BACKEND
-                let msg = ''
-
-                // RECORRE TODOS LOS ERRORES Y LOS ADJUNTA EN UNA VARIABLE
-                Object.values(error.response.data.errors)
-                    .map((errors, index) =>
-                        msg += `<li style="margin-bottom: 10px !important;"><b>${index + 1}.</b> ${errors[0]}</li>`)
-
-                // ALERTA QUE MUESTRA AL USUARIO FINAL LOS ERRORES
-                this.$swal({
-                    icon: 'error', // ICONO
-                    title: '¡Hola! te invitamos a que revises tús campos', // TÍTULO DE LA NOTIFICACIÓN
-                    html: `<ul class="text-danger text-left">${msg}</ul>`, // CONTENIDO DE LA NOTIFICACIÓN
-                    showConfirmButton: true, // BOTON DE CONFIRMACIÓN PARA CERRAR LA VENTANA
-                    timer: 15000, // 15 SEG PARA QUE EL USUARIO LEA
-                    timerProgressBar: true, // PERMITE LA VISUALIZACIÓN DE UNA BARRA QUE VA INDICNDO CUANDO TIEMPO FALTA PARA QUE LA VENTANA DSE CIERRE
-                })
-            }
-
-            if (error.response.status === 500) {
-                this.$swal({
-                    icon: 'warning', // ICONO
-                    title: 'Oops!', // TÍTULO DE LA NOTIFICACIÓN
-                    html: '<p>Ocurrio un error con el servidor...</p>' +
-                        '<p class="text-justify"><b class="text-warning">ADVERTENCIA:</b> ' + error.response.data.msg + '</p>', // CONTENIDO DE LA NOTIFICACIÓN
-                    showConfirmButton: true, // BOTON DE CONFIRMACIÓN PARA CERRAR LA VENTANA
-                    timer: 15000, // 15 SEG PARA QUE EL USUARIO LEA
-                    timerProgressBar: true, // PERMITE LA VISUALIZACIÓN DE UNA BARRA QUE VA INDICNDO CUANDO TIEMPO FALTA PARA QUE LA VENTANA DSE CIERRE
-                });
-            }
-        },
-        number_format(amonth, decimals) {
-            amonth += ""; // POR SI PASAN UN NUMERO EN VEZ DE UN STRING
-            amonth = parseFloat(amonth.replace(/[^0-9\.]/g, "")); // ELIMINO CUALQUIER COSA QUE NO SEA NUMERO O PUNTO
-            decimals = decimals || 0; // POR SI LA VARIABLE NO FUE FUE PASADA
-            // SI NO ES UN NUMERO O ES IGUAL A CERO RETORNO EL MISMO CERO
-            if (isNaN(amonth) || amonth === 0)
-                return parseFloat(0).toFixed(decimals);
-            // SI ES MAYOR O MENOR QUE CERO RETORNO EL VALOR FORMATEADO COMO NUMERO
-            amonth = "" + amonth.toFixed(decimals);
-            var amonth_parts = amonth.split("."),
-                regexp = /(\d+)(\d{3})/;
-            while (regexp.test(amonth_parts[0]))
-                while (regexp.test(amonth_parts[0]))
-                    amonth_parts[0] = amonth_parts[0].replace(
-                        regexp,
-                        "$1" + "," + "$2"
-                    );
-            return amonth_parts.join(".");
-        },
-        // AGREGA ESTA FUNCIÓN PARA ABRIR EL MODAL Y ESTABLECER MODALVISIBLE EN VERDADERO
-        openModal() {
-            this.modalMapVisible = true;
-        },
-        // AGREGA ESTA FUNCIÓN PARA CERRAR EL MODAL Y ESTABLECER MODALVISIBLE EN FALSO
-        closeModal() {
-            this.modalMapVisible = false;
-        },
-        zoomUpdate(zoom) {
-            this.currentZoom = zoom;
-        },
-        centerUpdate(center) {
-            this.currentCenter = center;
-        },
         validateFormElectricalConsumptions() {
             let disabled = Object.values(this.FormElectricalConsumptions).every(value => value !== null && value !== undefined && value !== "");
             return !disabled;
-        },
-        validateFormReport() {
-            if (!this.FormTreeReport) {
-                let disabled = Object.keys(this.FormReport).every(key => key === 'month' || key === 'municipality' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
-                return !disabled;
-            }
-        },
-        cleanFormReport() {
-            this.FormReport.year = '';
-            this.FormReport.month = '';
-            this.setAuthenticatedUser();
-        },
-        customFormatter(date) {
-            return moment(date).format("DD/MMMM/YYYY");
-        },
-        generateReport(type) {
-            window.toastr.info("Generando reporte, por favor espere...", {
-                timeOut: 5000,
-            });
-            let Form = null;
-            switch (type) {
-                case "FormReport":
-                    Form = this.FormReport;
-                    break;
-                case "day":
-                    Form = this.day;
-                    break;
-                case "week":
-                    Form = this.week;
-                    break;
-                case "month":
-                    Form = this.month;
-                    break;
-                case "year":
-                    Form = this.year;
-                    break;
-            }
-            const url = "/g-environmental-rnec/electrical-consumptions/generateReport";
-            if (Form !== null) {
-                let delegation = this.FormReport.delegation
-                let municipality = this.FormReport.municipality
-                axios.post(url, { ...Form, delegation, municipality })
-                    .then(this.responseReport)
-                    .catch((error) => window.toastr.warning(error, { timeOut: 2000 }));
-            }
-            else this.alertLoading(5000, "No se aplicó ningún filtro", "error")
-        },
-        responseReport(response) {
-            let fileName = "/storage/reports/electrical_consumptions/" + response.data.fileName;
-            let file = response.data.file;
-            if (file) {
-                this.$swal({
-                    icon: response.data.icon,
-                    title: response.data.msg,
-                    html:
-                        '<a href="' +
-                        fileName +
-                        '" class="btn btn-success" download>' +
-                        '<i class="fas fa-file-excel"></i> Descargar reporte</a>',
-                    showConfirmButton: false,
-                });
-            } else {
-                this.$swal({
-                    icon: response.data.icon,
-                    title: response.data.msg,
-                    showConfirmButton: true,
-                });
-            }
-        },
-        getSpanishMonthName(month) {
-            const spanishMonthNames = [
-                "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
-                "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
-            ];
-            return spanishMonthNames[month];
-        },
-        getCurrentDateWithSpanishMonth() {
-            const currentDate = new Date();
-            const currentMonth = currentDate.getMonth();
-            const monthName = this.getSpanishMonthName(currentMonth);
-            if (!this.FormElectricalConsumptions.month)
-                this.FormElectricalConsumptions.month = this.getSpanishMonthName(currentMonth).toString();
-            return monthName;
-        },
-        getCurrentYear() {
-            const currentDate = new Date();
-            if (!this.FormElectricalConsumptions.year)
-                this.FormElectricalConsumptions.year = currentDate.getFullYear().toString();
-            return currentDate.getFullYear();
-        },
-        setYears() {
-            const currentDate = new Date();
-            for (let index = 2022; index < 2029; index++) this.years.push(index.toString())
-            this.yearFilter = currentDate.getFullYear().toString();
-            return this.years;
-        },
-        setCsrfToken() {
-            axios.get("/g-environmental-rnec/csrf-token")
-                .then(response => this.dropzoneOptions.headers['X-CSRF-TOKEN'] = response.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setAuthenticatedUser() {
-            axios.post("/g-environmental-rnec/users/getAuthenticatedUser")
-                .then(response => {
-                    this.user = response.data
-                    this.delegations_model = { code: response.data.delegation.id, label: response.data.delegation.name }
-                    this.FormReport.delegation = { code: response.data.delegation.id, label: response.data.delegation.name }
-                })
-                .catch(errors => console.log(errors));
-        },
-        getUsersInput() {
-            axios.post("/g-environmental-rnec/users/getUsersInput")
-                .then(response => this.users = response.data.data)
-                .catch(errors => console.log(errors));
-        },
-        setPermissions() {
-            axios.post("/g-environmental-rnec/home/permissions")
-                .then(response => this.permissions = response.data)
-                .catch(errors => console.log(errors));
-        },
-        setDelegations(search) {
-            axios.get('/g-environmental-rnec/delegations/getDelegations', { params: { search: search } })
-                .then(res => this.delegations = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setMunicipalities(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.FormReport.delegation, filter: true } })
-                .then(res => this.municipalities = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
-        },
-        setMunicipalitiesFilter(search) {
-            axios.get('/g-environmental-rnec/municipalities/getMunicipalities', { params: { search: search, delegation: this.delegations_model, filter: true } })
-                .then(res => this.municipalities = res.data.data)
-                .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
     },
     created() {
         this.setAuthenticatedUser();
         this.setDelegations();
         this.setMunicipalities();
+        this.setHeadquarters();
+        this.setMunicipalitiesFilter();
+        this.setHeadquartersFilter();
         this.setPermissions();
         this.getUsersInput();
         this.setCsrfToken();
         this.setYears();
+        this.getCurrentYearElectrical();
+        this.getCurrentDateWithSpanishMonth();
     }
 }
 </script>

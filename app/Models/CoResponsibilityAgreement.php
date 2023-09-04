@@ -140,7 +140,7 @@ class CoResponsibilityAgreement extends Model
                 if ($request->headquarters_model) {
                     $headquarter = json_decode($request->headquarters_model);
                     $query->where('co_responsibility_agreements.headquarter_id', $headquarter->code);
-                }
+                } else $query->where('co_responsibility_agreements.headquarter_id', Auth::user()->headquarter_id);
             }
             // SI NO TIENE PERMISO
             else {

@@ -26,7 +26,7 @@ class TreePlantationController extends Controller
         $treePlantation = TreePlantation::withRelations() // SCOPE EN EL MODELO (RELACIONES)
             ->filter($request, date('Y-m-d', strtotime($request->dateFilter)), $permissions) // SCOPE EN EL MODELO (FILTROS)
             ->orderBy('id', 'DESC')
-            ->simplePaginate(15); // SCOPE EN EL MODELO (PAGINADO)
+            ->simplePaginate(15);
         // RESPUESTA PARA EL USUARIO
         return response()->json(['treePlantation' => $treePlantation]);
     }
