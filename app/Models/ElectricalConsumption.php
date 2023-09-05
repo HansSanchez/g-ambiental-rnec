@@ -13,7 +13,6 @@ class ElectricalConsumption extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'environmental_manager',
         'year',
         'month',
         'kw_monthly',

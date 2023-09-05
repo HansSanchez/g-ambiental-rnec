@@ -327,7 +327,7 @@ class TreePlantationController extends Controller
                             $cleanedRecord->h_full_name = mb_strtoupper($record->d_name . ' / ' . $record->m_city_name . ' / ' . $record->h_name, "UTF-8");
                             $cleanedRecord->u_full_name = mb_strtoupper($record->u_first_name . ' ' . $record->u_second_name . ' ' . $record->u_first_last_name . ' ' . $record->u_second_last_name, "UTF-8");
 
-                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA CIUDAD
+                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA SEDE
                             $cleanedReport[$headquarterName][$index] = $cleanedRecord;
                         }
                     }

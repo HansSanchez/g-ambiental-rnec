@@ -433,7 +433,8 @@
                         :permissions="permissions" :title="'Reporte de acuerdos de corresponsabilidad'"
                         :title_2="'Fechas de firmado'" :url="'/g-environmental-rnec/co-responsibility-agreements/generateReport'"
                         :fileName="'/storage/reports/co_responsibility_agreements/'" :delegationsExport="delegations_export"
-                        :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export" />
+                        :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export"
+                        :other="false"/>
                     <!-- END GENERATE REPORTS -->
 
                     <!-- NOTE END MODEALES -->

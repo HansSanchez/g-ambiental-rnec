@@ -21,7 +21,7 @@
             </li>
             <li class="list-general">
                 <strong>
-                    Por último, podrás cargar un máximo de 2 archivos simultáneamente.
+                    Por último, podrá cargar un máximo de 2 archivos simultáneamente.
                 </strong>
             </li>
         </ul>

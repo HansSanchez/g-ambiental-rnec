@@ -447,7 +447,8 @@
                         :permissions="permissions" :title="'Reporte de consumos eléctricos'" :title_2="'Fechas de consumo'"
                         :url="'/g-environmental-rnec/electrical-consumptions/generateReport'"
                         :fileName="'/storage/reports/electrical_consumptions/'" :delegationsExport="delegations_export"
-                        :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export" />
+                        :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export"
+                        :other="true" />
 
                     <!-- NOTE END MODEALES -->
 
@@ -497,16 +498,24 @@
                                     <td class="text- text-center">
                                         {{ item.user.FullName }}
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center bg-register-bold">
                                         {{ item.year }}
                                     </td>
                                     <td class="text-center">
-                                        {{ item.month }}
+                                        <span class="badge badge-success w-100 full-16">
+                                            <strong>{{ item.month }}</strong>
+                                        </span>
                                     </td>
-                                    <td class="text-center">
+                                    <td v-if="item.kw_monthly > 0" class="text-center bg-register-bold">
                                         {{ number_format(item.kw_monthly) }}
                                     </td>
-                                    <td class="text-center">
+                                    <td v-else class="text-center bg-warning-bold">
+                                        {{ number_format(item.kw_monthly) }}
+                                    </td>
+                                    <td v-if="item.total_staff > 0" class="text-center bg-register-bold">
+                                        {{ number_format(item.total_staff) }}
+                                    </td>
+                                    <td v-else class="text-center bg-warning-bold">
                                         {{ number_format(item.total_staff) }}
                                     </td>
                                     <td class="text-justify" v-html="item.observations"
@@ -687,41 +696,6 @@ export default {
             dDuplicate: false,
             // END VARIABLES PARA EL DROPZONE.JS
 
-            // START VARIABLES PARA GENERACIÓN DE REPORTES
-            report: false,
-            es: es,
-            inputClass: "w-100 bg-white text-black form-control",
-            fromDay: {
-                from: new Date(Date.now()),
-            },
-            fromPlaceholder: "Desde x fecha",
-            untilDay: {
-                from: new Date(Date.now()),
-            },
-            untilPlaceholder: "Hasta x fecha",
-            FormReport: {
-                // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
-                year: '',
-                month: '',
-                delegation: null,
-                municipality: null
-            },
-            day: {
-                day: new Date(Date.now()),
-            },
-            week: {
-                week: true,
-            },
-            month: {
-                month: true,
-            },
-            year: {
-                year: true,
-            },
-            file: false,
-            fileName: null,
-            // END VARIABLES PARA GENERACIÓN DE REPORTES
-
         }
     },
     props: {
@@ -793,6 +767,9 @@ export default {
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });
         },
+        createFuntions() {
+            this.$emit('create-funtions');
+        },
         evidenceElectricalConsumptions(item) {
             this.electrical_consumption_id = item.id;
             let api = "/g-environmental-rnec/electrical-consumptions/evidences/evidenceElectricalConsumption/" + item.id;
@@ -862,7 +839,7 @@ export default {
         this.getUsersInput();
         this.setCsrfToken();
         this.setYears();
-        this.getCurrentYearElectrical();
+        this.getCurrentYearConsumption();
         this.getCurrentDateWithSpanishMonth();
     }
 }

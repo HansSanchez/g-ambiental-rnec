@@ -15,7 +15,14 @@
                                     @click="show = !show">
                                     <b>
                                         Detalle del consumo eléctrico para
-                                        {{ ElectricalConsumptionsDetailList.delegation.name }}
+                                        <br>
+                                        {{
+                                            ElectricalConsumptionsDetailList.headquarter ?
+                                            ElectricalConsumptionsDetailList.headquarter.delegation.name + " - " +
+                                            ElectricalConsumptionsDetailList.headquarter.municipality.city_name + " - " +
+                                            ElectricalConsumptionsDetailList.headquarter.name :
+                                            'SIN SEDE'
+                                        }}
                                     </b>
                                 </router-link>
                             </li>
@@ -32,7 +39,7 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th>MUNICIPIO RELACIONADO</th>
+                                    <th>SEDE RELACIONADA</th>
                                     <th>GESTOR(A) AMBIENTAL</th>
                                     <th>AÑO</th>
                                     <th>MES</th>
@@ -43,10 +50,16 @@
                             <tbody>
                                 <tr>
                                     <td class="text-uppercase text-center">
-                                        {{ ElectricalConsumptionsDetailList.municipality.FullCityName }}
+                                        {{
+                                            ElectricalConsumptionsDetailList.headquarter ?
+                                            ElectricalConsumptionsDetailList.headquarter.delegation.name + " - " +
+                                            ElectricalConsumptionsDetailList.headquarter.municipality.city_name + " - " +
+                                            ElectricalConsumptionsDetailList.headquarter.name :
+                                            'SIN SEDE'
+                                        }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ ElectricalConsumptionsDetailList.environmental_manager }}
+                                        {{ ElectricalConsumptionsDetailList.user.FullName }}
                                     </td>
                                     <td class="text-uppercase text-center">
                                         {{ ElectricalConsumptionsDetailList.year }}

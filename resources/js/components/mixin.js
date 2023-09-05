@@ -116,7 +116,8 @@ export default {
         },
         setYears() {
             const currentDate = new Date();
-            for (let index = 2022; index <= 2032; index++) this.years.push(index.toString())
+            for (let index = 2022; index <= 2032; index++)
+                this.years.push(index.toString());
             this.yearFilter = currentDate.getFullYear().toString();
             return this.years;
         },
@@ -142,17 +143,27 @@ export default {
             const currentMonth = currentDate.getMonth();
             const monthName = this.getSpanishMonthName(currentMonth);
             if (!this.FormElectricalConsumptions.month)
-                this.FormElectricalConsumptions.month = this.getSpanishMonthName(currentMonth).toString();
+                this.FormElectricalConsumptions.month =
+                    this.getSpanishMonthName(currentMonth).toString();
+            if (!this.FormElectricalConsumptions.month)
+                this.FormElectricalConsumptions.month =
+                    this.getSpanishMonthName(currentMonth).toString();
             return monthName;
         },
         getCurrentYear() {
             const currentDate = new Date();
             return currentDate.getFullYear();
         },
-        getCurrentYearElectrical() {
+        getCurrentYearConsumption() {
             const currentDate = new Date();
             if (!this.FormElectricalConsumptions.year)
-                this.FormElectricalConsumptions.year = currentDate.getFullYear().toString();
+                this.FormElectricalConsumptions.year = currentDate
+                    .getFullYear()
+                    .toString();
+            // if (!this.FormWaterConsumptions.year)
+            //     this.FormWaterConsumptions.year = currentDate
+            //         .getFullYear()
+            //         .toString();
             return currentDate.getFullYear();
         },
         getUsersInput() {
@@ -175,7 +186,7 @@ export default {
             this.municipalities_model = null;
             this.headquarters_model = null;
             this.yearFilter = currentDate.getFullYear().toString();
-            this.monthFilter = '';
+            this.monthFilter = "";
             this.changeType();
             this.defaultFuntions();
         },
@@ -283,6 +294,5 @@ export default {
                 });
             }
         },
-
     },
 };

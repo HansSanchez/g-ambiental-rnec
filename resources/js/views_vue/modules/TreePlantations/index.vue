@@ -291,8 +291,9 @@
                                             <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="vue-dropzone"
                                                 :duplicateCheck="true" ref="myDropzone" @vdropzone-success="handleSuccess">
                                                 <div class="dropzone-custom-content">
-                                                    <h3 class="dropzone-custom-title">¡Arrastra y suelta para subir
-                                                        contenido!</h3>
+                                                    <h3 class="dropzone-custom-title">
+                                                        ¡Arrastrar el contenido aquí!
+                                                    </h3>
                                                     <div class="subtitle">...o haga clic para seleccionar un archivo de su
                                                         computadora o dispositivo movil
                                                     </div>
@@ -371,7 +372,8 @@
                         :permissions="permissions" :title="'Reporte de plantación de árboles'"
                         :title_2="'Fechas de plantación'" :url="'/g-environmental-rnec/tree-plantations/generateReport'"
                         :fileName="'/storage/reports/tree_plantations/'" :delegationsExport="delegations_export"
-                        :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export" />
+                        :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export"
+                        :other="false" />
                     <!-- END GENERATE REPORTS -->
 
                     <!-- NOTE END MODEALES -->

@@ -108,38 +108,40 @@ class ElectricalConsumptionExport implements FromView, ShouldAutoSize, WithColum
                 $report = $this->report; // RESPUESTA DE LA DB
                 $year = $this->year; // AÑO QUE ENVIAN POR PARAMETRO
                 $delegation = $this->delegation; // DELEGACIÓN QUE ENVIAN POR PARAMETRO
-                $countMunicipalities = count($report); // CANTIDAD DE MUNICIPIOS QUE LLEGAN EN LA RESPUESTA DE LA DB
+                $countHeasquarters = count($report); // CANTIDAD DE SEDES QUE LLEGAN EN LA RESPUESTA DE LA DB
                 $columnsIncrements = ($year < 2023) ? 14 : 15; // INCREMENTO
                 $columnsA_B = ($year < 2023) ? 13 : 14; // GRUPO DE COLUMNAS
-                $IStart = ($year < 2023) ? 9 : 10; // INICIO DE CICLO
-                $leap = ($year < 2023) ? 2 : 3; // SALTO DE COLUMNAS
-                $countDefault = ($year < 2023) ? 23 : 24; // CONTEO DE COLUMNAS POR DEFECTO PARA BOGOTÁ
+                $IStart = ($year < 2023) ? 10 : 11; // INICIO DE CICLO
+                $leap = ($year < 2023) ? 3 : 4; // SALTO DE COLUMNAS
+                $countDefault = ($year < 2023) ? 24 : 25; // CONTEO DE COLUMNAS POR DEFECTO PARA BOGOTÁ
 
-                for ($i = 9; $i < ($columnsIncrements * $countMunicipalities); $i += $columnsIncrements) {
+                for ($i = 10; $i < ($columnsIncrements * $countHeasquarters); $i += $columnsIncrements) {
                     // MERGE DE LAS FILAS DE "Nombre Gestor"
-                    $event->sheet->mergeCells('A' . $i . ':A' . ($i + $columnsA_B));
+                    // $event->sheet->mergeCells('A' . $i . ':A' . ($i + $columnsA_B));
                     // MERGE DE LAS FILAS DE "Delegación o sede"
                     $event->sheet->mergeCells('B' . $i . ':B' . ($i + $columnsA_B));
+                    // AGREGAR UN SALTO DE 1 FILA DESPUÉS DE CADA CONJUNTO DE 12 ITERACIONES
+                    if (($i + $columnsIncrements) < ($columnsIncrements * $countHeasquarters)) $i += 1;
                 }
 
-                for ($i = $IStart; $i < ($columnsIncrements * $countMunicipalities); $i += 12) {
+                for ($i = $IStart; $i < ($columnsIncrements * $countHeasquarters); $i += 12) {
                     // MERGE DE LAS FILAS DE "Año"
                     $event->sheet->mergeCells('C' . $i . ':C' . ($i + 11));
                     // MERGE DE LAS FILAS DE "(KW) Anual"
                     $event->sheet->mergeCells('F' . $i . ':F' . ($i + 11));
                     // AGREGAR UN SALTO DE 2 o 3 FILAS DESPUÉS DE CADA CONJUNTO DE 12 ITERACIONES
-                    if (($i + 12) < ($columnsIncrements * $countMunicipalities)) $i += $leap;
+                    if (($i + 12) < ($columnsIncrements * $countHeasquarters)) $i += $leap;
                 }
 
                 // TOTAL AUXILIAR PARA DETERMINAR EL TOTAL DE REGISTROS
-                $totalRecordsAux = $countMunicipalities == 1 ? $countMunicipalities = $countDefault : ($columnsIncrements * $countMunicipalities);
+                $totalRecordsAux = $countHeasquarters == 1 ? $countHeasquarters = $countDefault : ($columnsIncrements * $countHeasquarters);
                 // TOTAL DE REGISTROS
-                $totalRecords = ($totalRecordsAux == $countDefault ? $totalRecordsAux : $totalRecordsAux + 9);
+                $totalRecords = ($totalRecordsAux == $countDefault ? $totalRecordsAux : $totalRecordsAux + 11);
 
-                $pattern = ($year < 2023) ? [2, 3, 3, 3, 3] : [3, 3]; // PATRON DE COMBINACIÓN
+                $pattern = ($year < 2023) ? [2, 3, 3, 3, 3, 1] : [3, 3, 3, 3, 3, 1]; // PATRON DE COMBINACIÓN
                 $patternIndex = 0; // ÍNDICE PARA RECORRER EL PATRÓN
                 $countMerge  = 1; // CONTADOR PARA DETERMINAR EL VALOR INICIAL DEL MERGE
-                $mergeIndex = 9; // ÍNDICE INICIAL PARA COMBINAR CELDAS
+                $mergeIndex = 10; // ÍNDICE INICIAL PARA COMBINAR CELDAS
                 $sheet = $event->sheet; // ACCEDER A LA HOJA DE CÁLCULO
 
                 // ITERAR HASTA QUE SE HAYAN COMBINADO TODAS LAS CELDAS
@@ -148,16 +150,27 @@ class ElectricalConsumptionExport implements FromView, ShouldAutoSize, WithColum
                     $repeat = $pattern[$patternIndex];
 
                     // AJUSTAR LA REPETICIÓN SI SUPERA EL LÍMITE DE REGISTROS
-                    if ($mergeIndex + $repeat > $totalRecords) $repeat = $totalRecords - $mergeIndex;
+                    if ($mergeIndex + $repeat > $totalRecords) {
+                        $repeat = $totalRecords - $mergeIndex;
+                    }
 
-                    // COMBINAR CELDAS EN FUNCIÓN DEL VALOR DE $REPEAT
-                    $sheet->mergeCells('I' . $mergeIndex . ':I' . ($mergeIndex + $repeat - 1));
+                    // VERIFICAR SI ES LA ÚLTIMA POSICIÓN DEL PATRÓN
+                    $isLastPosition = ($patternIndex === count($pattern) - 1);
+
+                    // COMBINAR CELDAS EN FUNCIÓN DEL VALOR DE $REPEAT (excepto en la última posición)
+                    if (!$isLastPosition) {
+                        $sheet->mergeCells('I' . $mergeIndex . ':I' . ($mergeIndex + $repeat - 1));
+                    }
 
                     $formulaColumn = "I" . $mergeIndex; // Columna I en la que se colocará el resultado de la fórmula
                     $rangeColumn = "G" . $mergeIndex . ":G" . ($mergeIndex + $repeat - 1); // Rango de celdas para la suma en la fórmula
                     $rangeColumn2 = "E" . $mergeIndex . ":E" . ($mergeIndex + $repeat - 1); // Rango de celdas para la segunda suma en la fórmula
-                    $formula = "=IF(SUM($rangeColumn),SUM($rangeColumn2)/SUM($rangeColumn),0)"; // Fórmula de Excel
-                    $event->sheet->setCellValue($formulaColumn, $formula);
+
+                    // CALCULAR LA FÓRMULA SOLO SI NO ESTAMOS EN LA ÚLTIMA POSICIÓN DEL PATRÓN
+                    if (!$isLastPosition) {
+                        $formula = "=IF(SUM($rangeColumn),SUM($rangeColumn2)/SUM($rangeColumn),0)"; // FÓRMULA DE EXCEL
+                        $event->sheet->setCellValue($formulaColumn, $formula);
+                    }
 
                     // ACTUALIZAR EL ÍNDICE DE COMBINACIÓN Y EL PATRÓN
                     $mergeIndex += $repeat;
@@ -169,26 +182,27 @@ class ElectricalConsumptionExport implements FromView, ShouldAutoSize, WithColum
                 $event->sheet->getDelegate()->removeRow(6);
 
                 // APLICA EL FORMATO NUMÉRICO O CON 2 DECIMALES A LAS CELDAS EN EL RANGO
-                $event->sheet->getStyle('E8:E2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER); // (KW) MENSUAL
-                $event->sheet->getStyle('F8:F2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER); // (KW) ANUAL
-                $event->sheet->getStyle('G8:G2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER); // TOTAL DE PERSONAL
-                $event->sheet->getStyle('H8:H2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER_00); // CONSUMO PER CÁPITA (KW) POR MES
-                $event->sheet->getStyle('I8:I2000')->getNumberFormat()->setFormatCode('#.0000000');; // PROMEDIO TRIMESTRAL DE PER CÁPITA (KW) POR MES
+                $event->sheet->getStyle('E9:E2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER); // (KW) MENSUAL
+                $event->sheet->getStyle('F9:F2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER); // (KW) ANUAL
+                $event->sheet->getStyle('G9:G2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER); // TOTAL DE PERSONAL
+                $event->sheet->getStyle('H9:H2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER_00); // CONSUMO PER CÁPITA (KW) POR MES
+                $event->sheet->getStyle('I9:I2000')->getNumberFormat()->setFormatCode('#.0000000');; // PROMEDIO TRIMESTRAL DE PER CÁPITA (KW) POR MES
 
-                $startRow = ($year < 2023) ? 8 : 9; // FILA INICIAL
+                $startRow = ($year < 2023) ? 9 : 10; // FILA INICIAL
                 $rowIncrement = 12; // INCREMENTO DE FILAS
+
                 // FILA FINAL PARA QUE NO APLIQUE SUMATORIA EN LUGARES QUE NO HAY DATOS
                 $endRow = ($delegation == 'BOGOTÁ') ?
-                    (($countMunicipalities == 23) ? 19 : $countMunicipalities) : ($columnsIncrements * $countMunicipalities);
+                    (($countHeasquarters == 24) ? 19 : $countHeasquarters) : ($columnsIncrements * $countHeasquarters);
+                $endRow =  $endRow == 2 ? ($columnsIncrements * $countHeasquarters) : $endRow;
 
+                // dd($startRow, $endRow,  $rowIncrement, $columnsIncrements, $countHeasquarters);
                 for ($i = $startRow; $i < $endRow; $i += $rowIncrement) {
                     $formulaCell = "F{$i}"; // CELDA EN DONDE SE VA A MOSTRAR LA SUMATORIA
                     $event->sheet->setCellValue($formulaCell, "=SUM(E{$i}:E" . ($i + 11) . ")");
-
                     // AGREGAR UN SALTO DE 2 o 3 FILAS DESPUÉS DE CADA CONJUNTO DE 12 ITERACIONES
-                    if (($i + $rowIncrement) < ($columnsIncrements * $countMunicipalities)) $i += $leap;
+                    if (($i + $rowIncrement) < ($columnsIncrements * $countHeasquarters)) $i += $leap;
                 }
-
             },
         ];
     }

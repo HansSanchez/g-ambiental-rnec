@@ -37,7 +37,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                             <h5 class="mb-0"><b>{{ title_2 }}</b></h5>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                        <div v-if="!other" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                             <div class="form-group mb-0">
                                 <small class="text-danger"><b>(Desde) *</b></small>
                                 <datepicker :language="es" v-model="FormReport.fromDay" :disabledDates="fromDay"
@@ -46,13 +46,35 @@
                                 </datepicker>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                        <div v-if="!other" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                             <div class="form-group mb-0">
                                 <small class="text-danger"><b>(Hasta) *</b></small>
                                 <datepicker :language="es" v-model="FormReport.untilDay" :disabledDates="untilDay"
                                     :inputClass="inputClass" @change="validateFormReport" :format="customFormatter"
                                     :placeholder="untilPlaceholder">
                                 </datepicker>
+                            </div>
+                        </div>
+                        <div v-if="other" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                            <div class="form-group mb-0">
+                                <small><b class="text-danger">(Años) *</b></small>
+                                <select class="form-control" name="year" id="year" v-model="FormReport.year">
+                                    <option value="" selected disabled>AÑOS...</option>
+                                    <option v-for="(item, index) in  years" :key="index">
+                                        {{ item }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div v-if="other" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                            <div class="form-group mb-0">
+                                <small><b>(Meses)</b></small>
+                                <select class="form-control" name="month" id="month" v-model="FormReport.month">
+                                    <option value="" selected disabled>MESES...</option>
+                                    <option v-for="(item, index) in  months" :key="index">
+                                        {{ item }}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-0">
@@ -135,10 +157,18 @@ export default {
             required: true,
             default: ""
         },
+        other: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+
     },
     data() {
         return {
             // START VARIABLES PARA GENERACIÓN DE REPORTES
+            years: [],
+            months: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
             delegations_export: [],
             municipalities_export: [],
             headquarters_export: [],
@@ -156,21 +186,11 @@ export default {
                 // FORMREPORT, ES EL FORMULARIO QUE YO ENVÍO PARA LA GENERACIÓN DE UN REPORTE
                 fromDay: null,
                 untilDay: null,
+                year: '',
+                month: '',
                 delegation: null,
                 municipality: null,
                 headquarter: null,
-            },
-            day: {
-                day: new Date(Date.now()),
-            },
-            week: {
-                week: true,
-            },
-            month: {
-                month: true,
-            },
-            year: {
-                year: true,
             },
             file: false,
             // END VARIABLES PARA GENERACIÓN DE REPORTES
@@ -229,24 +249,38 @@ export default {
                         code: response.data.municipality.id,
                         label: response.data.municipality.city_name,
                     };
-                    this.FormReport.headquarter = {
-                        code: response.data.headquarter.id,
-                        label: response.data.headquarter.name,
-                    };
                 })
                 .catch((error) =>
                     error.response ? this.responseErrors(error) : ""
                 );
+        },
+        setYears() {
+            const currentDate = new Date();
+            for (let index = 2022; index <= 2032; index++) this.years.push(index.toString())
+            this.yearFilter = currentDate.getFullYear().toString();
+            return this.years;
+        },
+        getCurrentYear() {
+            const currentDate = new Date();
+            if (!this.FormReport.year)
+                this.FormReport.year = currentDate.getFullYear().toString();
+            this.yearFilter = currentDate.getFullYear().toString();
+            return currentDate.getFullYear();
         },
         handleCreateFuntions() {
             this.setDelegationsFilterExport();
             this.setMunicipalitiesFilterExport();
             this.setHeadquartersFilterExport();
             this.setAuthenticatedUserExport();
+            this.setYears();
+            this.getCurrentYear();
         },
         validateFormReport() {
             if (!this.FormTreeReport) {
-                let disabled = Object.keys(this.FormReport).every(key => key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                let disabled = null;
+                if (this.other) // SI ES OTRO MÓDULO (CONSUMOS)
+                    disabled = Object.keys(this.FormReport).every(key => key === 'fromDay' || key === 'untilDay' || key === 'month' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                else disabled = Object.keys(this.FormReport).every(key => key === 'month' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
         },
@@ -269,18 +303,6 @@ export default {
             switch (type) {
                 case "FormReport":
                     Form = this.FormReport;
-                    break;
-                case "day":
-                    Form = this.day;
-                    break;
-                case "week":
-                    Form = this.week;
-                    break;
-                case "month":
-                    Form = this.month;
-                    break;
-                case "year":
-                    Form = this.year;
                     break;
             }
             if (Form !== null) {

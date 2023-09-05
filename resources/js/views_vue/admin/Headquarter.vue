@@ -96,7 +96,7 @@
                                                 <ul class="list-general text-justify">
                                                     <li class="list-general pb-3">
                                                         <strong>
-                                                            Para una óptima gestión y creación de los datos, le invitamos
+                                                            Para una óptima gestión y creación de los datos, le invitamos a
                                                             verificar antes de crear una sede que no esté previamente
                                                             registrada con un nombre diferente, se dejó este proceso abierto
                                                             debido a la alta demanda de nuevas sedes.
@@ -107,7 +107,7 @@
                                                             Por razones de seguridad, la creación de sedes está limitada
                                                             exclusivamente a la delegación a la cual usted pertenezca.
                                                             Esto se hace con el objetivo de minimizar al máximo la
-                                                            duplicación de información.
+                                                            duplicidad de información.
                                                         </strong>
                                                     </li>
                                                     <li class="list-general">

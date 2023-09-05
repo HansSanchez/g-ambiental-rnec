@@ -34,6 +34,17 @@ class ElectricalConsumptionController extends Controller
         return response()->json(['electricalConsumptions' => $electricalConsumptions]);
     }
 
+    public function allRelations($electricalConsumption)
+    {
+        // REGISTRO DE LAS RELACIONES
+        $electricalConsumption->Headquarter;
+        $electricalConsumption->Headquarter->Delegation;
+        $electricalConsumption->Headquarter->Municipality;
+        $electricalConsumption->Headquarters;
+        $electricalConsumption->EvidenceElectricalConsumption;
+        $electricalConsumption->User; // QUIEN REPORTÓ
+    }
+
     // FUNCIÓN PARA CREACIÓN
     public function store(Request $request)
     {
@@ -46,20 +57,19 @@ class ElectricalConsumptionController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
-                $delegation_id = auth()->user()->delegation_id;
+                // OBTENCIÓN DE LA SEDE DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
+                $headquarter_id = auth()->user()->headquarter_id;
 
                 // GUARDADO DEL REGISTRO HECHO
                 // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
                 $electricalConsumption = new ElectricalConsumption($request->all());
                 $electricalConsumption->municipality_id = $request->municipality['code']; // MUNICIPIO
-                $electricalConsumption->environmental_manager = mb_strtoupper($request->environmental_manager); // GESTOR AMBIENTAL
+                $electricalConsumption->headquarter_id = $headquarter_id; // SEDE A LA CUAL PERTENECE EL USUARIO
                 $electricalConsumption->user_id = $user_id; // USUARIO QUE GENERÓ EL REPORTE
                 $electricalConsumption->save(); // ALMACENAMIENTO DE LA INFORMACIÓN
 
-                // REGISTRO DE LAS RELACIONES
-                $electricalConsumption->EvidenceElectricalConsumption;
-                $electricalConsumption->User; // QUIEN REPORTÓ
+                // RELACIONES
+                $this->allRelations($electricalConsumption);
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -98,11 +108,8 @@ class ElectricalConsumptionController extends Controller
     {
         // CONTROL DE ERRORES
         try {
-
-            // REGISTRO DE LAS RELACIONES
-            $electricalConsumption->EvidenceElectricalConsumption;
-            $electricalConsumption->User; // QUIEN REPORTÓ
-
+            // RELACIONES
+            $this->allRelations($electricalConsumption);
             // RESPUESTA PARA EL USUARIO
             return response()->json(['electricalConsumption' => $electricalConsumption]);
         } catch (\Exception $exception) {
@@ -123,8 +130,8 @@ class ElectricalConsumptionController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
-                $delegation_id = $electricalConsumption->delegation_id;
+                // OBTENCIÓN DE LA SEDE A LA CUAL SE LE HIZO EL REGISTRO POR DEFECTO
+                $headquarter_id = $electricalConsumption->headquarter_id;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -136,9 +143,7 @@ class ElectricalConsumptionController extends Controller
 
                 // ACTUALIZACIÓN DE REGISTRO
                 $electricalConsumption->update([
-                    'environmental_manager' => mb_strtoupper($request->environmental_manager), // OPERADOR AMBIENTAL
-                    'delegation_id' => $delegation_id, // DELEGACIÓN
-                    'municipality_id' => $request->municipality['code'], // MUNICIPIO,
+                    'headquarter_id' => $headquarter_id, // SEDE
                     'year' => $request->year, // AÑO RELACIONADO
                     'month' => $request->month, // MES RELACIONADO
                     'kw_monthly' => $request->kw_monthly, // KILOWATTS (MES)
@@ -147,9 +152,8 @@ class ElectricalConsumptionController extends Controller
                     'user_id' => $user_id, // REPORTANTE
                 ]);
 
-                // REGISTRO DE LAS RELACIONES
-                $electricalConsumption->EvidenceElectricalConsumption;
-                $electricalConsumption->User; // QUIEN REPORTÓ
+                // RELACIONES
+                $this->allRelations($electricalConsumption);
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -197,9 +201,8 @@ class ElectricalConsumptionController extends Controller
                 // ELIMINACIÓN DEL REGISTRO
                 $electricalConsumption->delete();
 
-                // REGISTRO DE LAS RELACIONES
-                $electricalConsumption->EvidenceElectricalConsumption;
-                $electricalConsumption->User; // QUIEN REPORTÓ
+                // RELACIONES
+                $this->allRelations($electricalConsumption);
 
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
@@ -236,24 +239,37 @@ class ElectricalConsumptionController extends Controller
                     ->select(
                         'delegations.id AS d_id',
                         'delegations.name AS d_name',
+                        'headquarters.id AS h_id',
+                        'headquarters.name AS h_name',
+                        'headquarters.delegation_id AS h_delegation_id',
+                        'headquarters.municipality_id AS h_municipality_id',
+                        'municipalities.id AS m_id',
+                        'municipalities.city_name AS m_city_name',
                         'electrical_consumptions.id AS ec_id',
-                        'electrical_consumptions.environmental_manager AS ec_environmental_manager',
-                        'electrical_consumptions.delegation_id AS ec_delegation_id',
-                        'electrical_consumptions.municipality_id AS ec_municipality_id',
+                        'electrical_consumptions.headquarter_id AS ec_headquarter_id',
                         'electrical_consumptions.year AS ec_year',
                         'electrical_consumptions.month AS ec_month',
                         'electrical_consumptions.kw_monthly AS ec_kw_monthly',
                         'electrical_consumptions.total_staff AS ec_total_staff',
                         'electrical_consumptions.observations AS ec_observations',
                         'electrical_consumptions.created_at AS ec_created_at',
-                        'municipalities.id AS m_id',
-                        'municipalities.city_name AS m_city_name',
-                        'municipalities.state_name AS m_state_name',
+                        'users.id AS u_id',
+                        'users.personal_id AS u_personal_id',
+                        'users.first_name AS u_first_name',
+                        'users.second_name AS u_second_name',
+                        'users.first_last_name AS u_first_last_name',
+                        'users.second_last_name AS u_second_last_name',
+                        'users.position AS u_position',
+                        'users.email AS u_email',
+                        'users.headquarter_id AS u_headquarter_id',
                     )
-                    // RELACIÓN CON LA DELEGACIÓN
-                    ->join('delegations', 'delegations.id', '=', 'electrical_consumptions.delegation_id')
-                    // RELACIÓN CON EL MUNICIPIO
-                    ->join('municipalities', 'municipalities.id', '=', 'electrical_consumptions.municipality_id')
+                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO (SEDE, MUNICIPIO Y DELEGACIÓN)
+                    ->join('headquarters', 'headquarters.id', '=', 'electrical_consumptions.headquarter_id')
+                    ->join('municipalities', 'municipalities.id', '=', 'headquarters.municipality_id')
+                    ->join('delegations', 'delegations.id', '=', 'headquarters.delegation_id')
+                    // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
+                    ->join('users', 'users.id', '=', 'electrical_consumptions.user_id')
+                    // FILTRO DE CONSULTA POR PARAMETRO DE AÑO
                     ->where(function ($query) use ($request) {
                         if ($request->year) {
                             if (intval($request->year) > 2022) {
@@ -278,35 +294,31 @@ class ElectricalConsumptionController extends Controller
                             }
                         }
                     })
+                    // FILTRO DE CONSULTA POR PARAMETRO DE MES
                     ->where(function ($query) use ($request) {
                         if ($request->month) $query->where('month', $request->month);
                     })
-                    // FILTRO DE CONSULTA POR PARAMETRO DE DELEGACIÓN
+                    // FILTRO DE CONSULTA POR PARAMETRO DE SEDE
                     ->where(function ($query) use ($request, $permissions) {
                         // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
-                        if (array_key_exists('filter_delegations_electrical_consumptions', $permissions->permissions()))
-                            // PUEDE ENVIARLA POR PARAMETRO
-                            if ($request->delegation) $query->where('electrical_consumptions.delegation_id', $request->delegation['code']);
-                            // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
-                            else $query->get();
-                    })
-                    // FILTRO DE CONSULTA POR PARAMETRO DE MUNICIPIO
-                    ->where(function ($query) use ($request, $permissions) {
-                        // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
-                        if (array_key_exists('filter_municipalities_electrical_consumptions', $permissions->permissions()))
-                            // PUEDE ENVIARLA POR PARAMETRO
-                            if ($request->municipality) $query->where('electrical_consumptions.municipality_id', $request->municipality['code']);
-                            // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
-                            else $query->get();
+                        if (array_key_exists('filter_headquarters_electrical_consumptions', $permissions->permissions())) { // PUEDE ENVIARLA POR PARAMETRO
+                            if ($request->headquarter)
+                                $query->where('electrical_consumptions.headquarter_id', $request->headquarter['code']);
+                        }
+                        // SI NO TIENE PERMISO
+                        else {
+                            // PUEDE VER SOLO LOS REGISTROS DE LA SEDE A LA CUAL PERTENECE
+                            $query->where('electrical_consumptions.headquarter_id', Auth::user()->headquarter_id);
+                        }
                     })
                     // OBTENCIÓN DE LOS REGISTROS
                     ->get()
-                    ->groupBy('m_city_name'); // Agrupar por nombre de ciudad
+                    ->groupBy('h_name'); // AGRUPAR POR NOMBRE DE SEDE
 
                 // ESTA FUNCIÓN EN NECESARIA YA QUE LAS OBSERVACIONES SE GUARDAN CON HTML ES NECESARIO LIMPIARLAS PARA TENER SOLO EL TEXTO
                 $cleanedReport = [];
-                foreach ($report as $cityName => $cityData) {
-                    foreach ($cityData as $index => $record) {
+                foreach ($report as $key1 => $headquarterData) {
+                    foreach ($headquarterData as $key_2 => $record) {
                         if (is_object($record)) {
                             // CREAR UN NUEVO OBJETO PARA EL REGISTRO
                             $cleanedRecord = (object)[];
@@ -317,10 +329,10 @@ class ElectricalConsumptionController extends Controller
                             // LIMPIEZA Y TRANSFORMACIÓN PARA CADA REGISTRO
                             $cleanedRecord->ec_observations = Str::of(strip_tags($record->ec_observations))->trim()->__toString();
                             $cleanedRecord->ec_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $record->ec_created_at)->format('d-m-Y h:i:s');
-                            $cleanedRecord->m_full_name = mb_strtoupper($record->m_city_name . ' - ' . $record->m_state_name, "UTF-8");
-
-                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA CIUDAD
-                            $cleanedReport[$cityName][$index] = $cleanedRecord;
+                            $cleanedRecord->h_full_name = mb_strtoupper($record->d_name . ' / ' . $record->m_city_name . ' / ' . $record->h_name, "UTF-8");
+                            $cleanedRecord->u_full_name = mb_strtoupper($record->u_first_name . ' ' . $record->u_second_name . ' ' . $record->u_first_last_name . ' ' . $record->u_second_last_name, "UTF-8");
+                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA SEDE
+                            $cleanedReport[$key1][$key_2] = $cleanedRecord;
                         }
                     }
                 }

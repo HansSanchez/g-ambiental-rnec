@@ -911,6 +911,36 @@ tbody.full-20 {
     background: #3c4b64 !important;
 }
 
+.bg-register-bold {
+    background: #3c4b64 !important;
+    font-weight: bold;
+    color: white;
+}
+
+.bg-success-bold {
+    background: #2eb85c !important;
+    font-weight: bold;
+    color: white;
+}
+
+.bg-warning-bold {
+    background: #f9b115 !important;
+    font-weight: bold;
+    color: white;
+}
+
+.bg-danger-bold {
+    background: #e55353 !important;
+    font-weight: bold;
+    color: white;
+}
+
+.bg-info-bold {
+    background: #39f !important;
+    font-weight: bold;
+    color: white;
+}
+
 .bg-register-opacity {
     background: rgba(0, 45, 85, 0.7) !important;
 }
