@@ -2,8 +2,8 @@
     <div v-if="permissions.length === 0">
         <loader-component></loader-component>
     </div>
-    <div v-else-if="permissions.browse_water_consumptions === 'browse_water_consumptions' ||
-        permissions.read_water_consumptions === 'read_water_consumptions'" class="card text-uppercase">
+    <div v-else-if="permissions.browse_electrical_consumptions === 'browse_electrical_consumptions' ||
+        permissions.read_electrical_consumptions === 'read_electrical_consumptions'" class="card text-uppercase">
         <div class="card-header text-uppercase">
             <div class="row">
                 <div class="col-md-12">
@@ -11,11 +11,18 @@
                         <ol class="breadcrumb m-0 p-0" style="border: none !important;">
                             <li class="breadcrumb-item active">
                                 <router-link
-                                    :to="{ name: 'water-consumptions-detail', params: { id: WaterConsumptionsDetailList.id } }"
+                                    :to="{ name: 'electrical-consumptions-detail', params: { id: ElectricalConsumptionsDetailList.id } }"
                                     @click="show = !show">
                                     <b>
-                                        Detalle del consumo hídrico para
-                                        {{ WaterConsumptionsDetailList.delegation.name }}
+                                        Detalle del consumo eléctrico para
+                                        <br>
+                                        {{
+                                            ElectricalConsumptionsDetailList.headquarter ?
+                                            ElectricalConsumptionsDetailList.headquarter.delegation.name + " - " +
+                                            ElectricalConsumptionsDetailList.headquarter.municipality.city_name + " - " +
+                                            ElectricalConsumptionsDetailList.headquarter.name :
+                                            'SIN SEDE'
+                                        }}
                                     </b>
                                 </router-link>
                             </li>
@@ -32,33 +39,39 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th>MUNICIPIO RELACIONADO</th>
+                                    <th>SEDE RELACIONADA</th>
                                     <th>GESTOR(A) AMBIENTAL</th>
                                     <th>AÑO</th>
                                     <th>MES</th>
-                                    <th>METROS CÚBICOS</th>
+                                    <th>KILOWATTS</th>
                                     <th>TOTAL DE PERSONAL</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="text-uppercase text-center">
-                                        {{ WaterConsumptionsDetailList.municipality.FullCityName }}
+                                        {{
+                                            ElectricalConsumptionsDetailList.headquarter ?
+                                            ElectricalConsumptionsDetailList.headquarter.delegation.name + " - " +
+                                            ElectricalConsumptionsDetailList.headquarter.municipality.city_name + " - " +
+                                            ElectricalConsumptionsDetailList.headquarter.name :
+                                            'SIN SEDE'
+                                        }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WaterConsumptionsDetailList.environmental_manager }}
+                                        {{ ElectricalConsumptionsDetailList.user.FullName }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WaterConsumptionsDetailList.year }}
+                                        {{ ElectricalConsumptionsDetailList.year }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WaterConsumptionsDetailList.month }}
+                                        {{ ElectricalConsumptionsDetailList.month }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ number_format(WaterConsumptionsDetailList.m3_monthly) }}
+                                        {{ number_format(ElectricalConsumptionsDetailList.kw_monthly) }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ number_format(WaterConsumptionsDetailList.total_staff) }}
+                                        {{ number_format(ElectricalConsumptionsDetailList.total_staff) }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -67,21 +80,21 @@
                                     <td colspan="6"><b>OBSERVACIONES</b></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6" v-html="WaterConsumptionsDetailList.observations"></td>
+                                    <td colspan="6" v-html="ElectricalConsumptionsDetailList.observations"></td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                 </div>
-                <div v-if="WaterConsumptionsDetailList.evidence_water_consumption.length > 0"
+                <div v-if="ElectricalConsumptionsDetailList.evidence_electrical_consumption.length > 0"
                     class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                     <h5 class="mb-0">
                         <b>DOCUMENTOS ADJUNTOS</b>
                     </h5>
                 </div>
-                <template v-for="(item, index) in WaterConsumptionsDetailList.evidence_water_consumption">
+                <template v-for="(item, index) in ElectricalConsumptionsDetailList.evidence_electrical_consumption">
                     <div :key="index" v-if="item.extension === 'pdf'" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <embed :src="'/storage/water_consumptions/evidences/files/' + item.file" type="application/pdf"
+                        <embed :src="'/storage/electrical_consumptions/evidences/files/' + item.file" type="application/pdf"
                             width="100%" height="600px" />
                     </div>
                 </template>
@@ -94,7 +107,7 @@
                                     <img class="d-block w-100" data-toggle="modal"
                                         data-target="#EvidencesTreePlantationModal"
                                         style="height: 500px; max-height: 500px; cursor: pointer;"
-                                        :src="'/storage/water_consumptions/evidences/files/' + itemImage.file">
+                                        :src="'/storage/electrical_consumptions/evidences/files/' + itemImage.file">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
@@ -126,18 +139,18 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                             <h5><b>REPORTANTE</b></h5>
-                            {{ WaterConsumptionsDetailList.user.FullName }}
+                            {{ ElectricalConsumptionsDetailList.user.FullName }}
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                             <h5><b>REPORTADO</b></h5>
-                            {{ WaterConsumptionsDetailList.user.CreatedLabel }}
+                            {{ ElectricalConsumptionsDetailList.user.CreatedLabel }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <v-btn color="#e55353" :to="{ name: 'water-consumptions-index' }" small class="btn btn-danger text-white"
+            <v-btn color="#e55353" :to="{ name: 'electrical-consumptions-index' }" small class="btn btn-danger text-white"
                 data-dismiss="modal">
                 <b>VOLVER</b>
             </v-btn>
@@ -151,11 +164,11 @@
 <script>
 
 export default {
-    name: "WaterConsumptionsDetail",
+    name: "ElectricalConsumptionsDetail",
     data() {
         return {
             id: this.$route.params.id,
-            WaterConsumptionsDetailList: {},
+            ElectricalConsumptionsDetailList: {},
             permissions: [],
         }
     },
@@ -166,16 +179,16 @@ export default {
             return this.imagesToShow.length > 0;
         },
         imagesToShow() {
-            return this.WaterConsumptionsDetailList.evidence_water_consumption.filter(
+            return this.ElectricalConsumptionsDetailList.evidence_electrical_consumption.filter(
                 item => item.extension !== 'pdf'
             );
         },
     },
     methods: {
-        waterConsumptionDetail() {
-            let api = "/g-environmental-rnec/water-consumptions/show/" + this.id;
+        electricalConsumptionDetail() {
+            let api = "/g-environmental-rnec/electrical-consumptions/show/" + this.id;
             axios.get(api)
-                .then(({ data }) => this.WaterConsumptionsDetailList = data.waterConsumption)
+                .then(({ data }) => this.ElectricalConsumptionsDetailList = data.electricalConsumption)
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         alertLoading(time, msg, type) {
@@ -244,7 +257,7 @@ export default {
         },
     },
     created() {
-        this.waterConsumptionDetail();
+        this.electricalConsumptionDetail();
         this.setPermissions();
     }
 }

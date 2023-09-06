@@ -63,7 +63,6 @@ class ElectricalConsumptionController extends Controller
                 // GUARDADO DEL REGISTRO HECHO
                 // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
                 $electricalConsumption = new ElectricalConsumption($request->all());
-                $electricalConsumption->municipality_id = $request->municipality['code']; // MUNICIPIO
                 $electricalConsumption->headquarter_id = $headquarter_id; // SEDE A LA CUAL PERTENECE EL USUARIO
                 $electricalConsumption->user_id = $user_id; // USUARIO QUE GENERÓ EL REPORTE
                 $electricalConsumption->save(); // ALMACENAMIENTO DE LA INFORMACIÓN

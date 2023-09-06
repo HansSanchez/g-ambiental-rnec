@@ -186,7 +186,7 @@ class ElectricalConsumptionExport implements FromView, ShouldAutoSize, WithColum
                 $event->sheet->getStyle('F9:F2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER); // (KW) ANUAL
                 $event->sheet->getStyle('G9:G2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER); // TOTAL DE PERSONAL
                 $event->sheet->getStyle('H9:H2000')->getNumberFormat()->setFormatCode(NumberFormat::FORMAT_NUMBER_00); // CONSUMO PER CÁPITA (KW) POR MES
-                $event->sheet->getStyle('I9:I2000')->getNumberFormat()->setFormatCode('#.0000000');; // PROMEDIO TRIMESTRAL DE PER CÁPITA (KW) POR MES
+                $event->sheet->getStyle('I9:I2000')->getNumberFormat()->setFormatCode('#,0.0000000');; // PROMEDIO TRIMESTRAL DE PER CÁPITA (KW) POR MES
 
                 $startRow = ($year < 2023) ? 9 : 10; // FILA INICIAL
                 $rowIncrement = 12; // INCREMENTO DE FILAS

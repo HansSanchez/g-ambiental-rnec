@@ -448,7 +448,7 @@
                         :url="'/g-environmental-rnec/electrical-consumptions/generateReport'"
                         :fileName="'/storage/reports/electrical_consumptions/'" :delegationsExport="delegations_export"
                         :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export"
-                        :other="true" />
+                        :other="true" :electrical="true" :water="false" />
 
                     <!-- NOTE END MODEALES -->
 
@@ -584,10 +584,10 @@
                         <infinite-loading @distance="1" :identifier="infiniteId" @infinite="infiniteHandler"
                             spinner="waveDots" ref="infiniteHandler">
                             <div slot="no-more">
-                                No hay más registros
+                                No hay más registros de consumos eléctricos
                             </div>
                             <div slot="no-results">
-                                No hay registros
+                                No hay registros de consumos eléctricos
                             </div>
                         </infinite-loading>
                     </div>
@@ -608,7 +608,6 @@ import InfiniteLoading from "vue-infinite-loading"; // COMPONENTE PARA HACER UN 
 import { VueEditor } from "vue2-editor";
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
-import { es } from "vuejs-datepicker/dist/locale";
 import LoaderComponent from '../../../components/LoaderComponent.vue';
 import GenerateReportModalComponent from '../../../components/GenerateReportModalComponent.vue';
 import MiMixin from '../../../components/mixin';

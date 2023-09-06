@@ -162,6 +162,16 @@ export default {
             required: true,
             default: false
         },
+        electrical: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        water: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
 
     },
     data() {

@@ -142,12 +142,14 @@ export default {
             const currentDate = new Date();
             const currentMonth = currentDate.getMonth();
             const monthName = this.getSpanishMonthName(currentMonth);
-            if (!this.FormElectricalConsumptions.month)
-                this.FormElectricalConsumptions.month =
-                    this.getSpanishMonthName(currentMonth).toString();
-            if (!this.FormElectricalConsumptions.month)
-                this.FormElectricalConsumptions.month =
-                    this.getSpanishMonthName(currentMonth).toString();
+            if (this.electrical)
+                if (!this.FormElectricalConsumptions.month)
+                    this.FormElectricalConsumptions.month =
+                        this.getSpanishMonthName(currentMonth).toString();
+            if (this.water)
+                if (!this.FormElectricalConsumptions.month)
+                    this.FormElectricalConsumptions.month =
+                        this.getSpanishMonthName(currentMonth).toString();
             return monthName;
         },
         getCurrentYear() {
@@ -156,14 +158,16 @@ export default {
         },
         getCurrentYearConsumption() {
             const currentDate = new Date();
-            if (!this.FormElectricalConsumptions.year)
-                this.FormElectricalConsumptions.year = currentDate
-                    .getFullYear()
-                    .toString();
-            // if (!this.FormWaterConsumptions.year)
-            //     this.FormWaterConsumptions.year = currentDate
-            //         .getFullYear()
-            //         .toString();
+            if (this.electrical)
+                if (!this.FormElectricalConsumptions.year)
+                    this.FormElectricalConsumptions.year = currentDate
+                        .getFullYear()
+                        .toString();
+            if (this.water)
+                if (!this.FormWaterConsumptions.year)
+                    this.FormWaterConsumptions.year = currentDate
+                        .getFullYear()
+                        .toString();
             return currentDate.getFullYear();
         },
         getUsersInput() {

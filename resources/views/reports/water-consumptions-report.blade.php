@@ -154,6 +154,12 @@
                 $totalWcM3Monthly = 0;
                 $iterationCount = 0;
             @endphp
+            <tr>
+                <td style="background-color: #002D55; color: #FFFFFF; border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; font-family: 'Arial Black'; font-size: 11px;"
+                    colspan="10">
+                    <b>{{ $key_1 }}</b>
+                </td>
+            </tr>
             @foreach ($item as $key_2 => $value)
                 @php
                     $totalWcM3Monthly += $value->wc_m3_monthly;
@@ -167,34 +173,34 @@
                 @endphp
                 <tr>
                     <td
-                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
-                        {{ $value->wc_environmental_manager }}
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
+                        {{ $value->u_full_name }}
                     </td>
                     <td
-                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
-                        {{ $value->m_full_name }}
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
+                        {{ $value->h_full_name }}
                     </td>
                     <td
-                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
                         {{ $value->wc_year }}
                     </td>
                     <td
-                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
                         {{ $value->wc_month }}
                     </td>
                     <td
-                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
                         {{ $value->wc_m3_monthly }}
                     </td>
                     <!-- Si es la última fila del grupo -->
                     @if (!$totalRow)
                         <td
-                            style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                            style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
                             &nbsp;
                         </td>
                     @else
                         <td
-                            style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                            style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
                             {{ $totalWcM3Monthly }}
                             @php
                                 $totalRow = false;
@@ -202,15 +208,15 @@
                         </td>
                     @endif
                     <td
-                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
                         {{ $value->wc_total_staff }}
                     </td>
                     <td
-                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
                         {{ $value->wc_total_staff != 0 ? $value->wc_m3_monthly / $value->wc_total_staff : 0 }}
                     </td>
                     <td
-                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 11px; font-family: Arial;">
+                        style="border: 1px solid #000000; text-align: -moz-center; text-align: -webkit-center; text-align: center; vertical-align: middle; font-size: 9px; font-family: Arial;">
                         &nbsp;
                     </td>
                     <td

@@ -494,7 +494,7 @@
                             <th class="tt-espumados" width="200px">DELEGACIÓN</th>
                             <th class="tt-espumados" width="200px">MUNICIPIO</th>
                             <th class="tt-espumados" width="200px">SEDE</th>
-                            <th class="tt-espumados" width="200px">CREAD@</th>
+                            <th class="tt-espumados" width="200px">CREADO(A)</th>
                             <th v-if="permissions.browse_users === 'browse_users' ||
                                 permissions.read_users === 'read_users' ||
                                 permissions.edit_users === 'edit_users' ||

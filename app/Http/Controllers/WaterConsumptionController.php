@@ -20,72 +20,29 @@ class WaterConsumptionController extends Controller
     {
         // CONSULTA DE LOS PERMISOS
         $permissions = new HomeController;
-        // CONSULTA DE LA CONSUMOS HÍDRICOS
+        // CONSULTA DE LOS CONSUMOS HÍDRICOS
         $waterConsumptions =
             // RELACIONES
-            WaterConsumption::with([
-                'Delegation' => function ($query) {
-                    $query->select('delegations.id', 'delegations.name');
-                },
-                'EvidenceWaterConsumption' => function ($query) {
-                    $query->select(
-                        'evidence_water_consumptions.id',
-                        'evidence_water_consumptions.file',
-                        'evidence_water_consumptions.water_consumption_id'
-                    );
-                },
-                'Municipality' => function ($query) {
-                    $query->select(
-                        'municipalities.id',
-                        'municipalities.city_name',
-                    );
-                },
-                // RELACIÓN CON EL REPORTANTE
-                'User' => function ($query) {
-                    $query->select(
-                        'users.id',
-                        'users.first_name',
-                        'users.second_name',
-                        'users.first_last_name',
-                        'users.second_last_name',
-                    );
-                },
-            ])
-            // FILTRO DE CONSULTA SEGÚN PARAMETROS DE BÚSQUEDA
-            ->where(function ($query) use ($request, $permissions) {
-                // FILTRO PARA BÚSQUEDA DE TEXTO EN OBSERVACIONES
-                if ($request->search) $query->search($request->search);
-                // FILTRO PARA BÚSQUEDA POR AÑO
-                if ($request->yearFilter) $query->where('water_consumptions.year', $request->yearFilter);
-                else $query->where('water_consumptions.year', now()->format('Y'));
-                // FILTRO PARA BÚSQUEDA POR MES
-                if ($request->monthFilter) $query->where('water_consumptions.month', $request->monthFilter);
-                // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR DELEGACIÓN
-                if (array_key_exists('filter_delegations_water_consumptions', $permissions->permissions())) {
-                    // PUEDE ACCEDER AL FILTRO Y ENVIAR DIFERENTES DELEGACIONES POR PARAMETRO
-                    if ($request->delegations_model) {
-                        $delegation = json_decode($request->delegations_model);
-                        $query->where('water_consumptions.delegation_id', $delegation->code);
-                    } else $query->where('water_consumptions.delegation_id', Auth::user()->delegation_id);
-                    if ($request->municipalities_model) {
-                        $municipality = json_decode($request->municipalities_model);
-                        $query->where('water_consumptions.municipality_id', $municipality->code);
-                    }
-                }
-                // SI NO TIENE PERMISO
-                else {
-                    // PUEDE VER SOLO LOS REGISTROS DE LA DELEGACIÓN Y MUNICIPIO AL CUAL PERTENECE
-                    $query->where('water_consumptions.delegation_id', Auth::user()->delegation_id)
-                        ->where('water_consumptions.municipality_id', Auth::user()->municipality_id);
-                }
-            })
+            WaterConsumption::withRelations() // SCOPE EN EL MODELO (RELACIONES)
+            ->filter($request, $permissions) // SCOPE EN EL MODELO (FILTROS)
             // ORDENAMIENTO POR ID
-            ->orderBy('water_consumptions.id')
+            ->orderBy('id', 'DESC')
             // PÁGINADO DE RESPUESTA
             ->simplePaginate(12);
 
         // RESPUESTA PARA EL USUARIO
         return response()->json(['waterConsumptions' => $waterConsumptions]);
+    }
+
+    public function allRelations($waterConsumption)
+    {
+        // REGISTRO DE LAS RELACIONES
+        $waterConsumption->Headquarter;
+        $waterConsumption->Headquarter->Delegation;
+        $waterConsumption->Headquarter->Municipality;
+        $waterConsumption->Headquarters;
+        $waterConsumption->EvidenceWaterConsumption;
+        $waterConsumption->User; // QUIEN REPORTÓ
     }
 
     // FUNCIÓN PARA CREACIÓN
@@ -100,23 +57,18 @@ class WaterConsumptionController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
-                $delegation_id = auth()->user()->delegation_id;
+                // OBTENCIÓN DE LA SEDE DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
+                $headquarter_id = auth()->user()->headquarter_id;
 
                 // GUARDADO DEL REGISTRO HECHO
                 // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
                 $waterConsumption = new WaterConsumption($request->all());
-                $waterConsumption->delegation_id = $delegation_id; // DELEGACIÓN
-                $waterConsumption->municipality_id = $request->municipality['code']; // MUNICIPIO
-                $waterConsumption->environmental_manager = mb_strtoupper($request->environmental_manager); // GESTOR AMBIENTAL
+                $waterConsumption->headquarter_id = $headquarter_id; // SEDE A LA CUAL PERTENECE EL USUARIO
                 $waterConsumption->user_id = $user_id; // USUARIO QUE GENERÓ EL REPORTE
                 $waterConsumption->save(); // ALMACENAMIENTO DE LA INFORMACIÓN
 
-                // REGISTRO DE LAS RELACIONES
-                $waterConsumption->Delegation;
-                $waterConsumption->EvidenceWaterConsumption;
-                $waterConsumption->Municipality;
-                $waterConsumption->User; // QUIEN REPORTÓ
+                // RELACIONES
+                $this->allRelations($waterConsumption);
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -155,13 +107,8 @@ class WaterConsumptionController extends Controller
     {
         // CONTROL DE ERRORES
         try {
-
-            // REGISTRO DE LAS RELACIONES
-            $waterConsumption->Delegation;
-            $waterConsumption->EvidenceWaterConsumption;
-            $waterConsumption->Municipality;
-            $waterConsumption->User; // QUIEN REPORTÓ
-
+            // RELACIONES
+            $this->allRelations($waterConsumption);
             // RESPUESTA PARA EL USUARIO
             return response()->json(['waterConsumption' => $waterConsumption]);
         } catch (\Exception $exception) {
@@ -182,8 +129,8 @@ class WaterConsumptionController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
-                $delegation_id = $waterConsumption->delegation_id;
+                // OBTENCIÓN DE LA SEDE A LA CUAL SE LE HIZO EL REGISTRO POR DEFECTO
+                $headquarter_id = $waterConsumption->headquarter_id;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -195,22 +142,17 @@ class WaterConsumptionController extends Controller
 
                 // ACTUALIZACIÓN DE REGISTRO
                 $waterConsumption->update([
-                    'environmental_manager' => mb_strtoupper($request->environmental_manager), // OPERADOR AMBIENTAL
-                    'delegation_id' => $delegation_id, // DELEGACIÓN
-                    'municipality_id' => $request->municipality['code'], // MUNICIPIO,
+                    'headquarter_id' => $headquarter_id, // SEDE
                     'year' => $request->year, // AÑO RELACIONADO
                     'month' => $request->month, // MES RELACIONADO
-                    'm3_monthly' => $request->m3_monthly, // METROS CÚBICOS (MES)
+                    'm3_monthly' => $request->m3_monthly, // KILOWATTS (MES)
                     'total_staff' => $request->total_staff, // TOTAL DE PERSONAL
                     'observations' => $request->observations, // OBSERVACIONES
                     'user_id' => $user_id, // REPORTANTE
                 ]);
 
-                // REGISTRO DE LAS RELACIONES
-                $waterConsumption->Delegation;
-                $waterConsumption->EvidenceWaterConsumption;
-                $waterConsumption->Municipality;
-                $waterConsumption->User; // QUIEN REPORTÓ
+                // RELACIONES
+                $this->allRelations($waterConsumption);
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -258,11 +200,8 @@ class WaterConsumptionController extends Controller
                 // ELIMINACIÓN DEL REGISTRO
                 $waterConsumption->delete();
 
-                // REGISTRO DE LAS RELACIONES
-                $waterConsumption->Delegation;
-                $waterConsumption->EvidenceWaterConsumption;
-                $waterConsumption->Municipality;
-                $waterConsumption->User; // QUIEN REPORTÓ
+                // RELACIONES
+                $this->allRelations($waterConsumption);
 
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
@@ -299,24 +238,37 @@ class WaterConsumptionController extends Controller
                     ->select(
                         'delegations.id AS d_id',
                         'delegations.name AS d_name',
+                        'headquarters.id AS h_id',
+                        'headquarters.name AS h_name',
+                        'headquarters.delegation_id AS h_delegation_id',
+                        'headquarters.municipality_id AS h_municipality_id',
+                        'municipalities.id AS m_id',
+                        'municipalities.city_name AS m_city_name',
                         'water_consumptions.id AS wc_id',
-                        'water_consumptions.environmental_manager AS wc_environmental_manager',
-                        'water_consumptions.delegation_id AS wc_delegation_id',
-                        'water_consumptions.municipality_id AS wc_municipality_id',
+                        'water_consumptions.headquarter_id AS wc_headquarter_id',
                         'water_consumptions.year AS wc_year',
                         'water_consumptions.month AS wc_month',
                         'water_consumptions.m3_monthly AS wc_m3_monthly',
                         'water_consumptions.total_staff AS wc_total_staff',
                         'water_consumptions.observations AS wc_observations',
                         'water_consumptions.created_at AS wc_created_at',
-                        'municipalities.id AS m_id',
-                        'municipalities.city_name AS m_city_name',
-                        'municipalities.state_name AS m_state_name',
+                        'users.id AS u_id',
+                        'users.personal_id AS u_personal_id',
+                        'users.first_name AS u_first_name',
+                        'users.second_name AS u_second_name',
+                        'users.first_last_name AS u_first_last_name',
+                        'users.second_last_name AS u_second_last_name',
+                        'users.position AS u_position',
+                        'users.email AS u_email',
+                        'users.headquarter_id AS u_headquarter_id',
                     )
-                    // RELACIÓN CON LA DELEGACIÓN
-                    ->join('delegations', 'delegations.id', '=', 'water_consumptions.delegation_id')
-                    // RELACIÓN CON EL MUNICIPIO
-                    ->join('municipalities', 'municipalities.id', '=', 'water_consumptions.municipality_id')
+                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO (SEDE, MUNICIPIO Y DELEGACIÓN)
+                    ->join('headquarters', 'headquarters.id', '=', 'water_consumptions.headquarter_id')
+                    ->join('municipalities', 'municipalities.id', '=', 'headquarters.municipality_id')
+                    ->join('delegations', 'delegations.id', '=', 'headquarters.delegation_id')
+                    // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
+                    ->join('users', 'users.id', '=', 'water_consumptions.user_id')
+                    // FILTRO DE CONSULTA POR PARAMETRO DE AÑO
                     ->where(function ($query) use ($request) {
                         if ($request->year) {
                             if (intval($request->year) > 2022) {
@@ -341,35 +293,31 @@ class WaterConsumptionController extends Controller
                             }
                         }
                     })
+                    // FILTRO DE CONSULTA POR PARAMETRO DE MES
                     ->where(function ($query) use ($request) {
                         if ($request->month) $query->where('month', $request->month);
                     })
-                    // FILTRO DE CONSULTA POR PARAMETRO DE DELEGACIÓN
+                    // FILTRO DE CONSULTA POR PARAMETRO DE SEDE
                     ->where(function ($query) use ($request, $permissions) {
                         // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
-                        if (array_key_exists('filter_delegations_water_consumptions', $permissions->permissions()))
-                            // PUEDE ENVIARLA POR PARAMETRO
-                            if ($request->delegation) $query->where('water_consumptions.delegation_id', $request->delegation['code']);
-                            // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
-                            else $query->get();
-                    })
-                    // FILTRO DE CONSULTA POR PARAMETRO DE MUNICIPIO
-                    ->where(function ($query) use ($request, $permissions) {
-                        // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
-                        if (array_key_exists('filter_municipalities_water_consumptions', $permissions->permissions()))
-                            // PUEDE ENVIARLA POR PARAMETRO
-                            if ($request->municipality) $query->where('water_consumptions.municipality_id', $request->municipality['code']);
-                            // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
-                            else $query->get();
+                        if (array_key_exists('filter_headquarters_water_consumptions', $permissions->permissions())) { // PUEDE ENVIARLA POR PARAMETRO
+                            if ($request->headquarter)
+                                $query->where('water_consumptions.headquarter_id', $request->headquarter['code']);
+                        }
+                        // SI NO TIENE PERMISO
+                        else {
+                            // PUEDE VER SOLO LOS REGISTROS DE LA SEDE A LA CUAL PERTENECE
+                            $query->where('water_consumptions.headquarter_id', Auth::user()->headquarter_id);
+                        }
                     })
                     // OBTENCIÓN DE LOS REGISTROS
                     ->get()
-                    ->groupBy('m_city_name'); // Agrupar por nombre de ciudad
+                    ->groupBy('h_name'); // AGRUPAR POR NOMBRE DE SEDE
 
                 // ESTA FUNCIÓN EN NECESARIA YA QUE LAS OBSERVACIONES SE GUARDAN CON HTML ES NECESARIO LIMPIARLAS PARA TENER SOLO EL TEXTO
                 $cleanedReport = [];
-                foreach ($report as $cityName => $cityData) {
-                    foreach ($cityData as $index => $record) {
+                foreach ($report as $key1 => $headquarterData) {
+                    foreach ($headquarterData as $key_2 => $record) {
                         if (is_object($record)) {
                             // CREAR UN NUEVO OBJETO PARA EL REGISTRO
                             $cleanedRecord = (object)[];
@@ -380,10 +328,10 @@ class WaterConsumptionController extends Controller
                             // LIMPIEZA Y TRANSFORMACIÓN PARA CADA REGISTRO
                             $cleanedRecord->wc_observations = Str::of(strip_tags($record->wc_observations))->trim()->__toString();
                             $cleanedRecord->wc_created_at = Carbon::createFromFormat('Y-m-d H:i:s', $record->wc_created_at)->format('d-m-Y h:i:s');
-                            $cleanedRecord->m_full_name = mb_strtoupper($record->m_city_name . ' - ' . $record->m_state_name, "UTF-8");
-
-                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA CIUDAD
-                            $cleanedReport[$cityName][$index] = $cleanedRecord;
+                            $cleanedRecord->h_full_name = mb_strtoupper($record->d_name . ' / ' . $record->m_city_name . ' / ' . $record->h_name, "UTF-8");
+                            $cleanedRecord->u_full_name = mb_strtoupper($record->u_first_name . ' ' . $record->u_second_name . ' ' . $record->u_first_last_name . ' ' . $record->u_second_last_name, "UTF-8");
+                            // AGREGAR EL OBJETO LIMPIO AL ARREGLO DE LA SEDE
+                            $cleanedReport[$key1][$key_2] = $cleanedRecord;
                         }
                     }
                 }
