@@ -131,7 +131,7 @@
             </li>
         @endif
 
-        @if (array_key_exists('browse_waste', $permissions))
+        @if (array_key_exists('browse_waste_management', $permissions))
             <li class="c-sidebar-nav-item">
                 <router-link :to="{ name: 'waste-management-index' }" class="c-sidebar-nav-link"
                     title="Manejo de los residuos">

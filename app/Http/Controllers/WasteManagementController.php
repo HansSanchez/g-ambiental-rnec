@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WasteManagement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WasteManagementController extends Controller
 {
@@ -13,93 +14,97 @@ class WasteManagementController extends Controller
     {
         // CONSULTA DE LOS PERMISOS
         $permissions = new HomeController;
-        // CONSULTA DE LA CONSUMOS HÍDRICOS
-        $wasteManagements =
-            // RELACIONES
-            WasteManagement::with([
-                // RELACIÓN CON LA DELEGACIÓN
-                'Delegation' => function ($query) {
-                    $query->select('delegations.id', 'delegations.name');
-                },
-                // RELACIÓN CON LA EVIDENCIA
-                'EvidenceWasteManagement' => function ($query) {
-                    $query->select(
-                        'evidence_waste_management.id',
-                        'evidence_waste_management.name',
-                        'evidence_waste_management.extension',
-                        'evidence_waste_management.file',
-                        'evidence_waste_management.waste_management_id'
-                    );
-                },
-                // RELACIÓN CON EL MUNICIPIO
-                'Municipality' => function ($query) {
-                    $query->select(
-                        'municipalities.id',
-                        'municipalities.city_name',
-                    );
-                },
-                // RELACIÓN CON EL REPORTANTE
-                'User' => function ($query) {
-                    $query->select(
-                        'users.id',
-                        'users.first_name',
-                        'users.second_name',
-                        'users.first_last_name',
-                        'users.second_last_name',
-                    );
-                },
-                // RELACIÓN CON EL TIPO DE RESIDUO
-                'WasteType' => function ($query) {
-                    $query->select(
-                        'waste_types.id',
-                        'waste_types.name',
-                        'waste_types.danger_current',
-                        'waste_types.transportation_manager',
-                        'waste_types.external_manager',
-                        'waste_types.environmental_license',
-                        'waste_types.certificate_or_type_of_treatment',
-                        'waste_types.year',
-                    );
-                },
-            ])
-            // FILTRO DE CONSULTA SEGÚN PARAMETROS DE BÚSQUEDA
-            ->where(function ($query) use ($request, $permissions) {
-                // FILTRO PARA BÚSQUEDA DE TEXTO EN OBSERVACIONES
-                if ($request->search) $query->search($request->search);
-                // FILTRO PARA BÚSQUEDA POR AÑO
-                if ($request->yearFilter)
-                    $query->whereHas('WasteType', function ($query2) use ($request) {
-                        $query2->where('waste_types.year', $request->yearFilter);
-                    });
-                else
-                    $query->whereHas('WasteType', function ($query2) use ($request) {
-                        $query2->where('waste_types.year', now()->format('Y'));
-                    });
-                // FILTRO PARA BÚSQUEDA POR MES
-                if ($request->monthFilter) $query->where('waste_management.month', $request->monthFilter);
-                // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR DELEGACIÓN
-                if (array_key_exists('filter_delegations_waste_management', $permissions->permissions())) {
-                    // PUEDE ACCEDER AL FILTRO Y ENVIAR DIFERENTES DELEGACIONES POR PARAMETRO
-                    if ($request->delegations_model) {
-                        $delegation = json_decode($request->delegations_model);
-                        $query->where('waste_management.delegation_id', $delegation->code);
-                    } else $query->where('waste_management.delegation_id', Auth::user()->delegation_id);
-                    if ($request->municipalities_model) {
-                        $municipality = json_decode($request->municipalities_model);
-                        $query->where('waste_management.municipality_id', $municipality->code);
-                    }
-                }
-                // SI NO TIENE PERMISO
-                else {
-                    // PUEDE VER SOLO LOS REGISTROS DE LA DELEGACIÓN Y MUNICIPIO AL CUAL PERTENECE
-                    $query->where('waste_management.delegation_id', Auth::user()->delegation_id)
-                        ->where('waste_management.municipality_id', Auth::user()->municipality_id);
-                }
+
+        // PASO 1. IDENTIFICAR LOS TIPOS DE RESIDUOS (POR AÑO)
+        $wasteTypes = DB::table('waste_types')
+            ->select('waste_types.id', 'waste_types.name')
+            ->where(function ($query) use ($request) {
+                if ($request->yearFilter) $query->where('waste_types.year', $request->yearFilter);
+                else $query->where('waste_types.year', now()->format('Y'));
             })
-            // ORDENAMIENTO POR ID
-            ->orderBy('waste_management.id')
-            // PÁGINADO DE RESPUESTA
-            ->simplePaginate(12);
+            ->get()
+            ->toArray();
+
+        // PASO 2. CONSULTAR LOS REGISTROS POR TIPO DE RESIDUO
+        // $wasteManagements = [];
+        // foreach ($wasteTypes as $key => $value) {
+        //     $wasteManagements = DB::table('waste_management')
+        //         ->select('*')
+        //         ->where(function ($query) use ($request, $permissions) {
+        //             // FILTRO PARA BÚSQUEDA POR MES
+        //             if ($request->monthFilter) $query->where('waste_management.month', $request->monthFilter);
+        //             // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR DELEGACIÓN
+        //             if (array_key_exists('filter_headquarters_waste_management', $permissions->permissions())) {
+        //                 // PUEDE ACCEDER AL FILTRO Y ENVIAR DIFERENTES DELEGACIONES POR PARAMETRO
+        //                 if ($request->delegations_model) {
+        //                     $delegation = json_decode($request->delegations_model);
+        //                     $query->whereHas('Headquarter', function ($query2) use ($delegation) {
+        //                         $query2->where('delegation_id', $delegation->code);
+        //                     });
+        //                 }
+        //                 if ($request->municipalities_model) {
+        //                     $municipality = json_decode($request->municipalities_model);
+        //                     $query->whereHas('Headquarter', function ($query2) use ($municipality) {
+        //                         $query2->where('municipality_id', $municipality->code);
+        //                     });
+        //                 }
+        //                 if ($request->headquarters_model) {
+        //                     $headquarter = json_decode($request->headquarters_model);
+        //                     $query->where('waste_management.headquarter_id', $headquarter->code);
+        //                 } else $query->where('waste_management.headquarter_id', Auth::user()->headquarter_id);
+        //             }
+        //             // SI NO TIENE PERMISO
+        //             else {
+        //                 // PUEDE VER SOLO LOS REGISTROS DE LA DELEGACIÓN Y MUNICIPIO AL CUAL PERTENECE
+        //                 $query->where('waste_management.headquarter_id', Auth::user()->headquarter_id);
+        //             }
+        //         })
+        //         ->where('waste_type_id', $value->id)
+        //         ->get();
+
+        //     $wasteManagements[$value->name] = $wasteManagements;
+        // }
+
+        $wasteManagements = [];
+
+        foreach ($wasteTypes as $key => $value) {
+            $query = DB::table('waste_management')
+                ->select('*')
+                ->where('waste_type_id', $value->id);
+
+            if ($request->monthFilter) {
+                $query->where('month', $request->monthFilter);
+            }
+
+            if (array_key_exists('filter_headquarters_waste_management', $permissions->permissions())) {
+                if ($request->delegations_model) {
+                    $delegation = json_decode($request->delegations_model);
+                    $query->whereHas('Headquarter', function ($query2) use ($delegation) {
+                        $query2->where('delegation_id', $delegation->code);
+                    });
+                }
+
+                if ($request->municipalities_model) {
+                    $municipality = json_decode($request->municipalities_model);
+                    $query->whereHas('Headquarter', function ($query2) use ($municipality) {
+                        $query2->where('municipality_id', $municipality->code);
+                    });
+                }
+
+                if ($request->headquarters_model) {
+                    $headquarter = json_decode($request->headquarters_model);
+                    $query->where('headquarter_id', $headquarter->code);
+                } else {
+                    $query->where('headquarter_id', Auth::user()->headquarter_id);
+                }
+            } else {
+                $query->where('headquarter_id', Auth::user()->headquarter_id);
+            }
+
+            $wasteManagements[$value->name] = $query->get();
+        }
+
+        dd($wasteManagements);
 
         // RESPUESTA PARA EL USUARIO
         return response()->json(['wasteManagements' => $wasteManagements]);
