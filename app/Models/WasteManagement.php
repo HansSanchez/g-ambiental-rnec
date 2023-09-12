@@ -40,7 +40,7 @@ class WasteManagement extends Model
             ->orWhere('observations', 'LIKE', '%' . $search_term . '%');
     }
 
-    public function scopeWithRelations($query, $request)
+    public function scopeWithRelations($query)
     {
         return $query->with([
             // RELACIÓN CON LA SEDE (ESTA VA PRIMERO POR LAS LLAVES FORANEAS)
@@ -87,7 +87,7 @@ class WasteManagement extends Model
                 );
             },
             // RELACIÓN CON EL TIPO DE RESIDUO
-            'WasteType' => function ($query) use ($request) {
+            'WasteType' => function ($query) {
                 $query->select(
                     'waste_types.id',
                     'waste_types.name',
@@ -97,12 +97,7 @@ class WasteManagement extends Model
                     'waste_types.environmental_license',
                     'waste_types.certificate_or_type_of_treatment',
                     'waste_types.year',
-                )->where(function ($query) use ($request) {
-                    if ($request->yearFilter) $query->where('waste_types.year', $request->yearFilter);
-                    else $query->where('waste_types.year', now()->format('Y'));
-                })
-                ->whereIn('', ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'])
-                ->groupBy('waste_types.name');
+                );
             },
         ]);
     }

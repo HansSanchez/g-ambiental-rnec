@@ -138,10 +138,8 @@
                                                     </li>
                                                     <li class="list-general pb-3">
                                                         <strong>
-                                                            En este módulo, solo debes registrar el valor de los
-                                                            <b><strong class="text-info">METROS<sup>3</sup>
-                                                                    (MES)</strong></b>,
-                                                            <b><strong class="text-info">TOTAL DE PERSONAL</strong></b>
+                                                            En este módulo, solo sebe registrar el valor de los
+                                                            <strong class="text-info">VALOR (MES)</strong>
                                                             y si lo consideras necesario, agregar
                                                             <b><strong class="text-info">OBSERVACIONES</strong></b>; de lo
                                                             contrario, puedes dejar el texto predeterminado.
@@ -150,7 +148,7 @@
                                                     <li class="list-general">
                                                         <strong>
                                                             Si tiene alguna duda con respecto a la creación de registros
-                                                            asociados a los consumos eléctricos
+                                                            asociados a la gestión de residuos
                                                             lo invitamos a contactar con: "SEDE CENTRAL - BOGOTÁ".
                                                         </strong>
                                                     </li>
@@ -175,37 +173,6 @@
                                                             <em class="text-info">
                                                                 Por defecto, solo podrás ver y editar los registros de la
                                                                 sede a la cual perteneces.
-                                                            </em>
-                                                        </b>
-                                                    </small>
-                                                    <small>
-                                                        <p class="text-danger mb-0">
-                                                            <b>{{ errors[0] }}</b>
-                                                        </p>
-                                                    </small>
-                                                </div>
-                                            </ValidationProvider>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="year" rules="required">
-                                                <div slot-scope="{ errors }">
-                                                    <div class="form-group mb-0">
-                                                        <h5><b>AÑO <span class="text-danger">*</span></b></h5>
-                                                        <div class="form-group mb-0">
-                                                            <select class="form-control" name="year" id="year"
-                                                                v-model="FormWasteManagements.year"
-                                                                :disabled="FormWasteManagements.year !== null ? true : false">
-                                                                <option v-for="(item, index) in  years" :key="index">
-                                                                    {{ item }}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <small>
-                                                        <b>
-                                                            <em class="text-info">
-                                                                Por defecto, solo podrás ver y editar los registros del año
-                                                                que pertenece el registro
                                                             </em>
                                                         </b>
                                                     </small>
@@ -249,47 +216,20 @@
                                             </ValidationProvider>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="m3_monthly" rules="required">
+                                            <ValidationProvider name="value" rules="required">
                                                 <div slot-scope="{ errors }">
                                                     <div class="form-group mb-0">
                                                         <h5>
-                                                            <b>METROS<sup>3</sup> (MES) <span
-                                                                    class="text-danger">*</span></b>
+                                                            <b>VALOR (MES) <span class="text-danger">*</span></b>
                                                         </h5>
-                                                        <input v-model="FormWasteManagements.m3_monthly" type="number"
-                                                            name="m3_monthly" min="1" id="m3_monthly" class="form-control"
+                                                        <input v-model="FormWasteManagements.value" type="number"
+                                                            name="value" min="0" id="value" class="form-control"
                                                             placeholder="Nombre del gestor(a) ambiental" required>
                                                     </div>
                                                     <small>
                                                         <b>
                                                             <em>
-                                                                Digite la cantidad de kilowatts del mes
-                                                            </em>
-                                                        </b>
-                                                    </small>
-                                                    <small>
-                                                        <p class="text-danger mb-0">
-                                                            <b>{{ errors[0] }}</b>
-                                                        </p>
-                                                    </small>
-                                                </div>
-                                            </ValidationProvider>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                            <ValidationProvider name="total_staff" rules="required">
-                                                <div slot-scope="{ errors }">
-                                                    <div class="form-group mb-0">
-                                                        <h5>
-                                                            <b>TOTAL DE PERSONAL <span class="text-danger">*</span></b>
-                                                        </h5>
-                                                        <input v-model="FormWasteManagements.total_staff" type="number"
-                                                            name="total_staff" min="0" id="total_staff" class="form-control"
-                                                            placeholder="Nombre del gestor(a) ambiental" required>
-                                                    </div>
-                                                    <small>
-                                                        <b>
-                                                            <em>
-                                                                Digite la cantidad total de personal
+                                                                Digite el valor del mes
                                                             </em>
                                                         </b>
                                                     </small>
@@ -355,8 +295,9 @@
                                             <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="vue-dropzone"
                                                 :duplicateCheck="true" ref="myDropzone" @vdropzone-success="handleSuccess">
                                                 <div class="dropzone-custom-content">
-                                                    <h3 class="dropzone-custom-title">¡Arrastra y suelta para subir
-                                                        contenido!</h3>
+                                                    <h3 class="dropzone-custom-title">
+                                                        ¡Arrastrar el contenido aquí!
+                                                    </h3>
                                                     <div class="subtitle">...o haga clic para seleccionar un archivo de su
                                                         computadora o dispositivo movil
                                                     </div>
@@ -387,9 +328,10 @@
                                                                     || itemEvidence.extension === 'jpeg' || itemEvidence.extension === 'gif'
                                                                     || itemEvidence.extension === 'bmp' || itemEvidence.extension === 'tiff'
                                                                     || itemEvidence.extension === 'tif' || itemEvidence.extension === 'webp'
-                                                                    || itemEvidence.extension === 'svg' || itemEvidence.extension === 'raw'"
+                                                                    || itemEvidence.extension === 'svg' || itemEvidence.extension === 'raw'
+                                                                    || itemEvidence.extension === 'PNG'"
                                                                     :href="'/storage/waste_management/evidences/files/' + itemEvidence.file"
-                                                                    download>
+                                                                    :download="itemEvidence.name">
                                                                     <p>
                                                                         <img :src="'/storage/waste_management/evidences/files/' + itemEvidence.file"
                                                                             width="200px" height="200px">
@@ -397,7 +339,7 @@
                                                                 </a>
                                                                 <a v-else
                                                                     :href="'/storage/waste_management/evidences/files/' + itemEvidence.file"
-                                                                    download>
+                                                                    :download="itemEvidence.name">
                                                                     <b class="text-black">{{ itemEvidence.name }}</b>
                                                                 </a>
                                                             </td>
@@ -459,40 +401,114 @@
                         permissions.add_waste_management === 'add_waste_management' ||
                         permissions.delete_waste_management === 'delete_waste_management'"
                         class="table-responsive max-h-650">
-                        <table id="sub_area-table"
-                            class="table table-sm table-bordered table-striped table-condensed bg-white">
-                            <thead class="bg-orange headerStatic">
+                        <table id="sub_area-table" class="table table-sm table-bordered table-condensed bg-white">
+                            <thead class="headerStatic">
                                 <tr class="text-center">
-                                    <th>ID</th>
-                                    <th>DELEGACIÓN - MUNICIPIO - SEDE</th>
                                     <th>TIPO DE RESIDUO</th>
-                                    <th v-if="permissions.add_waste_management === 'add_waste_management' ||
-                                        permissions.edit_waste_management === 'edit_waste_management' ||
-                                        permissions.delete_waste_management === 'delete_waste_management'">
-                                        OPCIONES
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(item, index) in  list " :key="index">
-                                    <td class="text-uppercase text-center bg-register text-white">
-                                        <b>{{ item.id }}</b>
-                                    </td>
-                                    <td class="text-uppercase text-center">
-                                        <b>
-                                            {{
-                                                item.headquarter ?
-                                                item.headquarter.delegation.name + " - " +
-                                                item.headquarter.municipality.city_name + " - " +
-                                                item.headquarter.name :
-                                                'SIN SEDE'
-                                            }}
-                                        </b>
-                                    </td>
-                                    <td class="text- text-center">
-                                        {{ item.user.FullName }}
-                                    </td>
-                                    <td>{{ item.waste_type.name }}</td>
+                                <tr v-for="(item, index_1) in list[0]" :key="index_1" class="text-center"
+                                    style="background-color: #AEAAAA; color: #000000;">
+                                    <b class="text-center">{{ index_1 }}</b>
+                                    <table class="table table-sm table-hover table-bordered table-condensed bg-white mb-0">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th class="bg-register text-white">
+                                                    ID
+                                                </th>
+                                                <th class="bg-register text-white">
+                                                    DELEGACIÓN - MUNICIPIO - SEDE
+                                                </th>
+                                                <th class="bg-register text-white">
+                                                    MES
+                                                </th>
+                                                <th class="bg-register text-white">
+                                                    VALOR
+                                                </th>
+                                                <th class="bg-register text-white">
+                                                    OBSERVACIONES
+                                                </th>
+                                                <th class="bg-register text-white">
+                                                    OPCIONES
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(value, index_2) in item" :key="index_2" class="text-center">
+                                                <td class="text-uppercase text-center">
+                                                    <b>{{ value.id }}</b>
+                                                </td>
+                                                <td class="text-uppercase text-center">
+                                                    <b>
+                                                        {{
+                                                            value.headquarter ?
+                                                            value.headquarter.delegation.name + " - " +
+                                                            value.headquarter.municipality.city_name + " - " +
+                                                            value.headquarter.name :
+                                                            'SIN SEDE'
+                                                        }}
+                                                    </b>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-info text-white w-100 full-16">
+                                                        {{ value.month }}
+                                                    </span>
+                                                </td>
+                                                <td>{{ number_format(value.value) }}</td>
+                                                <td class="text-justify" v-html="value.observations"
+                                                    style="max-width: 400px !important;"></td>
+                                                <td v-if="permissions.edit_waste_management === 'edit_waste_management' ||
+                                                    permissions.delete_waste_management === 'delete_waste_management'
+                                                    " class="text-center justify-content-center">
+                                                    <div class="btn-group" role="group">
+
+                                                        <!-- DETALLE DEL REGISTRO -->
+                                                        <router-link
+                                                            v-if="permissions.browse_waste_management === 'browse_waste_management'"
+                                                            :to="{ name: 'waste-management-detail', params: { id: value.id } }"
+                                                            class="text-info" title="Detalle">
+                                                            <i class="fas fa-eye fa-2x"></i>
+                                                        </router-link>
+                                                        <!-- END -->
+
+                                                        <!-- EVIDENCIAS DEL REGISTRO -->
+                                                        <span
+                                                            v-if="Number(value.headquarter_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                            <span
+                                                                v-if="permissions.add_waste_management === 'add_waste_management' ||
+                                                                    permissions.edit_waste_management === 'edit_waste_management'"
+                                                                @click="evidenceWasteManagements(value);"
+                                                                data-toggle="modal" title="Evidencias"
+                                                                data-target="#EvidencesWasteManagementsModal"
+                                                                data-backdrop="static" class="cursor-pointer pl-2">
+                                                                <i v-if="value.evidence_waste_management.length > 0"
+                                                                    class="fa-solid fa-file fa-2x text-success"></i>
+                                                                <i v-else class="fa-solid fa-file fa-2x"></i>
+                                                            </span>
+                                                        </span>
+                                                        <!-- END -->
+
+                                                        <!-- EDITAR DEL REGISTRO -->
+                                                        <span
+                                                            v-if="Number(value.headquarter_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                            <span
+                                                                v-if="permissions.edit_waste_management === 'edit_waste_management'"
+                                                                @click="update = true; writeData(value);"
+                                                                data-toggle="modal" title="Editar"
+                                                                data-target="#UpdateOrCreateWasteManagementsModal"
+                                                                data-backdrop="static"
+                                                                class="text-warning cursor-pointer pl-2">
+                                                                <i class="fas fa-edit fa-2x"></i>
+                                                            </span>
+                                                        </span>
+                                                        <!-- END -->
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </tr>
                             </tbody>
                         </table>
@@ -542,10 +558,8 @@ export default {
             id: null,
             FormWasteManagements: {
                 headquarter: null,
-                year: null,
                 month: null,
-                m3_monthly: null,
-                total_staff: null,
+                value: null,
                 observations: 'SIN OBSERVACIONES',
             },
             years: [],
@@ -573,7 +587,9 @@ export default {
             update: false,
             user: null,
             evidences: [],
-            water_consumption_id: null,
+            waste_management_id: null,
+            response: {}, // Aquí almacenamos la respuesta JSON
+            categoryName: '', // Agrega categoryName en tus datos
 
             // STAR VARIABLES PARA EL DROPZONE.JS
             csrfToken: null,
@@ -585,7 +601,7 @@ export default {
                 headers: { 'X-CSRF-TOKEN': this.csrfToken }, // ENVIO DE TOKEN PARA LA PETICIÓM
                 // EVENTO 'SENDING' PARA ENVIAR PARÁMETROS ADICIONALES
                 sending: function (file, xhr, formData) {
-                    formData.append("water_consumption_id", this.water_consumption_id); // AGREGAR EL VALOR DINÁMICO
+                    formData.append("waste_management_id", this.waste_management_id); // AGREGAR EL VALOR DINÁMICO
                 }.bind(this) // ASEGURARSE DE QUE 'THIS' SE REFIERA AL COMPONENTE VUE
             },
             fileAdded: false,
@@ -622,11 +638,7 @@ export default {
             let api = "/g-environmental-rnec/waste-management/getWasteManagements";
             axios.get(api, { params: { page: this.page, search: this.searchInput } })
                 .then(({ data }) => {
-                    if (data.wasteManagements.data.length > 0) {
-                        this.page += 1;
-                        this.list.push(...data.wasteManagements.data);
-                        $state.loaded();
-                    } else $state.complete();
+                    this.list.push(data.wasteManagements);
                 }).catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         queryFilter($state) {
@@ -643,23 +655,33 @@ export default {
             }).then(({ data }) => {
                 // VACIO EL ARRAY PARA MOSTRAR LOS RESULTADOS DEL FILTRO
                 for (let i = this.list.length; i > 0; i--) this.list.pop();
-
                 // PINTO NUEVAMENTE LOS DATOS SEGÚN LOS FILTROS
-                if (data.wasteManagements.data.length > 0) {
-                    this.list.push(...data.wasteManagements.data);
-                    $state.loaded();
-                } else $state.complete();
+                this.list.push(data.wasteManagements);
             }).catch(error => (error.response ? this.responseErrors(error) : ""));
+        },
+        clean() {
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            this.searchInput = null;
+            this.dateFilter = null;
+            this.stateFilter = "";
+            this.delegations_model = null;
+            this.municipalities_model = null;
+            this.headquarters_model = null;
+            this.yearFilter = currentDate.getFullYear().toString();
+            this.monthFilter = this.getSpanishMonthName(currentMonth).toString();
+            this.changeType();
+            this.setAuthenticatedUser();
+            this.setMunicipalitiesFilter();
+            this.setHeadquartersFilter();
         },
         createOrUpdate() {
             let url = this.update ? '/g-environmental-rnec/waste-management/' + this.id + '/update' : '/g-environmental-rnec/waste-management/store';
             axios.post(url, this.FormWasteManagements)
                 .then(response => {
                     this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                    if (!response.data.new) this.list.splice(this.list.findIndex(element => (element.id === response.data.wasteManagement.id)), 1);
-                    this.list.unshift(response.data.wasteManagement); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
-                    this.resetFormWasteManagements();
-                }) // ES UN MÉTODO PERSONALIZADO PARA MOSTRAR UNA ALERTA CON UN SWEETALERT
+                    this.clean()
+                })
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
         destroy(item) {
@@ -676,7 +698,7 @@ export default {
                     axios.delete('/g-environmental-rnec/waste-management/' + item.id + '/destroy')
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                            this.list.splice(this.list.findIndex(element => (element.id === response.data.wasteManagement.id)), 1);
+                            this.clean()
                         }).catch(error => (error.response) ? this.responseErrors(error) : '');
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });
@@ -685,10 +707,10 @@ export default {
             this.$emit('create-funtions');
         },
         evidenceWasteManagements(item) {
-            this.water_consumption_id = item.id;
+            this.waste_management_id = item.id;
             let api = "/g-environmental-rnec/waste-management/evidences/evidenceWasteManagement/" + item.id;
             axios.get(api)
-                .then(({ data }) => this.evidences.push(...data.evidenceWasteManagements))
+                .then(({ data }) => this.evidences.push(...data.evidenceWasteManagement))
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         storeEvidence() {
@@ -731,15 +753,18 @@ export default {
                 code: data.headquarter.id,
                 label: data.headquarter.name,
             };
-            this.FormWasteManagements.year = data.year
             this.FormWasteManagements.month = data.month
-            this.FormWasteManagements.m3_monthly = data.m3_monthly
-            this.FormWasteManagements.total_staff = data.total_staff
+            this.FormWasteManagements.value = data.value
             this.FormWasteManagements.observations = data.observations
         },
         validateFormWasteManagements() {
             let disabled = Object.values(this.FormWasteManagements).every(value => value !== null && value !== undefined && value !== "");
             return !disabled;
+        },
+        getCurrentMonth() {
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            this.monthFilter = this.getSpanishMonthName(currentMonth).toString();
         },
     },
     created() {
@@ -753,7 +778,8 @@ export default {
         this.getUsersInput();
         this.setCsrfToken();
         this.setYears();
-        this.getCurrentYearConsumption();
+        this.getCurrentYear();
+        this.getCurrentMonth();
         this.getCurrentDateWithSpanishMonth();
     }
 }

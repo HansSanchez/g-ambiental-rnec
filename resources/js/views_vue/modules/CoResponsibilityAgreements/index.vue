@@ -355,8 +355,9 @@
                                             <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="vue-dropzone"
                                                 :duplicateCheck="true" ref="myDropzone" @vdropzone-success="handleSuccess">
                                                 <div class="dropzone-custom-content">
-                                                    <h3 class="dropzone-custom-title">¡Arrastra y suelta para subir
-                                                        contenido!</h3>
+                                                    <h3 class="dropzone-custom-title">
+                                                        ¡Arrastrar el contenido aquí!
+                                                    </h3>
                                                     <div class="subtitle">...o haga clic para seleccionar un archivo de su
                                                         computadora o dispositivo movil
                                                     </div>
@@ -527,7 +528,7 @@
 
                                             <!-- EVIDENCIAS DEL REGISTRO -->
                                             <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                v-if="Number(item.headquarter_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span v-if="permissions.add_co_responsibility_agreements === 'add_co_responsibility_agreements' ||
                                                     permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'
                                                     " @click="evidenceCoResponsibilityAgreements(item);"
@@ -543,7 +544,7 @@
 
                                             <!-- EDITAR DEL REGISTRO -->
                                             <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                v-if="Number(item.headquarter_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span
                                                     v-if="permissions.edit_co_responsibility_agreements === 'edit_co_responsibility_agreements'"
                                                     @click="update = true; writeData(item); openModal();"
@@ -557,7 +558,7 @@
 
                                             <!-- ELIMINAR DEL REGISTRO -->
                                             <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                v-if="Number(item.headquarter_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span
                                                     v-if="permissions.delete_co_responsibility_agreements === 'delete_co_responsibility_agreements'"
                                                     @click="destroy(item); update = false" title="Eliminar"

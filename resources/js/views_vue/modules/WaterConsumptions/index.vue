@@ -138,7 +138,7 @@
                                                     </li>
                                                     <li class="list-general pb-3">
                                                         <strong>
-                                                            En este módulo, solo debes registrar el valor de los
+                                                            En este módulo, solo sebe registrar el valor de los
                                                             <b><strong class="text-info">METROS<sup>3</sup> (MES)</strong></b>,
                                                             <b><strong class="text-info">TOTAL DE PERSONAL</strong></b>
                                                             y si lo consideras necesario, agregar
@@ -355,8 +355,9 @@
                                             <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="vue-dropzone"
                                                 :duplicateCheck="true" ref="myDropzone" @vdropzone-success="handleSuccess">
                                                 <div class="dropzone-custom-content">
-                                                    <h3 class="dropzone-custom-title">¡Arrastra y suelta para subir
-                                                        contenido!</h3>
+                                                    <h3 class="dropzone-custom-title">
+                                                        ¡Arrastrar el contenido aquí!
+                                                    </h3>
                                                     <div class="subtitle">...o haga clic para seleccionar un archivo de su
                                                         computadora o dispositivo movil
                                                     </div>
@@ -536,7 +537,7 @@
 
                                             <!-- EVIDENCIAS DEL REGISTRO -->
                                             <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                v-if="Number(item.headquarter_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span v-if="permissions.add_water_consumptions === 'add_water_consumptions' ||
                                                     permissions.edit_water_consumptions === 'edit_water_consumptions'
                                                     " @click="evidenceWaterConsumptions(item);"
@@ -552,7 +553,7 @@
 
                                             <!-- EDITAR DEL REGISTRO -->
                                             <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                                v-if="Number(item.headquarter_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span
                                                     v-if="permissions.edit_water_consumptions === 'edit_water_consumptions'"
                                                     @click="update = true; writeData(item); openModal();"
@@ -565,15 +566,15 @@
                                             <!-- END -->
 
                                             <!-- ELIMINAR DEL REGISTRO -->
-                                            <span
-                                                v-if="Number(item.delegation_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
+                                            <!-- <span
+                                                v-if="Number(item.headquarter_id) === Number(user.delegation_id) || Number(user.role_id) === 1">
                                                 <span
                                                     v-if="permissions.delete_water_consumptions === 'delete_water_consumptions'"
                                                     @click="destroy(item); update = false" title="Eliminar"
                                                     class="text-danger cursor-pointer pl-2">
                                                     <i class="fas fa-trash fa-2x"></i>
                                                 </span>
-                                            </span>
+                                            </span> -->
                                             <!-- END -->
 
                                         </div>

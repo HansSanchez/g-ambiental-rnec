@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Audit;
 use App\Models\WasteManagement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class WasteManagementController extends Controller
 {
@@ -25,58 +27,64 @@ class WasteManagementController extends Controller
             ->get()
             ->toArray();
 
-        // PASO 2. CONSULTAR LOS REGISTROS POR TIPO DE RESIDUO
-        // $wasteManagements = [];
-        // foreach ($wasteTypes as $key => $value) {
-        //     $wasteManagements = DB::table('waste_management')
-        //         ->select('*')
-        //         ->where(function ($query) use ($request, $permissions) {
-        //             // FILTRO PARA BÚSQUEDA POR MES
-        //             if ($request->monthFilter) $query->where('waste_management.month', $request->monthFilter);
-        //             // SI EL FUNCIONARIO TIENE PERMISO DE BUSCAR POR DELEGACIÓN
-        //             if (array_key_exists('filter_headquarters_waste_management', $permissions->permissions())) {
-        //                 // PUEDE ACCEDER AL FILTRO Y ENVIAR DIFERENTES DELEGACIONES POR PARAMETRO
-        //                 if ($request->delegations_model) {
-        //                     $delegation = json_decode($request->delegations_model);
-        //                     $query->whereHas('Headquarter', function ($query2) use ($delegation) {
-        //                         $query2->where('delegation_id', $delegation->code);
-        //                     });
-        //                 }
-        //                 if ($request->municipalities_model) {
-        //                     $municipality = json_decode($request->municipalities_model);
-        //                     $query->whereHas('Headquarter', function ($query2) use ($municipality) {
-        //                         $query2->where('municipality_id', $municipality->code);
-        //                     });
-        //                 }
-        //                 if ($request->headquarters_model) {
-        //                     $headquarter = json_decode($request->headquarters_model);
-        //                     $query->where('waste_management.headquarter_id', $headquarter->code);
-        //                 } else $query->where('waste_management.headquarter_id', Auth::user()->headquarter_id);
-        //             }
-        //             // SI NO TIENE PERMISO
-        //             else {
-        //                 // PUEDE VER SOLO LOS REGISTROS DE LA DELEGACIÓN Y MUNICIPIO AL CUAL PERTENECE
-        //                 $query->where('waste_management.headquarter_id', Auth::user()->headquarter_id);
-        //             }
-        //         })
-        //         ->where('waste_type_id', $value->id)
-        //         ->get();
+        // PASO 2. DEFINICIÓN DE LOS MESES PARA FILTRO
+        switch (now()->format('m')) {
+            case '01':
+                $month = "ENERO";
+                break;
+            case '02':
+                $month = "FEBRERO";
+                break;
+            case '03':
+                $month = "MARZO";
+                break;
+            case '04':
+                $month = "ABRIL";
+                break;
+            case '05':
+                $month = "MAYO";
+                break;
+            case '06':
+                $month = "JUNIO";
+                break;
+            case '07':
+                $month = "JULIO";
+                break;
+            case '08':
+                $month = "AGOSTO";
+                break;
+            case '09':
+                $month = "SEPTIEMBRE";
+                break;
+            case '10':
+                $month = "OCTUBRE";
+                break;
+            case '11':
+                $month = "NOVIEMBRE";
+                break;
+            case '12':
+                $month = "DICIEMBRE";
+                break;
+            default:
+                # code...
+                break;
+        }
 
-        //     $wasteManagements[$value->name] = $wasteManagements;
-        // }
-
-        $wasteManagements = [];
-
+        // PASO 3. OBTENCIÓN DE LOS DATOPS POR MES SEGÚN LOS TIPOS
+        $wasteManagements = []; // CREACIÓN DEL ARRAY PARA CONSOLIDAR RESULTADOS
         foreach ($wasteTypes as $key => $value) {
-            $query = DB::table('waste_management')
-                ->select('*')
-                ->where('waste_type_id', $value->id);
 
-            if ($request->monthFilter) {
-                $query->where('month', $request->monthFilter);
-            }
+            // CONSULTA DE LOS REGISTROS MES A MES
+            $query = WasteManagement::withRelations()->where('waste_type_id', $value->id);
 
+            // FILTRO POR MES
+            if ($request->monthFilter) $query->where('month', $request->monthFilter);
+            else $query->where('month', $month);
+
+            // FILTROS POR PERMISO
             if (array_key_exists('filter_headquarters_waste_management', $permissions->permissions())) {
+
+                // FILTRO POR DELEGACIÓN
                 if ($request->delegations_model) {
                     $delegation = json_decode($request->delegations_model);
                     $query->whereHas('Headquarter', function ($query2) use ($delegation) {
@@ -84,6 +92,7 @@ class WasteManagementController extends Controller
                     });
                 }
 
+                // FILTRO POR MUNICIPIO
                 if ($request->municipalities_model) {
                     $municipality = json_decode($request->municipalities_model);
                     $query->whereHas('Headquarter', function ($query2) use ($municipality) {
@@ -91,25 +100,40 @@ class WasteManagementController extends Controller
                     });
                 }
 
+                // FILTRO POR SEDE
                 if ($request->headquarters_model) {
                     $headquarter = json_decode($request->headquarters_model);
                     $query->where('headquarter_id', $headquarter->code);
                 } else {
                     $query->where('headquarter_id', Auth::user()->headquarter_id);
                 }
-            } else {
+            }
+            // SI EL USUARIO NO TIENE EL PERMISO SOLO VE LO DE SU SEDE
+            else {
                 $query->where('headquarter_id', Auth::user()->headquarter_id);
             }
 
+            // CONSOLIDANDO EL ARRAY
             $wasteManagements[$value->name] = $query->get();
         }
-
-        dd($wasteManagements);
 
         // RESPUESTA PARA EL USUARIO
         return response()->json(['wasteManagements' => $wasteManagements]);
     }
 
+
+    public function allRelations($wasteManagement)
+    {
+        // REGISTRO DE LAS RELACIONES
+        $wasteManagement->Headquarter;
+        $wasteManagement->Headquarter->Delegation;
+        $wasteManagement->Headquarter->Municipality;
+        $wasteManagement->Headquarters;
+        $wasteManagement->EvidenceWasteManagement;
+        $wasteManagement->User; // QUIEN REPORTÓ
+        $wasteManagement->WasteType; // TIPO
+
+    }
     // FUNCIÓN PARA CREACIÓN
     public function store(Request $request)
     {
@@ -123,28 +147,25 @@ class WasteManagementController extends Controller
                 $user_id = auth()->user()->id;
 
                 // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
-                $delegation_id = auth()->user()->delegation_id;
+                $headquarter_id = auth()->user()->headquarter_id;
 
                 // GUARDADO DEL REGISTRO HECHO
                 // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
                 $wasteManagement = new WasteManagement($request->all());
-                $wasteManagement->delegation_id = $delegation_id; // DELEGACIÓN
+                $wasteManagement->headquarter_id = $headquarter_id; // DELEGACIÓN
                 $wasteManagement->municipality_id = $request->municipality['code']; // MUNICIPIO
                 $wasteManagement->environmental_manager = mb_strtoupper($request->environmental_manager); // GESTOR AMBIENTAL
                 $wasteManagement->user_id = $user_id; // USUARIO QUE GENERÓ EL REPORTE
                 $wasteManagement->save(); // ALMACENAMIENTO DE LA INFORMACIÓN
 
-                // REGISTRO DE LAS RELACIONES
-                $wasteManagement->Delegation;
-                $wasteManagement->EvidenceWasteManagement;
-                $wasteManagement->Municipality;
-                $wasteManagement->User; // QUIEN REPORTÓ
+                // RELACIONES
+                $this->allRelations($wasteManagement);
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
-                    'action' => 'CREACIÓN DE NUEVO REGISTRO - CONSUMOS HÍDRICOS ID #' . $wasteManagement->id,
+                    'action' => 'CREACIÓN DE NUEVO REGISTRO - GESTIÓN DE RESIDUOS ID #' . $wasteManagement->id,
                     'description' => $wasteManagement,
-                    'module' => 'CONSUMOS HÍDRICOS',
+                    'module' => 'GESTIÓN DE RESIDUOS',
                     'user_id' => Auth::check() ? auth()->user()->id : $user_id,
                 ]);
 
@@ -204,49 +225,46 @@ class WasteManagementController extends Controller
                 // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
                 $user_id = auth()->user()->id;
 
-                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
-                $delegation_id = $wasteManagement->delegation_id;
+                // OBTENCIÓN DE LA SEDE DEL FUNCIONARIO(A) QUE HIZO EL REGISTRO
+                $headquarter_id = $wasteManagement->headquarter_id;
+
+                // OBTENCIÓN DEL TIPO DE RESIDUO ASOCIADO A EL REGISTRO
+                $waste_type_id = $wasteManagement->waste_type_id;
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
-                    'action' => 'ACTUALIZACIÓN INICIAL DE REGISTRO - CONSUMOS HÍDRICOS ID #' . $wasteManagement->id,
+                    'action' => 'ACTUALIZACIÓN INICIAL DE REGISTRO - GESTIÓN DE RESIDUOS ID #' . $wasteManagement->id,
                     'description' => $wasteManagement,
-                    'module' => 'CONSUMOS HÍDRICOS',
+                    'module' => 'GESTIÓN DE RESIDUOS',
                     'user_id' => Auth::check() ? auth()->user()->id : $user_id,
                 ]);
 
                 // ACTUALIZACIÓN DE REGISTRO
                 $wasteManagement->update([
-                    'environmental_manager' => mb_strtoupper($request->environmental_manager), // OPERADOR AMBIENTAL
-                    'delegation_id' => $delegation_id, // DELEGACIÓN
-                    'municipality_id' => $request->municipality['code'], // MUNICIPIO,
-                    'year' => $request->year, // AÑO RELACIONADO
                     'month' => $request->month, // MES RELACIONADO
-                    'm3_monthly' => $request->m3_monthly, // METROS CÚBICOS (MES)
-                    'total_staff' => $request->total_staff, // TOTAL DE PERSONAL
+                    'value' => $request->value, // VALOR MES RELACIONADO,
                     'observations' => $request->observations, // OBSERVACIONES
+                    'headquarter_id' => $headquarter_id, // SEDE A LA CUAL PERTENECE EL USUARIO,
                     'user_id' => $user_id, // REPORTANTE
+                    'waste_type_id' => $waste_type_id, // TIPO DEL RESIDUO
                 ]);
 
-                // REGISTRO DE LAS RELACIONES
-                $wasteManagement->Delegation;
-                $wasteManagement->EvidenceWasteManagement;
-                $wasteManagement->Municipality;
-                $wasteManagement->User; // QUIEN REPORTÓ
+                // RELACIONES
+                $this->allRelations($wasteManagement);
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
-                    'action' => 'ACTUALIZACIÓN FINAL DE REGISTRO - CONSUMOS HÍDRICOS ID #' . $wasteManagement->id,
+                    'action' => 'ACTUALIZACIÓN FINAL DE REGISTRO - GESTIÓN DE RESIDUOS ID #' . $wasteManagement->id,
                     'description' => $wasteManagement,
-                    'module' => 'CONSUMOS HÍDRICOS',
+                    'module' => 'GESTIÓN DE RESIDUOS',
                     'user_id' => Auth::check() ? auth()->user()->id : $user_id,
                 ]);
 
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
-                    'timeout' => 5000,
+                    'timeout' => 10000,
                     'type' => 'success',
-                    'msg' => 'El registro se ha actualizado con éxito.',
+                    'msg' => 'El registro se ha actualizado con éxito, recuerde que debe volver a filtrar para ver los cambios aplicados.',
                     'wasteManagement' => $wasteManagement,
                     'new' => false
                 ]);
@@ -271,9 +289,9 @@ class WasteManagementController extends Controller
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
-                    'action' => 'ELIMINACIÓN DE REGISTRO - CONSUMOS HÍDRICOS ID #' . $wasteManagement->id,
+                    'action' => 'ELIMINACIÓN DE REGISTRO - GESTIÓN DE RESIDUOS ID #' . $wasteManagement->id,
                     'description' => $wasteManagement,
-                    'module' => 'CONSUMOS HÍDRICOS',
+                    'module' => 'GESTIÓN DE RESIDUOS',
                     'user_id' => Auth::check() ? auth()->user()->id : $user_id,
                 ]);
 
@@ -288,9 +306,9 @@ class WasteManagementController extends Controller
 
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
-                    'timeout' => 5000,
+                    'timeout' => 10000,
                     'type' => 'success',
-                    'msg' => 'El registro se ha actualizado con éxito.',
+                    'msg' => 'El registro se ha eliminado con éxito, recuerde que debe volver a filtrar para ver los cambios aplicados.',
                     'wasteManagement' => $wasteManagement,
                 ]);
             }
@@ -323,7 +341,7 @@ class WasteManagementController extends Controller
                         'delegations.name AS d_name',
                         'waste_management.id AS wc_id',
                         'waste_management.environmental_manager AS wc_environmental_manager',
-                        'waste_management.delegation_id AS wc_delegation_id',
+                        'waste_management.headquarter_id AS wc_headquarter_id',
                         'waste_management.municipality_id AS wc_municipality_id',
                         'waste_management.year AS wc_year',
                         'waste_management.month AS wc_month',
@@ -336,7 +354,7 @@ class WasteManagementController extends Controller
                         'municipalities.state_name AS m_state_name',
                     )
                     // RELACIÓN CON LA DELEGACIÓN
-                    ->join('delegations', 'delegations.id', '=', 'waste_management.delegation_id')
+                    ->join('delegations', 'delegations.id', '=', 'waste_management.headquarter_id')
                     // RELACIÓN CON EL MUNICIPIO
                     ->join('municipalities', 'municipalities.id', '=', 'waste_management.municipality_id')
                     ->where(function ($query) use ($request) {
@@ -371,7 +389,7 @@ class WasteManagementController extends Controller
                         // SI TIENE EL PERMISO DE VISUALIZACIÓN DEL FILTRO
                         if (array_key_exists('filter_delegations_waste_management', $permissions->permissions()))
                             // PUEDE ENVIARLA POR PARAMETRO
-                            if ($request->delegation) $query->where('waste_management.delegation_id', $request->delegation['code']);
+                            if ($request->delegation) $query->where('waste_management.headquarter_id', $request->delegation['code']);
                             // PERO SI NO LA ENVÍA ES PORQUE QUIERE UN REPORTE GENERAL
                             else $query->get();
                     })
@@ -413,8 +431,8 @@ class WasteManagementController extends Controller
                 // dd($cleanedReport);
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
-                    'action' => 'GENERACIÓN DE REPORTE MASIVO DE CONSUMOS HÍDRICOS',
-                    'module' => 'CONSUMOS HÍDRICOS',
+                    'action' => 'GENERACIÓN DE REPORTE MASIVO DE GESTIÓN DE RESIDUOS',
+                    'module' => 'GESTIÓN DE RESIDUOS',
                     'user_id' => Auth::check() ? auth()->user()->id : $user_id,
                 ]);
 

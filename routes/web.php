@@ -150,14 +150,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::delete('/{wasteManagement}/destroy', [\App\Http\Controllers\WasteManagementController::class, 'destroy']);
             Route::post('/generateReport', [\App\Http\Controllers\WasteManagementController::class, 'generateReport']);
 
-            // RUTAS PARA OBTENCIÓN DE TIPOS
-            Route::group(['prefix' => 'types'], function () {
-                Route::get('/evidenceWaterConsumption/{waterConsumption}', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'evidenceWaterConsumption']);
-            });
-
             // RUTAS PARA GESTIÓN DE EVIDENCIAS
             Route::group(['prefix' => 'evidences'], function () {
-                Route::get('/evidenceWaterConsumption/{wasteManagement}', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'evidenceWaterConsumption']);
+                Route::get('/evidenceWasteManagement/{wasteManagement}', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'evidenceWasteManagement']);
                 Route::post('/storeEvidence', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'storeEvidence']);
                 Route::delete('/{id}/destroyEvidence', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'destroyEvidence']);
             });

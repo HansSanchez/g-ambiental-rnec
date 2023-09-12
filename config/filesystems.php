@@ -98,7 +98,6 @@ return [
             'visibility' => 'public',
         ],
 
-
         'water_consumptions' => [
             'driver' => 'local',
             'root' => storage_path('app/public/reports/water_consumptions'),
@@ -110,6 +109,20 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public/water_consumptions/evidences/files'),
             'url' => env('APP_URL') . '/storage/water_consumptions/evidences/files',
+            'visibility' => 'public',
+        ],
+
+        'waste_management' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/reports/water_consumptions'),
+            'url' => env('APP_URL') . '/storage/reports/water_consumptions',
+            'visibility' => 'public',
+        ],
+
+        'evidences_waste_management' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/waste_management/evidences/files'),
+            'url' => env('APP_URL') . '/storage/waste_management/evidences/files',
             'visibility' => 'public',
         ],
 

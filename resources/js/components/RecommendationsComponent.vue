@@ -16,7 +16,7 @@
             <li class="list-general pb-3">
                 <strong>
                     Asegúrese de que las imágenes estén en formato:
-                    <b class="text-danger">.JPG, .JPEG o .PNG</b>.
+                    <b class="text-danger">.JPG, .JPEG o .PNG</b> y los documentos en: <b class="text-danger">.PDF</b>.
                 </strong>
             </li>
             <li class="list-general">
