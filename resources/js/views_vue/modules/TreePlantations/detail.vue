@@ -87,7 +87,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div v-if="TreePlantationDetailList.evidence_tree_plantations.length == 0"
+                                    <div v-if="TreePlantationDetailList.evidence_tree_plantations.length === 0"
                                         class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <h5 class="mb-0">Sin imágenes relacionadas</h5>
                                     </div>
@@ -189,7 +189,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div v-if="TreePlantationDetailList.evidence_tree_plantations.length == 0"
+                            <div v-if="TreePlantationDetailList.evidence_tree_plantations.length === 0"
                                 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <h5 class="mb-0">Sin imágenes relacionadas</h5>
                             </div>

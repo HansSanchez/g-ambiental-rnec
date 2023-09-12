@@ -288,7 +288,7 @@
                                 <div class="modal-body bv-modal">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <recommendations-component></recommendations-component>
+                                            <recommendations-component :tree_plantation="false"></recommendations-component>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>EVIDENCIAS</b></h5>
@@ -390,7 +390,7 @@
                         :url="'/g-environmental-rnec/waste-management/generateReport'"
                         :fileName="'/storage/reports/waste_management/'" :delegationsExport="delegations_export"
                         :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export"
-                        :other="false" :electrical="false" :water="false" />
+                        :other="false" :electrical="false" :water="false" :waste="true"/>
 
                     <!-- NOTE END MODEALES -->
 
@@ -641,7 +641,7 @@ export default {
                     this.list.push(data.wasteManagements);
                 }).catch(error => (error.response ? this.responseErrors(error) : ""));
         },
-        queryFilter($state) {
+        queryFilter() {
             let api = "/g-environmental-rnec/waste-management/getWasteManagements";
             axios.get(api, {
                 params: {
@@ -680,7 +680,7 @@ export default {
             axios.post(url, this.FormWasteManagements)
                 .then(response => {
                     this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                    this.clean()
+                    this.queryFilter() // SE HACE NUEVAMENTE LA CONSULTA SEGÚN LOS FILTROS QUE ESTÁN APLICADOS
                 })
                 .catch(error => (error.response) ? this.responseErrors(error) : '');
         },
@@ -698,7 +698,7 @@ export default {
                     axios.delete('/g-environmental-rnec/waste-management/' + item.id + '/destroy')
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
-                            this.clean()
+                            this.queryFilter() // SE HACE NUEVAMENTE LA CONSULTA SEGÚN LOS FILTROS QUE ESTÁN APLICADOS
                         }).catch(error => (error.response) ? this.responseErrors(error) : '');
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });
@@ -721,7 +721,7 @@ export default {
             if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceWasteManagement.id)), 1);
             this.evidences.unshift(response.evidenceWasteManagement); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
-            this.changeType();
+            this.queryFilter() // SE HACE NUEVAMENTE LA CONSULTA SEGÚN LOS FILTROS QUE ESTÁN APLICADOS
         },
         clearDropzone() {
             this.evidences = [];
@@ -742,7 +742,7 @@ export default {
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceWasteManagement.id)), 1);
-                            this.changeType();
+                            this.queryFilter() // SE HACE NUEVAMENTE LA CONSULTA SEGÚN LOS FILTROS QUE ESTÁN APLICADOS
                         }).catch(this.response);
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });

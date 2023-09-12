@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Log;
 class HeadquarterController extends Controller
 {
 
-    public function getHeadquartersFilter (Request $request) {
+    public function getHeadquartersFilter(Request $request)
+    {
         return Headquarter::select('id AS code', 'name AS label')
             ->search($request->search)
             ->where(function ($query) use ($request) {
@@ -115,11 +116,10 @@ class HeadquarterController extends Controller
                 $headquarter->User;
 
                 // PASO 3. CREACIÓN DE LOS DATOS POR DEFECTO PARA ESTA SEDE
-                $this->storeElectricalConsumption($headquarter); // CONSUMOS ELÉCTRICOS
-                sleep(5); // BREVE PAUSA
-                $this->storeWaterConsumption($headquarter); // CONSUMOS HÍDRICOS
-                sleep(5); // BREVE PAUSA
-                $this->storeWasteManagement($headquarter); // GENERACIÓN DE RESIDUOS
+                $this->storeElectricalConsumptions($headquarter); // CONSUMOS ELÉCTRICOS
+                $this->storeWaterConsumptions($headquarter); // CONSUMOS HÍDRICOS
+                $this->storeWasteTypes($headquarter); // TIPOS DE RESIDUOS POR SEDE
+                $this->storeWasteManagements($headquarter); // GENERACIÓN DE RESIDUOS
 
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
@@ -154,7 +154,7 @@ class HeadquarterController extends Controller
     }
 
     // FUNCIÓN PARA CREAR MASIVAMENTE REGISTROS POR DEFECTO PARA EL CONSUMO ELÉCTRICO
-    public function storeElectricalConsumption($headquarter)
+    public function storeElectricalConsumptions($headquarter)
     {
         // CONTROL DE ERRORES
         try {
@@ -192,13 +192,13 @@ class HeadquarterController extends Controller
             $chunks = array_chunk($insertData, $chunkSize);
             foreach ($chunks as $chunk) DB::table('electrical_consumptions')->insert($chunk);
         } catch (\Exception $exception) {
-            Log::error("(HeadquarterController - storeElectricalConsumption) ERROR => " . $exception->getMessage());
+            Log::error("(HeadquarterController - storeElectricalConsumptions) ERROR => " . $exception->getMessage());
             return response()->json(['msg' => $exception->getMessage(), 'icon' => 'error'], 500);
         }
     }
 
     // FUNCIÓN PARA CREAR MASIVAMENTE REGISTROS POR DEFECTO PARA EL CONSUMO HÍDRICO
-    public function storeWaterConsumption($headquarter)
+    public function storeWaterConsumptions($headquarter)
     {
 
         // CONTROL DE ERRORES
@@ -237,13 +237,55 @@ class HeadquarterController extends Controller
             $chunks = array_chunk($insertData, $chunkSize);
             foreach ($chunks as $chunk) DB::table('water_consumptions')->insert($chunk);
         } catch (\Exception $exception) {
-            Log::error("(HeadquarterController - storeWaterConsumption) ERROR => " . $exception->getMessage());
+            Log::error("(HeadquarterController - storeWaterConsumptions) ERROR => " . $exception->getMessage());
+            return response()->json(['msg' => $exception->getMessage(), 'icon' => 'error'], 500);
+        }
+    }
+
+    // FUNCIÓN PARA CREAR MASIVAMENTE REGISTROS POR DEFECTO PARA TIPOS DE RESIDUOS POR SEDE
+    public function storeWasteTypes($headquarter)
+    {
+        // CONTROL DE ERRORES
+        try {
+            // PASO 1. DEFINIR LA CANTIDAD DE AÑOS A LOS CUALES LE QUIERO GENERAR DATOS
+            $allYears = [];
+            for ($i = 2022; $i <= 2032; $i++) $allYears[] = $i;
+
+            // PASO 2. IDENTIFICAR TODOS LOS TIPOS
+            $allTypes = WasteType::select('id')->where('headquarter_id', $headquarter->id)->get();
+
+            // PASO 3. CREAR LOS REGISTROS DEFAULT y RECORRER TODOS LOS MESES CON LOS DIFERENTES TIPOS
+            foreach ($allYears as $year) {
+                foreach ($allTypes as $type) {
+                    $insertData[] = [
+                        'name' => $type,
+                        'danger_current' => null,
+                        'transportation_manager' => null,
+                        'external_manager' => null,
+                        'environmental_license' => null,
+                        'certificate_or_type_of_treatment' => null,
+                        'year' => $year,
+                        'headquarter_id' => $headquarter->id,
+                        'user_id' => Auth::user()->id,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                        'deleted_at' => null,
+                    ];
+                }
+            }
+
+            // PASO 4. INSERTAR LOS DATOS EN LOTES EN LA BASE DE DATOS
+            $chunkSize = 2;
+            $chunks = array_chunk($insertData, $chunkSize);
+            foreach ($chunks as $chunk) DB::table('waste_types')->insert($chunk);
+        } catch (\Exception $exception) {
+            Log::error("(HeadquarterController - storeWasteTypes) ERROR => " . $exception->getMessage());
             return response()->json(['msg' => $exception->getMessage(), 'icon' => 'error'], 500);
         }
     }
 
     // FUNCIÓN PARA CREAR MASIVAMENTE REGISTROS POR DEFECTO PARA LA GENERACIÓN DE RESIDUOS
-    public function storeWasteManagement($headquarter)
+    public function storeWasteManagements($headquarter)
     {
         // CONTROL DE ERRORES
         try {
@@ -273,7 +315,7 @@ class HeadquarterController extends Controller
                 }
             }
         } catch (\Exception $exception) {
-            Log::error("(HeadquarterController - storeWasteManagement) ERROR => " . $exception->getMessage());
+            Log::error("(HeadquarterController - storeWasteManagements) ERROR => " . $exception->getMessage());
             return response()->json(['msg' => $exception->getMessage(), 'icon' => 'error'], 500);
         }
     }

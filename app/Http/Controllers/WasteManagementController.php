@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\WasteManagementExport;
 use App\Models\Audit;
 use App\Models\WasteManagement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
 
 class WasteManagementController extends Controller
 {
@@ -28,47 +32,7 @@ class WasteManagementController extends Controller
             ->toArray();
 
         // PASO 2. DEFINICIÓN DE LOS MESES PARA FILTRO
-        switch (now()->format('m')) {
-            case '01':
-                $month = "ENERO";
-                break;
-            case '02':
-                $month = "FEBRERO";
-                break;
-            case '03':
-                $month = "MARZO";
-                break;
-            case '04':
-                $month = "ABRIL";
-                break;
-            case '05':
-                $month = "MAYO";
-                break;
-            case '06':
-                $month = "JUNIO";
-                break;
-            case '07':
-                $month = "JULIO";
-                break;
-            case '08':
-                $month = "AGOSTO";
-                break;
-            case '09':
-                $month = "SEPTIEMBRE";
-                break;
-            case '10':
-                $month = "OCTUBRE";
-                break;
-            case '11':
-                $month = "NOVIEMBRE";
-                break;
-            case '12':
-                $month = "DICIEMBRE";
-                break;
-            default:
-                # code...
-                break;
-        }
+        $month = $this->nowMonth();
 
         // PASO 3. OBTENCIÓN DE LOS DATOPS POR MES SEGÚN LOS TIPOS
         $wasteManagements = []; // CREACIÓN DEL ARRAY PARA CONSOLIDAR RESULTADOS
@@ -121,7 +85,55 @@ class WasteManagementController extends Controller
         return response()->json(['wasteManagements' => $wasteManagements]);
     }
 
+    // FUNCIÓN PARA IDENTIFICAR EL MES ACTUAL EN ESPAÑOL
+    public function nowMonth()
+    {
+        switch (now()->format('m')) {
+            case '01':
+                $month = "ENERO";
+                break;
+            case '02':
+                $month = "FEBRERO";
+                break;
+            case '03':
+                $month = "MARZO";
+                break;
+            case '04':
+                $month = "ABRIL";
+                break;
+            case '05':
+                $month = "MAYO";
+                break;
+            case '06':
+                $month = "JUNIO";
+                break;
+            case '07':
+                $month = "JULIO";
+                break;
+            case '08':
+                $month = "AGOSTO";
+                break;
+            case '09':
+                $month = "SEPTIEMBRE";
+                break;
+            case '10':
+                $month = "OCTUBRE";
+                break;
+            case '11':
+                $month = "NOVIEMBRE";
+                break;
+            case '12':
+                $month = "DICIEMBRE";
+                break;
+            default:
+                # code...
+                break;
+        }
 
+        return $month;
+    }
+
+    // FUNCIÓN PARA DEVOLUCIÓN DE TODAS LAS RELACIONES QUE AFECTAN AL MODELO
     public function allRelations($wasteManagement)
     {
         // REGISTRO DE LAS RELACIONES
@@ -134,77 +146,14 @@ class WasteManagementController extends Controller
         $wasteManagement->WasteType; // TIPO
 
     }
-    // FUNCIÓN PARA CREACIÓN
-    public function store(Request $request)
-    {
-        // CONTROL DE ERRORES
-        try {
-
-            // VALIDACIÓN DE SESEIÓN ACTIVA
-            if (Auth::check()) {
-
-                // OBTENCIÓN DEL ID CON SESIÓN ACTIVA
-                $user_id = auth()->user()->id;
-
-                // OBTENCIÓN DE LA DELEGACIÓN DEL FUNCIONARIO(A) CON SESIÓN ACTIVA
-                $headquarter_id = auth()->user()->headquarter_id;
-
-                // GUARDADO DEL REGISTRO HECHO
-                // LOS QUE NO NECESITA UN TRATAMIENTO ESPECIAL PASAN DIRECTO POR EL ALL()
-                $wasteManagement = new WasteManagement($request->all());
-                $wasteManagement->headquarter_id = $headquarter_id; // DELEGACIÓN
-                $wasteManagement->municipality_id = $request->municipality['code']; // MUNICIPIO
-                $wasteManagement->environmental_manager = mb_strtoupper($request->environmental_manager); // GESTOR AMBIENTAL
-                $wasteManagement->user_id = $user_id; // USUARIO QUE GENERÓ EL REPORTE
-                $wasteManagement->save(); // ALMACENAMIENTO DE LA INFORMACIÓN
-
-                // RELACIONES
-                $this->allRelations($wasteManagement);
-
-                // REGISTRO DE LA ACCIÓN REALIZADA
-                Audit::create([
-                    'action' => 'CREACIÓN DE NUEVO REGISTRO - GESTIÓN DE RESIDUOS ID #' . $wasteManagement->id,
-                    'description' => $wasteManagement,
-                    'module' => 'GESTIÓN DE RESIDUOS',
-                    'user_id' => Auth::check() ? auth()->user()->id : $user_id,
-                ]);
-
-                // RESPUESTA SATISFATORIA PARA EL USUARIO
-                return response()->json([
-                    'timeout' => 5000,
-                    'type' => 'success',
-                    'msg' => 'El registro se ha realizadó con éxito.',
-                    'wasteManagement' => $wasteManagement,
-                    'new' => true
-
-                ]);
-            } else {
-                // CONTROL DE CASO DE SESIÓN EXPIRADA
-                Log::error("Intento de guardado sin sesión activa - Registro de plantación de árboles");
-                return response()->json([
-                    'timeout' => 5000,
-                    'type' => 'warning',
-                    'msg' => 'La sesión se ha cerrado, por ende, no puedes hacer este registro.',
-                ]);
-            }
-        } catch (\Exception $exception) {
-            Log::error("(WasteManagementController - store) ERROR => " . $exception->getMessage());
-            return response()->json(['msg' => $exception->getMessage(), 'icon' => 'error'], 500);
-        }
-    }
 
     // FUNCIÓN PARA VISUALIZACIÓN DE DETALLE
     public function show(WasteManagement $wasteManagement)
     {
         // CONTROL DE ERRORES
         try {
-
-            // REGISTRO DE LAS RELACIONES
-            $wasteManagement->Delegation;
-            $wasteManagement->EvidenceWasteManagement;
-            $wasteManagement->Municipality;
-            $wasteManagement->User; // QUIEN REPORTÓ
-
+            // RELACIONES
+            $this->allRelations($wasteManagement);
             // RESPUESTA PARA EL USUARIO
             return response()->json(['wasteManagement' => $wasteManagement]);
         } catch (\Exception $exception) {
@@ -249,9 +198,6 @@ class WasteManagementController extends Controller
                     'waste_type_id' => $waste_type_id, // TIPO DEL RESIDUO
                 ]);
 
-                // RELACIONES
-                $this->allRelations($wasteManagement);
-
                 // REGISTRO DE LA ACCIÓN REALIZADA
                 Audit::create([
                     'action' => 'ACTUALIZACIÓN FINAL DE REGISTRO - GESTIÓN DE RESIDUOS ID #' . $wasteManagement->id,
@@ -262,11 +208,9 @@ class WasteManagementController extends Controller
 
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
-                    'timeout' => 10000,
+                    'timeout' => 5000,
                     'type' => 'success',
-                    'msg' => 'El registro se ha actualizado con éxito, recuerde que debe volver a filtrar para ver los cambios aplicados.',
-                    'wasteManagement' => $wasteManagement,
-                    'new' => false
+                    'msg' => 'El registro se ha actualizado con éxito.',
                 ]);
             }
         } catch (\Exception $exception) {
@@ -298,18 +242,11 @@ class WasteManagementController extends Controller
                 // ELIMINACIÓN DEL REGISTRO
                 $wasteManagement->delete();
 
-                // REGISTRO DE LAS RELACIONES
-                $wasteManagement->Delegation;
-                $wasteManagement->EvidenceWasteManagement;
-                $wasteManagement->Municipality;
-                $wasteManagement->User; // QUIEN REPORTÓ
-
                 // RESPUESTA SATISFATORIA PARA EL USUARIO
                 return response()->json([
                     'timeout' => 10000,
                     'type' => 'success',
                     'msg' => 'El registro se ha eliminado con éxito, recuerde que debe volver a filtrar para ver los cambios aplicados.',
-                    'wasteManagement' => $wasteManagement,
                 ]);
             }
         } catch (\Exception $exception) {
@@ -333,54 +270,69 @@ class WasteManagementController extends Controller
 
                 $permissions = new HomeController;
 
+                // PASO 1. IDENTIFICAR LOS TIPOS DE RESIDUOS (POR AÑO)
+                $wasteTypes = DB::table('waste_types')
+                    ->select(
+                        'waste_types.id',
+                        'waste_types.name',
+                        'waste_types.danger_current',
+                        'waste_types.transportation_manager',
+                        'waste_types.external_manager',
+                        'waste_types.environmental_license',
+                        'waste_types.certificate_or_type_of_treatment',
+                        'waste_types.year',
+                        'waste_types.headquarter_id',
+                    )
+                    // FILTRO DE CONSULTA POR PARAMETRO DE AÑO
+                    ->where(function ($query) use ($request) {
+                        if ($request->year) $query->where('waste_types.year', $request->year);
+                        else $query->where('waste_types.year', now()->format('Y'));
+                    })
+                    // FILTRO DE CONSULTA POR PARAMETRO DE SEDE
+                    ->where(function ($query) use ($request) {
+                        if ($request->headquarter) $query->where('waste_types.headquarter_id', $request->headquarter['code']);
+                        // PUEDE VER SOLO LOS REGISTROS DE LA SEDE A LA CUAL PERTENECE
+                        else $query->where('waste_types.headquarter_id', Auth::user()->headquarter_id);
+                    })
+                    ->get();
+
+                dd($wasteTypes);
+
                 // CONSULTA POR RANGO DE FECHAS, DÍA, SEMANA, MES O AÑO
                 $report = DB::table('waste_management')
                     // COLUMNAS DE INTERÉS PARA EL REPORTE (SEGÚN FORMATO OFICIAL)
                     ->select(
                         'delegations.id AS d_id',
                         'delegations.name AS d_name',
-                        'waste_management.id AS wc_id',
-                        'waste_management.environmental_manager AS wc_environmental_manager',
-                        'waste_management.headquarter_id AS wc_headquarter_id',
-                        'waste_management.municipality_id AS wc_municipality_id',
-                        'waste_management.year AS wc_year',
-                        'waste_management.month AS wc_month',
-                        'waste_management.m3_monthly AS wc_m3_monthly',
-                        'waste_management.total_staff AS wc_total_staff',
-                        'waste_management.observations AS wc_observations',
-                        'waste_management.created_at AS wc_created_at',
+                        'headquarters.id AS h_id',
+                        'headquarters.name AS h_name',
+                        'headquarters.delegation_id AS h_delegation_id',
+                        'headquarters.municipality_id AS h_municipality_id',
                         'municipalities.id AS m_id',
                         'municipalities.city_name AS m_city_name',
-                        'municipalities.state_name AS m_state_name',
+                        'waste_management.id AS wc_id',
+                        'waste_management.month AS wm_month',
+                        'waste_management.value AS wm_value',
+                        'waste_management.observations AS wm_observations',
+                        'waste_management.headquarter_id AS wm_headquarter_id',
+                        'waste_management.user_id AS wm_user_id',
+                        'waste_management.waste_type_id AS wm_waste_type_id',
+                        'users.id AS u_id',
+                        'users.personal_id AS u_personal_id',
+                        'users.first_name AS u_first_name',
+                        'users.second_name AS u_second_name',
+                        'users.first_last_name AS u_first_last_name',
+                        'users.second_last_name AS u_second_last_name',
+                        'users.position AS u_position',
+                        'users.email AS u_email',
+                        'users.headquarter_id AS u_headquarter_id',
                     )
-                    // RELACIÓN CON LA DELEGACIÓN
-                    ->join('delegations', 'delegations.id', '=', 'waste_management.headquarter_id')
-                    // RELACIÓN CON EL MUNICIPIO
-                    ->join('municipalities', 'municipalities.id', '=', 'waste_management.municipality_id')
-                    ->where(function ($query) use ($request) {
-                        if ($request->year) {
-                            if (intval($request->year) > 2022) {
-                                $query->where('year', $request->year)
-                                    ->orWhere(function ($query) use ($request) {
-                                        $previousYear = intval($request->year) - 1;
-                                        $query->where('year', strval($previousYear))
-                                            ->where('month', 'DICIEMBRE');
-                                    })
-                                    ->orWhere(function ($query) use ($request) {
-                                        $nextYear = intval($request->year) + 1;
-                                        $query->where('year', strval($nextYear))
-                                            ->whereIn('month', ['ENERO', 'FEBRERO']);
-                                    });
-                            } else {
-                                $query->where('year', $request->year)
-                                    ->orWhere(function ($query) use ($request) {
-                                        $nextYear = intval($request->year) + 1;
-                                        $query->where('year', strval($nextYear))
-                                            ->whereIn('month', ['ENERO', 'FEBRERO']);
-                                    });
-                            }
-                        }
-                    })
+                    // RELACIÓN CON LA SEDE EN DONDE SE HIZO EL REGISTRO (SEDE, MUNICIPIO Y DELEGACIÓN)
+                    ->join('headquarters', 'headquarters.id', '=', 'waste_management.headquarter_id')
+                    ->join('municipalities', 'municipalities.id', '=', 'headquarters.municipality_id')
+                    ->join('delegations', 'delegations.id', '=', 'headquarters.delegation_id')
+                    // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
+                    ->join('users', 'users.id', '=', 'waste_management.user_id')
                     ->where(function ($query) use ($request) {
                         if ($request->month) $query->where('month', $request->month);
                     })
@@ -440,7 +392,7 @@ class WasteManagementController extends Controller
                 if (count($cleanedReport) == 0) return response()->json(['file' => false, 'msg' => 'Para este rango de fechas no existen registros, verifique por favor.', 'fileName' => null, 'icon' => 'warning']);
                 // SI HAY REGISTROS
                 else {
-                    $fileName = 'REPORTE-DE-CONSUMOS-HÍDRICOS-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
+                    $fileName = 'REPORTE-DE-GENERACIÓN-DE-RESIDUOS-' . str_replace([':', ' '], '-', now()->toDateTimeString()) . '.xlsx';
                     Excel::store(new WasteManagementExport($cleanedReport, intval($request->year), $request->delegation['label']), $fileName, 'waste_management');
                     sleep(5);
                     return response()->json(['file' => true, 'msg' => 'Reporte generado con éxito', 'fileName' => $fileName, 'icon' => 'success']);

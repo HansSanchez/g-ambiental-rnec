@@ -2,8 +2,8 @@
     <div v-if="permissions.length === 0">
         <loader-component></loader-component>
     </div>
-    <div v-else-if="permissions.browse_water_consumptions === 'browse_water_consumptions' ||
-        permissions.read_water_consumptions === 'read_water_consumptions'" class="card text-uppercase">
+    <div v-else-if="permissions.browse_waste_management === 'browse_waste_management' ||
+        permissions.read_waste_management === 'read_waste_management'" class="card text-uppercase">
         <div class="card-header text-uppercase">
             <div class="row">
                 <div class="col-md-12">
@@ -11,11 +11,25 @@
                         <ol class="breadcrumb m-0 p-0" style="border: none !important;">
                             <li class="breadcrumb-item active">
                                 <router-link
-                                    :to="{ name: 'water-consumptions-detail', params: { id: WaterConsumptionsDetailList.id } }"
+                                    :to="{ name: 'waste-management-detail', params: { id: WasteManagementDetailList.id } }"
                                     @click="show = !show">
                                     <b>
-                                        Detalle del consumo hídrico para
-                                        {{ WaterConsumptionsDetailList.delegation.name }}
+                                        Detalle de la generación de residuos para:
+                                        {{
+                                            WasteManagementDetailList.headquarter ?
+                                            WasteManagementDetailList.headquarter.delegation.name + " - " +
+                                            WasteManagementDetailList.headquarter.municipality.city_name + " - " +
+                                            WasteManagementDetailList.headquarter.name :
+                                            'SIN SEDE'
+                                        }}
+                                        en
+                                        {{ WasteManagementDetailList.month }}
+                                        del
+                                        {{
+                                            WasteManagementDetailList.waste_type ?
+                                            WasteManagementDetailList.waste_type.year :
+                                            'AÑO NO DISPONIBLE'
+                                        }}
                                     </b>
                                 </router-link>
                             </li>
@@ -25,6 +39,70 @@
             </div>
         </div>
         <div class="card-body" style="background: #d7d7d7 !important;">
+
+            <!-- START EVIDENCIAS -->
+            <div class="modal fade-scale" id="EvidencesWasteManagementModal" tabindex="-1" role="dialog"
+                aria-labelledby="EvidencesWasteManagementModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: #88b76e;">
+                            <h5 class="modal-title text-uppercase text-white">
+                                <b>EVIDENCIA(S)</b>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">
+                                    <v-icon style="color: #fff;">mdi-close</v-icon>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="modal-body bv-modal">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div v-if="hasImagesToShow" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                                        <div id="carouselExampleControlsModal" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item" v-for="(itemImage, indexImage) in imagesToShow"
+                                                    :key="indexImage" :class="{ active: indexImage === 0 }">
+                                                    <img class="d-block w-100"
+                                                        :src="'/storage/waste_management/evidences/files/' + itemImage.file">
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControlsModal"
+                                                role="button" data-slide="prev">
+                                                <span v-if="imagesToShow.length > 1" class="carousel-control-prev-icon"
+                                                    aria-hidden="true">
+                                                    <i style="padding-top: 12px !important;"
+                                                        class="fas fa-angle-double-left fa-2x text-white"></i>
+                                                </span>
+                                                <span class="sr-only">Anterior</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControlsModal"
+                                                role="button" data-slide="next">
+                                                <span v-if="imagesToShow.length > 1" class="carousel-control-next-icon"
+                                                    aria-hidden="true">
+                                                    <i style="padding-top: 12px !important;"
+                                                        class="fas fa-angle-double-right fa-2x text-white"></i>
+                                                </span>
+                                                <span class="sr-only">Siguiente</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div v-if="imagesToShow.length === 0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <h5 class="mb-0">Sin imágenes relacionadas</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <v-btn color="#e55353" small class="btn btn-danger text-white" data-dismiss="modal">
+                                <b>CANCELAR</b>
+                            </v-btn>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END EVIDENCIAS -->
+
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="table-responsive">
@@ -32,56 +110,80 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th>MUNICIPIO RELACIONADO</th>
-                                    <th>GESTOR(A) AMBIENTAL</th>
-                                    <th>AÑO</th>
-                                    <th>MES</th>
-                                    <th>METROS CÚBICOS</th>
-                                    <th>TOTAL DE PERSONAL</th>
+                                    <th>TIPO DE RESIDUO</th>
+                                    <th>CORRIENTE(S) DE PELIGROSIDAD</th>
+                                    <th>VALOR (KG)</th>
+                                    <th>ENCARGADO TRANSPORTE</th>
+                                    <th>GESTOR EXTERNO</th>
+                                    <th>LICENCIA AMBIENTAL</th>
+                                    <th>CERTIFICADO / TIPO DE TRATAMIENTO</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="text-uppercase text-center">
-                                        {{ WaterConsumptionsDetailList.municipality.FullCityName }}
+                                        <span class="badge badge-info text-white w-100 full-16">
+                                            {{ WasteManagementDetailList.waste_type.name ?
+                                                WasteManagementDetailList.waste_type.name :
+                                                'SIN TIPO DE RESIDUO'
+                                            }}
+                                        </span>
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WaterConsumptionsDetailList.environmental_manager }}
+                                        {{ WasteManagementDetailList.waste_type.danger_current ?
+                                            WasteManagementDetailList.waste_type.danger_current :
+                                            'SIN CORRIENTE(S) DE PELIGROSIDAD'
+                                        }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WaterConsumptionsDetailList.year }}
+                                        <b>{{ number_format(WasteManagementDetailList.value) }}</b>
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WaterConsumptionsDetailList.month }}
+                                        {{ WasteManagementDetailList.waste_type.transportation_manager ?
+                                            WasteManagementDetailList.waste_type.transportation_manager :
+                                            'SIN ENCARGADO TRANSPORTE'
+                                        }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ number_format(WaterConsumptionsDetailList.m3_monthly) }}
+                                        {{ WasteManagementDetailList.waste_type.external_manager ?
+                                            WasteManagementDetailList.waste_type.external_manager :
+                                            'SIN GESTOR EXTERNO'
+                                        }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ number_format(WaterConsumptionsDetailList.total_staff) }}
+                                        {{ WasteManagementDetailList.waste_type.environmental_license ?
+                                            WasteManagementDetailList.waste_type.environmental_license :
+                                            'SIN LICENCIA AMBIENTAL'
+                                        }}
+                                    </td>
+                                    <td class="text-uppercase text-center">
+                                        {{ WasteManagementDetailList.waste_type.certificate_or_type_of_treatment ?
+                                            WasteManagementDetailList.waste_type.certificate_or_type_of_treatment :
+                                            'SIN CERTIFICADO / TIPO DE TRATAMIENTO'
+                                        }}
                                     </td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr class="bg-orange headerStatic text-center">
-                                    <td colspan="6"><b>OBSERVACIONES</b></td>
+                                    <td colspan="7"><b>OBSERVACIONES</b></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="6" v-html="WaterConsumptionsDetailList.observations"></td>
+                                    <td colspan="7" v-html="WasteManagementDetailList.observations"></td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                 </div>
-                <div v-if="WaterConsumptionsDetailList.evidence_water_consumption.length > 0"
+                <div v-if="WasteManagementDetailList.evidence_waste_management.length > 0"
                     class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                     <h5 class="mb-0">
                         <b>DOCUMENTOS ADJUNTOS</b>
                     </h5>
                 </div>
-                <template v-for="(item, index) in WaterConsumptionsDetailList.evidence_water_consumption">
+                <template v-for="(item, index) in WasteManagementDetailList.evidence_waste_management">
                     <div :key="index" v-if="item.extension === 'pdf'" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <embed :src="'/storage/water_consumptions/evidences/files/' + item.file" type="application/pdf"
+                        <embed :src="'/storage/waste_management/evidences/files/' + item.file" type="application/pdf"
                             width="100%" height="600px" />
                     </div>
                 </template>
@@ -92,9 +194,9 @@
                                 <div class="carousel-item" v-for="(itemImage, indexImage) in imagesToShow" :key="indexImage"
                                     :class="{ active: indexImage === 0 }">
                                     <img class="d-block w-100" data-toggle="modal"
-                                        data-target="#EvidencesTreePlantationModal"
+                                        data-target="#EvidencesWasteManagementModal"
                                         style="height: 500px; max-height: 500px; cursor: pointer;"
-                                        :src="'/storage/water_consumptions/evidences/files/' + itemImage.file">
+                                        :src="'/storage/waste_management/evidences/files/' + itemImage.file">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
@@ -126,18 +228,18 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                             <h5><b>REPORTANTE</b></h5>
-                            {{ WaterConsumptionsDetailList.user.FullName }}
+                            {{ WasteManagementDetailList.user.FullName }}
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                             <h5><b>REPORTADO</b></h5>
-                            {{ WaterConsumptionsDetailList.user.CreatedLabel }}
+                            {{ WasteManagementDetailList.user.CreatedLabel }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <v-btn color="#e55353" :to="{ name: 'water-consumptions-index' }" small class="btn btn-danger text-white"
+            <v-btn color="#e55353" :to="{ name: 'waste-management-index' }" small class="btn btn-danger text-white"
                 data-dismiss="modal">
                 <b>VOLVER</b>
             </v-btn>
@@ -151,11 +253,11 @@
 <script>
 
 export default {
-    name: "WaterConsumptionsDetail",
+    name: "WasteManagementDetail",
     data() {
         return {
             id: this.$route.params.id,
-            WaterConsumptionsDetailList: {},
+            WasteManagementDetailList: {},
             permissions: [],
         }
     },
@@ -163,19 +265,22 @@ export default {
     },
     computed: {
         hasImagesToShow() {
-            return this.imagesToShow.length > 0;
+            if (this.WasteManagementDetailList.evidence_waste_management)
+                return this.imagesToShow.length > 0;
         },
         imagesToShow() {
-            return this.WaterConsumptionsDetailList.evidence_water_consumption.filter(
-                item => item.extension !== 'pdf'
-            );
+            if (this.WasteManagementDetailList.evidence_waste_management)
+                return this.WasteManagementDetailList.evidence_waste_management.filter(
+                    item => item.extension !== 'pdf'
+                );
+            else return null;
         },
     },
     methods: {
-        waterConsumptionDetail() {
-            let api = "/g-environmental-rnec/water-consumptions/show/" + this.id;
+        wasteManagementDetail() {
+            let api = "/g-environmental-rnec/waste-management/show/" + this.id;
             axios.get(api)
-                .then(({ data }) => this.WaterConsumptionsDetailList = data.waterConsumption)
+                .then(({ data }) => this.WasteManagementDetailList = data.wasteManagement)
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         alertLoading(time, msg, type) {
@@ -244,7 +349,7 @@ export default {
         },
     },
     created() {
-        this.waterConsumptionDetail();
+        this.wasteManagementDetail();
         this.setPermissions();
     }
 }

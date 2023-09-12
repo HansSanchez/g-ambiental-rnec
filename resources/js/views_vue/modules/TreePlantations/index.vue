@@ -284,7 +284,7 @@
                                 <div class="modal-body bv-modal">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <recommendations-component></recommendations-component>
+                                            <recommendations-component :tree_plantation="true"></recommendations-component>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>EVIDENCIAS</b></h5>
@@ -373,7 +373,7 @@
                         :title_2="'Fechas de plantación'" :url="'/g-environmental-rnec/tree-plantations/generateReport'"
                         :fileName="'/storage/reports/tree_plantations/'" :delegationsExport="delegations_export"
                         :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export"
-                        :other="false" />
+                        :other="false" :electrical="false" :water="false" :waste="false"/>
                     <!-- END GENERATE REPORTS -->
 
                     <!-- NOTE END MODEALES -->
@@ -716,7 +716,7 @@ export default {
             if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceTreePlantation.id)), 1);
             this.evidences.unshift(response.evidenceTreePlantation); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
-            this.changeType();
+            this.queryFilter();
         },
         destroyImage(itemImage) {
             this.$swal({
@@ -733,7 +733,7 @@ export default {
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceTreePlantation.id)), 1);
-                            this.changeType();
+                            this.queryFilter();
                         }).catch(this.response);
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });

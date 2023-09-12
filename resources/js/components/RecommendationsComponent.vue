@@ -16,7 +16,10 @@
             <li class="list-general pb-3">
                 <strong>
                     Asegúrese de que las imágenes estén en formato:
-                    <b class="text-danger">.JPG, .JPEG o .PNG</b> y los documentos en: <b class="text-danger">.PDF</b>.
+                    <b class="text-danger">.JPG, .JPEG o .PNG</b>
+                    <span v-if="!tree_plantation">
+                        y los documentos en: <b class="text-danger">.PDF</b>
+                    </span>.
                 </strong>
             </li>
             <li class="list-general">
@@ -30,7 +33,15 @@
 
 <script>
 export default {
-    name: "RecommendationsComponent"
+    name: "RecommendationsComponent",
+    props: {
+        tree_plantation: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+
+    },
 }
 </script>
 

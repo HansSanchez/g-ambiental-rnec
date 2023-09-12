@@ -32,6 +32,70 @@
             </div>
         </div>
         <div class="card-body" style="background: #d7d7d7 !important;">
+
+            <!-- START EVIDENCIAS -->
+            <div class="modal fade-scale" id="EvidencesElectricalConsumptionsModal" tabindex="-1" role="dialog"
+                aria-labelledby="EvidencesElectricalConsumptionsModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: #88b76e;">
+                            <h5 class="modal-title text-uppercase text-white">
+                                <b>EVIDENCIA(S)</b>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">
+                                    <v-icon style="color: #fff;">mdi-close</v-icon>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="modal-body bv-modal">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div v-if="hasImagesToShow" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+                                        <div id="carouselExampleControlsModal" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item" v-for="(itemImage, indexImage) in imagesToShow"
+                                                    :key="indexImage" :class="{ active: indexImage === 0 }">
+                                                    <img class="d-block w-100"
+                                                        :src="'/storage/electrical_consumptions/evidences/files/' + itemImage.file">
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControlsModal"
+                                                role="button" data-slide="prev">
+                                                <span v-if="imagesToShow.length > 1" class="carousel-control-prev-icon"
+                                                    aria-hidden="true">
+                                                    <i style="padding-top: 12px !important;"
+                                                        class="fas fa-angle-double-left fa-2x text-white"></i>
+                                                </span>
+                                                <span class="sr-only">Anterior</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControlsModal"
+                                                role="button" data-slide="next">
+                                                <span v-if="imagesToShow.length > 1" class="carousel-control-next-icon"
+                                                    aria-hidden="true">
+                                                    <i style="padding-top: 12px !important;"
+                                                        class="fas fa-angle-double-right fa-2x text-white"></i>
+                                                </span>
+                                                <span class="sr-only">Siguiente</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div v-if="imagesToShow.length === 0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <h5 class="mb-0">Sin imágenes relacionadas</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <v-btn color="#e55353" small class="btn btn-danger text-white" data-dismiss="modal">
+                                <b>CANCELAR</b>
+                            </v-btn>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END EVIDENCIAS -->
+
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="table-responsive">
@@ -105,7 +169,7 @@
                                 <div class="carousel-item" v-for="(itemImage, indexImage) in imagesToShow" :key="indexImage"
                                     :class="{ active: indexImage === 0 }">
                                     <img class="d-block w-100" data-toggle="modal"
-                                        data-target="#EvidencesTreePlantationModal"
+                                        data-target="#EvidencesElectricalConsumptionsModal"
                                         style="height: 500px; max-height: 500px; cursor: pointer;"
                                         :src="'/storage/electrical_consumptions/evidences/files/' + itemImage.file">
                                 </div>

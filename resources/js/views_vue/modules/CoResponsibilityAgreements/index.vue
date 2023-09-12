@@ -435,7 +435,7 @@
                         :title_2="'Fechas de firmado'" :url="'/g-environmental-rnec/co-responsibility-agreements/generateReport'"
                         :fileName="'/storage/reports/co_responsibility_agreements/'" :delegationsExport="delegations_export"
                         :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export"
-                        :other="false"/>
+                        :other="false" :electrical="false" :water="false" :waste="false"/>
                     <!-- END GENERATE REPORTS -->
 
                     <!-- NOTE END MODEALES -->
@@ -776,7 +776,7 @@ export default {
             if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceCoResponsibilityAgreement.id)), 1);
             this.evidences.unshift(response.evidenceCoResponsibilityAgreement); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
-            this.changeType();
+            this.queryFilter();
         },
         destroyDocument(itemDocument) {
             this.$swal({
@@ -793,7 +793,7 @@ export default {
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceCoResponsibilityAgreement.id)), 1);
-                            this.changeType();
+                            this.queryFilter();
                         }).catch(error => (error.response ? this.responseErrors(error) : ""));
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });

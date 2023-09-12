@@ -37,7 +37,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
                             <h5 class="mb-0"><b>{{ title_2 }}</b></h5>
                         </div>
-                        <div v-if="!other" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                        <div v-if="!other && !waste" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                             <div class="form-group mb-0">
                                 <small class="text-danger"><b>(Desde) *</b></small>
                                 <datepicker :language="es" v-model="FormReport.fromDay" :disabledDates="fromDay"
@@ -46,7 +46,7 @@
                                 </datepicker>
                             </div>
                         </div>
-                        <div v-if="!other" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                        <div v-if="!other && !waste" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                             <div class="form-group mb-0">
                                 <small class="text-danger"><b>(Hasta) *</b></small>
                                 <datepicker :language="es" v-model="FormReport.untilDay" :disabledDates="untilDay"
@@ -55,7 +55,7 @@
                                 </datepicker>
                             </div>
                         </div>
-                        <div v-if="other" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                        <div v-if="other && !waste" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                             <div class="form-group mb-0">
                                 <small><b class="text-danger">(Años) *</b></small>
                                 <select class="form-control" name="year" id="year" v-model="FormReport.year">
@@ -66,7 +66,18 @@
                                 </select>
                             </div>
                         </div>
-                        <div v-if="other" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
+                        <div v-if="!other && waste" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-0">
+                            <div class="form-group mb-0">
+                                <small><b class="text-danger">(Años) *</b></small>
+                                <select class="form-control" name="year" id="year" v-model="FormReport.year">
+                                    <option value="" selected disabled>AÑOS...</option>
+                                    <option v-for="(item, index) in  years" :key="index">
+                                        {{ item }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div v-if="other && !waste" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pb-0">
                             <div class="form-group mb-0">
                                 <small><b>(Meses)</b></small>
                                 <select class="form-control" name="month" id="month" v-model="FormReport.month">
@@ -158,6 +169,11 @@ export default {
             default: ""
         },
         other: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        waste: {
             type: Boolean,
             required: true,
             default: false
@@ -272,8 +288,9 @@ export default {
         },
         getCurrentYear() {
             const currentDate = new Date();
-            if (!this.FormReport.year)
-                this.FormReport.year = currentDate.getFullYear().toString();
+            if (this.other) // SI ES OTRO MÓDULO (CONSUMOS)
+                if (!this.FormReport.year)
+                    this.FormReport.year = currentDate.getFullYear().toString();
             this.yearFilter = currentDate.getFullYear().toString();
             return currentDate.getFullYear();
         },
@@ -290,6 +307,8 @@ export default {
                 let disabled = null;
                 if (this.other) // SI ES OTRO MÓDULO (CONSUMOS)
                     disabled = Object.keys(this.FormReport).every(key => key === 'fromDay' || key === 'untilDay' || key === 'month' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                else if (this.waste) // SI ES GENERACIÓN DE RESIDUOS
+                    disabled = Object.keys(this.FormReport).every(key => key === 'fromDay' || key === 'untilDay' || key === 'month' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 else disabled = Object.keys(this.FormReport).every(key => key === 'month' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
@@ -298,9 +317,12 @@ export default {
             return moment(date).format("DD/MMMM/YYYY");
         },
         cleanFormReport() {
-            this.FormReport.fromDay = null;
-            this.FormReport.untilDay = null;
-            this.defaultFuntions();
+            if (!this.other) // SI ES OTRO MÓDULO (CONSUMOS)
+            {
+                this.FormReport.fromDay = null;
+                this.FormReport.untilDay = null;
+                this.defaultFuntions();
+            }
         },
         defaultFuntions() {
             this.setAuthenticatedUserExport();

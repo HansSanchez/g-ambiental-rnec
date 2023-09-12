@@ -22,6 +22,7 @@ class CreateWasteTypesTable extends Migration
             $table->longText('environmental_license')->nullable(); // LICENCIA AMBIENTAL
             $table->longText('certificate_or_type_of_treatment')->nullable(); // CERTIFICADO / TIPO DE TRATAMIENT
             $table->string('year'); // AÑO
+            $table->foreignId('headquarter_id')->references('id')->on('headquarters'); // RELACIÓN CON LA SEDE
             $table->foreignId('user_id')->references('id')->on('users'); // RELACIÓN CON EL USUARIO QUE CREA EL REGISTRO O LO REPORTA
             $table->timestamps(); // CREACIÓN Y ACTUALIZACIÓN
             $table->softDeletes(); // ELIMINACIÓN

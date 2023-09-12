@@ -52,6 +52,7 @@ class WasteTypesTableSeeder extends Seeder
                         'environmental_license' => null,
                         'certificate_or_type_of_treatment' => null,
                         'year' => $year,
+                        'headquarter_id' => 1,
                         'user_id' => 1,
                         'created_at' => now(),
                         'updated_at' => now(),

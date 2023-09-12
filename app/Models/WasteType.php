@@ -19,6 +19,7 @@ class WasteType extends Model
         'environmental_license',
         'certificate_or_type_of_treatment',
         'year',
+        'headquarter_id',
         'user_id',
     ];
 
@@ -43,6 +44,17 @@ class WasteType extends Model
             ->orWhere('certificate_or_type_of_treatment', 'LIKE', '%' . $search_term . '%')
             ->orWhere('year', 'LIKE', '%' . $search_term . '%');
     }
+
+    public function Headquarter(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Headquarter::class);
+    }
+
+    public function User(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
     public function getCreatedLabelAttribute()
     {

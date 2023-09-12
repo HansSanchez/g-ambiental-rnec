@@ -348,7 +348,7 @@
                                 <div class="modal-body bv-modal">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <recommendations-component></recommendations-component>
+                                            <recommendations-component :tree_plantation="false"></recommendations-component>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5><b>EVIDENCIAS</b></h5>
@@ -449,7 +449,7 @@
                         :url="'/g-environmental-rnec/electrical-consumptions/generateReport'"
                         :fileName="'/storage/reports/electrical_consumptions/'" :delegationsExport="delegations_export"
                         :municipalitiesExport="municipalities_export" :headquartersExport="headquarters_export"
-                        :other="true" :electrical="true" :water="false" />
+                        :other="true" :electrical="true" :water="false" :waste="false"/>
 
                     <!-- NOTE END MODEALES -->
 
@@ -785,7 +785,7 @@ export default {
             if (!response.new) this.evidences.splice(this.evidences.findIndex(element => (element.id === response.evidenceElectricalConsumption.id)), 1);
             this.evidences.unshift(response.evidenceElectricalConsumption); // UNSHIFT SIRVE PARA AGREGAR EL ELEMENTO AL ARRAY AL INICIO, PUSH LO AGREGA AL FINAL
             this.$refs.myDropzone.removeAllFiles(); // LIMPIA EL CONTENIDO DEL DROPZONE
-            this.changeType();
+            this.queryFilter();
         },
         clearDropzone() {
             this.evidences = [];
@@ -806,7 +806,7 @@ export default {
                         .then(response => {
                             this.alertLoading(response.data.timeout, response.data.msg, response.data.type)
                             this.evidences.splice(this.evidences.findIndex(element => (element.id === response.data.evidenceElectricalConsumption.id)), 1);
-                            this.changeType();
+                            this.queryFilter();
                         }).catch(this.response);
                 } else this.alertLoading(5000, "Se canceló con éxito", "info")
             });
