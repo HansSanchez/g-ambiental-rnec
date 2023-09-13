@@ -151,6 +151,11 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/generateReport', [\App\Http\Controllers\WasteManagementController::class, 'generateReport']);
 
             // RUTAS PARA GESTIÓN DE EVIDENCIAS
+            Route::group(['prefix' => 'types'], function () {
+                Route::get('/show/{year}/{month}/{headquarter_id}', [\App\Http\Controllers\WasteTypeController::class, 'show']);
+            });
+
+            // RUTAS PARA GESTIÓN DE EVIDENCIAS
             Route::group(['prefix' => 'evidences'], function () {
                 Route::get('/evidenceWasteManagement/{wasteManagement}', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'evidenceWasteManagement']);
                 Route::post('/storeEvidence', [\App\Http\Controllers\EvidenceWasteManagementController::class, 'storeEvidence']);

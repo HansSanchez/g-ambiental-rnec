@@ -110,68 +110,67 @@
                             class="table table-sm table-bordered table-striped table-condensed bg-white">
                             <thead class="bg-orange headerStatic">
                                 <tr class="text-center">
-                                    <th>TIPO DE RESIDUO</th>
+                                    <th width="100px">TIPO DE RESIDUO</th>
                                     <th>CORRIENTE(S) DE PELIGROSIDAD</th>
                                     <th>VALOR (KG)</th>
+                                    <th>MES</th>
                                     <th>ENCARGADO TRANSPORTE</th>
                                     <th>GESTOR EXTERNO</th>
                                     <th>LICENCIA AMBIENTAL</th>
                                     <th>CERTIFICADO / TIPO DE TRATAMIENTO</th>
+                                    <th>OBSERVACIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-uppercase text-center">
-                                        <span class="badge badge-info text-white w-100 full-16">
-                                            {{ WasteManagementDetailList.waste_type.name ?
-                                                WasteManagementDetailList.waste_type.name :
-                                                'SIN TIPO DE RESIDUO'
-                                            }}
-                                        </span>
+                                <tr v-for="(item, index) in wasteManagementDetailTypesList" :key="index"
+                                    class="text-center">
+                                    <td class="text-uppercase text-center" width="100px">
+                                        {{ item.name ? item.name : 'SIN TIPO DE RESIDUO' }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WasteManagementDetailList.waste_type.danger_current ?
-                                            WasteManagementDetailList.waste_type.danger_current :
+                                        {{
+                                            item.danger_current ?
+                                            item.danger_current :
                                             'SIN CORRIENTE(S) DE PELIGROSIDAD'
                                         }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        <b>{{ number_format(WasteManagementDetailList.value) }}</b>
+                                        <b>{{ number_format(item.value) }}</b>
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WasteManagementDetailList.waste_type.transportation_manager ?
-                                            WasteManagementDetailList.waste_type.transportation_manager :
-                                            'SIN ENCARGADO TRANSPORTE'
+                                        <b>{{ item.month }}</b>
+                                    </td>
+                                    <td class="text-uppercase text-center">
+                                        {{
+                                            item.transportation_manager ?
+                                            item.transportation_manager :
+                                            'SIN ENCARGADOTRANSPORTE'
                                         }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WasteManagementDetailList.waste_type.external_manager ?
-                                            WasteManagementDetailList.waste_type.external_manager :
+                                        {{
+                                            item.external_manager ?
+                                            item.external_manager :
                                             'SIN GESTOR EXTERNO'
                                         }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WasteManagementDetailList.waste_type.environmental_license ?
-                                            WasteManagementDetailList.waste_type.environmental_license :
+                                        {{
+                                            item.environmental_license ?
+                                            item.environmental_license :
                                             'SIN LICENCIA AMBIENTAL'
                                         }}
                                     </td>
                                     <td class="text-uppercase text-center">
-                                        {{ WasteManagementDetailList.waste_type.certificate_or_type_of_treatment ?
-                                            WasteManagementDetailList.waste_type.certificate_or_type_of_treatment :
+                                        {{
+                                            item.certificate_or_type_of_treatment ?
+                                            item.certificate_or_type_of_treatment :
                                             'SIN CERTIFICADO / TIPO DE TRATAMIENTO'
                                         }}
                                     </td>
+                                    <td class="text-uppercase text-center" v-html="item.observations"></td>
                                 </tr>
                             </tbody>
-                            <tfoot>
-                                <tr class="bg-orange headerStatic text-center">
-                                    <td colspan="7"><b>OBSERVACIONES</b></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="7" v-html="WasteManagementDetailList.observations"></td>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -258,6 +257,7 @@ export default {
         return {
             id: this.$route.params.id,
             WasteManagementDetailList: {},
+            wasteManagementDetailTypesList: {},
             permissions: [],
         }
     },
@@ -280,7 +280,17 @@ export default {
         wasteManagementDetail() {
             let api = "/g-environmental-rnec/waste-management/show/" + this.id;
             axios.get(api)
-                .then(({ data }) => this.WasteManagementDetailList = data.wasteManagement)
+                .then(({ data }) => {
+                    this.WasteManagementDetailList = data.wasteManagement
+                    this.wasteManagementDetailTypes(data.wasteManagement.waste_type, data.wasteManagement.month);
+                })
+                .catch(error => (error.response ? this.responseErrors(error) : ""));
+        },
+        wasteManagementDetailTypes(waste_type, month) {
+            console.log(waste_type);
+            let api = "/g-environmental-rnec/waste-management/types/show/" + waste_type.year + "/" + month + "/" + waste_type.headquarter_id;
+            axios.get(api)
+                .then(({ data }) => this.wasteManagementDetailTypesList = data.wasteTypes)
                 .catch(error => (error.response ? this.responseErrors(error) : ""));
         },
         alertLoading(time, msg, type) {
