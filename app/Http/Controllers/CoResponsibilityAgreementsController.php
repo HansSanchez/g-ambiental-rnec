@@ -240,6 +240,7 @@ class CoResponsibilityAgreementsController extends Controller
     // FUNCIÓN PARA GENERACIÓN DE REPORTES
     public function generateReport(Request $request)
     {
+        // dd($request->all());
         // CONTROL DE ERRORES
         try {
 
@@ -253,12 +254,6 @@ class CoResponsibilityAgreementsController extends Controller
                 $fromDay = null;
                 $untilDay = null;
                 $day = null;
-                $weekStartDate = null;
-                $weekEndDate = null;
-                $monthStartDate = null;
-                $monthEndDate = null;
-                $yearStartDate = null;
-                $yearEndDate = null;
                 $date = Carbon::now();
                 $permissions = new HomeController;
 
@@ -266,18 +261,6 @@ class CoResponsibilityAgreementsController extends Controller
                 if ($request->fromDay != null) $fromDay = date('Y-m-d', strtotime($request->fromDay));
                 if ($request->untilDay != null) $untilDay = date('Y-m-d', strtotime($request->untilDay));
                 if ($request->has('day')) $day = date('Y-m-d', strtotime($request->day));
-                if ($request->has('week')) {
-                    $weekStartDate = $date->startOfWeek()->format('Y-m-d H:i');
-                    $weekEndDate = $date->endOfWeek()->format('Y-m-d H:i');
-                }
-                if ($request->has('month')) {
-                    $monthStartDate = $date->startOfMonth()->format('Y-m-d H:i');
-                    $monthEndDate = $date->endOfMonth()->format('Y-m-d H:i');
-                }
-                if ($request->has('year')) {
-                    $yearStartDate = $date->startOfYear()->format('Y-m-d H:i');
-                    $yearEndDate = $date->endOfYear()->format('Y-m-d H:i');
-                }
 
                 // CONSULTA POR RANGO DE FECHAS, DÍA, SEMANA, MES O AÑO
                 $report = DB::table('co_responsibility_agreements')
@@ -316,11 +299,8 @@ class CoResponsibilityAgreementsController extends Controller
                     // RELACIÓN CON EL USUARIO QUE HIZO EL REGISTRO
                     ->join('users', 'users.id', '=', 'co_responsibility_agreements.user_id')
                     // FILTRO DE CONSULTA SEGÚN PARAMETROS DE FECHA
-                    ->where(function ($query) use ($fromDay, $untilDay, $day, $weekStartDate, $weekEndDate, $monthStartDate, $monthEndDate, $yearStartDate, $yearEndDate) {
+                    ->where(function ($query) use ($fromDay, $untilDay, $day) {
                         if ($day != null) $query->whereBetween('co_responsibility_agreements.date', [$day . " 00:00:00", $day . " 23:59:59"]);
-                        if ($weekStartDate != null || $weekEndDate != null) $query->whereBetween('co_responsibility_agreements.date', [$weekStartDate, $weekEndDate]);
-                        if ($monthStartDate != null || $monthEndDate != null) $query->whereBetween('co_responsibility_agreements.date', [$monthStartDate, $monthEndDate]);
-                        if ($yearStartDate != null || $yearEndDate != null) $query->whereBetween('co_responsibility_agreements.date', [$yearStartDate, $yearEndDate]);
                         if ($fromDay != null && $untilDay == null) $query->whereBetween('co_responsibility_agreements.date', [$fromDay . " 00:00:00", now()->format('Y-m-d') . " 23:59:59"]);
                         if ($fromDay == null && $untilDay != null) $query->whereBetween('co_responsibility_agreements.date', ["2000-01-01 00:00:00", $untilDay . " 23:59:59"]);
                         if ($fromDay != null && $untilDay != null) $query->whereBetween('co_responsibility_agreements.date', [$fromDay . " 00:00:00", $untilDay . " 23:59:59"]);

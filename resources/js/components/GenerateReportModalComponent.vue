@@ -309,7 +309,7 @@ export default {
                     disabled = Object.keys(this.FormReport).every(key => key === 'fromDay' || key === 'untilDay' || key === 'month' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 else if (this.waste) // SI ES GENERACIÓN DE RESIDUOS
                     disabled = Object.keys(this.FormReport).every(key => key === 'fromDay' || key === 'untilDay' || key === 'month' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
-                else disabled = Object.keys(this.FormReport).every(key => key === 'month' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
+                else disabled = Object.keys(this.FormReport).every(key => key === 'month' || key === 'year' || key === 'headquarter' || (this.FormReport[key] !== null && this.FormReport[key] !== undefined && this.FormReport[key] !== ""));
                 return !disabled;
             }
         },
