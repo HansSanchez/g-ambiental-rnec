@@ -21,6 +21,9 @@ class WasteType extends Model
         'year',
         'headquarter_id',
         'user_id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     /**

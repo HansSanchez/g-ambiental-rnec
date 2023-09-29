@@ -288,7 +288,7 @@ export default {
         },
         getCurrentYear() {
             const currentDate = new Date();
-            if (this.other) // SI ES OTRO MÓDULO (CONSUMOS)
+            if (this.other || this.waste) // SI ES OTRO MÓDULO (CONSUMOS)
                 if (!this.FormReport.year)
                     this.FormReport.year = currentDate.getFullYear().toString();
             this.yearFilter = currentDate.getFullYear().toString();

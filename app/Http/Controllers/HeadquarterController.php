@@ -252,13 +252,13 @@ class HeadquarterController extends Controller
             for ($i = 2022; $i <= 2032; $i++) $allYears[] = $i;
 
             // PASO 2. IDENTIFICAR TODOS LOS TIPOS
-            $allTypes = WasteType::select('id')->where('headquarter_id', $headquarter->id)->get();
+            $allTypes = DB::table('waste_types')->select('id', 'name')->groupBy('name')->get();
 
             // PASO 3. CREAR LOS REGISTROS DEFAULT y RECORRER TODOS LOS MESES CON LOS DIFERENTES TIPOS
             foreach ($allYears as $year) {
                 foreach ($allTypes as $type) {
-                    $insertData[] = [
-                        'name' => $type,
+                    WasteType::create([
+                        'name' => $type->name,
                         'danger_current' => null,
                         'transportation_manager' => null,
                         'external_manager' => null,
@@ -270,14 +270,9 @@ class HeadquarterController extends Controller
                         'created_at' => now(),
                         'updated_at' => now(),
                         'deleted_at' => null,
-                    ];
+                    ]);
                 }
             }
-
-            // PASO 4. INSERTAR LOS DATOS EN LOTES EN LA BASE DE DATOS
-            $chunkSize = 2;
-            $chunks = array_chunk($insertData, $chunkSize);
-            foreach ($chunks as $chunk) DB::table('waste_types')->insert($chunk);
         } catch (\Exception $exception) {
             Log::error("(HeadquarterController - storeWasteTypes) ERROR => " . $exception->getMessage());
             return response()->json(['msg' => $exception->getMessage(), 'icon' => 'error'], 500);
